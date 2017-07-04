@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>window_print</title>
+<script style="text/javascript">
+    function printIt(mydivID) {
+        //Get the HTML of div
+        var divElements = document.getElementById(mydivID).innerHTML;
+
+        //Get the HTML of whole Page
+        var oldPage = document.body.innerHTML;
+
+        //Reset the page's HTML with div's HTML only
+        document.body.innerHTML =
+        "<html><head><title></title></head></html><body>" +
+        divElements + "</body>";
+
+        //print page
+        window.print();
+
+        //Restor orignal HTML
+        document.body.innerHTML = oldPage;
+    }
+</script>
+
+</head>
+<body>
+<form runat="server" id="formal">
+    <div id="div1" style="width:100%; background: green; height: 200px">
+        Div 1 will print
+    </div>
+    <div id="div2" style="width:100%; background: red; height: 200px">
+        Div 2 will not print
+    </div>
+    <input type="button" value="Div1 Print" onclick="javascript: printIt('div1')" />
+</form>
+
+</body>
+</html>

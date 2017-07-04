@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0521_animating_object_on_html5_canvas</title>
+    
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="300" style="border:1px solid #000000; background-color: #808080" ></canvas>
+<br><br>
+<span id="output"></span>
+
+<!-- 
+in this programming, you must use script tag after canvas tag, 
+otherwise, you will get a error when running code.
+Uncaught TypeError: Cannot read property 'getContext' of null //The problem is your js runs before the html is loaded.
+ -->
+
+<script type="text/javascript">
+    var xLoc = 0;
+    var yLoc = 0;        
+    var xOld = 0;    
+    var yOld = 0;
+
+    document.addEventListener("keydown", function(event) {
+        if (event.keyCode == 37) {  // left arrow
+            xOld = xLoc;
+            xLoc -= 5;
+            drawRectangle(xLoc, yLoc);
+        }
+        if (event.keyCode == 38) {  //top arrow
+            yOld = yLoc;
+            yLoc -= 5;
+            drawRectangle(xLoc, yLoc);
+        }
+        if (event.keyCode == 39) {  //right arrow
+            xOld = xLoc;
+            xLoc += 5;
+            drawRectangle(xLoc, yLoc);
+        }
+        if (event.keyCode == 40) {  //down arrow
+            yOld = yLoc;
+            yLoc += 5;
+            drawRectangle(xLoc, yLoc);
+        }
+    });
+
+    var myRectangle = {width: 100, height: 100, borderWidth: 2};
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+
+    drawRectangle(xLoc, yLoc);
+
+    function drawRectangle(xLoc, yLoc) {
+        context.clearRect(xOld - 6, yOld - 6, myRectangle.width + 12, myRectangle.height + 12);
+        context.beginPath();
+        context.rect(xLoc, yLoc, myRectangle.width, myRectangle.height);
+        context.fillStyle = "#ff2299";
+        context.fill();
+
+        // border of rectangle
+        context.linWidth = myRectangle.borderWidth;
+        context.strokeStyle = "#000000";
+        context.stroke();
+        document.getElementById("output").innerHTML = "w: " + xLoc + " pixels; h: " + yLoc + " pixels;";
+    }
+</script>
+
+</body>
+</html>

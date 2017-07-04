@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>try_catch_function</title>
+    <script type="text/javascript">
+        function TestTry() {
+            alert("method ran successfully");
+        }
+        try {
+            TestTry();
+            //Invalid calls, functions or methods in the code.
+            TestT();
+        }
+        catch(exception) {
+            //determine whether or not the browser is IE or FireFox
+            if (exception.description == null) {
+                alert("There was an error in the code. The detail are: \n " + exception.message);
+            }
+            else {
+                alert("There was an error in the code. The detail are: \n " + exception.description);
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

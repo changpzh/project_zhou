@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0313_track_mouse_coordinates_in_a_brower</title>
+    <script type="text/javascript">
+
+        var x, y;
+        function mouseCoords(e) {
+            x = e.clientX;
+            y = e.clientY;
+            document.getElementById('output').innerHTML = "(X: " + x + " Y: " + y + ")";
+            
+        }
+
+        function clearCoords() {
+            document.getElementById('output').innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+Howver your mouse over the box:<br>
+<div id="mouseBox" style="width: 2000px; height: 200px; background-color: #ffd800" onmousemove="mouseCoords(event)" onmouseout="clearCoords()"></div>
+<span id="output"></span>
+</body>
+</html>
+

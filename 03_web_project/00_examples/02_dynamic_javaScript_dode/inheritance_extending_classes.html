@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>prototypeChaining</title>
+<script type="text/javaScript">
+
+    function Car(make, model, transmission) {
+        this.make = make;
+        this.model = model;
+        this.transmission = transmission;
+        this.reportStats = function () {
+            return ("Make: " + this.make + " Model: " + model);
+        }
+    }
+
+    function SUV(make, model, transmission, mpg) {
+        this.mpg = mpg;
+
+        this.carInfo = Car;
+        this.carInfo(make, model, transmission);
+    }
+
+    SUV.prototype = new Car();
+
+    SUV.prototype.getMPG = function () {
+        return " This SUV mpg is: " + this.mpg;
+    }
+
+    mySUV = new SUV("Kia", "Sportage", "manual", 32);
+    myCar = new Car("WW", "Jetta", "automatic");
+
+    document.writeln(mySUV.reportStats());
+    document.writeln(mySUV.getMPG());
+
+    // document.writeln(myCar.getMPG()); // not works
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

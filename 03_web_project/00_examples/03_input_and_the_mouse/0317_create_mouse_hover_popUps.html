@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0317_create_mouse_hover_popUps</title>
+    <script type="text/javascript">
+        function popUp(elem, text, color) {
+            var popElement = document.getElementById("popUp");
+            var x = window.event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft + 15;
+            var y = window.event.clientY + document.documentElement.scrollTop + document.body.scrollTop + 15;
+            popElement.style.left = x + 'px';
+            popElement.style.top = y + 'px';
+            popElement.style.display = "block";
+            document.getElementById("popUp").style.background = color;
+            document.getElementById('popUp').innerHTML = elem.id + " " + text;
+
+            console.log("elem: " + "%j", elem); // elem: %j <div id=​"popup3" class=​"popup" style=​"background-color:​ #00ffff" onmouseover=​"popUp(this, 'has been hoverd over', '#00ffff')​" onmouseout=​"clearPop(this)​">​</div>​
+            console.log("elem.id: " + elem.id); // elem.id: popup3
+            console.log("elem.class: " + elem.class); // elem.class: undefined
+            console.log("elem.style: " + "%j", elem.style); //
+            console.log("clientX: " + window.event.clientX);
+            console.log("clientY: " + window.event.clientY);
+            console.log("scrollLeft: " + document.documentElement.scrollLeft); //scrollLeft: 0
+            console.log("body.scrollLeft: " + document.body.scrollLeft); // body.scrollLeft: 0
+
+            console.log("scrollTop: " + document.documentElement.scrollTop); // scrollTop: 0
+            console.log("body.scrollTop: " + document.body.scrollTop); // body.scrollTop: 0
+
+        }
+
+        function clearPop() {
+            var popElement = document.getElementById('popUp');
+            popElement.style.display = "none";
+        }
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .popup {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="popup1" class="popup" style="background-color: #ff6a00" onmouseover="popUp(this, 'has been hoverd over', '#ff6a00')" onmouseout="clearPop(this)"></div><br><br>
+<div id="popup2" class="popup" style="background-color: #b6ff00" onmouseover="popUp(this, 'has been hoverd over', '#b6ff00')" onmouseout="clearPop(this)"></div><br><br>
+<div id="popup3" class="popup" style="background-color: #00ffff" onmouseover="popUp(this, 'has been hoverd over', '#00ffff')" onmouseout="clearPop(this)"></div><br><br>
+
+<!-- PopUp container -->
+<div id="popUp" style="display: none; position: absolute; border: solid black 1px; padding: 10px; font-family: Calibri; font-size: 16px;">
+<span id="popUpText"><!-- Text will autofill here --></span></div>
+<!-- End PopUp Container -->
+
+</body>
+</html>
+

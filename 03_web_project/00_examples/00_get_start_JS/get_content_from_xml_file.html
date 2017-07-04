@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>get content from xml file</title>
+  <script>
+  function loadXMLDoc() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // myFunction(this);
+        document.getElementById("demo").innerHTML = this.responseText;
+      }
+    };
+    // you must startup file server use "python -m http.server [port] (python3)"
+    // I use http://127.0.0.1:8081/get_content_from_xml_file.html in browser
+    xmlhttp.open("GET", "files/cd_catalog.xml" , true);
+    xmlhttp.send();
+  }
+
+  function myFunction(xml) {
+    var x, i, xmlDoc, table;
+    xmlDoc = xml.responseXML;
+    table = "<tr><th>Artist</th><th>Title</th><th>Country</th></tr>";
+    x = xmlDoc.getElementsByTagName("CD")
+    for (i = 0; i < x.length; i++) { 
+      table += "<tr><td>" + 
+      x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName('COUNTRY')[0].childNodes[0].nodeValue +
+      "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+  }
+  </script>
+</head>
+<body>
+
+<p><button onclick="loadXMLDoc()">Get CD info</button></p>
+
+<table id="demo" border="1">
+<tr><th>Artist</th><th>Title</th><th>Country</th></tr>
+</table>
+
+
+
+</body>
+</html>

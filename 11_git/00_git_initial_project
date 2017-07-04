@@ -1,0 +1,27 @@
+Command line
+I'm starting from scratch
+Set up your local directory
+
+
+#Set up Git on your machine if you haven't already.
+mkdir /path/to/your/project
+cd /path/to/your/project
+git initgit
+remote add origin https://github.com/changpzh/project_jason.git
+
+#Create your first file, commit, and push
+
+echo "changping zhou" >> contributors.txtgit 
+add contributors.txt
+git commit -m 'Initial commit with contributors'
+git push -u origin master
+
+Great job, now you're all set up! Get started coding or create a team and invite people to work with you.
+I have an existing project
+
+#Already have a Git repository on your computer? Let's push it up to Bitbucket.
+
+cd /path/to/my/repo
+git remote add origin https://github.com/changpzh/project_jason.git
+git push -u origin --all # pushes up the repo and its refs for the first time
+git push origin --tags # pushes up any tags

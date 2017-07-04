@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#while-read: read lines from a file
+
+while read v_a v_b v_c; do 
+	printf "arg_a:%s\targ_b:%s\targ_c:%s\n" \
+	${v_a} \
+	${v_b} \
+	${v_c}
+done

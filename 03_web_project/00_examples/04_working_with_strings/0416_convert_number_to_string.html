@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0416_convert_number_to_string</title>
+</head>
+<body>
+
+<button onclick="doIt()" onsubmit="return false">To String</button>
+<br><br>
+Result:<br>
+<span id="output"></span>
+<script type="text/javascript">
+	var str1 = 1234567890;
+	var str2 = "1234567890";
+	var str1Type = typeof str1;
+	var str2Type = typeof str2;
+	document.getElementById("output").innerHTML = "str1 is a " + str1Type + "<br>str2 is a " + str2Type + "<br><br>"
+
+	function doIt() {
+		var result = str1.toString();
+		var str1Type = typeof result;
+		var str2Type = typeof str2;
+		document.getElementById("output").innerHTML += "Processed.<br>str1 is a " + str1Type + "<br>str2 is a " + str2Type + "<br><br>"
+	}
+</script>
+
+</body>
+</html>

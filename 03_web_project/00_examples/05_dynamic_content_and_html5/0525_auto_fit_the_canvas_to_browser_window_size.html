@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0525_auto_fit_the_canvas_to_browser_window_size</title>
+    <style type="text/css">
+        body {
+            font-size: 16px;
+            font-family: Calibri;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="300" style="border:1px solid #000000; background-color: #808080" ></canvas>
+
+<script type="text/javascript">
+    window.addEventListener("resize", resize, false);
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    var myRectangle = {width: 100, height: 100, borderWidth: 2};
+
+    drawRectangle();
+    drawText();
+
+
+    function drawRectangle() {
+        context.beginPath();
+        context.rect(10, 10, myRectangle.width, myRectangle.height);
+        context.fillStyle = "#ff2299";
+        context.fill();
+
+        //draw rectangle' border
+        context.linWidth = myRectangle.borderWidth;
+        context.strokeStyle = "#000000";
+        context.stroke();
+        document.getElementById("output").innerHTML = "w: " + canvas.width + " pixels; h: " + canvas.height + " pixels;<br>" + "Canvas color is " + canvas.style.backgroundColor;
+    }
+    function drawText() {
+        var textString = "w: " + canvas.width + " pixels; h: " + canvas.height + " pixels;";
+        context.beginPath();
+        context.fillText(textString, 10, canvas.height - 20);
+    }
+
+    function resize() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        drawText();
+        drawRectangle();
+    }
+</script>
+
+
+</body>
+</html>

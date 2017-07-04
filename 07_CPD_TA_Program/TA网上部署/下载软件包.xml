@@ -1,0 +1,42 @@
+#!/bin/bash                                                                                                              
+##get latest package name and build ID##                                                                                 
+CONFIGPATH=/var/fpwork/lteman/jenkins/.hudson/jobs/LTE_eNB_FZM_TDD_trunk/lastSuccessful/archive                          
+SWPATH=/var/fpwork/lteman/jenkins/.hudson/jobs/LTE_eNB_FZM_TDD_trunk/lastSuccessful/archive/lteDeliveries/build/ci/tdd/  
+PACKNAME=`ls ${SWPATH} | grep -o -E "LNZ.*.wo_images.zip" | sed s/\_release_BTSSM_downloadable_wo_images.zip//`          
+echo package name is: ${PACKNAME}                                                                                        
+BUILDID=`echo ${PACKNAME} | cut -d_ -f4`                                                                                 
+echo "PACKNAME=$PACKNAME">QT_Packagename                                                                                 
+                                                                                                                         
+##get last successful package name and build ID##                                                                        
+LASTSUCPKGPATH=/var/fpwork/lteman/jenkins/.hudson/jobs/push_latest_Package_to_FZM524_21/lastSuccessful/log               
+LASTSUCPACKNAME=`cat ${LASTSUCPKGPATH} | grep "LNZ.*.wo_images.zip" | sed s/\_release_BTSSM_downloadable_wo_images.zip//`
+LSTSUCBUILDID=`echo ${LASTSUCPACKNAME} | cut -d_ -f4`                                                                    
+                                                                                                                         
+##if the latest build not equal to the last build, then push package to test pc, else do nothing##                       
+if [ ${BUILDID} -ne ${LSTSUCBUILDID} ]; then                                                                             
+    rsync -avz ${CONFIGPATH}/\.config_${BUILDID}\.txt btstest@10.69.65.21:/cygdrive/d/Temp/L3QT                          
+    rsync -avz ${SWPATH}/${PACKNAME}_release_BTSSM_downloadable_wo_images.zip btstest@10.69.65.21:/cygdrive/d/Temp/L3QT  
+else                                                                                                                     
+    echo latest build equal to the last                                                                                  
+    the package name is: ${PACKNAME}                                                                                     
+fi                                                                       
+
+
+
+
+#####push pakage to target directory###########
+
+#!/bin/bash -x                                                                                                           
+##get latest package name and build ID##                                                                                 
+#BUILDID=`echo ${PACKNAME} | cut -d_ -f5 | awk '{printf "%4d",$NF}'`                                                     
+BUILDID=`echo ${PACKNAME} | cut -d_ -f5 | sed 's/\(0*\)\(.*\)/\2/'`                                                      
+CONFIGPATH=/var/fpwork/lteman/jenkins/.hudson/jobs/LTE_eNB_FZM_TDD_trunk/builds/${BUILDID}/archive                       
+SWPATH=/var/fpwork/lteman/jenkins/.hudson/jobs/LTE_eNB_FZM_TDD_trunk/builds/${BUILDID}/archive/lteDeliveries/build/ci/tdd
+                                                                                                                         
+echo package name is: ${PACKNAME}                                                                                                                                        
+                                                                                                                         
+rsync -R ${CONFIGPATH} btstest@10.140.90.25:/cygdrive/c/Temp/FZM_Trunk/${PACKNAME}/                                      
+rsync -avz ${CONFIGPATH}/\.config_${BUILDID}\.txt btstest@10.140.90.25:/cygdrive/c/Temp/FZM_Trunk/${PACKNAME}/\.config   
+                                                                                                                         
+rsync -avz ${SWPATH}/${PACKNAME}_release_BTSSM_downloadable_wo_images.zip btstest@10.140.90.25:/cygdrive/c/Temp/FZM_Trunk/${PACKNAME}/                                
+                                

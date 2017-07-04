@@ -1,0 +1,44 @@
+Emmet
+EmmetOneLine
+SideBarEnhancements 	---sub侧栏右键文件提供的功能很少，但在实际开发中，文件通常会有各种处理请求，
+					而该插件增强侧栏文件右键功能，比如可以直接右键将文件移入回收站，在浏览器中浏览，将文件复制到剪切板等.我常用的两个功能是设置文件使用浏览器打开的快捷键F12和重命名F2，需要自己往Key-Bindings-User里面添加
+					{ "keys": ["f12"], "command": "side_bar_open_in_browser","args":{"paths":[], "type":"testing", "browser":""}},
+					{ "keys": ["f2"], "command": "side_bar_rename"},
+BracketHighlighter	---高亮显示[], (), {}, “”, ”, <tag></tag>符号，便于查看起始和结束标记
+SublimeCodeIntel	---可以函数跳转的插件，但是装完老是不工作。--可以尝试用Goto Definition 和 Alt + Minus 代替。
+Color Highlighter	---show color when type color code number.
+Js Snippets 		---you can quick write JS code such as log+Tab will output console.log
+					---you can see how to configure your own snippet from Link: http://blog.csdn.net/chenhongwu666/article/details/50952295
+AutoFileName		---快速列出你想引用的文件夹里面所有文件的名字，比如想引用test/img/1.png。
+					只需要输入/img,该插件就会自动提示/img下面的所有文件名
+ColorPicker			---调色板，需要输入颜色时，可直接选取颜色。使用快捷键ctrl+shift+c即可打开调色板。
+					需要注意的是，这个快捷键可能会打不开调色板，原因是该快捷键被占用了，最直接的解决办法是直接在Preferences→Key Bindings-User中配置：“{ "keys": ["ctrl+shift+c"], "command": "color_pick"},”
+JsFormat			---sForma可以自动帮助你格式化JavaScript代码，形成一种通用的格式，
+					比如对压缩、空格、换行的js代码进行整理，使得js代码结构清晰，易于观看。在已压缩的JS文件中，右键选择jsFormat或者使用默认快捷键（Ctrl+Alt+F），如果该热键被占用了，可以在Preferences→Key Bindings-User中配置： { "keys": ["ctrl+shift+alt+j"], "command": "js_format","context": [{"key": "selector", "operator": "equal", "operand": "source.js,source.json"}]},
+DocBlockr			---安装该插件后，可以快速生成各种注释格式，当需要生成注释符号时，
+					输入/*、/然后回车系统即帮你自动生成，如果/后面刚好是一个函数的定义，注释格式会根据函数的参数生成。
+
+HTML-CSS-JS Prettify 		---格式化HTML,CSS,Javascript和Json代码格式。使用该插件，需要安装nodejs，而且要在Packages-Setting→HTML/CSS/JS Prettify→set node pat 中设置你node的安装路径。you can use $whereis node to check the path of node.
+Using procedure：Tools→Command Palette(OR Ctrl+Shift+P)，输入选择htmlprettify即可完成整个文档的格式化。defualt shortKey: ctrl+shift+h, 也可以设置快捷键：Packages-Setting→HTML/CSS/JS Prettify→set keyboard shortcut。					
+Alignment			---对定义的变量进行智能对齐,一般是“=”号对齐，默认的快捷键是Ctrl+Alt+A，
+					但这个热键和QQ截屏的热键冲突不能使用，需要自己重新设置，我通常设置成Ctr+Alt+Shift+A，以下粘贴到Key-Bindings-User里面：{ "keys": ["ctrl+alt+shift+a"], "command": "alignment" }, function is same as previous JS prettify
+Trailing Spaces 	---可以检测和一键删除代码的空格，保存时自动删除多余空格，让你的代码更加紧凑规范。
+					功能入口：Edit→Trailing Spaces→Delete，也可以自己设置快捷键，我通常设置成ctrl+shift+alt+t，以下粘贴到Key-Bindings-User里面：{ "keys": ["ctrl+shift+alt+t"], "command": "delete_trailing_spaces" }.
+Tag 				---Tag插件提供各种对Tag标签的操作，具有功能：根据/自动关闭HTML标签，
+					标签自动缩进（或选中ctrl+alt+f），删除标签和里面的内容，插入标签（对光标字符“ctrl+shift+,”生成标签），删除标签里的属性，关闭标签，检查标签等。有些功能是自动执行，有些功能需要手动执行，功能入口 菜单栏Edit→Tag。
+terminal			---打开文件的终端，终端默认是CMD。ctrl+shift+t
+					打开文件所在文件夹，ctrl+shift+alt+t 打开文件所在项目的根目录文件夹，可以自己重新配置快捷键。也可以右键open terminal here打开。
+CSS Format 			---CSS Format可以将任意的 CSS、SASS、SCSS、LESS
+					代码格式化为展开、紧凑、压缩的形式，选中需要格式化的样式代码，右键选中CSS Format，选择需要形成的格式即可。
+
+SublimeLinter 和 
+Sublimelinter-jshint
+				---you must install jshint by using: sudo npm install -g jshint
+				Mostly, you can use now, and clik Tools -> SublimeLinter -> Lint Mode(Background, ....).
+				如果Node没有安装在默认位置，在菜单里Tools -> SublimeLinter -> Open User Setting可以修改成实际安装位置
+
+robotframework			---for robot language usage
+
+OR you can see detail information from link:
+http://blog.csdn.net/u013861109/article/details/53106074
+

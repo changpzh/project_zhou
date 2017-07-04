@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0422_compare_string_using_localeCompare</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input1").value;
+			var str2 = document.getElementById("input2").value;
+			var compared = str1.localeCompare(str2);
+			if (compared == -1) {
+				var result = str1 + " is sorted before " + str2;
+			}
+			else if (compared == 0) {
+				var result = str1 + " and " + str2 + " are equal";
+			}
+			else if (compared == 1) {
+				var result = str1 + " is sorted after " + str2;
+			}
+
+			document.getElementById("output").innerHTML = result;
+
+		}
+		
+		
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter two strings</p>
+<br>
+<input name="text" id="input1" size="20">
+<input name="text" id="input2" size="20">
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Compare</button>
+<br><br>
+Result:
+<span id="output"></span>
+</body>
+</html>

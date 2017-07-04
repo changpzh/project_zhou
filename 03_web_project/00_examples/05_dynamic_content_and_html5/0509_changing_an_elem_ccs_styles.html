@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>0509_changing_an_elem_ccs_styles</title>
+	<script type="text/javascript">
+		function doIt() {
+			var id = document.getElementById("input1").value;
+			var att = document.getElementById("input2").value;
+			var val = document.getElementById("input3").value;
+			var ccsString = "document.getElementById('" + id + "').style." + att + " = '" + val + "'\;";
+			eval(ccsString);
+			// alert(ccsString);
+
+		}
+
+	</script>
+	<style>
+		p {
+			font-family: Arial;
+			font-size: 20px;
+		}
+		.clickBox {
+			width: 100px;
+			height: 100px;
+		}
+		#wrapper {
+			width: 400px;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+    <div id="wrapper">
+      	<div id="redBox" class="clickBox" style="background-color: #f00; text-align: center; line-height: 100px;">ID = "redBox"</div>
+		<br><br>
+		ID "image1" <br><br>
+		<img src="../img/dog.jpg" id="image1">
+		<br><br><br>
+		<span id="text1">
+			there are a lot of text, hehe!
+		</span> 
+    </div>
+    <br><br><br>
+    ID:<input type="text" id="input1" size="20" placeholder="Enter an ID"><br><br> <!--  such as: redBox -->
+    CSS style attr:<input type="text" id="input2" size="20" placeholder="Enter a CSS style attribute"><br><br>  <!--  such as: fontSize -->
+    Value: <input type="text" id="input3" size="20" placeholder="Enter a value"><br><br> <!--  such as: 20px -->
+    <input type="button" onclick="doIt()" value="Go"><br><br>
+    <span id="output"></span>
+</body>
+</html>

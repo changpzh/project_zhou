@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0503_dynamically_create_variables</title>
+	<script type="text/javascript">
+		function doIt() {
+			var varName = document.getElementById("input1").value;
+			var varVal = document.getElementById("input2").value;
+			if (varVal.match(/^[0-9.-]+$/) != null) {
+				eval("var " + varName + " = " + Number(varVal));
+			} else if (varVal.match(/^[true|false]+$/) != null) {
+				eval("var " + varName + " = " + varVal);
+			} else {
+				eval("var " + varName + " = " + '"' + varVal + '"');
+			}
+			document.getElementById("output").innerHTML = "Created. " + varName + " equals " + varVal + "<br>Varible " + (eval(varName)) + " is type " + typeof (eval(varName));
+		}
+	</script>
+	
+</head>
+<body>
+Enter variable name: <input type="text" id="input1" />
+<br><br>
+Enter a value: <input type="text" id="input2" /> 
+<br><br>
+[Hint: can be number, string, or boolean]
+<br><br>
+<input type="button" onclick="doIt()" value="Submit" />
+<br><br>
+<div id="output"></div>
+
+</body>
+</html>

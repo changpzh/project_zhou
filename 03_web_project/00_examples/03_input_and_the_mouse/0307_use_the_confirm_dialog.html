@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>0307_use_the_confirm_dialog</title>
+    <script type="text/javascript">
+        function confirmMe() {
+            var result;
+            var check = confirm("Would you lie to proceed?");
+            if (check == true) {
+                result = "Proceeding";
+
+            } else {
+                result = "Cancelling";
+            }
+            document.getElementById("output").innerHTML = result;
+            
+        }
+    </script>
+    <style>
+        p {
+            font-family: "Trebuchet MS", Arial, Helverica, sans-serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<p>Press to continue</p>
+<input type="button" onclick="confirmMe()" value="Submit">
+<p id="output"></p>
+
+</body>
+</html>
+

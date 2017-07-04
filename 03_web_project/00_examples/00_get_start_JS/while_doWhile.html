@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>while_doWhile</title>
+
+
+</head>
+<body>
+<script style="text/javascript">
+    var zipCode = "07777";
+    var town;
+
+    function count() {
+        /*
+        var x = 0;
+        while (x < 100) {
+            document.getElementById('output').innerHTML += x + '<br>';
+            x += 5;
+        }
+        */
+
+        var i = 100;
+        do {
+            document.getElementById('output').innerHTML += i + '<br>';
+            i -= 5;
+        }while (i > 0);
+    }
+</script>
+
+<p id="output"></p>
+<button onclick="count()">COUNT</button>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0524_change_the_canvas_programmatically</title>
+    <style type="text/css">
+        body {
+            font-size: 16px;
+            font-family: Calibri;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="300" style="border:1px solid #000000; background-color: #808080" ></canvas>
+
+<br><br>
+w:<input id="w" size="5"></input>
+h:<input id="h" size="5"></input>
+color: <input type="text" id="col" size="10">
+<input type="button" onclick="resize()" value="Resize">
+<hr> <!-- <hr>: the line     -->
+<span id="output"></span>
+
+
+<script type="text/javascript">
+    var xLoc = 0;
+    var yLoc = 0;
+    var xOld = 0;
+    var yOld = 0;
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    var myRectangle = {width: 100, height: 100, borderWidth: 2};
+
+    drawRectangle();
+
+    function drawRectangle () {
+        context.beginPath();
+        context.rect(10, 10, myRectangle.width, myRectangle.height);
+        context.fillStyle = "#ff2299";
+        context.fill();
+        context.linWidth = myRectangle.borderWidth;
+        context.strokeStyle = "#000000";
+        context.stroke();
+        document.getElementById("output").innerHTML = "w: " + 
+        canvas.width + " pixels; h: " + 
+        canvas.height + " pixels;<br>" + "Canvas color is " + canvas.style.backgroundColor;
+    }
+    function resize() {
+        var w = document.getElementById("w").value;
+        var h = document.getElementById("h").value;
+        var col = document.getElementById("col").value;
+        canvas.width = w;
+        canvas.height = h;
+        canvas.style.backgroundColor = col;
+        // document.getElementById("output").innerHTML = "w: "  + 
+        // canvas.width + "pixels; h:" +
+        // canvas.height + "pixels;<br>" + "Color: " + col;
+
+        drawRectangle();
+    }
+</script>
+
+
+</body>
+</html>

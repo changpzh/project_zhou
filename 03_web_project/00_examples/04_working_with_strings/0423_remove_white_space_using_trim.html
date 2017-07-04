@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0423_remove_white_space_using_trim</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input1").value;
+			var result = str1.trim(); // remove white space
+			//if type-> you       are            right      ; will get result as: you are right ;
+			document.getElementById("output").innerHTML = result;
+
+		}
+		
+		
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Remove White Space</button>
+<br><br>
+Result:
+<span id="output"></span>
+</body>
+</html>

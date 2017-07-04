@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9813_jquery_The_jQuery_Object</title>
+	<link rel="shortcut icon" href="../img/jquery_icon.ico" />
+	<script src="../lib/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<a href="http://learn.jquery.com/using-jquery-core/jquery-object/">jquery-object Docs</a>
+	<div id="myDiv">
+
+		<h1>h1</h1>
+		<h1>h2</h1>
+		<h1>h3</h1>
+		<h1>h4</h1>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Selecting all <h1> tags.
+			var headings = $( "h1" );
+
+			// Selecting only the first <h1> element on the page (in a jQuery object)
+			var firstHeading = headings.eq( 0 ); //just get a jQuery object
+			var firstHeadingElem = $( "h1" ).get( 0 ); //get element itself
+			var firstHeadingElem = $( "h1" )[ 0 ]; //get element itself
+		});
+	</script>
+</body>
+</html>

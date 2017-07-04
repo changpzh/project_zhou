@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>9810_jquery-start</title>
+    <link rel="shortcut icon" href="../img/jquery_icon.ico" />
+	<style>
+		a.test {
+		    font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+    <a href="http://learn.jquery.com/using-jquery-core/document-ready/"> jquery document ready Docs</a>
+    <a href="http://jquery.com/">jQuery</a>
+    <p>You are right!</p>
+    <script src="../lib/jquery-3.2.1.min.js"></script>
+    <script>
+
+	function myCallBack() {
+		alert('in myCallBack');
+	}
+    $( document ).ready(function() {
+        // $( "a" ).click(function( event ) {
+        //     alert( "The link will no longer take you to jquery.com" );
+        //     event.preventDefault();
+        // });
+        // $("a").addClass('test');
+        // setTimeout(() =>{$("a").removeClass('test');}, 10000);
+
+        //demo jquery hide
+        $("p").click( function(event) {
+        	event.preventDefault();
+        	$(this).hide('slow');
+        });
+
+        $.get( "9810_jquery_start.html", myCallBack );
+
+    });
+
+    </script>
+</body>
+</html>

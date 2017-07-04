@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>swith_statements</title>
+
+
+</head>
+<body>
+<script style="text/javascript">
+    var zipCode = "07777";
+    var town;
+
+    function checkZip() {
+        switch(zipCode) {
+            case "06611": 
+                town = "first correct!";
+                break;
+            case "06622":
+                town = "second correct";
+                break;
+
+            default:    //not match any of above.
+                town = "not Macth any thing!";
+        }// End switch
+
+        document.getElementById('output').innerHTML = "Town: " + town;
+    }
+</script>
+
+<p id="output"></p>
+<button onclick="checkZip()">Check Town</button>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+we can refer the detail of link: http://www.cnblogs.com/fnng/p/3871712.html
+
+###########.bat installatin script##################
+@ 安装python 2.7.5
+msiexec /i  python-2.7.5.msi
+
+@安装RF
+start /wait robotframework-2.8.4.win32.exe /Install
+
+@ 安装 wxpython
+start /wait wxPython2.8-win32-unicode-2.8.12.1-py27.exe /Install
+
+@安装ride
+start /wait robotframework-ride-1.2.3.win32.exe /Install
+
+@删除library
+rd /s /q "D:\Python27\Lib\site-packages"
+
+@拷贝library
+xcopy site-packages\*.*  D:\Python27\Lib\site-packages\ /s /e
+
+
+@拷贝iedriver
+xcopy IEDriverServer.exe  D:\Python27\
+
+
+###############manual installation################
+1: install python
+2: pip install robotframework
+3: must use wxpython2.8 unicode-2.8.12.1 to use ride
+4: pip install robotframework-ride
+5: pip install robotframework-selenium2library
+6: initial site-packages
+7: put driverServer.exe in python root directory.

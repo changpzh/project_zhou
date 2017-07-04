@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0501_moving_an_html_element_using_keyboard_input</title>
+	<style>
+		#sprite1 {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			top: 0;
+			left: 0;
+			background-color: #ffd800;
+		}
+	</style>
+	
+</head>
+<body>
+
+<div id="sprite1"></div>
+<br><br><br><br><br><br><br><br>
+<div id="output"></div>
+<p>div will shift while pressing arrow keyboar</p>
+<script type="text/javascript">
+	var x = 0;
+	var y = 0;
+	var xVal = 0;
+	var yVal = 0;
+	var sprite = document.getElementById("sprite1");
+	document.getElementById("output").innerHTML = "X: 0" + " Y: 0";
+	document.addEventListener("keydown", function(event) {
+		if (event.keyCode == 37) {	//left arrow
+			x -= 5;
+			xVal = x + "px";
+			sprite.style.left = xVal;
+		}
+		if (event.keyCode == 38) {	//top arrow
+			y -= 5;
+			yVal = y + "px";
+			sprite.style.top = yVal;
+		}
+		if (event.keyCode == 39) {	//right arrow
+			x += 5;
+			xVal = x + "px";
+			sprite.style.left = xVal;
+		}
+		if (event.keyCode == 40) {	//down arrow
+			y += 5;
+			yVal = y + "px";
+			sprite.style.top = yVal;
+		}
+		document.getElementById("output").innerHTML = "X: " + xVal + " Y: " + yVal;
+	});
+	
+		
+	</script>
+
+</body>
+</html>

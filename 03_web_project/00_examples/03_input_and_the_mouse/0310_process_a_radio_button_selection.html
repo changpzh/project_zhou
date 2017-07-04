@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0310_process_a_radio_button_selection</title>
+    <script type="text/javascript">
+        function formProcess() {
+            var formData = 'Thank you! The information has been submitted:\n';
+            formData += '\nSubscribe to our newsletter:';
+            if (document.getElementById('subscribe_0').checked) {
+                formData += ' YES';
+            } else {
+                formData += ' NO';
+            }
+            
+            alert(formData);
+            
+        }
+    </script>
+</head>
+<body>
+
+<tr>
+    <td height="23"><p>
+        <label name="subscribe">
+            <strong>Subscribe to our newsletter?</strong>
+            <input type="radio" name="subscribe" id="subscribe_0">Yes
+        </label>
+        <label name="subscribe">
+            <input type="radio" name="subscribe" id="subscribe_1" autofocus>No
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<input type="submit" value="Submit Now" onclick="formProcess()" />
+</body>
+</html>
+

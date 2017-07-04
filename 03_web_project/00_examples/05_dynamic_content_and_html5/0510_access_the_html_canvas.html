@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0510_access_the_html_canvas</title>
+    <script type="text/javascript">
+        var myRectangle = {
+            x: 50,
+            y: 50,
+            width: 100,
+            height: 100,
+            borderWidth: 2
+        }
+        
+        function doIt() {
+        	var canvas = document.getElementById("myCanvas");
+        	console.log(canvas.id); // myCanvas
+        	console.log(canvas.width); // 200
+        	console.log(canvas.class); // undefined
+                
+        	var context = canvas.getContext("2d");
+            context.beginPath();
+            context.fillStyle = "#ffff00";
+            context.fillRect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+
+            /*
+            have some difference with context.Rect(),
+            please refer to: 0520_determining_the_optimal_animation_frame_rate.html
+            */
+
+        }
+
+        /*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+
+        
+    </script>
+
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="200" class="test"></canvas>
+<br><br>
+<input type="button" onclick="doIt()" value="GO" />
+<br>
+<div id="output"></div>
+
+
+</body>
+</html>

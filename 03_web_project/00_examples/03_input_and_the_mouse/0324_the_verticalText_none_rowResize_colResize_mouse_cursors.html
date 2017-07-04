@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0324_the_verticalText_none_rowResize_colResize_mouse_cursors</title>
+    <script type="text/javascript">
+        function setCursor(elem) {
+            var newCursor = elem.id;
+            elem.style.cursor = newCursor;
+        }
+        
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .myDiv {
+            width: 200px; 
+            height: 100px;
+            text-align: center; 
+            line-height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+<p>Hover the mouse over an item: <strong>Note the Cursor's shape when on different div.</strong></p>
+<table>
+    <tr>
+        <td>
+            <div class="myDiv" id="vertical-text" style="background-color: #ffd800;" onmouseover="setCursor(this)">vertical-text</div>
+        </td>
+        <td>
+            <div class="myDiv" id="none" style="background-color: #cd84e6;" onmouseover="setCursor(this)">none</div>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>
+            <div class="myDiv" id="row-resize" style="background-color: #dddd00;" onmouseover="setCursor(this)">row-resize</div>
+        </td>
+        <td>
+            <div class="myDiv" id="col-resize" style="background-color: #ffaaee;" onmouseover="setCursor(this)">col-resize</div>
+        </td>
+    </tr>
+    
+</table>
+</body>
+</html>
+

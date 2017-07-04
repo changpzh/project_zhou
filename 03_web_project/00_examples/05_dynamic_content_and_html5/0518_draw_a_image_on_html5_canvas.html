@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0518_draw_a_image_on_html5_canvas</title>
+
+	<script>
+		function doIt() {	
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			var imgToDraw = new Image();
+			imgToDraw.src = "../img/dog.jpg";
+			var scale = document.getElementById("scale").value / 100;
+			var imageWith = imgToDraw.width * scale;
+			var imageHeight = imgToDraw.height * scale;
+
+			context.drawImage(imgToDraw, 0, 0, imageWith, imageHeight);			
+		}
+		function clearCanvas() {
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="400" style="border: 1px solid #000000"></canvas>
+<br><br>
+Scale %: <input type="text" id="scale" size="5">
+<br><br>
+
+<input type="button" onclick="doIt()" value="GO">
+<input type="button" onclick="clearCanvas()" value="Clear">
+
+
+</body>
+</html>

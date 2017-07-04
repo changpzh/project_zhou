@@ -1,0 +1,38 @@
+##this doc teach you how to create a shortcut in desktop
+
+
+##create shortcut in desktop
+$ sudo gedit /usr/share/applications/Pycharm.desktop
+type below string, and note the corect path of Exec and Icon
+=====command in======
+[Desktop Entry]
+Type=Application
+Name=Pycharm
+GenericName=Pycharm3
+Comment=Pycharm3:The Python IDE
+Exec="/XXX/pycharm-community-3.4.1/bin/pycharm.sh" %f
+Icon=/XXX/pycharm-community-3.4.1/bin/pycharm.png
+Terminal=pycharm
+Categories=Pycharm;
+======command in=======
+
+go to /usr/share/applications/ and copy Pycharm.desktop to ~/Desktop then chmod to 777
+
+
+##eclipse
+$ sudo gedit /usr/share/applications/eclipse.desktop
+
+####
+[Desktop Entry]
+Name=Eclipse
+Comment=Eclipse SDK
+Encoding=UTF-8
+Exec=/usr/local/eclipse/eclipse   #application's location
+Icon=/usr/local/eclipse/icon.xpm
+Terminal=false
+Type=Application
+Categories=Application;Development;
+#####
+
+go to /usr/share/applications/ and copy eclipse.desktop to ~/Desktop then chmod to 777
+

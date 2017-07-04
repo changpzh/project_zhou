@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>0308_use_the_prompt_dialog</title>
+    <script type="text/javascript">
+        function promptMe() {
+            var result = prompt("Please enter your name");
+            document.getElementById("output").innerHTML ="Hello, " + result;
+            
+        }
+    </script>
+</head>
+<body>
+
+<p>Press to continue</p>
+<input type="button" onclick="promptMe()" value="Submit_prompt">
+<p id="output"></p>
+
+</body>
+</html>
+

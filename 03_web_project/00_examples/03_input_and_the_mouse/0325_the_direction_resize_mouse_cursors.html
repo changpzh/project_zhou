@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0325_the_direction_resize_mouse_cursors</title>
+    <script type="text/javascript">
+        function setCursor(elem) {
+            var newCursor = elem.id;
+            elem.style.cursor = newCursor;
+        }
+        
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .myDiv {
+            width: 200px; 
+            height: 100px;
+            text-align: center; 
+            line-height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+<p>Hover the mouse over an item: <strong>Note the Cursor's shape when on different div.</strong></p>
+<table>
+    <tr>
+        <td>
+            <div class="myDiv" id="n-resize" style="background-color: #ffd800;" onmouseover="setCursor(this)">n-resize</div>
+        </td>
+        <td>
+            <div class="myDiv" id="s-resize" style="background-color: #cd84e6;" onmouseover="setCursor(this)">s-resize</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="myDiv" id="e-resize" style="background-color: #dddd00;" onmouseover="setCursor(this)">e-resize</div>
+        </td>
+        <td>
+            <div class="myDiv" id="w-resize" style="background-color: #ffaaee;" onmouseover="setCursor(this)">w-resize</div>
+        </td>
+    </tr>
+</table>
+<br><br>
+<table>
+    <tr>
+        <td>
+            <div class="myDiv" id="ne-resize" style="background-color: #ffd800;" onmouseover="setCursor(this)">ne-resize</div>
+        </td>
+        <td>
+            <div class="myDiv" id="sw-resize" style="background-color: #cd84e6;" onmouseover="setCursor(this)">sw-resize</div>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>
+            <div class="myDiv" id="se-resize" style="background-color: #dddd00;" onmouseover="setCursor(this)">se-resize</div>
+        </td>
+        <td>
+            <div class="myDiv" id="nw-resize" style="background-color: #ffaaee;" onmouseover="setCursor(this)">nw-resize</div>
+        </td>
+    </tr>
+    
+</table>
+<br><br>
+<table>
+    <tr>
+        <td>
+            <div class="myDiv" id="nesw-resize" style="background-color: #ffd800;" onmouseover="setCursor(this)">nesw-resize</div>
+        </td>
+        <td>
+            <div class="myDiv" id="nwse-resize" style="background-color: #cd84e6;" onmouseover="setCursor(this)">nwse-resize</div>
+        </td>
+        
+    </tr>
+    
+</table>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0415_convert_the_case_base_on_user_location</title>
+	<script type="text/javascript">
+		function lwrCase() {
+			var str1 = document.getElementById("input1").value;
+			var result = str1.toLocaleLowerCase();
+			document.getElementById("input1").value = result
+
+		}
+		function uprCase() {
+			var str1 = document.getElementById("input1").value;
+			var result = str1.toLocaleUpperCase();
+			document.getElementById("input1").value = result
+
+		}
+		
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<br><br>
+<button onclick="lwrCase()" onsubmit="return false">Lower</button>
+<button onclick="uprCase()" onsubmit="return false">Upper</button>
+
+</body>
+</html>

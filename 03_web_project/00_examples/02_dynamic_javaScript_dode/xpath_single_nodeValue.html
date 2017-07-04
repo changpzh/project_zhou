@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>single_nodeValue</title>
+<script type="text/javascript">
+    function loadXMLDoc(dname) {
+
+        xhttp = new XMLHttpRequest();
+        xhttp.open("GET", dname, false);
+        xhttp.send("");
+        return xhttp.responseXML;
+    }
+
+    xml = loadXMLDoc('files/classes.xml');
+    xpath = "//class/price";
+
+    var result = xml.evaluate(xpath, xml, null, XPathResult.ANY_UNORDERED_NODE_TYPE, null);
+
+    if (result != null) {
+        alert(result.singleNodeValue.textContent);
+    }
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

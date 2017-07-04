@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0402_change_font_color_in_string</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = "How to colorize text";
+			var red = str1.fontcolor("red");
+			var str2 = "How to colorize text";
+			var green = str2.fontcolor("green");
+			var str3 = "How to colorize text";
+			var pink = str3.fontcolor("ff00ff");
+			var str4 = "How to colorize text";
+			var unknown = str4.fontcolor('rgb(120,50,100)');
+			var original = document.getElementById("output").innerHTML;
+			var result = original + "<br>" + red + "<br>" + green + "<br>" + pink + "<br>" + unknown;
+			document.getElementById("output").innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+
+<p id="output">How to colorize text</p>
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+	
+</body>
+</html>

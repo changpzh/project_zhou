@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0322_the_crosshair_help_progress_wait_mouse_cursors</title>
+    <script type="text/javascript">
+        function setCursor(elem) {
+            var newCursor = elem.id;
+            elem.style.cursor = newCursor;
+        }
+        
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .myDiv {
+            width: 200px; 
+            height: 100px;
+            text-align: center; 
+            line-height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+<p>Hover the mouse over an item: <strong>Note the Cursor's shape when on different div.</strong></p>
+<table>
+    <tr>
+        <td>
+            <div class="myDiv" id="crosshair" style="background-color: #ffd800;" onmouseover="setCursor(this)">crosshair</div>
+        </td>
+        <td>
+            <div class="myDiv" id="help" style="background-color: #cd84e6;" onmouseover="setCursor(this)">help</div>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>
+            <div class="myDiv" id="progress" style="background-color: #dddd00;" onmouseover="setCursor(this)">progress</div>
+        </td>
+        <td>
+            <div class="myDiv" id="wait" style="background-color: #ffaaee;" onmouseover="setCursor(this)">wait</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="myDiv" id="notDefine" style="background-color: #81b6e3; cursor: wait;" onmouseover="setCursor(this)">set cursor: wait;</div>
+        </td>
+    </tr>
+    
+</table>
+
+<pre>
+<h3>CSS Syntax</h3>
+cursor: value;
+<strong>
+<h3>Property Values</h3>
+Value           Description
+</strong>
+alias           The cursor indicates an alias of something is to be created Play it ?
+all-scroll      The cursor indicates that something can be scrolled in any direction    Play it ?
+auto            Default. The browser sets a cursor  Play it ?
+cell            The cursor indicates that a cell (or set of cells) may be selected  Play it ?
+context-menu    The cursor indicates that a context-menu is available   Play it ?
+col-resize      The cursor indicates that the column can be resized horizontally    Play it ?
+copy            The cursor indicates something is to be copied  Play it ?
+crosshair       The cursor render as a crosshair    Play it ?
+default         The default cursor  Play it ?
+e-resize        The cursor indicates that an edge of a box is to be moved right (east)  Play it ?
+ew-resize       Indicates a bidirectional resize cursor Play it ?
+grab            The cursor indicates that something can be grabbed  Play it ?
+grabbing        The cursor indicates that something can be grabbed  Play it ?
+help            The cursor indicates that help is available Play it ?
+move            The cursor indicates something is to be moved   Play it ?
+n-resize        The cursor indicates that an edge of a box is to be moved up (north)    Play it ?
+ne-resize       The cursor indicates that an edge of a box is to be moved up and right (north/east) Play it ?
+nesw-resize     Indicates a bidirectional resize cursor Play it ?
+ns-resize       Indicates a bidirectional resize cursor Play it ?
+nw-resize       The cursor indicates that an edge of a box is to be moved up and left (north/west)  Play it ?
+nwse-resize     Indicates a bidirectional resize cursor Play it ?
+no-drop         The cursor indicates that the dragged item cannot be dropped here   Play it ?
+none            No cursor is rendered for the element   Play it »
+not-allowed     The cursor indicates that the requested action will not be executed Play it »
+pointer         The cursor is a pointer and indicates a link    Play it »
+progress        The cursor indicates that the program is busy (in progress) Play it »
+row-resize      The cursor indicates that the row can be resized vertically Play it »
+s-resize        The cursor indicates that an edge of a box is to be moved down (south)  Play it »
+se-resize       The cursor indicates that an edge of a box is to be moved down and right (south/east)   Play it »
+sw-resize       The cursor indicates that an edge of a box is to be moved down and left (south/west)    Play it »
+text            The cursor indicates text that may be selected  Play it »
+URL             A comma separated list of URLs to custom cursors. Note: Always specify a generic cursor at the end of the list, in case none of the URL-defined     cursors can be used Play it »
+vertical-text   The cursor indicates vertical-text that may be selected Play it »
+w-resize        The cursor indicates that an edge of a box is to be moved left (west)   Play it »
+wait            The cursor indicates that the program is busy   Play it »
+zoom-in         The cursor indicates that something can be zoomed in    Play it »
+zoom-out        The cursor indicates that something can be zoomed out   Play it »
+initial         Sets this property to its default value. Read about initial Play it »
+inherit         Inherits this property from its parent element. Read about inherit
+
+</pre>
+</body>
+</html>
+

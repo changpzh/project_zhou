@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>document.forms function</title>
+    <script type="text/javascript">
+        function nestFunction() {
+            //document.forms is very useful, you can use it to name, id and class and all you want.
+            var age1 = document.forms['chkValFormId']['chkvalId'].value;
+            var age2 = document.forms['chkValName']['chkname'].value;
+            var age3 = document.forms['chkValFormId']['chkname'].value;
+            var age4 = document.forms['chkValName']['chkvalId'].value;
+
+            testValue();
+
+            function testValue() {
+                if (age1 == age2 && age3 == age4 && age4 == age1) {
+                    // alert("Sorry, not old enough!")
+                    alert("4 ages are same!\nage =" +age1)
+                } else {
+                    alert("You\'s old enough!")
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <form id="chkValFormId" name="chkValName">
+        <input type="text" id="chkvalId" name="chkname" size="25" />
+        <input type="submit" id="nested" name="nested" value="Submit Value" onclick="nestFunction()" />
+    </form>
+</body>
+</html>

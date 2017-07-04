@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>exec_cmd_with_string</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript">
+            function mathProp(mathP) {
+                var createMath = "math." + mathP;
+                document.getElementById("showProp").value = eval(createMath);
+            }
+        </script>
+        <script type="text/javascript">
+            function mathMeth(mathM) {
+                var chkField;
+                var calcContainer;
+                var buildMathObj = "Math." + mathM + '(';
+                checkValues();
+                buildObject();
+                displayResult();
+
+                function checkValues() {
+                    valArray = new Array();
+                    var i = 0;
+                    while(i <=9 eval(chkField) != '') {
+                        chkField = 'calcVal' + i + ".value";
+                        valArray[i] = eval(chkField);
+                        i++;
+                    } filesFilled = i -1;
+                }
+
+                function buildObject() {
+                    for (var i = 0; i <= filesFilled; i++) {
+                        calcContainer = ("calcVal" + i + ".value");
+                        if (i < filesFilled - 1) {
+                            buildMathObj += ',';
+                        }
+                    }
+                    buildMathObj += ')';
+                    alter(buildMathObj)
+                }
+
+                function displayResult() {
+                    document.getElementById('showMeth').value = eval(buildMathObj);
+                }
+                
+            }// end function MathMeth.   
+        </script>
+        <style>
+            p {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+    <p><b>JavaScript Math Object Properties</b></p>
+    <input type="text" id="showProp" size="50"><br><br>
+
+    <input type="radio" name="mathFunction" onclick="mathProp(this.value)" value="E">(E) Euler's Number <span style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-style: italic; font-weight: bold;">e</span><br>
+    <input type="radio" name="mathFunction" onclick="mathProp(this.value)" value="LN2">(LN2) Logarithm of 2<br>
+    <input type="radio" name="mathFunction" onclick="mathProp(this.value)" value="LN10">(LN10) Logarithm of 10<br>
+    <input type="radio" name="mathFunction" onclick="mathProp(this.value)" value="LOG2E">(LOG2E) Base-2 Logarithm of <span style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-style: italic; font-weight: bold;">e</span><br>
+
+    <p><b>JavaScript Math Object Methods:</b></p>
+    <p>Enter a Value:</p>
+    <input type="text" id="calcVal0" size="5" />
+    <input type="text" id="calcVal1" size="5" />
+    <input type="text" id="calcVal2" size="5" />
+    <input type="text" id="calcVal3" size="5" />
+    <input type="text" id="calcVal4" size="5" />
+    <input type="text" id="calcVal5" size="5" />
+    <input type="text" id="calcVal6" size="5" />
+    <input type="text" id="calcVal7" size="5" />
+    <input type="text" id="calcVal8" size="5" />
+    <input type="text" id="calcVal9" size="5" />
+
+    
+    
+    <p><b>Result:</b></p>
+    <input type="text" id="showMeth" size="50"><br><br>
+        
+        <script src="js/main.js"></script>
+    </body>
+</html>

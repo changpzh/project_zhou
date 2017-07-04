@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9812_jquery_manipulating_attributes</title>
+	<link rel="shortcut icon" href="../img/jquery_icon.ico" />
+	<script src="../lib/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<!--
+	jQuery's attribute manipulation capabilities are extensive. Basic changes are simple, but the .attr() method also allows for more complex manipulations. It can either set an explicit value, or set a value using the return value of a function. When the function syntax is used, the function receives two arguments: the zero-based index of the element whose attribute is being changed, and the current value of the attribute being changed.
+	-->
+	<div id="myDiv">
+		<a  title="first">first</a>
+		<hr>
+		<a  title="second" id="sec">second</a>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Manipulating a single attribute.
+			$( "#myDiv a:first" ).attr( "href", "newDestination.html" );
+
+			// Manipulating multiple attributes.
+			$( "#myDiv a:last" ).attr({
+				href: "newDestination.html",
+				rel: "nofollow"
+			});
+
+			// Using a function to determine an attribute's new value. it will add /new/ in the begining of a:first old href.
+			$( "#myDiv a:first" ).attr({
+			    rel: "nofollow",
+			    href: function( idx, href ) {
+			    	console.log("index="+href[0]);
+			        return "/new/" + href;
+			    }
+			});
+		});
+	</script>
+</body>
+</html>

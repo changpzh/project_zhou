@@ -1,0 +1,16 @@
+test_mail_to_list:
+		ella.shi@internal.nsn.com
+		+8618657130951@smsgw.nsn.com	
+		
+test_mail_cc_list:
+		chao-john.wang@internal.nsn.com
+		+8613857118409@smsgw.nsn.com
+		I_EXT_MBB_LTE_CPD_CI_HZ@smsgw.nsn.com
+
+
+		
+####
+#  Notice: 1. to_list and cc_list should be ended with an empty line.
+#test1 2:42
+#test2 2:49
+#test3 3:11

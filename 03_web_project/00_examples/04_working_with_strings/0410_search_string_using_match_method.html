@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0410_search_string_using_match_method</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input1").value;
+			var str2 = document.getElementById("input2").value; 
+			var result = str1.search(str2) + 1;
+			var resultStr = "Found at location: "  + result;
+			document.getElementById("output").innerHTML = resultStr;
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<p>Enter a search string:</p>
+<br>
+<input type="text" id="input2" size="25" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Search</button>
+<br>
+Result
+<br>
+<span id="output"></span>
+
+</body>
+</html>

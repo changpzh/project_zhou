@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0515_draw_a_text_and_clear_canvas</title>
+
+	<script>
+		function clearCanvas() {
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="300" style="border: 1px solid #000000"></canvas>
+<br><br>
+<script type="text/javascript">
+	var canvas = document.getElementById("myCanvas");
+	var context = canvas.getContext("2d");
+	context.font = "80px Calibri";
+	context.fillStyle = "green";
+	context.beginPath();
+	context.fillText("Hello, Jason", 50, 200);
+	
+</script>
+
+<input type="button" onclick="clearCanvas()" value="Clear">
+
+
+
+</body>
+</html>

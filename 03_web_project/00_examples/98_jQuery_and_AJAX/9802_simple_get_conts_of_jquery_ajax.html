@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>9802_simple_get_conts_of_jquery_ajax</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+	    $("button").click(function(){
+	    	// you must start up server if you want to use jquery ajax()
+			// python -m http.server [port] for python3
+			// lunch file as http://10.140.88.72:1337/thisFile.html
+	        $("#div1").load("zhou.txt", function(responseTxt, statusTxt, xhr){
+	            if(statusTxt == "success")
+	                alert("External content loaded successfully!");
+	            if(statusTxt == "error")
+	                alert("Error: " + xhr.status + ": " + xhr.statusText);
+	        });
+	    });
+
+
+	    /*
+		* AJAX = Asynchronous JavaScript and XML.
+		* In short; AJAX is about loading data in the background and display it on the webpage, without reloading the whole page.
+		*
+		* With the jQuery AJAX methods, you can request text, HTML, XML, or JSON from a remote server using both HTTP Get and HTTP Post - And you can load the external data directly into the selected HTML elements of your web page!
+		*
+		* Syntax 
+		* $(selector).load(URL,data,callback);
+		*
+		* The required URL parameter specifies the URL you wish to load.
+		* The optional data parameter specifies a set of querystring key/value pairs to send along with the request.
+		* The optional callback parameter is the name of a function to be executed after the load() method is completed.
+		* 1: responseTxt - contains the resulting content if the call succeeds
+		* 2: statusTxt - contains the status of the call
+		* 3: xhr - contains the XMLHttpRequest object
+		*/
+
+	});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>

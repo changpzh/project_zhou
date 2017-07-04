@@ -1,0 +1,18 @@
+#this doc. teach you how to install sogou input and conf it on ubuntu.
+
+#1.download sogou apps from official web
+
+#2.double click then install it. then config it
+#or use cmd as belows
+
+#a: uninstall fcitx* if you already install it.
+sudo apt-get purge fcitx*
+sudo purge autoremove
+
+#b: install gdebi tool which used to install *.deb file
+sudo apt-get install gdebi
+
+#c: install target tool, "~" means tools location path.
+sudo gdebi ~/sogou*.deb 
+
+

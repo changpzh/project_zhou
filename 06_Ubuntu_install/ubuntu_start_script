@@ -1,0 +1,4 @@
+One more option is schedule a job at boot time
+$crontab -e
+Choose an editor to open the cron job file. Append the following with your script name
+@reboot path/to/script.sh

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0404_generate_a_hyperlink_from_text_string</title>
+	<script type="text/javascript">
+		function doIt() {
+			var inputUrl = document.getElementById("input").value;
+			var makeUrl = "http://www." + inputUrl;
+			var nameUrl = "click here to go";
+			var linkUrl = nameUrl.link(makeUrl);
+			document.getElementById("output").innerHTML = linkUrl;
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Please enter a URL (e.g., "site.com")</p>
+<br>
+<input type="text" id="input" name="input" size="25" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br>
+Result
+<br>
+<span id="output"></span>
+</body>
+</html>

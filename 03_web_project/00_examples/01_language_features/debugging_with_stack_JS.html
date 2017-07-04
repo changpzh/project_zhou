@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>debugging_with_stack_JS</title>
+    <script type="text/javascript">
+        function traceIt() {
+            try {
+                throw new Error("myError1");
+            }
+            catch (e) {
+                alert(e.stack);
+            }
+        }
+
+        function b() {
+            traceIt();
+        }
+
+        function a() {
+            
+            //this is not valid call funciton
+            b(3,4, "\n\n", undefined, {});
+
+        }
+
+        a("first call", "first argument");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

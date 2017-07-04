@@ -1,0 +1,3 @@
+1: download jdk compitable version
+2: tar xzvf jdk*** 
+3: set jdk/bin to $PATH with PATH=jdk/bin:$PATH:

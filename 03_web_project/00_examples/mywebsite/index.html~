@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>My website</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+
+<div class="containner_12">
+	<header>
+		<h1>Black + White</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Our Services</a></li>
+				<li><a href="#">How We Work</a></li>
+				<li><a href="#">Testimonials</a></li>
+				<li><a href="#">Work Examples</a></li>
+			</ul>
+		</nav>
+		<div class="banner grid_10">
+			<p>
+				some dogs like this mostly.
+			</p>
+		</div>
+		<div class="grid_2 callout"></div>
+
+		<img src="#" alt="" />
+	</header>
+	<div class="main">
+		<div class="grid_5">
+			<h1>Services We Offer</h1>
+			<p>
+				For most Unix systems, you must download and compile the source code. The same source code archive can also be used to build the Windows and Mac versions, and is the starting point for ports to all other platforms.
+			</p>
+
+			<p>
+				Download the latest Python 2 and Python 3 source.
+			</p>
+
+			<p><a href="#" class=>Read More</a></p>
+		</div>
+		<div class="grid_5">
+			<h1>How We Work</h1>
+			<p>
+				Python was created in the early 1990s by Guido van Rossum at Stichting Mathematisch Centrum in the Netherlands as a successor of a language called ABC. Guido remains Python’s principal author, although it includes many contributions from others.
+			</p>
+			<p><a href="#" class="button">Read More</a></p>
+		</div>
+	</div>
+	<div class="grid_2">
+		<blockquote>
+			<p>Clean, elegant typography matched with sharp lines and precise spacing leads to a professional look and feel.</p>
+		</blockquote>
+	</div>
+	<footer>
+		<p><strong>black+white</strong> themes via <a href="http://themeforest.net" >themeforest</a></p>
+	</footer>
+</div> <!-- end container -->
+
+
+</body>
+</html>

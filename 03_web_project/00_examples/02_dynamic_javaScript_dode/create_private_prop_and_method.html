@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>create private prop and method</title>
+<script type="text/javascript">
+    function Car(model, distanceMoved, timeElapsed) {
+        this.model = model;
+        this.distanceMoved = distanceMoved;
+        this.timeElapsed = timeElapsed;
+
+        this.velocity = function() {
+            var result = this.distanceMoved / this.timeElapsed;
+            return result;
+        }
+    }
+    var myCar = new Car("Audi", 120, 1.2);
+    var myCar3 = new Car('Kia', 200, 4);
+
+    
+    document.writeln(myCar.velocity() + " km/hr" + "<br>")
+    document.writeln(myCar3.velocity() + " km/hr" + "<brt>")
+
+
+/********************************************************
+* Same as below code. but there are some difference.
+*********************************************************/
+    function Car2(model, distanceMoved, timeElapsed) {
+        this.model = model;
+        this.distanceMoved = distanceMoved;
+        this.timeElapsed = timeElapsed;
+
+        var velocity = function() {
+            var result = this.distanceMoved / this.timeElapsed;
+            return result;
+        }
+
+        this.velocity2 = velocity;
+    }
+    var myCar2 = new Car2("Audi", 120, 20);
+
+    document.writeln(myCar2.velocity2() + " km/hr")
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

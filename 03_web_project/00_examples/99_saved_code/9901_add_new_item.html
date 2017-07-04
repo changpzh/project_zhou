@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>9901_add_new_item</title>
+	<script src="../lib/lodash.min.js"></script>
+	<script type="text/javascript">
+		var issue_collections = new Object(); 	//can be save in DB.
+	    issue_collections = {
+	        "status": ['NEW', 'INV', 'CLOSE'],
+	        "severity": ['A-Critical', 'B-Major', 'C-Minor'],
+	        "frequency": ['Permanent', 'Occassional'],
+	        // "top_importance": []
+	        "rootcause": ['SW Bug', 'Compiling Error', 'Environment', 'Feature Sync', 'Sack Alignment'],
+	        "component": [
+	                    'ARCH', 
+	                    'BM',
+	                    'BTSSM_TDD',
+	                    'TDDCPRI',
+	                    'CPLANE',
+	                    'DSP_COMMON',
+	                    'HW',
+	                    'LOM',
+	                    'LTEL2',
+	                    'MAC_PS_TDD',
+	                    'OAM',
+	                    'PDDB',
+	                    'PHY_RX_TDD',
+	                    'PHY_TX',
+	                    'PHY_TX_TDD',
+	                    'PS_CCS',
+	                    'PS_DSPHWAPI',
+	                    'PS_FPGA',
+	                    'PS_LFS',
+	                    'PS_MCUHWAPI',
+	                    'RFSW',
+	                    'SACK',
+	                    'SCM',
+	                    'SPEC',
+	                    'TRS',
+	                    'IT',
+	                    'LAB',
+	                    'OTHERS']
+	    };
+
+	    function start_test(key){
+	    	var select = document.getElementById(key);
+	    	issue_collections["status"].forEach(function (d) {
+                select.options.add(new Option(d, d));
+            });
+	    }
+
+	    // function initOptions(obj) {
+	    //     _.keys(obj).forEach(function (key) {
+	    //         var select = document.getElementById(key);
+	    //         var sltObj = select.childNodes;
+
+	    //         if (!sltObj.length) {   //create options only at first time.
+	    //             obj[key].forEach(function (d) {
+	    //                 select.options.add(new Option(d, d));
+
+	    //                 // //Same as below command to add option Tag
+	    //                 // var optionContainer = document.createElement("option");
+	    //                 // var optionNode = document.createTextNode(d);
+	    //                 // optionContainer.appendChild(optionNode);
+	    //                 // document.getElementById(key).appendChild(optionContainer)
+	    //             });
+	    //         }
+	    //     });
+	    // }
+
+		//save data when press keyBoard Enter
+	    function keyEvent(evt, mySltID, BtnID) {
+	        var value = document.getElementById(BtnID).value;
+	        evt = (evt) ? evt : ((window.event) ? window.event : "");
+	        var key = evt.keyCode ? evt.keyCode : evt.which;
+	        if (value == "Save") {
+	            if(key == 13){   // when press Enter during input.
+	                saveData(mySltID);
+	                chgtoPlusBtn(BtnID);
+	                return true;
+	            }else {
+	                return false;
+	            }
+	         }
+	    }
+
+	    function chgBtn(value, mySltID, BtnID) {
+	        if (value == 'Save') {
+	            saveData(mySltID);
+	            chgtoPlusBtn(BtnID);
+	        }
+	        else if (value == "+") {
+	            addOption(mySltID);
+	            chgToSaveBtn(BtnID);
+	        }
+	    }
+
+	    function addOption(mySltID) {
+	        document.getElementById(mySltID).options.length = 0;	//remove all childNodes
+	        var mySelect = document.getElementById(mySltID).outerHTML = document.getElementById(mySltID).outerHTML.replace(/select/g, "input");
+	    }
+
+	    function chgToSaveBtn(ID) {
+	        document.getElementById(ID).value = "Save";
+	    }
+
+	    function chgtoPlusBtn(ID) {
+	        document.getElementById(ID).value = "+";
+	    }
+
+	    function saveData(mySltID) {
+	        var slt = document.getElementById(mySltID);
+	        var newData = slt.value;
+	        if (newData) {  //input data not blank.
+	            issue_collections[mySltID].unshift(newData.trim());     // Put new element in the first position.
+	        }
+	        document.getElementById(mySltID).outerHTML = document.getElementById(mySltID).outerHTML.replace(/input/g, "select")
+	        addSelectOpt(issue_collections[mySltID], mySltID);
+	     
+	    }
+
+	    function addSelectOpt(obj, mySltID){
+	        var len = obj.length;
+	        var select = document.getElementById(mySltID);
+	        for (var i = 0; i < len; i++) {
+	            select.options.add(new Option(obj[i], obj[i]));
+	        }
+	    }
+	</script>
+
+</head>
+<body>
+
+	<div class="col-sm-4" >
+        <form>
+            <select name="select" id="status" onkeypress="keyEvent(event, 'status','Btn_status')" ></select>
+            <input id="Btn_status" type="button" value="+" onclick="chgBtn(this.value, 'status', 'Btn_status')" />
+        </form>
+        <br>
+        <input type="button" Value="Initial List" onclick="start_test('status');" />
+    </div>
+	
+</body>
+</html>

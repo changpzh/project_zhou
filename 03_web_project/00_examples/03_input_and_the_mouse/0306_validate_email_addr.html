@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0306_validate_email_addr</title>
+	<script type="text/javascript">
+		function validateEmailAddr() {
+			document.getElementById("output").innerHTML = "";
+			var emailAddr = document.getElementById("email").value;
+			var symbolPos = emailAddr.indexOf("@");
+			var dotPos = emailAddr.lastIndexOf(".");
+			if (symbolPos > 0 && // must have one character before @
+				symbolPos + 2 <= dotPos && // must have at least one character after @
+				dotPos + 2 <= emailAddr.length)  {// must have at least one character after last dot position.
+				outputTxt = emailAddr + " received.";
+				document.getElementById("output").innerHTML = outputTxt;
+			} else {
+				document.getElementById('output').innerHTML = "Failed."
+			}
+		}
+	</script>
+</head>
+<body>
+	Email: <input type="text" id="email">
+	<input type="submit" value="submit" onclick="validateEmailAddr()" onsubmit="return false">
+	<br><br>
+	<span id="output"></span>
+</body>
+</html>

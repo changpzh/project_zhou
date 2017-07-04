@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0312_process_multiple_form_filed_entries</title>
+    <script type="text/javascript">
+        function formProcess() {
+            var formData = 'Thank you! The information has been submitted:\n';
+
+            formData += '\n' + document.getElementById('firstname').value;
+            formData += '\n' + document.getElementById('lastname').value;
+            formData += '\n' + document.getElementById('addr1').value;
+            formData += '\n' + document.getElementById('addr2').value;
+            formData += '\n' + document.getElementById('city').value;
+            formData += '\n' + document.getElementById('state').value;
+            formData += '\n' + document.getElementById('zip').value;
+            formData += '\n' + document.getElementById('country').value;
+            formData += '\n' + document.getElementById('requirements').value;
+
+            formData += '\nInterests selected:';
+            if (document.getElementById('ints_1').checked) {
+
+                formData += '\n-TV Shows';
+            }
+            if (document.getElementById('ints_2').checked) {
+                formData += '\n-News';
+            }
+            if (document.getElementById('ints_3').checked) {
+                formData += '\n-Sports';
+            }
+            if (document.getElementById('ints_4').checked) {
+                formData += '\n-Movies';
+            }
+
+            formData += '\nSubscribe to our newsletter:';
+            if (document.getElementById('subscribe_0').checked) {
+                formData += ' YES';
+            } else {
+                formData += ' NO';
+            }
+
+            formData += '\n\nThe best time to contact me:'
+            formData += '\n' + document.getElementById('time').value;
+            formData += '\n' + document.getElementById('password1').value;
+            formData += '\n' + document.getElementById('password2').value;
+            
+            alert(formData);
+            
+        }
+    </script>
+</head>
+<body>
+<p><strong>People's Information</strong></p>
+
+<tr>
+    <td height="23"><p>
+        <strong>Name: </strong>
+        <label>
+            <input type="text" id="lastname" placeholder="Last name">
+        </label>
+        <label>
+            <input type="text" id="firstname" placeholder="First name">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <strong>Address: </strong><br>
+        <label>
+            <input type="text" id="addr1" placeholder="Address Line 1" size="60">
+        </label><br>
+        <label>
+            <input type="text" id="addr2" placeholder="Address Line 2" size="60">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <strong>City: </strong>
+        <label>
+            <input type="text" id="city" placeholder="City">
+        </label>
+        <strong>State/Province:</strong>
+        <label>
+            <input type="text" id="state" placeholder="state/province">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <strong>Zip/Postal Code: </strong>
+        <label>
+            <input type="text" id="zip" placeholder="Zip">
+        </label>
+        <strong>Country:</strong>
+        <label>
+            <input type="text" id="country" placeholder="Country">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <strong>Telephone: </strong>
+        <label>
+            <input type="text" id="tel" placeholder="Enter telephone number">
+        </label>
+        <strong>Mobile:</strong>
+        <label>
+            <input type="text" id="mobile" placeholder="Enter mobile number">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <strong>Email Address: </strong>
+        <label>
+            <input type="text" id="email" placeholder="Enter email address">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <strong>Special Requirements: </strong><br>
+        <label>
+            <input type="textare" id="requirements" placeholder="Enter special requirements here (maximum 500 words)" style="width: 600px; height: 80px; position: relative; top: 0;">
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+
+<tr>
+    <td height="23"><p>
+        <strong>Interests: </strong>
+        <label>
+            <input type="checkbox" id="ints_1" name="ints[]" value="TV">TV
+        </label>
+        <label>
+            <input type="checkbox" id="ints_2" name="ints[]" value="News">News
+        </label>
+        <label>
+            <input type="checkbox" id="ints_3" name="ints[]" value="Sports">Sports
+        </label>
+        <label>
+            <input type="checkbox" id="ints_4" name="ints[]" value="Movies">Movies
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23"><p>
+        <label name="subscribe">
+            <strong>Subscribe to our newsletter?</strong>
+            <input type="radio" name="subscribe" id="subscribe_0">Yes
+        </label>
+        <label name="subscribe">
+            <input type="radio" name="subscribe" id="subscribe_1" autofocus>No
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+<tr>
+    <td height="23">
+        <p>
+            <strong>The best time to contact me:</strong>
+            <select id="time">
+                <option value="Morning" id="morning">Morning</option>
+                <option value="Afternoon" id="afternoon">Afternoon</option>
+                <option value="Evening" id="evening">Evening</option>
+            </select>
+        </p>
+        
+    </td>
+</tr>
+
+<tr>
+    <td height="23">
+        <strong>Password:
+            <input type="password" id="password1" type="password" size="20" placeholder="Minimum 8 characters">
+        </strong>
+        <strong>Re-enter Password:
+            <input type="password" id="password2" type="password" size="20" placeholder="Re-enter password">
+        </strong>
+    </td>
+</tr>
+
+<br>
+<input type="submit" value="Submit Now" onclick="formProcess()" />
+</body>
+</html>
+

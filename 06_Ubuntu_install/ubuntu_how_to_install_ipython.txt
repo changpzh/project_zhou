@@ -1,0 +1,6 @@
+1: sudo apt-get upgrade
+2: sudo apt-get update
+3: sudo apt-get install python-dev
+4: sudo apt-get install libevent-dev
+5: sudo apt-get python-pip
+6: pip install ipython

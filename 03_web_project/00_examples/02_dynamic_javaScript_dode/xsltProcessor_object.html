@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>XSLTProcessor</title>
+<script type="text/javascript">
+    window.onload = function() {
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                alert(xhr.responseText);
+            }
+        };
+    
+        // load the xml file, classes.xsl
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("get", "../files/classes.xml", false);
+        xmlhttp.send(null);
+        var xmldom = xmlhttp.responseXML;
+
+        // load the xslt file, classes.xsl
+        var xslhttp = new XMLHttpRequest();
+        xslhttp.open("get", "../files/classes.xsl", false);
+        xslhttp.send(null);
+
+        var xsltdom = xslhttp.responseXML;
+        var xlsProcessor = new XSLTProcessor();
+        xlsProcessor.importStylesheet(xsltdom);
+
+        var result = xlsProcessor.transformToDocument(xmldom, document);
+        var div = document.getElementById('divResult');
+
+        var xml = (new XMLSerializer()).serializeToString(result);
+        alert(xml);
+        div.innerHTML = xml;
+
+    }
+
+</script>
+
+</head>
+<body>
+<p>This is example loads the XML document and then uses the XSLTProcessor object to transform some of its data</p>
+
+<div id="divResult"></div>
+
+</body>
+</html>

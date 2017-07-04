@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0407_locating_a_chara_in_a_sting_using_charAt</title>
+	<script type="text/javascript">
+		function doIt() {
+			var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			var chkNum = document.getElementById("input").value;
+			var i  = 0;
+			while (i < 26) {
+				if (alpha.charAt(i) == chkNum) {
+					var char = alpha.charAt(i);
+					var charLoc = i + 1;
+				} else if(alpha.charAt(i + 26) == chkNum) {
+					var char = alpha.charAt(i + 26);
+					var charLoc = i + 1;
+				}
+				i++;
+			}
+			document.getElementById("letterOut").innerHTML = char + " ";
+			document.getElementById("numOut").innerHTML = charLoc + " ";
+
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter a single letter in lowercase or CAPS</p>
+<br>
+
+<input type="text" id="input" size="1" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br>
+The letter <span id="letterOut"></span>is letter nmuber <span id="numOut"></span>in the alphabet.
+<br>
+<span id="output"></span>
+
+</body>
+</html>

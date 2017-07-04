@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>01_this_and_function_understand.html</title>
+	<script type="text/javascript">
+		this.a = 2222;
+		console.log(a);	//2222
+		console.log(this.a);	//2222
+		console.log(window.a);	//2222
+		console.log(this);	//window
+		console.log(window);	//window
+		console.log(this == window);	//true	
+		console.log(this === window);	//true
+
+		/*
+		two types of def function
+		声明函数：javascript引擎在预处理过程中会将变量定义和赋值操作同时完成.
+		函数表达式：只会定义变量，不会赋值.
+		*/
+		console.log("ftn1");
+		console.log(ftn1); //ftn1();
+
+		console.log("ftn2");
+		console.log(ftn2); //undefined
+
+		function ftn1() {	//1: Declare functions
+			//your script
+			console.log("I'm ftn1");
+		}
+		var ftn2 = function() {	//2: The function expression
+			//your script
+			console.log("I'm ftn2");
+		} 
+	</script>		
+</head>
+
+<body>
+</body>
+</html>

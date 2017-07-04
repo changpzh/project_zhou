@@ -1,0 +1,27 @@
+Adobe Flash player is important plugin that allows our web browsers to play multimedia contents like audio & videos streaming, flash based games and other rich media stuff.
+
+Adobe Flash player is supported by different web browsers like IE ( Internet Explorer) , Chrome, Firefox , Safari and Opera and can be installed on different operating system like Windows , Linux/ UNIX and Mac OS X and Android.
+
+In this post we will discuss how to install adobe flash player on Ubuntu 15.04 (64-bit)
+Installation from the Command Line :
+
+Open the terminal and run the below commands
+
+linuxtechi@Linux-world:~$ sudo apt-get update
+linuxtechi@Linux-world:~$ sudo apt-get install flashplugin-installer
+
+Installation using Synaptic Package Manager :
+
+To use synaptic, make sure synaptic package is installed. In case if it is not installed then use the below command to install :
+
+linuxtechi@Linux-world:~$ sudo apt-get install synaptic
+
+Start the Synaptic Package Manager
+
+Dash Home —-> search —-> Synaptic
+
+synaptic-ubuntu15-04
+
+Click on Synaptic Package Manager .
+
+Search “flashplugin installer“, Mark it for installation and then click on Apply .

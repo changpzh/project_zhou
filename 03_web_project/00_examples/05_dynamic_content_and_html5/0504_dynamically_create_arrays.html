@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0504_dynamically_create_arrays</title>
+	<script type="text/javascript">
+		function doIt() {
+
+			var varName = document.getElementById("input1").value;
+			var arrayNum = document.getElementById("input2").value;
+			var tempVal = document.getElementById("input3").value;
+
+			eval("var " + varName + " = " + "new Array;");
+			for (i = 0; i < arrayNum; i++) {
+				temp = varName + "[" + i + "] = " + tempVal;
+				eval(temp);
+				document.getElementById("output").innerHTML += temp + "<br>";
+			}
+		}
+	</script>
+	
+</head>
+<body>
+Enter variable name: <input type="text" id="input1" />
+<br><br>
+Enter a values: <input type="text" id="input2" size="10" /> 
+<br><br>
+Temp value: <input type="text" id="input3" size="10" /> 
+<br><br>
+
+<input type="button" onclick="doIt()" value="Submit" />
+<br><br>
+<div id="output"></div>
+
+</body>
+</html>

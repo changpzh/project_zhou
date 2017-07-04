@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>formatting_numbers</title>
+<script type="text/javaScript">
+
+    var myNum1 = 123.45678900;
+    var myNum2D = myNum1.toFixed(2);
+
+    document.writeln("This is the result of the toFixed(2) method: " + myNum2D + '<BR>');
+
+    var myNum2 = 123.45678900;
+
+    document.writeln("This is the result of the toPrecision() method: " + myNum2.toPrecision() + '<BR>');
+    document.writeln("This is the result of the toPrecision(2) method: " + myNum2.toPrecision(2) + '<BR>');
+    document.writeln("This is the result of the toPrecision(3) method: " + myNum2.toPrecision(3) + '<BR>');
+
+    document.writeln("LocaleString: " + myNum2.toLocaleString() + '<BR>')
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

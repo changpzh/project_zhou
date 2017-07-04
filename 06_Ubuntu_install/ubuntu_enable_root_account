@@ -1,0 +1,10 @@
+#This document teach you how to enable root option during startup of ubuntu 14.04
+
+# change password of root
+sudo passwd root
+
+# add one line[SeatDefaults] 
+user-session=ubuntu
+greeter-show-manual-login=true
+
+#reboot PC, then you can find the muanul login option.

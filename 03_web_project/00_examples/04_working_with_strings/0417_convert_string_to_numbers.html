@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0417_convert_string_to_numbers</title>
+	<script type="text/javascript">
+	
+		function toNum() {
+			var str1 = document.getElementById("input").value;
+			var result = Number(eval(str1));
+			// you can type 777-333 or 7**2 or new Date() or Boolean(true) in input field.
+			// eval allow you apply any number of mathmatical methods using all the different math operators, parentheses, and the whole lot.
+			document.getElementById("output").value = str1 + " = " + result;
+		}
+</script>
+</head>
+<body>
+<input type="text" id="input"> 
+<br><br>
+<input type="text" id="output">
+<br><br>
+<button onclick="toNum()" onsubmit="return false">To Number</button>
+<br><br>
+Try:<br>
+[Equations]<br>
+[Numbers as strings, with and without spaces]<br>
+[Regular strings]<br>
+new Date()<br>
+Boolean(true)<br>
+Boolean(false)<br>
+
+
+</body>
+</html>

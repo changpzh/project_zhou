@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0426_recursively_store_data_in_a_string</title>
+	<script type="text/javascript">
+		var newCars = new Array;
+		var i = 0;
+		function doIt() {
+			i++;
+			carBrand = document.getElementById("input1").value;
+			carModel = document.getElementById("input2").value;
+			carYear = document.getElementById("input3").value;
+			carCost = document.getElementById("input4").value;
+			newCars[i] = new car(carBrand, carModel, carYear, carCost);
+			var result = "Entry #" + i + ":<br>" + newCars[i].brand + "<br>" +
+			newCars[i].model + "<br>" + newCars[i].year + "<br>$" + newCars[i].cost + "<br><br>";
+
+			document.getElementById("output").innerHTML += result;
+
+		}
+		function car(brand, model, year, cost) {
+			this.brand = brand;
+			this.model = model;
+			this.year = year;
+			this.cost = cost;
+		}
+		
+		
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter strings</p>
+<br>
+Brand:<input name="text" id="input1" size="20"><br><br>
+Model:<input name="text" id="input2" size="20"><br><br>
+Year: <input name="text" id="input3" size="20"><br><br>
+Cost: <input name="text" id="input4" size="20"><br><br>
+
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Compare</button>
+<br><br>
+Result:<br>
+<span id="output"></span>
+</body>
+</html>

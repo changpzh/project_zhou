@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0523_get_child_object_content_and_attributes</title>
+
+    <script type="text/javascript">
+        var indexVal = 0;
+        var result1 = "child node attributes:<br>";
+        var result2 = "child content:<br>";
+
+
+        function getChilren(elem) {
+            result1 = "";
+            result2 = "";
+            document.getElementById("output").innerHTML = "";
+
+            var object1 = document.getElementById(elem).childNodes;
+            var object2 = document.getElementById(elem);
+            console.log(object2);   // orginal information.
+            console.log("---------------");
+            console.log(object1);   //[text, div#child1, text, div#child2, text, div#child3, text, div#child4, text, div#child5, text]
+
+            for(var i = 0; i < object1.length; i++) {
+                result1 += " | nodeName = " +object1[i].nodeName + 
+                " | nodeType = " + object1[i].nodeType +
+                " | nodeVale = " + object1[i].nodeValue + "<br>";
+            }
+
+            for (var i = 0; i < object2.children.length; i++) {
+                result2 += object2.children[i].textContent + "<br>";
+            }
+            document.getElementById("output").innerHTML = result1 + result2;
+        }
+    </script>
+
+
+</head>
+<body>
+
+<div id="mainDiv" style="background-color: #ffd800; width: 200px; height: 100px;" onclick="getChilren('mainDiv')">
+    <div id="child1" value="child1">This is 1</div>
+    <div id="child2">This is 2</div>
+    <div id="child3">This is 3</div>
+    <div id="child4">This is 4</div>
+    <div id="child5">This is 5</div>
+</div>    
+
+<h1>Our favorite modes of transportation</h1>
+<ul id="list1">
+    <li>Planes</li>
+    <li>Trains</li>
+    <li>Automobiles</li>
+    <li>Boats</li>
+    <li>Jets</li>
+    <li>Cruise Ships</li>
+    <li>Rocket Ships</li>
+</ul>
+
+<input type="button" onclick="getChilren('list1')" value="Get Children">
+<hr> <!-- <hr>: the line     -->
+<span id="output"></span>    
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+##How to install "Open JDK" (Java developement kit) in Ubuntu (Linux)?
+
+    Open Applicaction -> Accessories -> Terminal
+
+    Type commandline as below...
+
+    sudo apt-get install openjdk-7-jdk
+
+    Type commandline as below...
+
+    apt-cache search jdk
+
+    (Note: openjdk-7-jdk is symbolically used here. You can choose the JDK version as per your requirement.)
+
+    For "JAVA_HOME" (Environment Variable) type command as shown below, in "Terminal" using your installation path...
+
+    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+
+    (Note: "/usr/lib/jvm/java-7-openjdk" is symbolically used here just for demostration. You should use your path as per your installation.)
+
+    For "PATH" (Environment Variable) type command as shown below, in "Terminal" using your installation path...
+
+    export PATH=$PATH:/usr/lib/jvm/java-7-openjdk/bin
+
+    (Note: "/usr/lib/jvm/java-7-openjdk" is symbolically used here just for demostration. You should use your path as per your installation.)
+
+    Check for "open jdk" installation, just type command in "Terminal" as shown below
+
+    javac -version
+
+========================methord two==========================================
+第一、PyCharm下载及安装过程
+
+    官网下载地址：https://www.jetbrains.com/pycharm/download/
+
+这里的PyCharm有付费和免费版本，我们使用免费版本（Community Edition）就够用。
+
+当前的版本是pycharm-community-4.0.4，下载的文件是.tar.gz压缩，我们把下载的文件放到可知的盘符文件里，然后需要进行解压。
+
+解压完毕之后，在bin文件夹中pycharm.sh执行文件进行安装。安装的时候会提示"No JDK found. Please validate either PYCHARM_JDK, JDK_HOME or JAVA_HOME"的错误，看来暂时还不能安装，需要安装JDK等组件包环境才可以。
+
+第二、安装JDK
+
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java8-installer
+
+这个安装过程时间真的比较长，我是昨天夜里安装的，耗时一个小时左右，等到1点多钟才安装完毕，只要这个完毕之后后面就快了。
+
+通过"java -version"检测，如果有版本号出现就说明没有问题。
+
+第三、配置$JAVA_HOME 环境变量
+
+    sudo update-alternatives --config java
+
+检查一下JAVA的路径。
+
+编辑sudo nano /etc/environment文件，添加JAVA_HOME="/usr/lib/jvm/java-8-oracle" 一行。
+
+载入文件测试启动source /etc/environment，然后再看看文件路径echo $JAVA_HOME
+
+第四、再安装PyCharm工具
+
+目前环境已经配置完毕，然后我们再执行sh pycharm.sh文件安装。
+
+第五、设置Pycharm的快捷启动方式
+
+运行sudo gedit /usr/share/applications/Pycharm.desktop
+
+然后在弹出的文本里添加：
+
+    [Desktop Entry]
+    Type=Application
+    Name=Pycharm
+    GenericName=Pycharm3
+    Comment=Pycharm3:The Python IDE
+    Exec="/XXX/pycharm-community-4.0.4/bin/pycharm.sh" %f
+    Icon=/XXX/pycharm-community-4.0.4/bin/pycharm.png
+    Terminal=pycharm
+    Categories=Pycharm;
+
+在Exec和Icon的两个路径需要看我们自己的真实路径填写。
+
+这样，我们就可以直接在桌面快捷方式看到Pycharm图标，我们移动到任务栏 就可以快速打开使用。
+
+总结，PyCharm编辑器还不能直接安装，需要基于JDK的环境，我们需要安装环境后才可以安装。整个过程还是比较简单的，就是需要等待时间长一点而已，这不一直在折腾。
+
+

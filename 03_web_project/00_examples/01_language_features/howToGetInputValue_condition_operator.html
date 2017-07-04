@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>howToGetInputValue</title>
+    <script type="text/javascript">
+
+    function conditionTest(x) {
+        alert("x=" + x);
+
+        // if ( x > 21) {
+        //     alert("welcome to the shop");
+        // } else {
+        //     alert('you need more than 21 years old');
+        // }
+
+        // same as above
+        x > 21 ? alert("welcome to the shop") : alert('you need more than 21 years old');
+
+    }
+    </script>
+</head>
+<body>
+    <form>  <!-- you must put input item in form hierarchy, otherwises you will get an error: Uncaught ReferenceError: myNum is not defined(…)  -->
+        Number 1 <input type="text" name="myNum"><br>
+        <input type="button" name="button1" onclick="conditionTest(myNum.value)" value="Test" />
+    </form>
+    
+</body>
+</html>

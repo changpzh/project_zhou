@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0506_identify_a_clicked_html_element</title>
+    <script type="text/javascript">
+    	document.addEventListener("mousedown", function(event) {
+    		if (event.target.id == "") {
+    			document.getElementById('output').innerHTML = "";
+
+    		}else {
+    			var elemId = event.target.id;
+    			document.getElementById("output").innerHTML = "You clicked the element with ID:" + elemId;
+    		}
+    	});
+       
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        #wrapper {
+        	width: 400px;
+        	height: 400px;
+        }
+        .clickBox {
+            width: 200px; 
+            height: 200px;
+            text-align: center; 
+            line-height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<p>Select a box:</p>
+
+<div id="wrapper">
+	<div id="redBox" class="clickBox" style="background-color: #f00; float: left" >ID = "redBox"</div>
+	<div id="blueBox" class="clickBox" style="background-color: #00f;float: left" >ID = "blueBox"</div>
+	<div id="greenBox" class="clickBox" style="background-color: #15902c; float: right" >ID = "greeneBox"</div>
+	<div id="yellowBox" class="clickBox" style="background-color: yellow; float: right" >ID = "yellowBox"</div>
+
+</div>
+Click an item to get its ID
+<br><br>
+<div id="output"></div>
+<br><br>
+<span id="text1"></span>
+You are right, this is text place... a lot of text.
+
+</body>
+</html>

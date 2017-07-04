@@ -1,0 +1,124 @@
+# If this is an xterm set the title to user@host:dir
+#show_ins()
+#{
+#	echo -e "\n---------Welcome to use LinSee---------\n"
+#	echo -e "  \t (\_/) \t\t (\_/)\n \t(='.'=)\t\t(='.'=)\n \t(\")_(\")\t\t(\")_(\")\n"
+#	echo -e "----------------Welcome----------------\n"
+#	echo -e "---------------------------------------"
+#	echo -e "SPECIAL INSTRUCTIONS:"
+#	echo -e "Do not abuse tdlteman's authority!!!"
+#	echo -e "---------------------------------------"
+#	echo -e "If U don't obey the rule"
+#	echo -e "U will get PUNISHMENT\n"
+#	cat ~/.gun
+#	echo -e "---------------------------------------\n"
+#}
+    case $TERM in
+    xterm*)
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+        ;;
+    *)
+        ;;
+    esac
+# Modified by Bob on 2010-06-19, Remember commands total number during the whole console period
+PS1='${debian_chroot:+($debian_chroot)}[\u@\h:\W]-No.\#->\$ '
+
+HISTFILESIZE=100000
+HISTSIZE=100000
+export HISTTIMEFORMAT='%F %T '
+
+export WFT_URL=https://wft.int.net.nokia.com
+
+export PATH_ori=$PATH
+######################################################
+SVNDIR=linux
+if [ -f /build/home/tdlte_py/svn/svn_1.6.6/interface/startup/svn_1.6.6.env  ]; then
+	source /build/home/tdlte_py/svn/svn_1.6.6/interface/startup/svn_1.6.6.env
+	export MANPATH=""
+	export SVN_EDITOR=vi
+fi
+#####################Build Debug Tool############################
+alias svnig="svn --ignore-externals"
+alias scmupext="lteTools/production/bin/LTE -l log updatesvnexternals"
+
+#####################Linux Alias Tool############################
+alias rm="rm -i"
+alias l.="ls -aF -r --sort=time --color"
+alias ll="ls -lF -r --sort=time --time-style=long-iso --color"
+alias la="ls -lFa -r --sort=time --time-style=long-iso --color"
+alias shi="ssh -l citdlte"
+alias ..="cd .."
+alias ..2="cd ../../"
+alias ..3="cd ../../../"
+alias ..4="cd ../../../../"
+alias ..5="cd ../../../../../"
+alias wget='wget --no-check-certificate'
+#alias 7za='/home/tdlteman/7za'
+alias dos2unix="/opt/dos2unix/x86_64/3.1.21.2-2/bin/dos2unix"
+#################################################################
+
+#set Spell Check In Bash Shell of cd command, add by bob on 2010-04-28
+shopt -s cdspell
+
+### pls uncomment this line if you really need it, and then export it to env PATH
+export LTE_HOME=/home/tdlteman/BTS_SCM_LTE/bin/
+
+case `hostname` in
+    hz* | eslinb3* | beling3*)
+	### path for ltebuild
+	export BASIC_DIR="/bts_gmps_hz/Build_Tools/ltebuild"
+	export ANT_HOME=$BASIC_DIR/tools/ant/ant-1.8.0
+	export JAVA_HOME=/usr/bin
+	export PYTHON_HOME="/build/ltesdkroot/Tools/Tools/python/python-3.2.2/bin"
+	export EC=/opt/ecloud/i686_Linux
+    export HTOP_BIN=/bts_gmps_hz/Build_Tools/ltebuild/tools/htop-0.9/bin
+	export CSC_TOOLS=$BASIC_DIR/tools/cmt++_4.1/bin:$BASIC_DIR/tools/cppcheck:$BASIC_DIR/tools/cppncss/bin:$BASIC_DIR/tools/cccc-3.1.4/cccc
+	export PRIVATE_BIN=/home/tdlteman/bin:$BASIC_DIR/bin:$BASIC_DIR/tools:$BASIC_DIR/tools/distcc/bin:/home/tdlteman/bin/tools/wine/bin:$BASIC_DIR/tools/nagios-libexec
+	export PATH=~/bin:/sbin:/usr/sbin:$SVN/bin:$PYTHON_HOME:/opt/curl/linux64/ix86/curl_7.21.0_openssl_1.0.1g/bin:$ANT_HOME/bin:/build/ltesdkroot/Tools/Tools/cmake/cmake-2.8.10.2/bin/:$PATH:$LTE_HOME:$EC/bin:$CSC_TOOLS:/opt/LINSEE/BTS_2.1.0/bin:$PRIVATE_BIN:$HTOP_BIN:/opt/git/linux64/ix86/git_1.7.10.1/bin:$SONAR_RUNNER_HOME/bin/:.
+	export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+	export HISTSIZE=100000
+
+
+    export CDPATH=$CDPATH:~:/bts_gmps_hz/basics:~/workarea/:/bts_gmps_hz/Build_Tools/eNB_codes:
+        
+
+	### when the terminal starup, startup the vncconfig&
+	#export http_proxy=http://10.159.192.62:8080
+	export http_proxy=http://10.144.1.10:8080
+	### server for distcc
+	export DISTCC_HOSTS="hzling05 hzling06 hzling07 hzling08 hzling09 hzling10 hzling11 hzling12"
+    export cypc="CNU3049Q2T.nsn-intra.net"
+	;;
+
+    oulteg* | ouling* | esling* )
+        if [ -f /build/home/tdlteman/.bashrc ]; then
+                . /build/home/tdlteman/.bashrc
+        fi
+        ;;
+esac	
+
+
+
+
+if [ "`hostname`" = "hzling06.china.nsn-net.net" ]; then
+    test_ruby=`ps aux | grep workflow_task_runner | sed /grep/d`
+    if [[ "$test_ruby" ]]; then
+        echo wft task runner is running
+    else
+        cd wft
+        echo now i need start wft task runner
+        export PATH=/home/tdlteman/wft/bin/:$PATH
+        ruby workflow_task_runner.rb > /dev/null 2>&1 &
+        cd ..
+    fi
+fi
+
+
+export LS_COLORS='di=01;33'
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+# added by lizcao
+export SONAR_HOME=/work_lun/tdlteman/sonarqube-4.5.1
+export SONAR_RUNNER_HOME=/home/tdlteman/sonar-runner-dist-2.4/sonar-runner-2.4
+

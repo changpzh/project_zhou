@@ -1,0 +1,7 @@
+Hi, guys
+
+There is new issue on TL16A today, so need you follow it tonight, see attachment. thanks
+PR154537: [TL16A_OPENCPRI]Carrier states stuck at initialized
+-	[05-19]OM locked for SCBT, will commit it when it unlock
+可以有
+And you also need to pay attention on new build testing!

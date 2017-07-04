@@ -1,0 +1,16 @@
+#!/bin/bash
+
+File="/etc/passwd"
+
+##this cmd teach you how to use awk, always start from BEGIN then content and END,
+## -F,also can use -F: to instead of -F ":"
+awk -F ":" 'BEGIN {print "user\t pw\t uid\t gid\t name\t home\t shell\n----------------------------------------------------------"} {print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7} END {print "\n-----------------------------------------------------------\nend-of-report"}' $File
+
+
+#awk -F ":" '{print $1}' $File
+
+##Now this cmd, use grep in awk. "~ /grep_type/" grep what you want, and "!~ /grep_type/" show all content excepte grep_type.
+awk -F ":" 'BEGIN {print "user\t pw\t uid\t gid\t name\t home\t shell\n----------------------------------------------------------"} {if ("changpzh"==$1) print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7} END {print "\n-----------------------------------------------------------\nend-of-report"}' $File
+
+#grep express, tee can save to file and also display on screen.
+awk '$0 ~/(changpzh|sshd)/' $File | tee file.name

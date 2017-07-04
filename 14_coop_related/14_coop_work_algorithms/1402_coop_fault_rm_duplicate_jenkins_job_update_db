@@ -1,0 +1,45 @@
+#!/bin/bash
+FILE='/data/cpd/duplicate_new/rm_duplicated_yes.txt'
+
+##just clear env via rm file if exists
+[[ -e $FILE ]] && rm -f $FILE
+
+echo "fetch the latest script from gitlab"
+wget --no-proxy "http://becrtt01.china.nsn-net.net/cpd/falcon/raw/master/producer/scripts/remove_duplicate.py" -O remove_duplicate.py.new && mv remove_duplicate.py.new remove_duplicate.py || echo "failed to fetch generate_pr.py"
+
+
+echo "start to remove duplicate..."
+
+unset http_proxy
+if [[ $flag == "independent" ]]; then
+	echo "independent path------flag=$flag"
+    python remove_duplicate.py -c "pr_summary_load" -f $FILE || exit -1
+else
+	echo "not independent path------flag=$flag"
+    python remove_duplicate.py -c "pr_summary" -f $FILE || exit -1
+fi
+
+#**************use below cmd if job run on mongo db master.***************#
+#rsync -avz cpd@hzogrvm01.china.nsn-net.net:/home/cpd/duplicate_new/rm_duplicated_yes_.txt /home/cpd/duplicate_new
+#mongoimport --db pipeline --collection pr_summary --upsert --upsertFields prid --file $FILE
+
+##generate new collection for following step
+#mongoexport -d pipeline -c system.indexes -o system.indexes
+#mongoimport --db pipeline --collection pr_summary_dup --file $FILE --drop
+#mongoimport -d pipeline -c system.indexes system.indexes --drop
+#**************end cmd if job run on mongo db master.***************#
+
+#**************use below cmd if job run on mongo db slave machine.***************#
+#this kind of method via network to master to update data on master via --host coop/hzcoop02.china.nsn-net.net:27017
+#upsert pr info via prid on slave mongo db
+mongoimport --host coop/hzcoop02.china.nsn-net.net:27017 --db pipeline --collection pr_summary --upsert --upsertFields prid --file $FILE
+
+##generate new collection for following step, and backup index and recover index.
+#***Note that: you should recover indexes if use --drop of mongoimport cmd.
+mongoexport -h coop/hzcoop02.china.nsn-net.net:27017 -d pipeline -c system.indexes -o system.indexes
+mongoimport -h coop/hzcoop02.china.nsn-net.net:27017 --db pipeline --collection pr_sd_datalist_load --file /home/cpd/pr_sd_datalist_load_backup/pr_sd_datalist_load_backup.txt --drop
+mongoimport -h coop/hzcoop02.china.nsn-net.net:27017 -d pipeline -c system.indexes system.indexes --drop
+
+##clear env-rm file if exists
+[[ -e $FILE ]] && rm -f $FILE
+[[ -e "system.indexes" ]] && rm -f system.indexes

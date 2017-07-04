@@ -1,0 +1,10 @@
+BTS157_57_to_list:
+		changping.zhou@nokia.com
+#		+8618757100287@smsgw.nsn.com		
+		
+BTS157_57_cc_list:
+#		I_EXT_MBB_LTE_CPD_CI_HZ@internal.nsn.com
+		
+####
+#  Notice: 1. to_list and cc_list should be ended with an empty line.
+#

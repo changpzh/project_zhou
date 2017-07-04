@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>formatting_dates</title>
+<script type="text/javaScript">
+
+    var today = new Date();
+    var anniversary = new Date("February 21, 1995 06:45:00");
+
+    var birthday = new Date(1988, 06, 03);
+
+    //formatting
+    document.writeln("This is the result of creating a standard Date object: " + today + '<BR>');
+    document.writeln("This is the result of using the GMTString : " + anniversary.toGMTString() + '<BR>');
+    document.writeln("This is the result of using the UTCString : " + anniversary.toUTCString() + '<BR>');
+    document.writeln("This is the result of using the LocalesString : " + birthday.toLocaleDateString() + '<BR>');
+
+
+    
+    //getting specific information
+    document.writeln("This is the milliseconds: " + today.getMilliseconds() + '<BR>');
+
+
+    //getting specific information
+    birthday.setYear(1985);
+    document.writeln("this is the new date of birthday: " + birthday.toLocaleDateString() + "<BR>")
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

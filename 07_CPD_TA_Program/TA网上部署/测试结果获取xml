@@ -1,0 +1,90 @@
+######This Job coollect QT1 test result generate testReport.xml and .html######
+#!/bin/bash
+chmod -R 777 ./
+rm -rf ./*
+#FROZENID=`echo ${PACKNAME} | awk -F_ '{print $NF}'|sed 's/^0*//g'`
+FROZENID=`echo ${PACKNAME} | cut -d_ -f5 | sed 's/\(0*\)\(.*\)/\2/'`
+PACKAGE=`echo ${PACKNAME} | cut -d_ -f1,2,3,4,5`
+echo ${FROZENID}
+echo ${PACKAGE}
+
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/BUILD_NUMBER
+CIBUILD=`cat BUILD_NUMBER`
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/JOB_NAME
+CIJOB=`cat JOB_NAME`
+
+svn export --force https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/scripts/trunk/ScmUtils/qt_report/ ./
+cp -rf ./${CIJOB}/* ./
+/ltesdkroot/ltesdkroot/Tools/Tools/python/python-3.2.2/bin/python GetQt2Result.py -n ${PACKAGE} -c caselist2PIPEqt1.txt -d "/build/home/lteman/CPD/QTResult/" || exit 1
+
+
+SUCNUM=`grep "Pass" -c testReport.html`
+FNUM=`grep "Fail" -c testReport.html`
+if [ ${SUCNUM} -eq 0 -a $FNUM -eq 0 ]; then
+    echo "---------test case none exec----------------"
+    exit 1
+fi
+
+
+
+#####################QT1_Passed Pomotion##################
+PACKAGE=`echo ${PACKNAME} | cut -d_ -f1,2,3,4,5`
+echo ${PACKAGE}
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/BUILD_NUMBER
+CIBUILD=`cat BUILD_NUMBER`
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/JOB_NAME
+CIJOB=`cat JOB_NAME`
+
+echo "this promoting QT1 passed...."
+wget --auth-no-challenge --user=chaojwan --password=44206318905f441ddba377bb3b31a8fa http://ullteb40.emea.nsn-net.net:9093/job/${CIJOB}/${CIBUILD}/promotion/forcePromotion?name='QTp1_Tested'
+wget --auth-no-challenge --user=chaojwan --password=44206318905f441ddba377bb3b31a8fa http://ullteb40.emea.nsn-net.net:9093/job/${CIJOB}/${CIBUILD}/promotion/forcePromotion?name='QTp1_Pass'
+echo "================finished================="
+
+rm -rf *
+sleep 10
+curl "http://hzling23.china.nsn-net.net:8080/job/update_trunk_database//buildWithParameters?token=updb&baseline=${PACKAGE}&qt1=PASS"
+
+
+########################QT1 Promotion Trigger######################
+#!/bin/bash
+chmod -R 777 ./
+rm -rf ./*
+#FROZENID=`echo ${PACKNAME} | awk -F_ '{print $NF}'|sed 's/^0*//g'`
+FROZENID=`echo ${PACKNAME} | cut -d_ -f5 | sed 's/\(0*\)\(.*\)/\2/'`
+PACKAGE=`echo ${PACKNAME} | cut -d_ -f1,2,3,4,5`
+echo ${FROZENID}
+echo ${PACKAGE}
+
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/BUILD_NUMBER
+CIBUILD=`cat BUILD_NUMBER`
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/JOB_NAME
+CIJOB=`cat JOB_NAME`
+
+svn export --force https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/scripts/trunk/ScmUtils/qt_report/ ./
+cp -rf ./${CIJOB}/* ./
+cat *qt1.txt > caselistqt1.txt
+/ltesdkroot/ltesdkroot/Tools/Tools/python/python-3.2.2/bin/python GetQt2Result.py -n ${PACKAGE} -c caselistqt1.txt -d "/build/home/lteman/CPD/QTResult/" || exit 1
+
+
+SUCNUM=`grep "Pass" -c testReport.html`
+FNUM=`grep "Fail" -c testReport.html`
+if [ ${SUCNUM} -eq 0 -a $FNUM -eq 0 ]; then
+    echo "---------test case none exec----------------"
+    exit 1
+fi
+
+
+###########QT1 Tested ##################
+PACKAGE=`echo ${PACKNAME} | cut -d_ -f1,2,3,4,5`
+echo ${PACKAGE}
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/BUILD_NUMBER
+CIBUILD=`cat BUILD_NUMBER`
+svn export https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/lnttrunk_qt2result/${PACKAGE}/JOB_NAME
+CIJOB=`cat JOB_NAME`
+echo "this promoting QT1 tested...."
+wget --auth-no-challenge --user=chaojwan --password=44206318905f441ddba377bb3b31a8fa http://ullteb40.emea.nsn-net.net:9093/job/${CIJOB}/${CIBUILD}/promotion/forcePromotion?name='QTp1_Tested'
+
+
+echo "================promote finished===================="
+rm -rf *
+curl "http://hzling23.china.nsn-net.net:8080/job/update_trunk_database//buildWithParameters?token=updb&baseline=${PACKAGE}&qt1=FAIL"

@@ -1,0 +1,6 @@
+CB_TDD_TL16A_to_list:
+		changping.zhou@nokia.com
+		+8618757100287@smsgw.nsn.com
+
+CB_TDD_TL16A_cc_list:
+#		changping.zhou@foxmail.com

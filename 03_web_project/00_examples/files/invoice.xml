@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice>
+<Number>002355</Number>
+<Date>07/04/2013</Date>
+<Address Type="shipping">
+    <Name>Fre Jones</Name>
+    <Company> Nokia, Inc.</Company>
+    <Address1>5500 Park Avenue</Address1>  
+    <City>New York</City>
+    <State>NY</State>
+    <Zip>444554</Zip>
+    <Country>USA</Country>  
+</Address>
+<Iteam1>
+    <SKU>3223433432</SKU>
+    <Description>Leather High-Back office</Description>
+    <Amount>10</Amount>
+    <Cost>199.33</Cost>
+    <Subtotal>19999.33</Subtotal>
+</Iteam1>
+<Iteam1>
+    <SKU>43443</SKU>
+    <Description>Execute office</Description>
+    <Amount>100</Amount>
+    <Cost>99.33</Cost>
+    <Subtotal>322.33</Subtotal>
+</Iteam1>
+</Invoice>

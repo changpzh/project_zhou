@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TL16A_ENB_0000_000162_000000 | Workflow Tool</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TL16A_ENB_0000_000162_000000 | Workflow Tool</title>
+  <link rel="stylesheet" media="screen" href="/assets/application-3201b97314385c45423886b8b82a9af11f7e68debeb72bea22550b15a1991888.css" />
+  <script src="/assets/main-30230bdd3d151f9d6d62dc2470ee3049ac8889364e220f5e10939cc84a72c963.js"></script>
+  <script src="https://wft.inside.nsn.com:9000/faye.js"></script>
+  
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="zWP1iWkwCLx8YMjfQhEVsI5rov0ARnyD5cYml8Y1Z1ITD/OsPPiIW5u+naBzWRBbH0e1iudl+GmZJDp/5+5aEQ==" />
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="controller-builds action-show">
+  <div id='gonvariables'>
+    <script>
+//<![CDATA[
+window.gon={};gon.project="ALL";
+//]]>
+</script>
+  </div>
+  <div id="sb-site">
+    <nav class="navbar-main navbar navbar-full navbar-light bg-faded">
+      <a id="menu_button" class="hidden-md-up" style="float:left; margin: 5px 0 0 10px;"><i class="  fa fa-bars font-icon"></i></a>
+        <a class="navbar-brand" href="#">
+          <a class="navbar-brand" rel="home" href="/?project=ALL"><img alt="Home" src="/assets/nokia_wft-dd319f2d79c9bbf448a88d78a2bfaad81c41296eab11c213c5a698da687539ee.png" /></a>
+        </a>
+         <ul class="nav navbar-nav main-navigation hidden-sm-down" style="font-size:0.8em; margin-top:3px;">
+                
+<li class="nav-item dropdown"><a font_icon="code-fork" title="Branches" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Branches" class="  fa fa-code-fork font-icon"></i> <span class="hidden-lg-down">Branches</span><span class="hidden-md-down hidden-xl-up">Brnch</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Branches</h6>
+                    <h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/branches/overview?view_id=95"><i class="  fa fa-star font-icon"></i> Branch overview</a>
+<a font_icon="star-half-o" class="dropdown-item" href="/ALL/branches/overview?view_id=331"><i class="  fa fa-star-half-o font-icon"></i> Promoted</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="table" href="/ALL/branches"><i class="  fa fa-table font-icon"></i> All</a>
+<a class="dropdown-item" font_icon="arrows-h" href="/ALL/branches/aligned"><i class="  fa fa-arrows-h font-icon"></i> Aligned Builds</a>
+<a font_icon="code-fork" class="dropdown-item" href="/ALL/branches/trunk"><i class="  fa fa-code-fork font-icon"></i> Trunk Baselines</a>
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="database" title="Builds" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Builds" class="  fa fa-database font-icon"></i> <span class="hidden-lg-down">Builds</span><span class="hidden-md-down hidden-xl-up">Bld</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Builds</h6>
+                    <a font_icon="plus" class="dropdown-item" href="/ALL/builds/new"><i class="  fa fa-plus font-icon"></i> Create new baseline</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/builds?view_id=3"><i class="  fa fa-star font-icon"></i> Latest builds</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/builds?view_id=5"><i class="  fa fa-table font-icon"></i> PS / QT </a>
+<a font_icon="table" class="dropdown-item" href="/ALL/builds?view_id=7"><i class="  fa fa-table font-icon"></i> Weekly overview</a>
+<a font_icon="star-half-o" class="dropdown-item" href="/ALL/builds?view_id=333"><i class="  fa fa-star-half-o font-icon"></i> Promoted</a>
+<div class="dropdown-divider"></div>
+<a font_icon="code-fork" class="dropdown-item" href="/ALL/branches/trunk"><i class="  fa fa-code-fork font-icon"></i> Trunk Baselines</a>
+<a font_icon="database" class="dropdown-item" href="/planning"><i class="  fa fa-database font-icon"></i> Load Planning</a>
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="bug" title="Faults" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Faults" class="  fa fa-bug font-icon"></i> <span class="hidden-lg-down">Faults</span><span class="hidden-md-down hidden-xl-up">Flt</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Faults</h6>
+                    <a class="dropdown-item" font_icon="plus" href="/ALL/faults/new"><i class="  fa fa-plus font-icon"></i> Add Fault</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/faults?view_id=13"><i class="  fa fa-star font-icon"></i> Latest</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="search" href="/ALL/faults/search"><i class="  fa fa-search font-icon"></i> Search Fault</a>
+<a class="dropdown-item" font_icon="file-text" href="/ALL/faults/report"><i class="  fa fa-file-text font-icon"></i> Pronto Report</a>
+<a class="dropdown-item" font_icon="columns" href="/ALL/faults/diff"><i class="  fa fa-columns font-icon"></i> Pronto Diff</a>
+<a class="dropdown-item" font_icon="arrows-h" href="/ALL/faults/mapping"><i class="  fa fa-arrows-h font-icon"></i> Pronto Group Mapping</a>
+
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="archive" title="Features" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Features" class="  fa fa-archive font-icon"></i> <span class="hidden-lg-down">Features</span><span class="hidden-md-down hidden-xl-up">Feat</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Features</h6>
+                    <h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/features?view_id=239"><i class="  fa fa-star font-icon"></i> Default</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="search" href="/ALL/features/search"><i class="  fa fa-search font-icon"></i> Search Feature</a>
+<a class="dropdown-item" font_icon="columns" href="/ALL/features/diff"><i class="  fa fa-columns font-icon"></i> Feature Diff</a>
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="cutlery" title="Knives" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Knives" class="  fa fa-cutlery font-icon"></i> <span class="hidden-lg-down">Knives</span><span class="hidden-md-down hidden-xl-up">Knf</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Knives</h6>
+                    <a font_icon="plus" class="dropdown-item" href="/ALL/knife_requests/new"><i class="  fa fa-plus font-icon"></i> New Knife</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/knife_requests?view_id=1"><i class="  fa fa-star font-icon"></i> Latest Knife Requests</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/knife_requests?view_id=21"><i class="  fa fa-table font-icon"></i> Knifes requested by me</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/knife_requests?view_id=23"><i class="  fa fa-table font-icon"></i> Knives assigned to me as tester</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/knife_requests?view_id=75"><i class="  fa fa-table font-icon"></i> Unfinished Knives</a>
+<div class="dropdown-divider"></div>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/knife_requests/stat"><i class="  fa fa-bar-chart font-icon"></i> Knives/Day</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/knives"><i class="  fa fa-table font-icon"></i> Statistic</a>
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="line-chart" title="Statistics" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Statistics" class="  fa fa-line-chart font-icon"></i> <span class="hidden-lg-down">Statistics</span><span class="hidden-md-down hidden-xl-up">Stat</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Statistics</h6>
+                    <a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_pie"><i class="  fa fa-bar-chart font-icon"></i> Quicktest Phase 1 Results (Pie)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_qt2_pie"><i class="  fa fa-bar-chart font-icon"></i> Quicktest Phase 2 Results (Pie)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_weekly"><i class="  fa fa-bar-chart font-icon"></i> Central Build Results (weekly)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_monthly"><i class="  fa fa-bar-chart font-icon"></i> Central Build Results (monthly)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_times"><i class="  fa fa-bar-chart font-icon"></i> Central Build Times</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/ecl_alignment"><i class="  fa fa-bar-chart font-icon"></i> PSINT ECL Alignment</a>
+<div class="dropdown-divider"></div>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/since_last_working_build"><i class="  fa fa-table font-icon"></i> Since last working Build</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/faults_by_gic"><i class="  fa fa-table font-icon"></i> Faults by Group in Charge</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/knives"><i class="  fa fa-table font-icon"></i> Knife Statistic</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/knives_per_fault"><i class="  fa fa-table font-icon"></i> Knife Staitstic by delivered corrections</a>
+
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="repeat" title="Test Area" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Test Area" class="  fa fa-repeat font-icon"></i> <span class="hidden-lg-down">Test Area</span><span class="hidden-md-down hidden-xl-up">Test</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Test Area</h6>
+                    <h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/quicktests?view_id=9"><i class="  fa fa-star font-icon"></i> Quicktest Phase 1</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="file-text" href="/ALL/quicktest_templates"><i class="  fa fa-file-text font-icon"></i> Templates</a>
+<a class="dropdown-item" font_icon="files-o" href="/ALL/quicktests/bulk_edit"><i class="  fa fa-files-o font-icon"></i> Bulk update</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/quicktest2s?view_id=11"><i class="  fa fa-star font-icon"></i> Quicktest Phase 2</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="file-text" href="/ALL/quicktest2_templates"><i class="  fa fa-file-text font-icon"></i> Templates</a>
+<a class="dropdown-item" font_icon="files-o" href="/ALL/quicktest2s/bulk_edit"><i class="  fa fa-files-o font-icon"></i> Bulk update</a>
+
+</div></li>                
+<li class="nav-item dropdown"><a font_icon="wrench" title="Tools" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i title="Tools" class="  fa fa-wrench font-icon"></i> <span class="hidden-lg-down">Tools</span><span class="hidden-md-down hidden-xl-up">Tool</span><span class="caret"></span></a><div class="dropdown-menu">                    <h6 class="dropdown-header hidden-lg-up">Tools</h6>
+                    <a font_icon="check" class="dropdown-item" href="/ALL/toolbox/validation"><i class="  fa fa-check font-icon"></i> XML Validation</a>
+<a font_icon="play-circle" class="dropdown-item" href="/ALL/toolbox/import"><i class="  fa fa-play-circle font-icon"></i> XML Import</a>
+<a font_icon="search" class="dropdown-item" href="/ALL/toolbox/fep"><i class="  fa fa-search font-icon"></i> FEP Search</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/svn_count"><i class="  fa fa-table font-icon"></i> Commit Counter</a>
+<a font_icon="list-ul" class="dropdown-item" href="/ALL/toolbox/deliverers_list"><i class="  fa fa-list-ul font-icon"></i> Deliverers List</a>
+
+</div></li>            
+            
+        </ul>
+        <div class="pull-right">
+          <a font_icon="newspaper-o" class="btn btn-sm btn-primary" id="news_button" href="/ALL/news_articles"><i class="  fa fa-newspaper-o font-icon"></i> <span class="hidden-md-down">News</span></a>
+          <form class="search_form" action="/ALL/search/index" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="MI8HKMEXLW3qn//4VKgjUQluZBZ5UWzmLMEnn1OimsTu4wENlN+tig1Bqodl4Ca6mEJzYZ5y6AxQIzt3cnmnhw==" />
+          <input type="text" name="search" id="search" value="" placeholder="Search" class="form-control-sm form-control " />
+</form>          <a onclick="toggle_support(); return false;;" font_icon="life-ring" class="btn btn-sm btn-danger" id="support_button" href="#"><i class="  fa fa-life-ring font-icon"></i> <span class="hidden-md-down">Support</span></a>
+        </div>
+    </nav>
+
+    <nav class="navbar-second navbar navbar-full navbar-dark bg-inverse navbar-icon" role="navigation">
+      <div class="container-fluid">
+        <div class="row">
+          <div id="icon-project" class="col-xs-6 col-md-2 col-lg-2">
+            <i onclick="toggle_sidebar(); return false;" style="margin-top:6px; margin-left:-15px" class="  fa fa-columns font-icon"></i> |
+            <a onclick="toggle_project(); return false;" href="/projects">Project: <b>ALL</b></a>
+          </div>
+          <div class="col-xs-6 col-md-10 col-lg-10">
+          <ul class="nav navbar-nav icons">
+            
+              <li class="nav-item"><a font_icon="eye" class=" nav-link current " href="/ALL/builds/TL16A_ENB_0000_000162_000000"><i class="  fa fa-eye font-icon"></i> <span class="hidden-md-down">Details</span></a></li>
+    
+      <div class="dropdown-menu">
+        <a font_icon="pencil" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/edit"><i class="  fa fa-pencil font-icon"></i> Details</a>
+        <a font_icon="files-o" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/artifacts"><i class="  fa fa-files-o font-icon"></i> Artifacts</a>
+        <a font_icon="file-text-o" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/attachments"><i class="  fa fa-file-text-o font-icon"></i> Attachments</a>
+        <a font_icon="puzzle-piece" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/baseline_configurations"><i class="  fa fa-puzzle-piece font-icon"></i> Baseline Configurations</a>
+        
+        <a font_icon="code-fork" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/branches"><i class="  fa fa-code-fork font-icon"></i> Branches Used For</a>
+        
+        <a font_icon="list" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/ecl_baselines"><i class="  fa fa-list font-icon"></i> ECL Compatibility</a>
+        
+        
+        
+        
+        <a font_icon="sticky-note" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/restrictions"><i class="  fa fa-sticky-note font-icon"></i> Restrictions</a>
+        <a font_icon="database" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/storages"><i class="  fa fa-database font-icon"></i> Storages</a>
+        <a font_icon="book" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/test_results"><i class="  fa fa-book font-icon"></i> Test Results</a>
+        
+        
+        <a font_icon="tag" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/rebuild_reasons"><i class="  fa fa-tag font-icon"></i> Rebuild reasons</a>
+</div><li class="nav-item dropdown"><a font_icon="pencil-square" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="  fa fa-pencil-square font-icon"></i> <span class="hidden-md-down">Edit</span><span class="caret"></span></a><div class="dropdown-menu">
+        <a font_icon="pencil" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/edit"><i class="  fa fa-pencil font-icon"></i> Details</a>
+        <a font_icon="files-o" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/artifacts"><i class="  fa fa-files-o font-icon"></i> Artifacts</a>
+        <a font_icon="file-text-o" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/attachments"><i class="  fa fa-file-text-o font-icon"></i> Attachments</a>
+        <a font_icon="puzzle-piece" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/baseline_configurations"><i class="  fa fa-puzzle-piece font-icon"></i> Baseline Configurations</a>
+        
+        <a font_icon="code-fork" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/branches"><i class="  fa fa-code-fork font-icon"></i> Branches Used For</a>
+        
+        <a font_icon="list" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/ecl_baselines"><i class="  fa fa-list font-icon"></i> ECL Compatibility</a>
+        
+        
+        
+        
+        <a font_icon="sticky-note" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/restrictions"><i class="  fa fa-sticky-note font-icon"></i> Restrictions</a>
+        <a font_icon="database" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/storages"><i class="  fa fa-database font-icon"></i> Storages</a>
+        <a font_icon="book" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/test_results"><i class="  fa fa-book font-icon"></i> Test Results</a>
+        
+        
+        <a font_icon="tag" class="dropdown-item" href="/ALL/builds/TL16A_ENB_0000_000162_000000/rebuild_reasons"><i class="  fa fa-tag font-icon"></i> Rebuild reasons</a>
+</div></li>    
+      <div class="dropdown-menu">
+        <a font_icon="plus" class="dropdown-item" href="/ALL/builds/new?baseline=TL16A_ENB_0000_000162_000000"><i class="  fa fa-plus font-icon"></i> Increment</a>
+        <a font_icon="clock-o" class="dropdown-item" href="/ALL/builds/newer?baseline=TL16A_ENB_0000_000162_000000"><i class="  fa fa-clock-o font-icon"></i> Newer Baselines</a>
+</div><li class="nav-item dropdown"><a font_icon="plus" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="  fa fa-plus font-icon"></i> <span class="hidden-md-down">Increment</span><span class="caret"></span></a><div class="dropdown-menu">
+        <a font_icon="plus" class="dropdown-item" href="/ALL/builds/new?baseline=TL16A_ENB_0000_000162_000000"><i class="  fa fa-plus font-icon"></i> Increment</a>
+        <a font_icon="clock-o" class="dropdown-item" href="/ALL/builds/newer?baseline=TL16A_ENB_0000_000162_000000"><i class="  fa fa-clock-o font-icon"></i> Newer Baselines</a>
+</div></li>    
+      <div class="dropdown-menu" id="switch_state">
+        <a font_icon="check" class="dropdown-item" title="Release this build" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/releasenote.js&#39;, {&quot;font_icon&quot;:&quot;check&quot;,&quot;data&quot;:null,&quot;class&quot;:&quot;dropdown-item&quot;,&quot;height&quot;:600,&quot;width&quot;:800,&quot;title&quot;:&quot;Release this build&quot;})" href="javascript:void(0)"><i title="Release this build" class="  fa fa-check font-icon"></i> Release this build</a>
+
+</div><li class="nav-item dropdown"><a font_icon="caret-square-o-right" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="  fa fa-caret-square-o-right font-icon"></i> <span class="hidden-md-down">Switch State</span><span class="caret"></span></a><div class="dropdown-menu" id="switch_state">
+        <a font_icon="check" class="dropdown-item" title="Release this build" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/releasenote.js&#39;, {&quot;font_icon&quot;:&quot;check&quot;,&quot;data&quot;:null,&quot;class&quot;:&quot;dropdown-item&quot;,&quot;height&quot;:600,&quot;width&quot;:800,&quot;title&quot;:&quot;Release this build&quot;})" href="javascript:void(0)"><i title="Release this build" class="  fa fa-check font-icon"></i> Release this build</a>
+
+</div></li>  </li>
+  <li class="nav-item"><a title="Diff to Parent" font_icon="columns" class="nav-link" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/diff.js&#39;, {&quot;title&quot;:&quot;Diff to Parent&quot;,&quot;font_icon&quot;:&quot;columns&quot;,&quot;class&quot;:&quot;nav-link&quot;,&quot;height&quot;:600,&quot;width&quot;:800})" href="javascript:void(0)"><i title="Diff to Parent" class="  fa fa-columns font-icon"></i> <span class="hidden-md-down">Diff to Parent</span></a></li>
+  <li class="nav-item"><a title="Content Diff" font_icon="columns" class="nav-link" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/content_diff.js&#39;, {&quot;title&quot;:&quot;Content Diff&quot;,&quot;font_icon&quot;:&quot;columns&quot;,&quot;class&quot;:&quot;nav-link&quot;,&quot;height&quot;:600,&quot;width&quot;:800})" href="javascript:void(0)"><i title="Content Diff" class="  fa fa-columns font-icon"></i> <span class="hidden-md-down">Content Diff</span></a></li>
+  <li class="nav-item"><a title="Build history" font_icon="history" class="nav-link" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/history.js&#39;, {&quot;title&quot;:&quot;Build history&quot;,&quot;font_icon&quot;:&quot;history&quot;,&quot;class&quot;:&quot;nav-link&quot;,&quot;height&quot;:600,&quot;width&quot;:800})" href="javascript:void(0)"><i title="Build history" class="  fa fa-history font-icon"></i> <span class="hidden-md-down">Build history</span></a></li>
+    <li class="nav-item" id="build_compare_533415">  <a font_icon="plus" class="nav-link" onclick="$(this).css(&#39;color&#39;,&#39;#c00&#39;)" data-remote="true" href="/ALL/builds/TL16A_ENB_0000_000162_000000/add_to_compare_list.js"><i class="  fa fa-plus font-icon"></i> <span class="hidden-md-down">Add to Compare</span></a>
+</li>
+
+          </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <div id="site-panel" class="col-xs-12 col-md-3 col-lg-2">
+          <a font_icon="arrow-circle-left" href="/ALL/builds"><i class="  fa fa-arrow-circle-left font-icon"></i> Go Back</a>
+          
+          <div class="sidebar-module">
+	<h4>Build Compare List</h4>
+  <ul class="menu" id="builds_compare">
+  
+  </ul>
+  <a href="/ALL/builds/compare">Compare Now</a>
+</div>
+
+</div>
+        <div id="site-content" class="col-xs-12 col-md-9 col-lg-10 ">
+          <div class="row">
+            <div class="col-xs-10">
+              <ol class="breadcrumb">
+      <li><a href="/?project=ALL">Home</a></li>
+      <li><a href="/ALL/builds">Builds</a></li>
+      <li class="active">TL16A_ENB_0000_000162_000000</li>
+</ol>
+
+            </div>
+            <div class="col-xs-2">
+              <div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="  fa fa-download font-icon"></i> <span class="hidden-md-down">Export</span></button>
+  <div class="dropdown-menu api-dropdown-menu">
+    
+        <a onclick="if($(&#39;.mailcontent&#39;).length) {content = $(&#39;.mailcontent&#39;).html()} else {content = $(&#39;#content&#39;).html()}; $.post(&#39;/common/mail&#39;,{title: $(&#39;#page-title&#39;).html(), content: content}); return false;" font_icon="envelope-o" class="dropdown-item" href="#"><i class="  fa fa-envelope-o font-icon"></i> Send page via mail</a>
+        <a onclick="window.print(); return false;" font_icon="print" class="dropdown-item" href="#"><i class="  fa fa-print font-icon"></i> Print page</a>
+  </div>
+</div
+
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div id='content-header' class='col-xs-12' >
+            <h1 class="sub" id="page-title">Central: TL16A_ENB_0000_000162_000000</h1>
+          </div>
+          <div id="flash_messages" class='col-xs-12'>
+</div>
+
+          <div id='content' class='col-xs-12' >
+            <ul id="build_states" class="build_states">
+      <li class="test qt1 released">QT1: RELEASED</li>
+      <li class="test qt2 released">QT2: RELEASED</li>
+
+
+</ul>
+
+
+<div class="tabs baseline" id="build">
+  <ul>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#baselines">Baselines</a></li>
+    <li><a href="#tasks">Tasks</a></li>
+    <li><a href="#config">Build Configuration</a></li>
+    <li><a href="#build_content">Content</a></li>
+    <li><a href="#assignments">Assignments</a></li>
+    <li><a href="#release">Release / Tests Information</a></li>
+    <li><a href="#download">Download</a></li>
+    <li><a font_icon="exclamation-triangle" href="#warnings"><i class="  fa fa-exclamation-triangle font-icon"></i> Warnings</a></li>
+  </ul>
+  <div id="details">
+      <span class="edit"><a font_icon="pencil" href="/ALL/builds/TL16A_ENB_0000_000162_000000/edit"><i class="  fa fa-pencil font-icon"></i> Edit Details</a></span>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Basic Settings</h3>
+    <ul>
+      <li>Branch: <a href="/ALL/branches/2111">TL16A</a>
+        <table class="correction_policy">
+          <th>Correction Policy</th>
+          <tr>
+              <td class="policy_yes">
+    yes
+</td>
+
+          </tr></table>
+         </li>
+      <li>Project: TDD_MACRO </li>
+      <li class=''>Repository: <a title="Details" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/repository.js&#39;, {&quot;height&quot;:600,&quot;width&quot;:800,&quot;title&quot;:&quot;Details&quot;})" href="javascript:void(0)">Details</a></li>
+    </ul>
+    <h3>Hierarchy</h3>
+      <ul class="hierarchy"><li><a class="" title="released_with_restrictions" href="/ALL/builds/TL16A_ENB_0000_000159_000000">TL16A_ENB_0000_000159_000000</a><ul><li><a class="" title="released_with_restrictions" href="/ALL/builds/TL16A_ENB_0000_000160_000000">TL16A_ENB_0000_000160_000000</a><ul><li><a class="" title="released_with_restrictions" href="/ALL/builds/TL16A_ENB_0000_000161_000000">TL16A_ENB_0000_000161_000000</a><ul><li><a class="build-current current " title="released" href="/ALL/builds/TL16A_ENB_0000_000162_000000">TL16A_ENB_0000_000162_000000</a><ul><li><a class="" title="error" href="/ALL/builds/TL16A_ENB_0000_000163_000000">TL16A_ENB_0000_000163_000000</a></li></ul></li></ul></li></ul></li></ul></li></ul>
+    </div>
+
+  <div class="col-xs-12 col-md-6">
+    <h3>Build Settings</h3>
+    <ul>
+      <li>Confirm Build Config: <b><i class="  fa fa-square-o font-icon"></i> no</b></li>
+        <li>Accept pre_released: <i class="  fa fa-check-square-o font-icon"></i> yes</li>
+        <li>Release with pre_released: <i class="  fa fa-check-square-o font-icon"></i> yes</li>
+  		<li>Build Config Template: <b>LTETDD:ENB_v2 - Version: 22</b> <a font_icon="eye" title="" onclick="modal_link_click(&#39;/ALL/builds/TL16A_ENB_0000_000162_000000/config&#39;, {&quot;font_icon&quot;:&quot;eye&quot;,&quot;height&quot;:600,&quot;width&quot;:800,&quot;title&quot;:&quot;&quot;})" href="javascript:void(0)"><i title="" class="  fa fa-eye font-icon"></i> </a></li>
+    </ul>
+    <h3>Release Settings</h3>
+    <ul>
+      <li>Release Settings: <b>LTETDD_ENB_TL16A</b></li>
+      <li>HTML Release Note Template: <b>LTETDD_ENB_TL16A</b></li>
+      <li>XML Release Note Template: <b>ENB_TDD_v2</b></li>
+      <li>SCM Tool: <b>trunk@248684</b></li>
+    </ul>
+    <span id="auto_release">
+      <a class="btn btn-success" id="autorelease_switch" onclick="$(this).css(&#39;color&#39;,&#39;#c00&#39;)" data-remote="true" href="/ALL/builds/TL16A_ENB_0000_000162_000000/auto_release.js?cur=on">Auto Release: ACTIVE. Click to switch</a>
+
+      </span>
+  </div>
+</div>
+
+<div class='row' style='margin-top:1rem'>
+  <div class='col-xs-12 col-md-6'>
+      <h3>Dates</h3>
+      <ul>
+        <li>Freezing date: <b>29.05.2016 14:29</b></li>
+        <li>Planned prod date: <b>29.05.2016 14:34</b></li>
+        <li>Prod date: <b>29.05.2016 14:48</b></li>
+        <li>Planned delivery date: <b>29.05.2016 16:19</b></li>
+        <li>Delivery date: <b>30.05.2016 13:36</b></li>
+      </ul>
+
+
+        <div class="box">
+        <h3>Autobuild</h3>
+          <p>Build was automatically started.</p>
+        </div>
+  </div>
+
+  <div class='col-xs-12 col-md-4'>
+    <div class="note word-break" id="build_note">
+      <div>
+  <h2 style='display:inline-block'>Note</h2>
+  <a font_icon="pencil" style="display:inline-block" onclick="$(this).css(&#39;color&#39;,&#39;#c00&#39;)" data-remote="true" href="/ALL/builds/TL16A_ENB_0000_000162_000000/edit_note.js"><i class="  fa fa-pencil font-icon"></i> edit</a>
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div id="baselines">
+    
+  </div>
+  <div id="tasks">
+    
+  </div>
+  <div id="config" class="build_config">
+    
+  </div>
+  <div id="build_content">
+    
+  </div>
+  <div id="assignments">
+    
+  </div>
+  <div id="release">
+    
+  </div>
+  <div id="download">
+    
+  </div>
+  <div id="warnings">
+    <h2>Warnings</h2>
+    <p><i class="  fa fa-exclamation-triangle font-icon"></i> Automatic loading of warnings tab is disabled due to performance issues.</p>
+    <p><a onclick="load_partial(&#39;TL16A_ENB_0000_000162_000000&#39;,&#39;warnings&#39;,&#39;warnings&#39;); return false;" href="#">Click here</a> to load this tab</p>
+  </div>
+</div>
+
+<script>
+  $(document).ready(once(function () {
+      init_build_tabs('TL16A_ENB_0000_000162_000000');
+
+    try{
+     if (wft_push_notifications.server.supported == true && true){
+      wft_push_notifications.supported = true;
+     }
+     if (wft_push_notifications.supported == true){
+       var faye = new Faye.Client(wft_push_notifications.server.url);
+       wft_push_notifications.baseline = 'TL16A_ENB_0000_000162_000000';
+       wft_push_notifications.client = faye;
+       wft_push_notifications.subscribe("/build/533415", update_build);
+       wft_push_notifications.refresh_functions.push({type:'build',id: 533415,callback:function(){update_build({id: 533415,state:'FAYE_UPDATE'})}})
+     }
+     }catch(e){
+       $(".task_updater").html("<b><span style='color:red'>Push Notifications - ERROR</span></b>");
+    }
+  }));
+
+  $(document).one('page:before-unload', function(){
+    wft_push_notifications.destroy();
+  });
+</script>
+<span class="invisible" id="baseline_name">TL16A_ENB_0000_000162_000000</span>
+          </div>
+          <div id="footnotes_holder"></div>
+</div>      </div>
+    </div>
+
+  <div id="project_select" style="display:none;">
+    <a class="pull-right" font_icon="times" onclick="toggle_project(); return false;" href="#"><i class="  fa fa-times font-icon"></i> close</a>
+    <h4>Select Project</h4>
+    <ul id="project_tree" class="menu" >
+    </ul>
+    <div class="clear"></div>
+  </div>
+
+  <div id="support" style="display:none;">
+    <h4>Support</h4>
+    <a class="pull-right" font_icon="times" onclick="toggle_support(); return false;" href="#"><i class="  fa fa-times font-icon"></i> close</a>
+  </div>
+
+  <div class="clear"></div>
+
+  <div id="notifier_dialog"></div>
+  <div id="error_dialog"></div>
+  <div id="login_dialog"></div>
+  <div id="overlay">
+    <div style='position:relative; top:50%; left:50%; color: white'>
+      <i class='fa fa-spinner fa-pulse fa-4x'></i>
+      <div class='clear'></div>
+      <h3>Loading</h3>
+    </div>
+  </div>
+
+  </div>
+  <div class="sb-slidebar sb-left hiden-md-up">
+    <a id="menu_button" style="float:left; font-size: 16px; margin: 15px 0 0 10px;"><i class="  fa fa-bars font-icon"></i></a>
+    <a class="navbar-brand" rel="home" style="margin: 10px 0 20px 10px;" href="/?project=ALL"><img alt="Home" src="/assets/nokia_wft-dd319f2d79c9bbf448a88d78a2bfaad81c41296eab11c213c5a698da687539ee.png" /></a>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+      <!-- Your left Slidebar content. -->
+      <ul class="nav nav-pills nav-stacked">
+              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Branches<span class="caret"></span></a><div class="dropdown-menu">                  <h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/branches/overview?view_id=95"><i class="  fa fa-star font-icon"></i> Branch overview</a>
+<a font_icon="star-half-o" class="dropdown-item" href="/ALL/branches/overview?view_id=331"><i class="  fa fa-star-half-o font-icon"></i> Promoted</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="table" href="/ALL/branches"><i class="  fa fa-table font-icon"></i> All</a>
+<a class="dropdown-item" font_icon="arrows-h" href="/ALL/branches/aligned"><i class="  fa fa-arrows-h font-icon"></i> Aligned Builds</a>
+<a font_icon="code-fork" class="dropdown-item" href="/ALL/branches/trunk"><i class="  fa fa-code-fork font-icon"></i> Trunk Baselines</a>
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Builds<span class="caret"></span></a><div class="dropdown-menu">                  <a font_icon="plus" class="dropdown-item" href="/ALL/builds/new"><i class="  fa fa-plus font-icon"></i> Create new baseline</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/builds?view_id=3"><i class="  fa fa-star font-icon"></i> Latest builds</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/builds?view_id=5"><i class="  fa fa-table font-icon"></i> PS / QT </a>
+<a font_icon="table" class="dropdown-item" href="/ALL/builds?view_id=7"><i class="  fa fa-table font-icon"></i> Weekly overview</a>
+<a font_icon="star-half-o" class="dropdown-item" href="/ALL/builds?view_id=333"><i class="  fa fa-star-half-o font-icon"></i> Promoted</a>
+<div class="dropdown-divider"></div>
+<a font_icon="code-fork" class="dropdown-item" href="/ALL/branches/trunk"><i class="  fa fa-code-fork font-icon"></i> Trunk Baselines</a>
+<a font_icon="database" class="dropdown-item" href="/planning"><i class="  fa fa-database font-icon"></i> Load Planning</a>
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Faults<span class="caret"></span></a><div class="dropdown-menu">                  <a class="dropdown-item" font_icon="plus" href="/ALL/faults/new"><i class="  fa fa-plus font-icon"></i> Add Fault</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/faults?view_id=13"><i class="  fa fa-star font-icon"></i> Latest</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="search" href="/ALL/faults/search"><i class="  fa fa-search font-icon"></i> Search Fault</a>
+<a class="dropdown-item" font_icon="file-text" href="/ALL/faults/report"><i class="  fa fa-file-text font-icon"></i> Pronto Report</a>
+<a class="dropdown-item" font_icon="columns" href="/ALL/faults/diff"><i class="  fa fa-columns font-icon"></i> Pronto Diff</a>
+<a class="dropdown-item" font_icon="arrows-h" href="/ALL/faults/mapping"><i class="  fa fa-arrows-h font-icon"></i> Pronto Group Mapping</a>
+
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Features<span class="caret"></span></a><div class="dropdown-menu">                  <h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/features?view_id=239"><i class="  fa fa-star font-icon"></i> Default</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="search" href="/ALL/features/search"><i class="  fa fa-search font-icon"></i> Search Feature</a>
+<a class="dropdown-item" font_icon="columns" href="/ALL/features/diff"><i class="  fa fa-columns font-icon"></i> Feature Diff</a>
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Knives<span class="caret"></span></a><div class="dropdown-menu">                  <a font_icon="plus" class="dropdown-item" href="/ALL/knife_requests/new"><i class="  fa fa-plus font-icon"></i> New Knife</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/knife_requests?view_id=1"><i class="  fa fa-star font-icon"></i> Latest Knife Requests</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/knife_requests?view_id=21"><i class="  fa fa-table font-icon"></i> Knifes requested by me</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/knife_requests?view_id=23"><i class="  fa fa-table font-icon"></i> Knives assigned to me as tester</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/knife_requests?view_id=75"><i class="  fa fa-table font-icon"></i> Unfinished Knives</a>
+<div class="dropdown-divider"></div>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/knife_requests/stat"><i class="  fa fa-bar-chart font-icon"></i> Knives/Day</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/knives"><i class="  fa fa-table font-icon"></i> Statistic</a>
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Statistics<span class="caret"></span></a><div class="dropdown-menu">                  <a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_pie"><i class="  fa fa-bar-chart font-icon"></i> Quicktest Phase 1 Results (Pie)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_qt2_pie"><i class="  fa fa-bar-chart font-icon"></i> Quicktest Phase 2 Results (Pie)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_weekly"><i class="  fa fa-bar-chart font-icon"></i> Central Build Results (weekly)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_results_monthly"><i class="  fa fa-bar-chart font-icon"></i> Central Build Results (monthly)</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/central_build_times"><i class="  fa fa-bar-chart font-icon"></i> Central Build Times</a>
+<a font_icon="bar-chart" class="dropdown-item" href="/ALL/statistics/ecl_alignment"><i class="  fa fa-bar-chart font-icon"></i> PSINT ECL Alignment</a>
+<div class="dropdown-divider"></div>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/since_last_working_build"><i class="  fa fa-table font-icon"></i> Since last working Build</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/faults_by_gic"><i class="  fa fa-table font-icon"></i> Faults by Group in Charge</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/knives"><i class="  fa fa-table font-icon"></i> Knife Statistic</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/statistics/knives_per_fault"><i class="  fa fa-table font-icon"></i> Knife Staitstic by delivered corrections</a>
+
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Test Area<span class="caret"></span></a><div class="dropdown-menu">                  <h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/quicktests?view_id=9"><i class="  fa fa-star font-icon"></i> Quicktest Phase 1</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="file-text" href="/ALL/quicktest_templates"><i class="  fa fa-file-text font-icon"></i> Templates</a>
+<a class="dropdown-item" font_icon="files-o" href="/ALL/quicktests/bulk_edit"><i class="  fa fa-files-o font-icon"></i> Bulk update</a>
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Views</h6>
+<a font_icon="star" class="dropdown-item" href="/ALL/quicktest2s?view_id=11"><i class="  fa fa-star font-icon"></i> Quicktest Phase 2</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" font_icon="file-text" href="/ALL/quicktest2_templates"><i class="  fa fa-file-text font-icon"></i> Templates</a>
+<a class="dropdown-item" font_icon="files-o" href="/ALL/quicktest2s/bulk_edit"><i class="  fa fa-files-o font-icon"></i> Bulk update</a>
+
+</div></li>              
+<li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Tools<span class="caret"></span></a><div class="dropdown-menu">                  <a font_icon="check" class="dropdown-item" href="/ALL/toolbox/validation"><i class="  fa fa-check font-icon"></i> XML Validation</a>
+<a font_icon="play-circle" class="dropdown-item" href="/ALL/toolbox/import"><i class="  fa fa-play-circle font-icon"></i> XML Import</a>
+<a font_icon="search" class="dropdown-item" href="/ALL/toolbox/fep"><i class="  fa fa-search font-icon"></i> FEP Search</a>
+<a font_icon="table" class="dropdown-item" href="/ALL/svn_count"><i class="  fa fa-table font-icon"></i> Commit Counter</a>
+<a font_icon="list-ul" class="dropdown-item" href="/ALL/toolbox/deliverers_list"><i class="  fa fa-list-ul font-icon"></i> Deliverers List</a>
+
+</div></li>    </ul>
+  </div>
+  <div class="sb-slidebar sb-right">
+  </div>
+</body>
+</html>
+

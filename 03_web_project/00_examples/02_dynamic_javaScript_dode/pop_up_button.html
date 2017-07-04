@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>brower and Pop ups</title>
+        <script type="text/javascript">
+            function popUp(event, text, color, textCol) {
+                var popElem = document.getElementById('PopUp');
+                if(window.event) { // IE hack
+                    var x = window.event.clientX + 15;
+                    var y = window.event.clientY + 15; 
+                }
+                else {  // for FF, otherwise you'll get error with 
+                        //"TypeError: window.event is undefined"
+                    var x = event.clientX + 15;
+                    var y = event.clientY + 15; 
+                }
+                popElem.style.left = x + "px";
+                popElem.style.top = y + "px";
+                popElem.style.display = "block";
+                popElem.style.background = color;
+                popElem.style.color = textCol;
+                popElem.innerHTML = text;
+            }
+
+            function clearPop() {
+                var popElement = document.getElementById('PopUp');
+                popElement.style.display = 'none';
+            }
+        </script>
+
+
+    </head>
+    <body>
+    How Many ounces are there is a pound?<br><br>
+    <input type="button" name="1a" value="8" onclick="popUp(event, 'Sorry, try again', 'red', 'white')" onmouseout="clearPop(this)" />
+    <input type="button" name="1a" value="12" onclick="popUp(event, 'Sorry, try again', 'red', 'white')" onmouseout="clearPop(this)" />
+    <input type="button" name="1a" value="16" onclick="popUp(event, 'Sorry, try again', 'red', 'white')" onmouseout="clearPop(this)" />
+    <input type="button" name="1a" value="20" onclick="popUp(event, 'That\'s right', 'green', 'yellow')" onmouseout="clearPop(this)" />
+
+    <!-- PopUp container -->
+    <div id="PopUp" style="display: none; position: absolute; border: solid black 1px; padding: 10px; font-family: Calibri; font-size: 16px;">
+        <span id="PopUpText"><!-- Text will autofill here --></span>
+    </div>
+    <!-- End PopUp container -->    
+    </body>
+</html>

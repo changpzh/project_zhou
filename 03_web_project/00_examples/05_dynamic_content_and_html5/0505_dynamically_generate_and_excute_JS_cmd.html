@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0505_dynamically_generate_and_excute_JS_cmd</title>
+	<script type="text/javascript">
+		function doIt() {
+			var jsExec = document.getElementById("input1").value;
+			try {
+				eval(jsExec);
+			}
+			catch (error) {
+				var txt = "Sorry, but that caused error '" + error.message + "'\n\nclick OK to continue";
+				alert(txt);
+			}
+		}
+	</script>
+	
+</head>
+<body>
+Enter JavaScript Command:<br> <textarea id="input1" cols="50" rows="20"></textarea>
+<br><br>
+<input type="button" onclick="doIt()" value="Execute" />
+<br><br>
+Output window (use ID "output")
+<div id="output" style="height: 125px; width: 425px;; border:1px solid;"></div>
+
+</body>
+</html>

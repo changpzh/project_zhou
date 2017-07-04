@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0526_maniputaing_html5_canvas</title>
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="800" height="500" style="border: 1px solid #FF0000"></canvas>
+<script>
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var grd = ctx.createRadialGradient(400, 250, 50, 400, 250, 400);
+	grd.addColorStop(0, "#ffff00");	//圆圈颜色 yellow
+	grd.addColorStop(1, "#0000ff");	// 外部颜色 blue
+	ctx.fillStyle = grd;
+	ctx.fillRect(10, 10, 775, 475);
+	// ctx.strokeRect(10, 10, 775, 475);
+
+	/*
+    The HTML <canvas> element is used to draw graphics on a web page.
+    The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+    */
+
+    /*
+    Link: http://www.w3schools.com/html/html5_canvas.asp
+    */
+
+</script>
+
+</body>
+</html>

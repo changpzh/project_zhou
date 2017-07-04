@@ -1,0 +1,236 @@
+/*
+ *********************
+ *=grid overrides
+ *********************
+*/
+.grid_2 { margin-left: 60px; }
+
+/*
+ *********************
+ *=miscellaneous
+ *********************
+*/
+
+.container_24 {
+	margin-top: 10px;
+}
+
+blockquote {
+	position: relative;
+	margin: 0; /*fix blockquote not eaque with blck pic*/
+}
+
+blockquote, blockquote p {
+	font-size: 15px;
+	line-height: 20px;
+	font-style: italic;
+	color: #0e0e0e;
+}
+
+
+
+p {
+	font-size: 13px;
+	line-height: 20px;/*每行的高度*/
+	color: #353535;
+}
+
+h1, h2{
+	letter-spacing: -1px;
+}
+
+h3 {
+	font-size: 26px;
+	text-transform: lowercase;
+	border-bottom: 1px solid #d1d1d1;/*下划线of h2*/ 
+	padding-bottom: 27px;/*边界宽度*/
+	margin-bottom: 15px;
+	line-height: 2em;
+
+}
+
+a {
+	color: #7e7e7e;
+	text-decoration: none;/*去掉li的下划线*/
+}
+
+a:hover, .selected {
+	color: black;
+
+}
+
+.button {
+	background: #242324;
+	padding: 6px; /*button的边界宽度*/
+	color: white;
+/*	font-weight: bold;*/
+	text-transform: uppercase;
+	font-size: 11px;
+}
+
+.button:hover {
+	background: black;
+	color: white;
+}
+
+li {
+	margin-left: 24px;	
+}
+
+
+
+/*
+ *********************
+ *=header
+ *********************
+*/
+header {
+	overflow: hidden;
+}
+header h1 {
+	text-indent: -9999px;
+	margin: 20px 0 0 0;
+	float: left;
+
+}
+
+header h1::after {
+	clear: both;
+}	
+
+header h1 a {
+	background: url(../img/black.png) no-repeat;
+	width: 184px;
+	height: 31px;
+	float: left;
+}
+
+/*
+ *********************
+ *=nav
+ *********************
+*/
+nav {
+	float: right;
+	padding-top: 20px;
+}
+nav li {
+	display: inline;
+	margin: 10px;
+}
+
+nav a {
+	text-transform: lowercase;
+}
+
+/*
+ *********************
+ *=banner
+ *********************
+*/
+.banner {
+	background: url(../img/dog.jpg) no-repeat;
+	width: 593px;
+	height: 329px;
+	float: left;
+	position: relative;
+}
+
+.banner h2 {
+	color: white;
+	font-size: 28px;
+	width: 400px;
+	font-weight: normal; /*字体不是粗体*/
+	/*字体位置, 如果想加在banner的位置，必须在banner里面添加 relative position*/
+	position: absolute;
+	bottom: -10px;
+	padding: 0 0 0 10px;
+	left: 8px;
+	background: rgba(0, 0, 0, .5);
+
+}
+
+.callout {
+	background: black;
+	height: 329px;
+}
+
+/*
+ *********************
+ *=main
+ *********************
+*/
+.main {
+	margin-top: 20px; 
+}
+
+.main blockquote p {
+	padding-left: 30px;
+}
+
+
+.main blockquote p::before,
+.main blockquote p::after {
+	font-size: 40px;
+	color: #bfbfbf;
+	font-style: italic;
+}
+.main blockquote p:first-child::before {
+	content: '“';
+	position: absolute;
+	top: 10px;
+	left: 0;
+	
+}
+
+.main blockquote p:last-child::after {
+	content: '”';
+	float: right;
+	position: absolute;
+	bottom: -10px; /*lower than normal*/
+	right: 0;
+}
+
+/*
+ *********************
+ *=footer
+ *********************
+*/
+footer {
+	clear: both;
+	border-top: 1px solid #d1d1d1;
+	padding-top: 18px;
+}
+
+/******************************************************************************************/
+
+/*
+ *********************
+ *=work
+ *********************
+*/
+.work h2,
+.work h4 {
+	font-weight: normal; /*不需要粗体字*/
+	font-size: 26px;
+}
+
+.work h2 {
+	
+	margin-bottom: 0;
+
+}
+
+.work img {
+	margin-bottom: 20px;
+}
+
+.work h4 {
+	color: #787878;
+	margin-top: 5px;
+	line-height: 1.2em;
+	border-bottom: 1px solid #d1d1d1;
+	padding-bottom: 33px;
+	text-transform: lowercase;
+
+}

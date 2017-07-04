@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>9906_flexible_dialogs_of_YES_NO_Cancel_options</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css">
+</head>
+<body>
+    <button class="checked" href="#">Click here</button>
+    <script type="text/javascript">
+
+        $(function() {
+            $('.checked').click(function(e) {
+                e.preventDefault();
+                var dialog = $('<p>Pronto ID: <input size="15" id="input"></p>').dialog({
+                    buttons: {
+                        "Yes": function() {console.log("you input is: " + $("#input").val());},
+                        "OK": function() {},
+                        "No":  function() {alert('you chose no');},
+                        "Cancel":  function() {
+                            alert('you chose cancel');
+                            dialog.dialog('close');
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+</body><html>

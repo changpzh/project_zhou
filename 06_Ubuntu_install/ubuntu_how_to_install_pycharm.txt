@@ -1,0 +1,57 @@
+1: install JDK
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+2: check version of java
+$ java -version
+$ javac -version
+
+3: automatically set up the Java 8 environment variables
+sudo apt-get install oracle-java8-set-default
+
+4: Setting the "JAVA_HOME" environment variable
+(1): Find out the path of your Java installation:
+sudo update-alternatives --config java
+(2): Edit /etc/environment to add JDK path in it.
+sudo nano /etc/environment
+	 JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+(3): Reload /etc/enviroment file. will take effect.
+source /etc/environment
+(4): verify it
+echo $JAVA_HOME
+
+5: install pycharm-professional-4.5.5 on ubuntu
+(1): download latest pycharm from
+https://www.jetbrains.com/pycharm/download/#section=windows
+(2): uncompress it 
+$ tar xfz pycharm-*.tar.gz -C .
+(3): run install command in file/bin/pycharm.sh
+$ ./pycharm.sh
+
+username and licence for 4.5.5
+yueting3527
+===== LICENSE BEGIN =====
+93347-12042010
+00001FMHemWIs"6wozMZnat3IgXKXJ
+2!nV2I6kSO48hgGLa9JNgjQ5oKz1Us
+FFR8k"nGzJHzjQT6IBG!1fbQZn9!Vi
+===== LICENSE END =====
+
+
+6: create shortcut in desktop
+$ sudo gedit /usr/share/applications/Pycharm.desktop
+type below string, and note the corect path of Exec and Icon
+=====command in======
+[Desktop Entry]
+Type=Application
+Name=Pycharm
+GenericName=Pycharm3
+Comment=Pycharm3:The Python IDE
+Exec="/XXX/pycharm-community-3.4.1/bin/pycharm.sh" %f
+Icon=/XXX/pycharm-community-3.4.1/bin/pycharm.png
+Terminal=pycharm
+Categories=Pycharm;
+======command in=======
+
+go to /usr/share/applications/ and copy Pycharm.desktop to ~/Desktop then chmod to 777

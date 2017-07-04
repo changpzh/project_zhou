@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>0301_form_onsubmit_return_false</title>
+    <script type="text/javascript">
+        function formProcess() {
+            var capture = document.forms["input"]["fname"].value + "<br>";
+            capture += document.forms["input"]["color"].value + "<br>";
+            capture += document.forms["input"]["iceCream"].value + "<br>";
+            if (document.forms["input"]["CallMe_0"].checked) {
+                capture += document.forms["input"]["CallMe_0"].value + "<br>";
+            } else {
+                capture += document.forms["input"]["CallMe_1"].value + "<br>";
+            }
+          
+            document.getElementById('outputDiv').innerHTML = capture;
+        }
+    </script>
+</head>
+<body>
+<div id="outputDiv" style="width: 300px; height: 75px; border: 1px solid"></div>
+
+<!--
+onsubmit="return false" on form will not return information on link, 
+otherwise you will get a added inform in link like this when you submit.
+file:///D:/mywebsite/try.html?color=%23000000&Ice+Cream=Chocolate&callMe=Yes
+-->
+<form id="input" name="myForm" enctype="multipart/form-data" onsubmit="return false">
+    <p>Name: <input type="text" id="fname" /></p>
+    <p>Favorite color: <input type="color" id="color" name="color"></p> <!--not work on IE-->
+    <p>Ice Cream: <select name="Ice Cream" id="iceCream">
+        <option value="Vanilla">Vanilla</option>
+        <option value="Chocolate">Chocolate</option>
+        <option value="Strawberry">Strawberry</option>
+    </select></p>
+    <p>Call me?
+        <label>
+            <input type="radio" id="CallMe_0" name="callMe" value="Yes">Yes
+        </label>
+        <label>  
+            <input type="radio" id="CallMe_1" name="callMe" value="No">No
+        </label>
+        <br><br>
+        <input type="submit" value="OK" onclick="formProcess()" />
+    </p>
+</form>
+
+</body>
+</html>
+

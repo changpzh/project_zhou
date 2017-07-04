@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+<head>
+<title>replace_text</title>
+<meta charset="utf-8">
+</head>
+<body>
+
+<script type="text/javascript">
+	var counter =0;
+	function travelMethod() {
+		var str = document.getElementById('travel').innerHTML;
+		counter += 1;
+		if (counter == 1) {
+			var mode = str.replace("car", "plane");
+		}
+		if (counter == 2) {
+			var mode = str.replace("plane", "train");
+		}
+		if (counter == 3) {
+			var mode = str.replace("train", "boat");
+		}
+		if (counter == 4) {
+			var mode = str.replace("boat", "car");
+		}
+		if (counter >= 4) {
+			counter = 0;
+		}
+		console.log(mode);
+		document.getElementById('travel').innerHTML = mode;
+	}
+</script>
+
+
+<p id="travel">I perfer to travel by car</p>
+<button onclick="travelMethod()" value="up">UP</button>
+	
+</body>
+</html>

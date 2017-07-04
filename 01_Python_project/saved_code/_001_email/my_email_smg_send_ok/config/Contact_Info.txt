@@ -1,0 +1,6 @@
+Contact_Info_to_list:
+		changping.zhou@nokia.com
+		+8618757100287@smsgw.nsn.com
+
+Contact_Info_cc_list:
+#		changping.zhou@foxmail.com

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0520_determining_the_optimal_animation_frame_rate</title>
+
+	<script type="text/javascript">
+
+		function doIt() {
+			// Determine the optimal frame rate for animation
+			window.requestAnimFrame = (function() {
+				return window.requestAnimationFrame ||
+				window.webkitRequestAnimationframe ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function (callback) {
+					window.setTimeout(callback, 1000/60);
+				};
+			})();
+
+			function drawRectangle(myRectangle, context) {
+				context.beginPath();
+				context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+				context.fillStyle = "#ffff00";	// rectangle's fill style
+				context.fill();
+
+				// border of rectangle
+				context.lineWidth = myRectangle.borderWidth;
+				context.strokeStyle = "#000000";	// border's style
+				context.stroke();
+
+			}
+
+			function animate(myRectangle, canvas, context, startTime) {
+				// update
+				var time = (new Date()).getTime() - startTime;
+				var linearSpeed = 100;
+				//pixels / second
+				var newX = linearSpeed * time / 1000;
+				//clear
+				var coords = "x: " + myRectangle.x + " y: " + myRectangle.y;
+				document.getElementById("output").innerHTML = coords;
+				context.clearRect(myRectangle.x - 5, myRectangle.y - 5, myRectangle.width + 10, myRectangle.height + 10);
+
+				if (newX < canvas.width - myRectangle.width - myRectangle.borderWidth) {
+					myRectangle.x = newX;
+				}
+
+				drawRectangle(myRectangle, context);
+
+				// get new frame
+				requestAnimFrame(function() {
+					animate(myRectangle, canvas, context, startTime);
+				});
+			}
+
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+
+			var myRectangle = {
+				x: 0,
+				y: 125,
+				width: 100,
+				height: 100,
+				borderWidth: 2
+			};
+
+			drawRectangle(myRectangle, context);
+
+			// Get new frame
+			requestAnimFrame (function(){
+				var startTime = (new Date()).getTime();
+				animate(myRectangle, canvas, context, startTime);
+			});
+
+			setTimeout(function() {
+				var startTime = (new Date()).getTime();
+				animate(myRectangle, canvas, context, startTime);
+			}, 0);
+		
+		}
+		
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="300" style="border: 1px solid #000000"></canvas>
+<br><br>
+
+<input type="button" onclick="doIt()" value="GO">
+<br><br>
+<span id="output"></span>
+<!-- <input type="button" onclick="clearCanvas()" value="Clear"> -->
+
+</body>
+</html>

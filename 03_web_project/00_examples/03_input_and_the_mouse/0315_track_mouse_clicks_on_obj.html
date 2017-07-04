@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0315_track_mouse_clicks_on_obj</title>
+    <script type="text/javascript">
+        var i = 0;
+        var result = new Array();
+        function clickDetect(e) {
+
+            // x = event.clientX;  //same as below
+
+            x = e.clientX;
+            y = e.clientY;
+            i++;
+            var colorBox = e.target.id;
+            result[i] = colorBox + "(X: " + x + " Y: " + y +")" + "<br>";
+            document.getElementById("output").innerHTML += result[i];
+
+        }
+        function alertMe(e) {
+            var colorBox = e.target.id;
+            alert("You double clicked "+e.target.id);
+        }
+
+    </script>
+    <style>
+        p {
+            font-family: Arial;
+            font-size: 20px;
+        }
+        .clickBox {
+            width: 200px;
+            height: 200px;
+        }
+        
+        #warpper {
+            width: 400px; 
+            height: 400px; 
+        }
+
+    </style>
+</head>
+<body>
+<p>Select a Box:</p><br> 
+<!-- ondblclick = double-clicked -->
+<div id="warpper">
+    <div id="redBox" class="clickBox" style="background-color: #f00; float: left;" onclick="clickDetect(event)" ondblclick="alertMe(event)" ></div>
+    <div id="blueBox" class="clickBox" style="background-color: #00f; float: left;" onclick="clickDetect(event)" ondblclick="alertMe(event)" ></div>
+    <div id="greenBox" class="clickBox" style="background-color: #15982c; float: left;" onclick="clickDetect(event)" ondblclick="alertMe(event)" ></div>
+    <div id="yellowBox" class="clickBox" style="background-color: #ffd800; float: left;" onclick="clickDetect(event)" ondblclick="alertMe(event)" ></div>
+</div>
+
+<br>
+<br>
+<span id="output"></span>
+</body>
+</html>
+

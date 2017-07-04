@@ -1,0 +1,32 @@
+设置VirtualBox共享文件夹之前需要安装VirtualBox Guest Additions.
+
+共享文件夹就是使主机的windows和客户机linux能彼此共享文件。
+
+在当前的架构情况下，需要在主机即windows上设一个目录来做共享目录，我是把D盘的sharedfolder目录做为共享目录其路径为D:\winshare。
+
+下面就介绍具体如何设置共享文件夹。参考VirtualBox的帮助文档，我发现有以下几个步骤就可以完成共享文件夹的设置。
+
+
+1.在主机windows上设一个目录，作为共享目录。(我设的是：D:\winshare)
+
+2.在虚拟机VirtualBox上，如果虚拟机上linux操作系统未启动，在设置->共享文件夹 中指定D:\winshare作为共享文件夹，且要指定其映射在linux中的名字，默认是和你的目录名一样，我这里即winshare。具体的当打开的对话框时就看得很清楚。如果虚拟机上的linux操作系统已经启动，在设备->共享文件夹中可以进行同样的设置。
+现在可以在/media/下看到sf_winshare的目录，但是此文件夹没有执行权限
+
+3.打开虚拟机上一个控制台，在root的权限下执行如下命令：
+#mkdir /mnt/share //创建一个目录来挂载共享文件夹,当然你可以在任何地方创建一个目录。
+
+然后运行命令：
+#mount -t vboxsf [-o OPTIONS] sharename mountpoint。
+这里sharename就是我上面提到的默认的名字winshare, mountpoint就是指你想把windows共享文件夹挂载在linux的什么地方。
+
+我在这里用的是：
+#sudo mount -t vboxsf winshare /mnt/share  //ubuntu中需要用到root权限时前加sudo即可。
+
+
+注意，这里的命令是针对Linux客户机的。windows客户机是使用不同的命令的。可以参考VirtualBox的帮助文档。
+
+4.这样就可以把文件放在windows主机的d:\winshare下，在linux客户机中的/mnt/share中就可以看到了
+
+##eg
+mkdir ~/mywork/project
+sudo mount -t vboxsf Project_Zhou ~/mywork/project

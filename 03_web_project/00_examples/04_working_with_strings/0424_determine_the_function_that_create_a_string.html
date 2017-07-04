@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0424_determine_the_function_that_create_a_string</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input1").value;
+			var result = str1.constructor;
+			//constructor: it reference the function which made the object.
+			document.getElementById("output").innerHTML = result;
+
+		}
+		
+		
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Process</button>
+<br><br>
+Result:
+<span id="output"></span>
+</body>
+</html>

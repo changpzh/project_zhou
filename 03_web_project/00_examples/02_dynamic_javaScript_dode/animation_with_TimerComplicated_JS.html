@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>animation_withTimerComplicated_JS</title>
+    <script type="text/javascript">
+        function moveElement(elementID, final_x, final_y, interval) {
+            var elem = document.getElementById(elementID);
+            var xpos = parseInt(elem.style.left);
+            var ypos = parseInt(elem.style.top);
+            if (xpos == final_x && ypos == final_y) {
+                return ture;
+            }
+            if (xpos < final_x) {
+                xpos++;
+            }
+            if (xpos > final_x) {
+                xpos--;
+            }
+            if (ypos < final_y) {
+                ypos++;
+            }
+            if (ypos > final_y) {
+                ypos--;
+            }
+            elem.style.left = xpos + "px";
+            elem.style.top = ypos + "px";
+
+            //you cannot use it as this
+            // var repeat = "moveElement("elementID", "final_x", "final_y", "interval")";
+
+            var repeat = "moveElement(" + "'" +elementID + "'" + ", " + final_x + ", " + final_y + ", " + interval + ")";
+            // same as below, first elem need a string, so we need to add ''
+            // var repeat = "moveElement('" + elementID + "', " + final_x + ", " + final_y + ", " + interval + ")";
+
+
+            movement = setTimeout(repeat, interval);
+        }
+
+        function positionMessage() {
+            var elem = document.getElementById("message");
+            elem.style.position = "absolute";
+            elem.style.left = "1000px";
+            elem.style.top = "200px";
+            moveElement("message", 50, 200, 20);
+        }
+    </script>
+</head>
+<body>
+<button onclick="positionMessage()" value="Click Me">click me</button>
+<p id="message">TEST!!!!!</p>
+
+</body>
+</html>
+

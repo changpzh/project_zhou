@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>drap and drop</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="author" href="humans.txt">
+        
+        <script>
+        	function drag(event) {
+        		event.dataTransfer.setData("Text", event.target.id)
+
+        	}
+        	function drop(event) {
+        		event.preventDefault();
+        		var data = event.dataTransfer.getData("Text");
+        		event.target.appendChild(document.getElementById(data));
+        		document.getElementById("output").innerHTML = event.target.id;
+        	}
+        </script>
+    </head>
+    <body>
+    <p>Drag the paragraph into the box:</p>
+    <div id="div1" ondrop="drop(event)" ondragover="drop(event)"></div>
+    <div id="div2" ondrop="drop(event)" ondragover="drop(event)"></div>
+    <div id="div3" ondrop="drop(event)" ondragover="drop(event)"></div>
+
+    <br>
+    Location: <span id="dragText" draggable="true" ondragstart="drag(event)">
+    	Learning something new is scary. For me, the biggest issue with picking up a new skill is that I don’t know what I don’t know. Given that, it’s often useful to find a plan for learning whatever you’re interested in. That’s what this post is: your blueprint, your roadmap, your plan of action for learning JavaScript! You don’t have to worry about finding the best resources, sorting out the bad ones, and figuring out what to learn next. It’s all here. Just follow it, step by step.
+    </span>
+    <style>
+        	#div1 {
+        		height: 200px;
+        		width: 700px;
+        	} 
+        	#div2 {
+        		height: 200px;
+        		width: 500px;
+        	} 
+        	#div3 {
+        		height: 200px;
+        		width: 300px;
+        	} 
+
+
+        	#div1, #div2, #div3 {
+        		border: 1px solid #d1d1d1;
+        		margin-bottom: 20px;
+        	}
+
+        	#dragText:hover {
+        		color: red;
+        	}
+        </style>
+    </body>
+</html>

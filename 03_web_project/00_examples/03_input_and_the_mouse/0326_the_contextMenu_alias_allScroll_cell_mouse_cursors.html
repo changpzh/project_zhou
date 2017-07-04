@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0326_the_contextMenu_alias_allScroll_cell_mouse_cursors</title>
+    <script type="text/javascript">
+        function setCursor(elem) {
+            var newCursor = elem.id;
+            elem.style.cursor = newCursor;
+        }
+        
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .myDiv {
+            width: 200px; 
+            height: 100px;
+            text-align: center; 
+            line-height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+<p>Hover the mouse over an item: <strong>Note the Cursor's shape when on different div.</strong></p>
+<table>
+    <tr>
+        <td>
+            <div class="myDiv" id="context-menu" style="background-color: #ffd800;" onmouseover="setCursor(this)">context-menu</div>
+        </td>
+        <td>
+            <div class="myDiv" id="alias" style="background-color: #cd84e6;" onmouseover="setCursor(this)">alias</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="myDiv" id="all-scroll" style="background-color: #dddd00;" onmouseover="setCursor(this)">all-scroll</div>
+        </td>
+        <td>
+            <div class="myDiv" id="cell" style="background-color: #ffaaee;" onmouseover="setCursor(this)">cell</div>
+        </td>
+    </tr>
+</table>
+
+</table>
+</body>
+</html>
+

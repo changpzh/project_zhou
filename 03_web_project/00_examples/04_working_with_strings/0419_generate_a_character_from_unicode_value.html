@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0419_generate_a_character_from_unicode_value</title>
+	<script type="text/javascript">
+	
+		function doIt() {
+			var chk = document.getElementById("input").value;
+			// var result = chk.charCodeAt(0);
+			var result = String.fromCharCode(chk);
+			document.getElementById("output1").innerHTML = chk + " ";
+			document.getElementById("output2").innerHTML = result;
+
+		}
+</script>
+<style>
+	body {
+		font-family: Arial;
+		font-size: 18px;
+	}
+</style>
+</head>
+<body>
+
+Type a Unicode value to get the character:<br>
+You can also use special keyboard combinations.<br><br>
+EXAMPLES:<br><br>
+169 = &copy;<br>
+153 = &trade;<br>
+174 = &reg;<br>
+162 = &cent;<br>
+163 = &pound;<br>
+<br><br>
+<input type="text" id="input" size="25"><br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br><br>
+The Unicode value for <span id="output1"></span> is <span id="output2"></span>
+
+</body>
+</html>

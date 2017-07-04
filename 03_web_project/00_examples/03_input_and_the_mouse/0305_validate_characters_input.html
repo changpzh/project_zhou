@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>0305_validate_characters_input</title>
+    <script type="text/javascript">
+        function chkChars(charInput) {
+            var result = valChars();
+            var x;
+            document.getElementById('output').innerHTML = result;
+
+            function valChars() {
+                var validChars = /^[a-zA-Z]+$/;
+                if (charInput.value.match(validChars)) {
+                    x = true;
+                    return x;
+                }else {
+                    alert('Please enter chars only');
+                    x = false;
+                    return x;
+                }
+            }
+        }
+    </script>
+    <style>
+        p {
+            font-family: "Trebuchet MS", Arial, Helverica, sans-serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--
+onsubmit="return false" on form will not return information on link, 
+otherwise you will get a added inform in link like this when you submit.
+file:///D:/mywebsite/try.html?color=%23000000&Ice+Cream=Chocolate&callMe=Yes
+-->
+<form action="#" name="myForm" onsubmit="return false"></form>
+Please Enter Chars: <input type="text" id="char" name="char" />
+<input type="submit" value="Submit Now" onclick="chkChars(document.getElementById('char'))" />
+<br><br>
+<span id="output"></span>
+</form>
+
+</body>
+</html>
+

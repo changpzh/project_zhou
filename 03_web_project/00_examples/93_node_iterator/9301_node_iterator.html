@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9301_nodeIterator</title>
+</head>
+<body>
+	<div id="div1">
+		<p><b>Hello</b>world!</p>
+		<ul>
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>List item 3</li>
+		</ul>
+	</div>
+	<p id="output1"></p>
+	<p id="output2"></p>
+	
+	<script type="text/javascript">
+		var div = document.getElementById('div1');
+		var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT,
+			null, false);
+		var node = iterator.nextNode();
+
+		var nodeName = "All element are:<br>";
+		while(node !== null){
+			nodeName += node.tagName + '<br>';
+			node = iterator.nextNode();
+		}
+
+		document.getElementById('output1').innerHTML = nodeName;
+
+	</script>
+
+	<!-- 
+	/*if you only want to iterate element li, you can you it like */
+	you can also use TreeWalker instead of NodeIterator, and it more flixable than NodeIterator
+	create TreeWalker entity use document.createTreeWalker()
+	-->
+	<script type="text/javascript">
+		var div = document.getElementById('div1');
+
+		/*
+		Key code for filter only li element
+		 */
+		var filter = function(node) {
+			return node.tagName.toLowerCase() == "li" ?
+				NodeFilter.FILTER_ACCEPT :
+				NodeFilter.FILTER_SKIP;
+		}
+
+		// var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT,filter, false);
+		var iterator = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT,filter, false);
+
+		var node = iterator.nextNode();
+		var nodeName = "All li element are:<br>";
+		while(node !== null){
+			nodeName += node.tagName + '<br>';
+			node = iterator.nextNode();
+		}
+
+		document.getElementById('output2').innerHTML = nodeName;
+
+	</script>
+
+
+</body>
+</html>

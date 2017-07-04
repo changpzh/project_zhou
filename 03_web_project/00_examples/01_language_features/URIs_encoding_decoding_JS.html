@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URIs_encoding_decoding_JS</title>
+    
+</head>
+<body>
+    <form action="" id="formal">
+        <input type="text" name="value1" />
+        <button name="button1" onclick="setEncode(value1.value)">Encode</button>
+        <button name="button1" onclick="setDecode(value1.value)">Decode</button>
+    </form>
+    <br />
+    <p id="info"></p>
+
+    <script type="text/javascript">
+        var newURL;
+        function setEncode(myURL) {
+            newURL = encodeURIComponent(myURL);
+            alert(newURL);
+            document.getElementById('info').innerHTML = newURL.toString();
+        }
+
+        function setDecode(myURL) {
+            console.log(myURL);
+            var decodeURL = decodeURIComponent(myURL);
+            alert(decodeRUL);
+            cocument.getElementById('info').innerHTML = decodeRUL.toString();
+        }
+
+    </script>
+</body>
+</html>
+

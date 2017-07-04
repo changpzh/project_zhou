@@ -1,0 +1,92 @@
+1. Get all duplicated faultids from given collection;
+2. Loop each faultid:
+	* get all prs in pr_summary collection according to faultid;
+	* calculate remove duplicate flag according to each flag;
+		- Yes;
+		- WithIn BL&Year;
+		- WithIn Program;
+		- WithIn Program&Week;
+		- WithIn Program&Month;
+	* Write mapping flag to each pr;
+	* save pr info to file;
+	* Exist Loop
+3. Upsert file contents to pr_summary collection;
+4. mongoimport file contents to pr_load_remove collection with drop method;
+
+Part2
+==============================================================
+//1. Get all duplicated faultids from given collection;
+function get_dup_faultids();
+//2. Loop each faultid:
+(all_faultids||[]).forEach( function(faultid) {
+	//* get all prs in pr_summary collection according to faultid;
+	function get_prs_via_faultid(faultid) {
+		//* calculate remove duplicate flag according to each flag;
+			function rm_with_yes();
+			function rm_with_bl_year();
+			function rm_within_program();
+			function rm_within_program_week();
+			function rm_within_program_month();
+		//* Write mapping flag to each pr;
+		//* save pr info to file;
+		function write_data_in_to_file();
+	}
+});
+//3. Upsert file contents to pr_summary collection;
+function upsert_contents_2_collection();
+
+Part3---Change for optimizing operate speed
+==============================================================
+//1. Get all duplicated faultids from given collection;
+function get_dup_faultids();
+//2. async handle every 1000/10000 faultids together
+(all_faultids||[]).forEach( function(faultid) {
+	//* get all prs in pr_summary collection according to faultid;
+	function get_prs_via_faultid(faultid) {
+		//* calculate remove duplicate flag according to each flag, use async parallel method;
+			function rm_with_yes();
+			function rm_with_bl_year();
+			function rm_within_program();
+			function rm_within_program_week();
+			function rm_within_program_month();
+		//* Write mapping flag to each pr;
+		//* save pr info to file;
+		function write_data_in_to_file();
+	}
+});
+//3. Upsert file contents to pr_summary collection;
+function upsert_contents_2_collection();
+
+Part4--code
+==============================================================
+router.get('/duplicate_pr/set',function(req, res){
+	var faultids = decodeURIComponent(req.query.faultid).split(',');
+	var tmp_array = [];
+	async.eachLimit(faultids||[], NUMS_4_EACH, function(faultid, cb) {
+		db.collection('pr_summary').find({faultid: faultid.trim()},{_id: 0}).toArray(function(err, results){
+			if(!!err) { console.log("ERROR: fault_common_api.js/duplicate/set ERROR!");}
+			else if(results.length >= 2) {	//have duplicated prs
+				async.parallel([
+					function(cb){
+						rm_with_yes(results, function () {cb(); });
+					}, function(cb){
+						rm_within_program(results, "mapping_program_abc", function () {cb(); });
+					}, function(cb){
+						rm_within_program_interval(results, "week", function () {cb(); });
+					}, function(cb){
+						rm_within_program_interval(results, "month", function () {cb(); });
+					}, function(cb){
+						rm_within_bl_and_year(results, "year", function () {cb(); });
+					}
+				], function(err) {
+					if (err) {console.log(err);}
+					tmp_array.push(results);
+					cb();
+				});
+			} else { cb();}
+		});// end db.collection('pr_summary')
+	}, function(e) {
+		if (e) {console.log(e);}
+		res.send({results: _.flatten(tmp_array)});
+	}); //end async.eachLimit
+});

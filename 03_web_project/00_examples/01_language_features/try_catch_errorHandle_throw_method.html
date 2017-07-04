@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>try_catch_errorHandle_throw_method</title>
+    <script type="text/javascript">
+        // function TestTry() {
+        //     alert("method ran successfully");
+        // }
+        // try {
+        //     TestTry();
+        //     //Invalid calls, functions or methods in the code.
+        //     TestT();
+        // }
+        // catch(exception) {
+        //     //determine whether or not the browser is IE or FireFox
+        //     if (exception.description == null) {
+        //         alert("There was an error in the code. The detail are: \n " + exception.message);
+        //     }
+        //     else {
+        //         alert("There was an error in the code. The detail are: \n " + exception.description);
+        //     }
+        // }
+
+
+        function checkValue(value) {
+            try {
+                if (value <= 5) {
+                    throw new Error("Please submit a minimum value of at least 5.");
+                }
+                if (value >= 100) {
+                    throw new Error("Please submit a minimum value not exceed 100.");
+                }
+            }
+            catch (e) {
+                //determine whether or not the browser is IE or FireFox
+                if (e.description == null) {
+                    alert("An error occured: \n " + e.message);
+                }
+                else {
+                    alert("An error occured: \n " + e.description);
+                }
+            }// end catch
+        }
+
+        checkValue(3);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

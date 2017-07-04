@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9402_advanced_sorting_algorithms_shellSort1</title>
+	<script src="sort_common.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function shellSort() {
+			var times = 0;
+			for(var g = 0; g < this.gaps.length; ++g) {
+				for (var i = this.gaps[g]; i < this.dataStore.length; ++i) {
+					var temp = this.dataStore[i];
+					for (var j = i; j >= this.gaps[g] &&
+									this.dataStore[j-this.gaps[g]] > temp;
+									j -= this.gaps[g]) {
+						this.dataStore[j] = this.dataStore[j - this.gaps[g]];
+						times += 1;
+					}
+					this.dataStore[j] = temp;
+				}
+				console.log("Excution times=" + times);
+			}
+		}
+
+		function setGaps(arr) {
+			this.gaps = arr;
+		}
+
+		var start, stop, elapsed;
+		var numElements = 10000;
+
+		var gaps = [5, 3, 1];
+
+		var nums = new CArray(numElements);
+		nums.setGaps = setGaps;
+		nums.shellSort = shellSort;
+		nums.setData();
+		console.log("before shellSort: \n");
+		console.log(nums.toString());
+		console.log("\nDuring shellSort: \n");
+		start = new Date().getTime();
+		nums.setGaps(gaps);
+		nums.shellSort();
+		stop = new Date().getTime();
+		console.log("\nAfter shellSort: \n");
+		console.log(nums.toString());
+		elapsed = stop - start;
+		console.log("Elapsed time for shellSort on " +
+					numElements + " elements is: " + elapsed + " milliseconds.");
+
+	</script>
+
+
+</body>
+</html>

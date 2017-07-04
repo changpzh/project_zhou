@@ -1,0 +1,133 @@
+<html>
+<head>
+<script type="text/javascript">
+function showRowOrColTable(){
+    data1 = [
+        {
+                "bl" : "lte-n",                         // mandatory, the same as the defination in pci_hierarchy
+                "product" : "tdd-macro",                // mandatory, the same as the defination in pci_hierarchy
+                "branch" : "trunk",                     // mandatory, the same as the defination in pci_hierarchy
+                "day" : "2016-05-17",                   // mandatory, YYYY-MM-DD, timezone is +08:00
+                "timestamp" : 1463500740,               // query timestamp(unix timestamp)
+                "result" : [
+                        {
+                                "name" : "qt",                              // mandatory, test name
+                                "auto" : "TL00_ENB_9999_160517_045380",     //build name, which updated by coop API.
+                                "manual" : "TL00_ENB_9999_160517_045388",   //build name,which posted by tester
+                                "order" : 101           // mandatory, the same as the defination in pci_hierarchy
+                        },
+                        {
+                                "name" : "cit",
+                                "auto" : "TL00_ENB_9999_160617_045390",
+                                "manual" : "TL00_ENB_9999_160617_045399",
+                                "order" : 201
+                        },
+                        {
+                                "name" : "cit",
+                                "auto" : "TL00_ENB_9999_160517_045390",
+                                "manual" : "TL00_ENB_9999_160517_045399",
+                                "order" : 201           // mandatory, the same as the defination in pci_hierarchy
+                        }
+                ]
+        },
+        {
+                "bl" : "lte-n",                         // mandatory, the same as the defination in pci_hierarchy
+                "product" : "tdd-macro",                // mandatory, the same as the defination in pci_hierarchy
+                "branch" : "trunk",                     // mandatory, the same as the defination in pci_hierarchy
+                "day" : "2016-05-18",                   // mandatory, YYYY-MM-DD, timezone is +08:00
+                "timestamp" : 1463500741,               // query timestamp(unix timestamp)
+                "result" : [
+                        {
+                                "name" : "qt",                              // mandatory, test name
+                                "auto" : "TL00_ENB_9999_160518_045389",     //build name, which updated by coop API.
+                                "manual" : "TL00_ENB_9999_160518_045398",   //build name,which posted by tester
+                                "order" : 101           // mandatory, the same as the defination in pci_hierarchy
+                        },
+                        {
+                                "name" : "cit",
+                                "auto" : "TL00_ENB_9999_160518_045379",
+                                "manual" : "TL00_ENB_9999_160518_045399",
+                                "order" : 201           // mandatory, the same as the defination in pci_hierarchy
+                        }
+                ]
+        },
+        {
+                "bl" : "lte-n",
+                "product" : "tdd-macro",
+                "branch" : "branch",
+                "day" : "2016-06-17",
+                "timestamp" : 1463500740,
+                "result" : [
+                        {
+                                "name" : "qt",
+                                "auto" : "TL00_ENB_9999_160617_045380",
+                                "manual" : "TL00_ENB_9999_160617_045388",
+                                "order" : 1
+                        },
+
+                        {
+                                "name" : "crt",
+                                "auto" : "TL00_ENB_9999_160617_045390",
+                                "manual" : "TL00_ENB_9999_160617_045399",
+                                "order" : 301
+                        }
+                ]
+        }
+    ];
+    var row_lines = data1.length;//used for row control.
+    var projectid = 0;
+    var project_length = projectid * 2;
+    for (var i = 0; i < data1.length; i++) {
+            var tmpid = data1[i]["result"].length;
+            if (tmpid > projectid) projectid = tmpid; //get the max columns.
+
+    }
+    project_length = projectid * 2;
+
+    //创建table
+    var table = document.createElement("table");
+    var projectid=2; //看图下合并多少列就写多少
+    table.border = "1";
+    var rowIndex = 0;
+    var rowStart = 0;
+    var rowLength = 2;
+    var colIndex = 1;
+    var colLength = 2;
+    var projectLength=projectid*2;
+    for ( var i = 0; i < 5; i++) {
+        var row = table.insertRow(i);
+        for ( var j = 0; j < projectLength+1; j++) {
+            var cell = row.insertCell(j);
+            if ( i > 1) {
+                cell.innerHTML = "hello_" + i + j; //赋值内容
+            }
+
+        }
+    }
+    for ( var j = 0; j <= rowIndex; j++) {
+    table.rows[j].cells[colIndex].colSpan = projectid;
+    table.rows[j].cells[projectid*2-1].colSpan = projectid;
+        for ( var i = 0; i < projectid - 1; i++) {
+        table.rows[j].deleteCell(colIndex+1);
+        table.rows[j].deleteCell(3);
+        }
+    }
+
+    table.rows[rowIndex].cells[rowStart].rowSpan = 2;//控制表头行数
+    table.rows[rowIndex + 1].deleteCell(0);
+    table.rows[0].cells[0].innerHTML = "date";
+    table.rows[0].cells[1].innerHTML = "person";
+    table.rows[0].cells[2].innerHTML = "person sec";
+    table.rows[1].cells[0].innerHTML = "#1";
+    table.rows[1].cells[1].innerHTML = "#2";
+    table.rows[1].cells[2].innerHTML = "#1";
+    table.rows[1].cells[3].innerHTML = "#2";
+    //var _row=table.rows[1];
+    document.getElementById("table").appendChild(table);
+}
+</script>
+</head>
+<body onLoad="showRowOrColTable()">
+<div id="table"></div>
+</body>
+</html>

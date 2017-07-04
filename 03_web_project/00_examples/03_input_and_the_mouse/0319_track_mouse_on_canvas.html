@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0319_track_mouse_on_canvas</title>
+</head>
+<body>
+<canvas id="myCanvas" class="newCanvas">Your browser does not support the HTML5 canvas tag</canvas>
+<br><br><br><br>
+<div id="popUp"></div>
+
+<!-- 
+for this code, you must put this script tag below canvas tag, 
+otherwise you'll get the ERROR:"Cannot read property 'getContext' of null"
+First write canvas tag and then write script tag. And write script tag in body.
+-->
+<script type="text/javascript">
+    var x = 0;
+    var y = 0;
+    var click = false;
+
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    canvas.addEventListener("mousemove", moveMouse, false);
+
+
+    function moveMouse(event) {
+        var rect = canvas.getBoundingClientRect();
+        x = event.clientX - rect.left;
+        y = event.clientY - rect.top;
+        makeMsg();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.font = "12px";
+        context.fillStyle = "#0000ff";
+        context.fillText(message, 10, canvas.height - 10);
+
+    }
+    function makeMsg () {
+        message = "X: " + x + "  Y: " + y;
+        if (click == true) {
+            message += " CLICK";
+        }
+    }
+
+    function clearPop() {
+        var popElement = document.getElementById('popUp');
+        popElement.style.display = "none";
+    }
+    
+</script>
+
+<style>
+    body {
+        font-family: Calibri;
+        font-style: 16px;
+    }
+    .newCanvas {
+        width: 370px;
+        height: 250px;
+        border: 1px solid #000000;
+        background-color: #f0f0f0;
+    }
+</style>
+
+</body>
+</html>
+

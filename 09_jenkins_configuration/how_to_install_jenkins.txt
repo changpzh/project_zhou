@@ -1,0 +1,132 @@
+###install Java in system
+uncompress the jdk file.
+then add jdk path to $PATH in ~/.bashrc
+
+#******************start ~/.bashrc************************#
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+
+##PYTHON path
+export PYTHON3_HOME="/var/fpwork/tools/python3.2/bin"
+export PYTHON_HOME="/var/fpwork/tools/python2.7/bin"
+export PYTHON2712_PATH_H21="/var/fpwork/tools/python/python-2.7.12/bin"
+export PYTHON352_PATH_H21="/var/fpwork/tools/python/python-3.5.2/bin"
+
+export JAVA_PATH="/var/fpwork/tools/jdk8112/bin"
+
+export PATH=$JAVA_PATH:$PYTHON2712_PATH_H21:$PYTHON352_PATH_H21:$PYTHON3_HOME:$PYTHON_HOME:$PATH
+export JENKINS_HOME=/var/fpwork/jenkins/
+
+
+#####################Linux Alias Tool############################
+alias rm="rm -i"
+alias l.="ls -aF -r --sort=time --color"
+alias ll="ls -lF -r --sort=time --time-style=long-iso --color"
+alias la="ls -lFa -r --sort=time --time-style=long-iso --color"
+alias ..="cd .."
+alias ..2="cd ../../"
+alias ..3="cd ../../../"
+alias ..4="cd ../../../../"
+alias ..5="cd ../../../../../"
+#################################################################
+
+
+##network configuration
+export http_proxy=http://10.144.1.10:8080
+export https_proxy=http://10.144.1.10:8080
+
+#*********************end ~/.bashrc***********************#
+
+###rehat start up jenkins: 
+##once you can use java -version to check version. you can use below cmd to start jenkins
+nohup java -jar /var/fpwork/tools/jenkins.war --httpPort=8080 > /var/fpwork/logs/jenkins.log 2>&1 &
+
+
+###how to restart jenkins
+##1: restart from jenkins app. 
+system configuration --> manage plugins --> 可选插件 -->下载待重启后安装(不选择任何插件)
+
+##2: use command in jenkins server
+a: ps aux | grep jenkins
+b: kill -9 [PID] # -9 kill all children process.
+c: nohup java -jar /var/fpwork/tools/jenkins.war --httpPort=8080 > /var/fpwork/logs/jenkins.log 2>&1 &
+
+###how to install plugins
+##1: install from jenkins app-->插件管理
+##2: copy plugin file (*.jpi) to jenkins/plugins, then need to reboot jenkins
+
+###Plugins needed
+1: suggested plugins
+2: Parameterized Trigger plugin
+3: Parameterized Remote Trigger Plugin
+4: Rebuilder
+5: Sectioned View Plugin
+
+###the configuation infomation saved at jenkins/config.xml
+
+
+###***************The first configuration should******************###
+Configure Global Security 
+--> 启用安全(checked)
+--> 指定端口[50050]
+--> LDAP(checked)
+	-->服务器 [ed-p-gl.emea.nsn-net.net:389]
+	-->root DN [o=NSN]
+	-->Manager DN (mandatory be blank, very important)
+	-->管理密码 (mandatory be blank, very important)
+--> 项目矩阵授权策略(checked)
+-->	Markup Formatter [Safe HTML]
+###***************The first configuration should******************###
+
+
+###How to configure so that we can access intenet??
+###set proxy of network in to ~/.bashrc
+export http_proxy=http://10.144.1.10:8080
+export https_proxy=http://10.144.1.10:8080
+
+
+###How to install app to distination path.(--prefix=PATH)
+./configure --prefix=/var/fpwork/tools/python/python-2.7.12
+make
+make install
+add path(/var/fpwork/tools/python/python-2.7.12/bin) to $PATH
+
+###******************How to install python lib********************#######
+
+###How to install pip on python27---same as python3, python path different.
+
+##1:
+https://www.python.org/ftp/python/
+wget --no-check-certificate http://pypi.python.org/packages/source/s/setuptools/setuptools-2.0.tar.gz
+tar -xzvf setuptools-2.0.tar.gz
+cd setuptools-2.0
+/home/liudiwei/software/python27/bin/python setup.py install
+
+##2:
+wget --no-check-certificate https://pypi.python.org/packages/41/27/9a8d24e1b55bd8c85e4d022da2922cb206f183e2d18fee4e320c9547e751/pip-8.1.1.tar.gz#md5=6b86f11841e89c8241d689956ba99ed7
+tar -xzf pip-8.1.1.tar.gz
+cd pip-8.1.1
+/home/liudiwei/software/python27/bin/python setup.py install
+
+###How to upgrade pip
+pip install --upgrade pip
+
+###install lxml with pip
+pip install lxml
+
+####Note:
+python3 and pip3 will used in python3.
+
+
+
+
+
+
+
+#####shell using
+
+#1: curl
+curl -u "$USERNAME:$PASSWORD" [link]
+

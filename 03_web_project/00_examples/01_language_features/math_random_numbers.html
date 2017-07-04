@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>math_random_numbers</title>
+<script type="text/javaScript">
+
+    function rollDice() {
+        // Math.floor(x) returns the value of x rounded down to its nearest integer:
+        // Math.floor(4.7);    // returns 4
+        var myNum1 = Math.floor((Math.random() * 6) + 1); 
+        var myNum2 = (Math.random() * 6) + 1;
+        var result = document.getElementById('div1');
+        result.innerHTML = "Die one is : " + myNum1 + '<BR>' + "Die two is: " + myNum2;
+    }
+
+
+</script>
+</head>
+<body>
+    <label>Result:</label>
+    <div id="div1"></div>
+    <button name="button1" onclick="rollDice()">Roll the dice</button>
+
+</body>
+</html>

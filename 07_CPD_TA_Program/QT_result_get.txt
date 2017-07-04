@@ -1,0 +1,61 @@
+#!/bin/bash -x
+
+
+
+
+
+#only trigger first passed.
+mkdir -p ./${PACKNAME}
+if [ -e ./${PACKNAME}/Snapshot_Trigger ]; then
+    echo "${PACKNAME} has tested before"
+    exit 2
+else
+    echo "Snapshot successfull" > ./${PACKNAME}/Snapshot_Trigger
+fi
+
+##used for build description.
+PACKNAME=`echo ${PACKNAME} | cut -d_ -f1,2,3,4,5`
+echo "package name is: ${PACKNAME}"
+
+HW_TYPE_HE="FWHE"
+HW_TYPE_NC="FWNC"
+
+##below command also can use case to finished.
+if [ ${HW_TYPE_HE} == ${HW_TYPE} ]; then
+    if [ "QT1" == ${QT_PHASE} ]; then
+        CASELIST="caselist2PIPEFWHEqt1.txt"
+        echo "caselist=${CASELIST}"
+
+    else
+        CASELIST="caselist2PIPEFWHEqt2.txt"
+        echo "caselist=${CASELIST}"
+
+    fi
+
+elif [ ${HW_TYPE_NC} == ${HW_TYPE} ]; then
+    if [ "QT1" == ${QT_PHASE} ]; then
+        CASELIST="caselist2PIPEFWNCqt1.txt"
+
+    else
+        CASELIST="caselist2PIPEFWNCqt2.txt"
+        echo "caselist=${CASELIST}"
+
+    fi
+
+else
+    echo "Hardware type or QT phase not correct"
+    exit 1
+fi
+
+svn export --force https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/scripts/trunk/ScmUtils/qt_report/ ./
+cp -rf ./LTE_eNB_FZM_TDD_trunk/* ./
+/ltesdkroot/ltesdkroot/Tools/Tools/python/python-3.2.2/bin/python GetQt2Result.py -n ${PACKNAME} -c ${CASELIST} -d "/build/home/lteman/CPD/QTResult/" || exit 1
+
+
+#grep pass/fail number, only for not null test result
+SUCNUM=`grep "Pass" -c testReport.html`
+FNUM=`grep "Fail" -c testReport.html`
+if [ ${SUCNUM} -eq 0 -a $FNUM -eq 0 ]; then
+    echo "---------test case none exec----------------"
+    exit 1
+fi

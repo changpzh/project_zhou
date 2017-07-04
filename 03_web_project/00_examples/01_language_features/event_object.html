@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>event_object</title>
+    <script type="text/javascript">
+        function sendEventInfo(event) {
+            var information = "TimeStamp: " + event.timeStamp;
+            information += "<br>Target: " + event.target.id;
+
+            //where I click the button
+            information += "<br>X: " + event.clientX;
+            information += "<br>Y: " + event.clientY;
+
+            // information += "<br>Shift Key? " + event.shiftKey;
+
+            document.getElementById('output').innerHTML = information;
+        }
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+    <button onclick="sendEventInfo(event)" id="myBtn">Press Me</button>
+    
+</body>
+</html>

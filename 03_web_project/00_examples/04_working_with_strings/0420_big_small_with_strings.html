@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0420_big_small_with_strings</title>
+	<script type="text/javascript">
+	
+		function doIt() {
+			var str1 = "This is bigger text";
+			var str2 = "This is smaller text";
+			var bigger = str1.big();
+			var smaller = str2.small();
+			var original = document.getElementById("output").innerHTML;
+			var result = original + "<br>"  + bigger + "<br>" + smaller;
+			document.getElementById("output").innerHTML = result;
+
+		}
+</script>
+</style>
+</head>
+<body>
+
+<p id="output">This is normal text</p>
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br><br>
+
+</body>
+</html>

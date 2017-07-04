@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#remove-file: check whether if dir exist or not, if exist then remove all files in that directory.
+#### WE ALSO CAN use [[ -d $dir_name ]] && cd $dir_name && rm -rf * to instead of below command.
+
+
+echo "
+please enter the directory which you want to remove:
+"
+read -p "Enter want to directory:"
+
+if [[ -d $REPLY ]]; then
+	if cd $REPLY; then
+		#rm -rf *
+		echo "REMOVED FILE"
+	else
+		echo "cannot cd to `$REPLY`" >&2
+		exit 1
+	fi
+else
+	echo "No such file directory." >&2
+	exit 1
+fi

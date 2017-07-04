@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9402_advanced_sorting_algorithms_shellSort2</title>
+	<script src="sort_common.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		* computing dynamic gap sequence.
+		*/
+		function shellSort2() {
+			var N = this.dataStore.length;
+			var h = 1;
+			var times = 0;
+			while(h < N/3) {
+				h = 3 * h + 1;
+			}
+			while(h >= 1) {
+				for(var i = h; i < N; i++) {
+					for (var j = i; j >= h && this.dataStore[j] < this.dataStore[j-h]; j -= h) {
+						swap(this.dataStore, j, j-h);
+						times += 1;
+					}
+				}
+				h = (h-1)/3;
+			}
+			console.log("Excution times = " + times);
+		}
+
+		var start, stop, elapsed;
+		var numElements = 10;
+
+		var nums = new CArray(numElements);
+		nums.shellSort2 = shellSort2;
+		nums.setData();
+		console.log("before shellSort: \n");
+		console.log(nums.toString());
+		console.log("\nDuring shellSort: \n");
+		start = new Date().getTime();
+		nums.shellSort2();
+		stop = new Date().getTime();
+		console.log("\nAfter shellSort: \n");
+		console.log(nums.toString());
+		elapsed = stop - start;
+		console.log("Elapsed time for shellSort2 on " +
+					numElements + " elements is: " + elapsed + " milliseconds.");
+
+	</script>
+
+
+</body>
+</html>

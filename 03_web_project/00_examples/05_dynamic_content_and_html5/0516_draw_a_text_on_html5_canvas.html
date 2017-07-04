@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0516_draw_a_text_on_html5_canvas</title>
+
+	<script>
+		function doIt() {
+			var textString = document.getElementById("text").value;
+			var font = document.getElementById("font").value;
+			var color = document.getElementById("color").value;
+			var x = document.getElementById("x").value;
+			var y = document.getElementById("y").value;
+
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			context.font = font; 
+			if (document.getElementById("fill_0").checked) {
+				context.fillStyle = color;
+				context.beginPath();
+				context.fillText(textString, x, y);
+			} else {
+				context.strokeStyle = color;
+				context.beginPath();
+				context.strokeText(textString, x, y);
+			}
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="200" style="border: 1px solid #000000"></canvas>
+<br><br>
+Text: <input type="text" id="text" size="50">
+<br><br>
+<label name="fill">
+	Fill style: 
+	<input type="radio" id="fill_0" name="fill" value="Yes" >fillText
+</label>
+<label>
+	<input type="radio" id="fill_1" name="fill" value="No" >strokeText(空心字体)
+</label>
+
+<br><br>
+Font: <input type="text" id="font" size="5"> 
+<br><br>
+Color: <input type="text" id="color" size="5">
+<br><br>
+x: <input type="text" id="x" size="5"> y: <input type="text" id="y" size="5">
+<br><br>
+
+<input type="button" onclick="doIt()" value="GO">
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>9803_jquery_get_method</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+	    $("button").click(function(){
+	        $.get("zhou.txt", function(data, status){
+	        	console.log(data)
+	            // alert("Data: " + data + "\nStatus: " + status);
+	            // var result = JSON.parse(data);
+	            // var nnn ='{ "name":"John", "age":30, "city":"New York"}';
+	            // JSON.parse(nnn);
+	            document.getElementById("output").innerHTML = data;
+	        });
+	    });
+	});
+
+
+</script>
+</head>
+<body>
+
+<button>Get External Content</button>
+<br>
+Result:<br>
+<span id="output"></span>
+
+</body>
+</html>

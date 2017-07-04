@@ -1,0 +1,12 @@
+#this doc teach you how to use AWK function.
+#awk [-F "field-separator"] 'commands' input-file(s)
+#其中，commands 是真正awk命令，[-F域分隔符]是可选的。 input-file(s) 是待处理的文件。
+
+#example
+cat /etc/passwd | awk -F ":" '/changpzh/{print $7}'
+#/bin/bash
+#-F ":"--是以“:”作为分隔符
+#'/changpzh/'--正则匹配“changpzh”
+#'/changpzh/{print $7}'--打印出符合匹配的行第七个域
+#$0,表示所有的域，$N表示第N个域
+

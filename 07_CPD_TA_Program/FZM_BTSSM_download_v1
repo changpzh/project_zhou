@@ -1,0 +1,71 @@
+#!/bin/bash -x
+
+Cur_Time=`date +%D`
+Cur_Y=`echo ${Cur_Time} | cut -d/ -f3`
+Cur_M=`echo ${Cur_Time} | cut -d/ -f1`
+Cur_YM=${Cur_Y}${Cur_M}
+let Pre_M=Cur_M-1
+Old_Y=${Cur_Y}
+#################################
+#date +%D 获取时间格式如：05/20/15(M/D/Y)
+#获取时间也可以用如下方式
+#ym=$(date +%y%m)
+#echo $ym
+#cut -d/ -f3
+#“-d/”表示把输入流进行分割（分割符为d后面的符号）,
+#"-f3"表示获取前面分割出来的，3表示获取第三个字符串
+#let a=b-1,是进行数值减法计算
+#################################
+
+###处理月末交接时file在上月的文件里面，当然还的考虑跨年情况
+if [ ${Pre_M} -eq 0 ]; then
+	  Pre_M=12
+    let Old_Y=Cur_Y-1
+elif [ ${Pre_M} -lt 10 ]; then
+	  Pre_M=0${Pre_M}
+fi	
+
+###FZM Trunk BTSSM
+if [ -d ${Cur_YM} ]; then
+    cd ./${Cur_YM}
+    svn update .
+    cd ..
+else
+    svn co https://beisop60.china.nsn-net.net/isource/svnroot/BTS_D_SE_UI_${Cur_Y}_${Cur_M}/lte/fzm/lnz/installer/tags ./${Cur_Y}${Cur_M}/
+fi
+
+Pre_YM=${Old_Y}${Pre_M}
+if [ -d ${Pre_YM} ]; then
+    cd ./${Pre_YM}
+    svn update .
+    cd ..
+else
+    svn co https://beisop60.china.nsn-net.net/isource/svnroot/BTS_D_SE_UI_${Old_Y}_${Pre_M}/lte/fzm/lnz/installer/tags ./${Old_Y}${Pre_M}
+fi
+
+###FZM TLF15A BTSSM
+TLF15_B=TLF15A_BTSSM
+if [ -d ${TLF15_B} ]; then
+    cd ./${TLF15_B}
+    svn update
+    cd ..
+else
+    svn co https://beisop60.china.nsn-net.net/isource/svnroot/BTS_D_SE_UI_2015/lte/fzm/lnz/installer/tags ./${TLF15_B}/
+fi
+
+###FZM RL55 BTSSM
+RL55_B=RL55_BTSSM
+if [ -d ${RL55_B} ]; then
+    cd ./${RL55_B}
+    svn update .
+    cd ..
+else
+		
+    svn co https://beisop60.china.nsn-net.net/isource/svnroot/BTS_D_SE_UI_2014/lte/fzm/lnz/installer/tags ./${RL55_B}/
+fi
+
+###Push BTSSM to local PC
+rsync -avz --exclude=*.bin --exclude=.svn --exclude=*.rpm /lteRel/SC/BTSSM_TDD/FZM_TRUNK/${Cur_YM}/* btstest@10.140.90.25:/cygdrive/c/temp/BTSSM_TDD/FZM_TRUNK/
+rsync -avz --exclude=*.bin --exclude=.svn --exclude=*.rpm /lteRel/SC/BTSSM_TDD/FZM_TRUNK/${Pre_YM}/* btstest@10.140.90.25:/cygdrive/c/temp/BTSSM_TDD/FZM_TRUNK/
+rsync -avz --exclude=*.bin --exclude=.svn --exclude=*.rpm /lteRel/SC/BTSSM_TDD/FZM_TRUNK/${TLF15_B}/* btstest@10.140.90.25:/cygdrive/c/temp/BTSSM_TDD/FZM_TRUNK/
+rsync -avz --exclude=*.bin --exclude=.svn --exclude=*.rpm /lteRel/SC/BTSSM_TDD/FZM_TRUNK/${RL55_B}/* btstest@10.140.90.25:/cygdrive/c/temp/BTSSM_TDD/FZM_TRUNK/

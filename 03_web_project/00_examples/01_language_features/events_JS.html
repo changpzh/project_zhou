@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>events_JS</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('eventNew').addEventListener('click', newEventButtonClicked, false);
+        }
+
+        function newEventButtonClicked() {
+            alert("Newer event method");
+        }
+
+        function buttonClick() {
+            alert("Old event caller method");
+        }
+
+        function changeDiv() {
+            document.getElementById('myDiv').style.backgroundColor = "green";
+        }
+
+        function changeDivBack() {
+            document.getElementById('myDiv').style.backgroundColor = "white";
+        }
+
+        
+    </script>
+    
+    <p id="output"></p>
+    <button onclick="buttonClick()">Event Old</button>
+    <button id="eventNew">Event New</button>
+    <div id="myDiv" onmouseover="changeDiv()" onmouseout="changeDivBack()">Mourse Over Me</div>
+
+</body>
+</html>

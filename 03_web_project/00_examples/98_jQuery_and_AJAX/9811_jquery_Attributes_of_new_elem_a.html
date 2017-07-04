@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9811_jquery_Attributes_of_new_elem_a</title>
+	<link rel="shortcut icon" href="../img/jquery_icon.ico" />
+	<script src="../lib/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<a href="http://learn.jquery.com/using-jquery-core/attributes/">jquery attributes Docs</a>
+<div id="test"></div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var a = $("<a/>", {
+			html: "This is a <strong>new</strong> link", //showing text on html
+		    "class": "new",	//class
+		    href: "foo.html", //link
+			title: "shown when cursor over the text!" // text shown when cursor over on html!
+		});
+		console.log("a==%j", a);
+
+		// a.appendTo($("#test"));
+		$("#test").append(a);	//same as above
+	});
+</script>
+
+</body>
+</html>

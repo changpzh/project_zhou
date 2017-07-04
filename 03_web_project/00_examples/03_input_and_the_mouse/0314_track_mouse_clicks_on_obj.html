@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0314_track_mouse_clicks_on_obj</title>
+    <script type="text/javascript">
+        var x;
+        var y;
+        function mouseClick(e) {
+            x = e.clientX;
+            y = e.clientY;
+            colorBox = e.target.id;
+            document.getElementById("output").innerHTML = colorBox + "(X: " + x + " Y: " + y +")";
+
+        }
+        function alertMe(e) {
+            alert(e.target.id);
+        }
+
+        function clearCoords() {
+            document.getElementById('output').innerHTML = "";
+        }
+    </script>
+    <style>
+        p {
+            font-family: Arial;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<p>Select a Box:</p><br>
+<!-- ondblclick = double-clicked -->
+<div id="redBox" style="width: 100px; height: 100px; background-color: #f00; float: left;" onclick="mouseClick(event)" ondblclick="alertMe(event)" onmouseout="clearCoords()"></div>
+<div id="blueBox" style="width: 100px; height: 100px; background-color: #00f; float: left;" onclick="mouseClick(event)" ondblclick="alertMe(event)" onmouseout="clearCoords()"></div>
+<div id="greenBox" style="width: 100px; height: 100px; background-color: #15982c; float: left;" onclick="mouseClick(event)" ondblclick="alertMe(event)" onmouseout="clearCoords()"></div>
+<div id="yellowBox" style="width: 100px; height: 100px; background-color: #ffd800; float: left;" onclick="mouseClick(event)" ondblclick="alertMe(event)" onmouseout="clearCoords()"></div>
+<br>
+<br>
+<br>
+<br>
+<span id="output"></span>
+</body>
+</html>
+

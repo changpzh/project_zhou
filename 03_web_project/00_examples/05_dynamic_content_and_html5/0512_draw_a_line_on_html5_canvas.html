@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0512_draw_a_line_on_html5_canvas</title>
+
+	<script>
+		function doIt() {
+			var x1 = document.getElementById("x1").value;
+			var y1 = document.getElementById("y1").value;
+			var x2 = document.getElementById("x2").value;
+			var y2 = document.getElementById("y2").value;
+			var color = document.getElementById("color").value;
+			var canvas = document.getElementById("myCanvas");
+
+			var context = canvas.getContext("2d");
+			context.strokeStyle = color;
+			context.moveTo(x1, y1);
+			context.lineTo(x2, y2);
+			context.stroke();
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="200" height="200"></canvas>
+<br><br>
+x1: <input type="text" id="x1" size="5"> y1: <input type="text" id="y1" size="5">
+<br><br>
+x2: <input type="text" id="x2" size="5"> y2: <input type="text" id="y2" size="5">
+<br><br>
+Color: <input type="text" id="color" size="5">
+<br><br>
+<input type="button" onclick="doIt()" value="GO">
+
+
+</body>
+</html>

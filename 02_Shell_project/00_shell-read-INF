@@ -1,0 +1,27 @@
+#!/bin/bash 
+
+#read-ifs: read fields from a file
+#IFS=Internal Field Separator
+
+FILE="/etc/passwd"
+#FILE=/etc/passwd-----it also works
+
+
+read -p "Enter a username >" user_name
+
+echo "User_name=$user_name"
+echo $FILE
+file_info=$(grep "^$user_name:" $FILE)
+
+if [ -n "file_name" ]; then
+	IFS=":" read user pw uid gid name home shell <<< "$file_info"
+	echo "User =		'$user'"
+	echo "UID =		'$uid'"
+	echo "GID =		'$gid'"
+	echo "Full Name =	'$name'"
+        echo "Home Dir =	'$home'"
+	echo "Shell =		'$shell'"
+else
+	echo "No such user '$user_name'" >&2
+	exit
+fi

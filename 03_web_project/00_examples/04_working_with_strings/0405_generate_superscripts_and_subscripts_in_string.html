@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0405_generate_superscripts_and_subscripts_in_string</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input").value;
+			var supLoc = str1.indexOf("^") + 1;
+			var supNum = str1.charAt(supLoc);
+			var result1 = str1.substr(0, supLoc - 1) + supNum.sup();	
+			var result2 = str1.substr(0, supLoc - 1) + supNum.sub();	
+			document.getElementById("output1").innerHTML = "superscripts is:" + result1;
+			document.getElementById("output2").innerHTML = "subscripts is:" + result2;
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Please enter a formula (use ^ for superscript)</p>
+<br>
+<input type="text" id="input" name="input" size="25" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br>
+Result
+<br>
+<span id="output1"></span>
+<br>
+<span id="output2"></span>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<pre id="progress" style="width: 200px; background: silver"></pre>
+	<script type="text/javascript">
+		(function () {
+			var msg = "The Rockettes live tonight from Radio city Music Hall in New YOrk City!",
+			len = 25,
+			pos = 0,
+			padding = msg.replace(/./g, " ").substr(0, len),
+			finalMsg = padding + msg;
+
+			function updateText() {
+				// console.log(pos);
+				var curMsg = finalMsg.substr(pos++, len);
+				// console.log(curMsg);
+				document.getElementById('progress').innerHTML = curMsg;
+				if (pos == finalMsg.length) {
+					pos = 0;
+				}
+
+				// setTimeout(updateText, 100);
+			}
+			// setTimeout(updateText, 100);
+			setInterval(updateText, 100);
+			/*
+			setTimeout(function, milliseconds)
+			Executes a function, after waiting a specified number of milliseconds.
+			setInterval(function, milliseconds)
+			Same as setTimeout(), but repeats the execution of the function continuously.
+			----->How to stop it!
+			<button onclick="myVar = setTimeout(myFunction, 3000)">Try it</button>
+			<button onclick="clearTimeout(myVar)">Stop it</button>
+			*/
+
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,1145 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <base href="/"/>
+    <meta charset="utf-8">
+    <title>0905_issue_dashboard_front</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="css/jquery.dataTables.css">
+        <link href="css/base.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-multiselect.css" rel="stylesheet">
+		<link href="css/breadcrumb-nav.css" rel="stylesheet">
+
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/page-header-style.css" rel="stylesheet">
+		<link href="css/bootstrap-switch.min.css" rel="stylesheet">
+        <!-- <link href="css/fade-out-edit.css" rel="stylesheet"> -->
+
+		<script src="lib/jquery-1.11.3.min.js"></script>
+		<script src="lib/lodash.min.js"></script>
+		<script src="lib/moment.min.js"></script>
+        <script src="js/common_menu.js"></script>
+	    <script src="lib/bootstrap.min.js"></script>
+	    <script src="lib/bootstrap-multiselect.js"></script>        
+
+        <script src="lib/jquery.dataTables.min.js"></script>
+
+        <script src="js/settings.js"></script>
+        <script type="text/javascript">
+    //var settings = new Settings();
+    var type = 'scci';
+    var table = null;
+    var STATUS_DATA;
+    var INI_STATS = "ini_stat"; //must be lowerCase
+    var stats = [];
+    var issue_collections = {};
+    issue_collections["status"] = ['NEW', 'INV', 'CLOSE'];
+    issue_collections["severity"] = ['A-Critical', 'B-Major', 'C-Minor'];
+    issue_collections["frequency"] = ['Permanent', 'Occasional'];
+    // issue_collections["top_importance"] = [];
+    issue_collections["rootcause"] = [  'SW Bug', 
+                                        'Compiling Error', 
+                                        'Environment', 
+                                        'Feature Sync', 
+                                        'Sack Alignment'];
+
+    issue_collections["component"] = [  'ARCH', 
+                                        'BM',
+                                        'BTSSM_TDD',
+                                        'TDDCPRI',
+                                        'CPLANE',
+                                        'DSP_COMMON',
+                                        'HW',
+                                        'LOM',
+                                        'LTEL2',
+                                        'MAC_PS_TDD',
+                                        'OAM',
+                                        'PDDB',
+                                        'PHY_RX_TDD',
+                                        'PHY_TX',
+                                        'PHY_TX_TDD',
+                                        'PS_CCS',
+                                        'PS_DSPHWAPI',
+                                        'PS_FPGA',
+                                        'PS_LFS',
+                                        'PS_MCUHWAPI',
+                                        'RFSW',
+                                        'SACK',
+                                        'SCM',
+                                        'SPEC',
+                                        'TRS',
+                                        'IT',
+                                        'LAB',
+                                        'OTHERS'];
+                                      
+
+        
+                                    
+
+
+    function handleData(geturl) {
+        $.ajax({
+            url: geturl,
+            dataType: "json",
+            data: null,
+            beforeSend: function() {
+            },
+            success: function(indata) {
+                
+                var tmpUrls = geturl.split("&");
+
+                var testHier_getUrl = tmpUrls[0] + 
+                            "&" + tmpUrls[1] +
+                            "&" + tmpUrls[2];
+                testHier_getUrl = testHier_getUrl.replace(/get/, "testHier_get");           
+                console.log(testHier_getUrl);
+                $.ajax({
+                    url: testHier_getUrl,
+                    dataType: "json",
+                    data: null,
+                    beforeSend: function() {
+                    },
+                    success: function(myData) {
+
+                        issue_collections['test_hierarchy'] = myData.results; // for test_hierarchy options
+                        indata.data.forEach(function (d) {
+                            _.keys(issue_collections).forEach(function (key) {
+                                if ((d[key] instanceof Array)) { //handle array of elem
+                                    d[key].forEach(function (dd) {
+                                        var findIndex = findItem(issue_collections[key], dd);
+                                        if (findIndex < 0) {issue_collections[key].push(d[key])};
+                                    });
+                                } else if (d[key]) {
+                                    var findIndex = findItem(issue_collections[key], d[key]);
+                                    if (findIndex < 0) {issue_collections[key].push(d[key])};
+                                }
+                            });
+                            
+                        });
+                        
+                        draw_table(geturl);
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
+
+                
+                
+            }// end function(indata)
+        }); //end ajax
+    }
+
+    var posturl = Settings.apiUrl + '/issues/issuedata/edit';
+
+    var editor; // use a global for the submit and return data rendering in the examples
+    var prLink_bf = "https://pronto.int.net.nokia.com/pronto/problemReportSearch.html?freeTextdropDownID=prId&searchTopText="
+    var prLink_af = "&HomeFlag=true"
+
+    var draw_table = function(geturl) {
+        if (table){
+           return table.ajax.url(geturl).load();
+        }
+        var setting ={
+            // dom: "<'typetabs'><'toolbar'>ftip",
+            dom: '<"typetabs"><"toolbar"><"top"f>rt<"bottom"lpi><"clear">',
+            paging:   true,
+            //retrieve: true,
+            lengthMenu: [[5,10,20,30], [5,10,20,30]],
+            serverSide: false,
+            scrollY:true,
+            scrollX: true,
+            scrollCollapse: true,
+            processing: true,
+            ajax: {
+                url: geturl ,
+                type: 'GET'
+            },
+            autoWidth:false,
+            columns: [{  "className":      'details-control',
+                        "orderable":      false,
+                        "data":           null,
+                        "defaultContent": ''
+                    },
+                    {data: 'description', sClass: 'left', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'status', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'bugid', render: function(data, type, row) {
+                        var fullLink = prLink_bf + data + prLink_af;
+                        return "<a href="+ fullLink + " target='_blank'" + ">" + data + "</a>"; }},
+                    {data: 'top_importance', render: function(data, type, row) {
+                        return arrayCh2String(data, "<br>");
+                    }},
+
+
+                    {data: 'component', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'frequency', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'severity', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'followups', sClass: 'left', render: function(data, type, row) {return (data || ""); }},
+                    // {data: 'release', render: function(data, type, row) {return (data || ""); }},
+                    
+                    {data: 'opentime', render: function(data, type, row) {
+                            if (data) return moment(data*1000).format('YYYY/MM/DD HH:mm:ss');
+                            else return 'NA';
+                        }
+                    },
+                    {data: 'closetime', render: function(data, type, row) {
+                            if (data) return moment(data*1000).format('YYYY/MM/DD HH:mm:ss');
+                            else return 'NA';
+                        }
+                    },
+                    // {data: 'days_to_fix', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'central_build', render: function(data, type, row) { 
+                        return arrayCh2String(data, "<br>");
+                    }},
+
+                    {data: 'test_hierarchy', render: function(data, type, row) {return (data || ""); }},
+                    {data: 'tracker', render: function(data, type, row) {return (data || ""); }}
+                    ],
+
+            ordering: false,
+            // order: [ 10, 'desc' ],
+
+
+            //stateSave: true,
+            createdRow: function ( row, data, index ) { //highlight not close issue.
+                  if ( data["status"].toLowerCase() != "close" ) { 
+                        $('td', row).eq(2).addClass('highlight');
+                        $('td', row).eq(1).addClass('highlight');
+                    }
+            }
+        }; //end var setting.
+
+        //     for ( var i = 0; i < cols.length; i++ ) {
+        //     if (patt1.test(cols[i])) {
+        //         setting["columns"].push({ data: cols[i],
+        //                     render: function(data, type, row) {
+        //                         if (data) return moment(data*1000).format('YYYY/MM/DD HH:mm:ss');
+        //                         else return 'NA';
+        //                     }
+        //         });
+
+        //     } else {
+        //         setting["columns"].push({data: cols[i], render: function(data, type, row) {return (data || ""); }});
+        //     }
+            
+        // } 
+            
+            
+        table = $('#example').DataTable(setting).draw();
+
+        /******************************************************/
+
+        $("div.toolbar").html('<button id="add"  type="button" disabled=true class="btn btn-default">Add</button><button id="delete"  type="button" disabled=true class="btn btn-default">Delete</button><button id="edit"  type="button" disabled=true class="btn btn-default">Edit</button><div id="crumb-select"></div>');
+
+
+        $('#example tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+                $("#edit").attr("disabled",true);
+                $("#delete").attr("disabled",true);
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                $("#edit").attr("disabled",false);
+                $("#delete").attr("disabled",false);
+            }
+        });
+        $("#add").attr("disabled",false);
+
+        var detailRows = [];
+        $('#example tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+            var idx = $.inArray( tr.attr('id'), detailRows );
+
+            if ( row.child.isShown() ) {
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+
+            }
+            
+        } );
+
+        $( "#add" ).click(function() {
+
+            initOptions(issue_collections);
+
+            $( "#fade" ).fadeTo( 100 , 1, function() {
+                action="add";
+                var editdata = table.data();
+                STATUS_DATA = INI_STATS; // used for opentime
+                $("#description").val('');
+                $("#status").val('NEW'); //initial data
+                $("#bugid").val('');
+                $("#catagory").val('');
+                $("#component").val('OAM');
+                $("#followups").val('');
+                $("#opentime").val('');
+                $("#closetime").val('');
+                $("#rootcause").val('SW Bug');
+                $("#test_hierarchy").val('QT');
+                // $("#submitter_team").val('');
+                $("#severity").val('A-Critical');
+                // $("#submitter").val('');
+                // $("#tracker").val('');
+                $("#top_importance").val('');
+                $("#frequency").val('Permanent');
+                $("#buildid").val('');
+                $("#buildid_close").val('');
+                $("#central_build").val('');
+                
+            });
+        });
+
+        $( "#edit" ).click(function() {
+
+            initOptions(issue_collections);
+
+            $( "#fade" ).fadeTo( 100 , 1, function() {
+                action="edit";
+                var editdata = table.row('.selected').data();
+                STATUS_DATA = editdata.status; // used for closetime
+                //console.log("%j", editdata)
+                $("#_id").val(editdata._id);
+                $("#description").val(editdata.description||'');
+                $("#status").val(editdata.status||'');
+                $("#bugid").val(editdata.bugid||'');
+                $("#catagory").val(editdata.catagory||'');
+                $("#component").val(editdata.component||'');
+                $("#followups").val(editdata.followups||'');
+                $("#opentime").val((editdata.opentime?moment.unix(editdata.opentime).format('YYYY-MM-DD HH:mm:ss'):''));
+                $("#closetime").val((editdata.closetime?moment.unix(editdata.closetime).format('YYYY-MM-DD HH:mm:ss'):''));
+
+                // $("#buildid").val(editdata.buildid || '');
+
+                $("#rootcause").val(editdata.rootcause || '');
+                $("#test_hierarchy").val(editdata.test_hierarchy || '');
+                $("#submitter_team").val(editdata.submitter_team || '');
+
+                $("#severity").val(editdata.severity || '');
+                // $("#transfer_times").val(editdata.transfer_times || '');
+                
+                // $("#submitter").val(editdata.submitter || '');
+                // $("#tracker").val(editdata.tracker || '');
+                // $("#buildid_close").val(editdata.buildid_close || '');
+
+
+                $("#top_importance").val(arrayCh2String(editdata.top_importance, "\n"));
+
+                $("#frequency").val(editdata.frequency||'');
+                $("#buildid").val(editdata.buildid || '');
+                $("#buildid_close").val(editdata.buildid_close || '');
+
+                var dis_data = arrayCh2String(editdata.central_build, "\n");
+                $("#central_build").val(dis_data);
+               
+            });
+        });
+
+        $("#save").click(function(){
+
+            // var pr_num = $("#bugid").val();
+            // pr_num = "PR085825";
+            // getPrData(pr_num);
+
+
+            /*
+            * handle description before save, must fill Description.
+            */
+
+            var desData = $("#description").val();
+            if (desData == "" || desData == null) {
+                alert('Description must be filled!');
+            } else {
+                mySave();
+            }
+            
+        });
+        $("#save1").click(function(){
+            /*
+            * handle description before save, must fill Description.
+            */
+            var desData = $("#description").val();
+            if (desData == "" || desData == null) {
+                alert('Description must be filled!');
+            } else {
+                mySave();
+            }
+        });
+
+        function mySave(){
+            var postdata={action:action,data:{}};
+            postdata["data"]["description"] = $("#description").val();
+            postdata["data"]["status"] = $("#status").val();
+            postdata["data"]["catagory"] = $("#catagory").val();
+            postdata["data"]["component"] = $("#component").val();
+            postdata["data"]["followups"] = $("#followups").val();
+            postdata["data"]["bugid"] = $("#bugid").val();
+            postdata["data"]["rootcause"] = $("#rootcause").val() || "";
+            postdata["data"]["test_hierarchy"] = [$("#test_hierarchy").val() || ""];
+            // postdata["data"]["submitter_team"] = $("#submitter_team").val() || "";
+            postdata["data"]["severity"] = $("#severity").val() || "";
+            postdata["data"]["transfer_times"] = $("#transfer_times").val() || "";
+            
+            postdata["data"]["frequency"] = $("#frequency").val() || "";
+            postdata["data"]["buildid"] = $("#buildid").val() || "";
+            postdata["data"]["buildid_close"] = $("#buildid_close").val() || "";
+
+
+            /*
+            * handle central_build, for save as an Array.
+            */
+            var tmpc = $("#central_build").val() || "";
+            postdata["data"]["central_build"] = tmpc.split("\n");
+
+            var tmpt = $("#top_importance").val() || "";
+            postdata["data"]["top_importance"] = tmpt.split("\n");
+
+
+            /*
+            * handle tracker name, auto generate by system.
+            */
+            // postdata["data"]["submitter"] = $("#submitter").val()|| "";
+            postdata["data"]["tracker"] = sessionStorage.getItem("displayName")||"UNKNOW";
+            if (STATUS_DATA == INI_STATS) {    //used for first add new issue
+                postdata["data"]["submitter"] = sessionStorage.getItem("displayName")||"UNKNOW";
+            } else {    //used for edit issue.
+                postdata["data"]["submitter"] = $("#submitter").val()|| "";
+            }
+
+            /*
+            * handle opentime and closetime, auto generate by system
+            */
+            var oldStatus = STATUS_DATA.toLowerCase();
+            if (!stats.length) {stats.push($('#status').val());} // fix stats.length = 0 during first add.
+            var curStatus = stats.pop().toLowerCase();
+            var CLOSE = "close";
+
+            if (oldStatus == INI_STATS && curStatus && CLOSE != curStatus) {
+            // from null-->New/INV, opentime = current time, closetime = null 
+                var t = moment().unix();
+                postdata["data"]["opentime"] = t;
+                postdata["data"]["closetime"] = ""; // equals null
+            }
+            else if(oldStatus == INI_STATS && curStatus && CLOSE == curStatus) {
+            // from null-->close, opentime = closetime = current time
+                var t = moment().unix();
+                postdata["data"]["opentime"] = t;
+                postdata["data"]["closetime"] = t;
+            }
+            else if (oldStatus != INI_STATS && curStatus && CLOSE == oldStatus && CLOSE != curStatus) {
+            // from close-->NEW/INV, opentime not change, closetime = null
+                var tm = $("#opentime").val();
+                postdata["data"]["opentime"] = +moment(tm).unix();
+                postdata["data"]["closetime"] = "";
+            }
+            else if (oldStatus != INI_STATS && curStatus && CLOSE != oldStatus && CLOSE == curStatus) {
+            // from NEW/INV-->close, opentime not change, closetime = current time    
+                var t = moment().unix();
+                var tm = $("#opentime").val();
+                postdata["data"]["opentime"] = +moment(tm).unix();
+                postdata["data"]["closetime"] = t;
+            }
+            else if (oldStatus && curStatus && CLOSE != oldStatus && CLOSE != curStatus) {
+            // from NEW/INV-->INV(NEW)/NEW(INV), opentime not change, closetime = current time     
+                var tm = $("#opentime").val();
+                postdata["data"]["opentime"] = +moment(tm).unix();
+                postdata["data"]["closetime"] = ""; // equals null
+            }
+            else {
+            // keep oldtime when status not changed
+                var tmOptime = $("#opentime").val();
+                var tmCltime = $("#closetime").val();
+                postdata["data"]["opentime"] = +moment(tmOptime).unix();
+                postdata["data"]["closetime"] = +moment(tmCltime).unix();
+            }
+
+            if (action == "edit"){
+                postdata["data"]["_id"] = $("#_id").val();
+            }
+            // console.log("uiuiuiuiui");
+            post2coop(postdata);
+
+            if(action == "add"){
+                var current_href = window.location.href.toString();
+                window.location.reload(current_href);
+            }
+        } // end function my_save()
+
+        $("#close").click(function () {
+            $("#fade").fadeOut(100);
+        });
+        $("#cancel").click(function () {
+            $("#fade").fadeOut(100);
+        });
+
+        $("#cancel1").click(function () {
+            $("#fade").fadeOut(100);
+        });
+        $('#fade').on('click', function(e) {
+            if (($(e.target).closest('.modal-content').length<1)) {
+                $("#close").click();
+            }
+        });
+
+        $( "#delete" ).click(function() {
+            if (confirm('<p>Are you sure you want to delete</p> ' +table.row('.selected').data()['description'] + ' ?' )){
+                var postdata={action:'delete',data:{}};
+                postdata["data"]["_id"] = table.row('.selected').data()._id;
+                post2coop(postdata);
+            }
+        });
+
+        function post2coop(postdata){
+            $.ajax({
+                url:posturl,
+                type:"POST",
+                dataType:"json",
+                data:postdata,
+                beforeSend:function(){
+                    // console.log(postdata);
+                },
+                success:function(data){
+                    // console.log(data);
+                    $("#close").click();
+                    if (postdata['action'] =='delete'){
+                        // console.log("ddddddddd");
+                        table.row('.selected').remove().draw( false );
+                    }else if(postdata['action'] =='menugroup'){
+                        $("#close_group").click();
+                    }
+                    else{
+                        if(postdata['action']=='edit'){
+                            var editdata = table.row('.selected').data();
+                            table.row('.selected').remove().draw( false );
+                        }
+                        if (data.data[0]){
+                           var newRow= table.row.add(data.data[0]).draw( false );
+                           table.$('tr.selected').removeClass('selected');
+                           $("#"+data.data[0].DT_RowId).closest("tr").addClass('selected');
+                           $("#edit").attr("disabled",false);
+                        }
+                    }
+                },
+                error:function(){
+                    console.log("ERROR: post data failed");
+                }
+            });
+        } //end function post2coop            
+    };  // end function draw_table
+
+
+    function format ( d ) {
+        if (d.test_hierarchy == ""){
+            if(d.catagory.toLowerCase() == "qt1_blocker"){
+                d.test_hierarchy = ["QT;QT1"];
+            }
+            else if(d.catagory.toLowerCase() == "qt2_blocker"){
+                d.test_hierarchy = ["QT;QT2"];
+            }
+            else if(d.catagory.toLowerCase() == "trunk_blocker"){
+                d.test_hierarchy = ["QT"];
+            }
+            else{
+                d.test_hierarchy = ["OTHER"];
+            }
+        }
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" width="50%" style="padding-left:50px;">'+
+            '<tr>'+
+                '<td>Found In Build:</td>'+
+                '<td>'+d.buildid+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Closed In Build:</td>'+
+                '<td>'+d.buildid_close+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Issue Type:</td>'+
+                '<td>'+d.rootcause+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Test Hierarchy:</td>'+
+                '<td>'+d.test_hierarchy+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Submitter Team:</td>'+
+                '<td>'+d.submitter_team+'</td>'+
+            '</tr>'+
+            
+            '<tr>'+
+                '<td>Issue Open Time:</td>'+
+                //'<td>'+moment.unix(d.closetime).format('YYYY-MM-DD hh:mm:ss')+'</td>'+
+                '<td>'+(d.opentime?moment.unix(d.opentime).format('YYYY-MM-DD HH:mm:ss'):'')+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Issue Close Time:</td>'+
+                //'<td>'+moment.unix(d.closetime).format('YYYY-MM-DD hh:mm:ss')+'</td>'+
+                '<td>'+(d.closetime?moment.unix(d.closetime).format('YYYY-MM-DD HH:mm:ss'):'')+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Issue Author:</td>'+
+                '<td>'+(d.submitter || "NA" )+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Issue Last Update:</td>'+
+                '<td>'+(d.tracker || d.submitter) +'</td>'+
+            '</tr>'+
+        '</table>';
+    }
+
+    function arrayCh2String(data, lineBreak) {
+        var dis_data = "";
+        if (data) {
+            (data || []).forEach(function (d, i) { 
+                if (i < data.length -1) {
+                    dis_data += (d + lineBreak);
+
+                } else {
+                    dis_data += d;
+                }
+            }); 
+        }
+        
+        return dis_data;
+    }
+
+    function getStatusChange(ID) {
+        var statusValue = document.getElementById(ID).value;
+        stats.push(statusValue);
+        if(stats.length > 3) {stats.shift();}
+    }
+
+        
+
+    function findItem (obj, item) {
+        var findIndex = obj.indexOf(item);
+        // var findIndex = _.findIndex(obj, function (d) {
+        //     return d.toLowerCase() == item.toLowerCase();
+        // });
+        return findIndex;
+    }
+
+    function initOptions(obj) {
+        _.keys(obj).forEach(function (key) {
+            // fix when save status and logout edit/add page.
+            if ("input" == document.getElementById(key).outerHTML) {
+                document.getElementById(key).outerHTML = document.getElementById(key).outerHTML.replace(/input/g, "select") 
+            }
+
+            var select = document.getElementById(key);
+            var sltObj = select.value;
+            // if (key == "test_hierarchy") {alert(sltObj);}
+            if (!sltObj.length) {   //create options only at first time.
+                obj[key].forEach(function (d) {
+                    select.options.add(new Option(d, d));
+
+                });
+            }
+        });
+    }
+
+    //save data when press keyBoard Enter
+    function keyEvent(evt, mySltID, BtnID) {
+        var value = document.getElementById(BtnID).value;
+        evt = (evt) ? evt : ((window.event) ? window.event : "");
+        var key = evt.keyCode ? evt.keyCode : evt.which;
+        if (value == "Save") {
+            if(key == 13){   // when press Enter during input.
+                saveData(mySltID);
+                chgtoPlusBtn(BtnID);
+                return true;
+            }else {
+                return false;
+            }
+         }
+    }
+
+    function chgBtn(value, mySltID, BtnID) {
+        if (value == 'Save') {
+            saveData(mySltID);
+            chgtoPlusBtn(BtnID);
+        }
+        else if (value == "+") {
+            addOption(mySltID);
+            chgToSaveBtn(BtnID);
+        }
+    }
+
+    function addOption(mySltID) {
+        document.getElementById(mySltID).options.length = 0;
+        document.getElementById(mySltID).outerHTML = document.getElementById(mySltID).outerHTML.replace(/select/g, "input");
+    }
+
+    function chgToSaveBtn(ID) {
+        document.getElementById(ID).value = "Save";
+    }
+
+    function chgtoPlusBtn(ID) {
+        document.getElementById(ID).value = "+";
+    }
+
+    function saveData(mySltID) {
+        var slt = document.getElementById(mySltID);
+
+        var newData = slt.value;
+
+        //format input data.
+        switch(mySltID) {
+            case "component":
+                newData = newData.toUpperCase();
+                break;
+            case "status":
+                newData = newData.toUpperCase();
+                break;        
+            case "rootcause": // capital very first  of letter
+                newData = newData.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); 
+                break;
+        }
+        
+        var findIndex = findItem(issue_collections[mySltID],newData);
+        //input data not blank and not same as exists list.
+        if (newData && (findIndex < 0)) {  
+        // if (findIndex < 0) {
+            issue_collections[mySltID].unshift(newData.trim());     // Put new element in the first position.
+        } else if (findIndex >= 0) {
+            alert("'" + issue_collections[mySltID][findIndex] + "' is already in select list!");
+        }
+        document.getElementById(mySltID).outerHTML = document.getElementById(mySltID).outerHTML.replace(/input/g, "select")
+        addSelectOpt(issue_collections[mySltID], mySltID);
+     
+    }
+
+    function addSelectOpt(obj, mySltID){
+        var len = obj.length;
+        var select = document.getElementById(mySltID);
+        for (var i = 0; i < len; i++) {
+            select.options.add(new Option(obj[i], obj[i]));
+        }
+    }
+
+    </script>
+    </head>
+    <body class="editor wide comments example">
+        <div id="common_menu" class="navbar navbar-default navbar-fixed-top" role="navigation"></div>
+        <div class="section">
+            <div class="container" style="width:100%">
+                <div class="row">
+                    <div id="split-container">
+                        <div id="graph-container" >
+                            <div class="col-md-12 col-lg-12">
+                                <div id="circle-container" style="padding:0px;margin:0px;" class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6" style="padding:0px; text-transform:uppercase;">
+                                                <ul id="scmenu" class="nav navbar-nav navbar-left">
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-md-3 col-lg-3" style="padding:0px;">
+                                    			<div class="input-group">
+                                    				<div id="radioBtn" class="btn-group">
+                                    				</div>
+                                    				<input type="hidden" name="fun" id="fun">
+                                    			</div>
+
+                                            </div >
+                                            <table id="example" class="display" cellspacing="0" width="80%" >
+				                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Description</th>
+                                                    <th>Status</th>
+                                                    <th>Pronto Id</th>
+                                                    <th>Top Importance</th>
+                                                    <th>Component</th>
+                                                    <th>Frequency</th>
+                                                    <th>Severity</th>
+                                                    <th>Follow Up</th>
+                                                    <th>Open time</th>
+                                                    <th>Close time</th>
+                                                    <!-- <th>Age</th> -->
+                                                    <th>Central Build</th>
+                                                    <th>Test Hierarchy</th>
+                                                    <th>Last Update</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Description</th>
+                                                    <th>Status</th>
+                                                    <th>Pronto Id</th>
+                                                    <th>Top Importance</th>
+                                                    <th>Component</th>
+                                                    <th>Frequency</th>
+                                                    <th>Severity</th>
+                                                    <th>Follow Up</th>
+                                                    <th>Open time</th>
+                                                    <th>Close time</th>
+                                                    <!-- <th>Age</th> -->
+
+                                                    <th>Central Build</th>
+                                                    <th>Test Hierarchy</th>
+                                                    <th>Last Update</th>
+                                                </tr>
+                                            </tfoot>
+			                                </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container"style="width:95%">
+			    <div class="section">
+		            <div class="content">
+			           
+			        </div>
+			        
+                </div>
+		    </div>
+        </div>
+        
+
+<div id="fade" class="modal fade">
+          <div class="modal-dialog-wide" >
+            <div class="modal-content" style="top:50px">
+              <div class="modal-header">
+                <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">Issue Manager</h5>
+              </div>
+              <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <input id="_id" type="hidden">
+                        <label class="col-sm-2 control-label">*Description:</label>
+                        <div class="col-sm-4" >
+                            <textarea class="TextareaCrtl" type="text" id="description" style="width:100%; height:60px; resize: none;" required=true placeholder="Must fill this item!"></textarea>
+                        </div>
+                        <label class="col-sm-2 control-label">Status:</label>
+                        <div class="col-sm-4" >
+                        <select name="select" id="status" class="form-control" onchange="getStatusChange(this.id)"></select>
+                            <!-- <input type="text" class="form-control" id="status"> -->
+                        </div>
+                        <label class="col-sm-2 control-label">Proto ID:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="bugid">
+                        </div>
+
+                        <label class="col-sm-2 control-label">Follow Up:</label>
+                        <div class="col-sm-4">
+                            <textarea class="TextareaCrtl" type="text" id="followups" style="width:100%; height:130px; resize: none;"></textarea>
+                        </div>
+
+                        <label class="col-sm-2 control-label">Central Build:</label>
+                        <div class="col-sm-4">
+                            <textarea type="text" class="form-control" id="central_build" style="width:100%; height:70px; resize: none;" placeholder="Optional: which builds exactly encounter this issue"></textarea>
+                        </div>
+                        
+                        <label class="col-sm-2 control-label">Top Importance:</label>
+                        <div class="col-sm-4">
+                            <textarea type="text" class="form-control" id="top_importance" style="width:100%; height:50px; resize: none;" placeholder="Optional"></textarea>
+                        </div>
+                    
+                    
+                    <label class="col-sm-2 control-label">Frequency:</label>
+                    <div class="col-sm-4">
+                        <select name="select" id="frequency" class="form-control"></select>
+                        <!-- <input type="text" class="form-control" id="frequency"> -->
+                    </div>
+                    
+                    <label class="col-sm-2 control-label">Issue Type:</label>
+                    <div class="col-sm-4">
+                        <select name="select" id="rootcause" class="form-control"></select>
+                        <!-- <form>
+                        <select name="select" id="rootcause" onkeypress="keyEvent(event, 'rootcause','Btn_rootcause')" ></select>
+                        <input id="Btn_rootcause" type="button" value="+" onclick="chgBtn(this.value, 'rootcause', 'Btn_rootcause')" />
+                        
+                        </form> -->
+                        
+                        <!-- <input type="text" class="form-control" id="rootcause"> -->
+                    </div>
+
+                    <label class="col-sm-2 control-label">Component:</label>
+                    <div class="col-sm-4">
+                    <select name="select" id="component" class="form-control"></select>
+                        <!-- <form>
+                            <select name="select" id="component" onkeypress="keyEvent(event, 'component','Btn_component')" ></select>
+                            <input id="Btn_component" type="button" value="+" onclick="chgBtn(this.value, 'component', 'Btn_component')" />
+                            
+                        </form> -->
+                    </div>
+                    
+                    <label class="col-sm-2 control-label">Severity:</label>
+                    <div class="col-sm-4">
+                        <select name="select" id="severity" class="form-control"></select>
+
+                        <!-- <input type="text" class="form-control" id="severity"> -->
+                    </div>
+
+                    <label class="col-sm-2 control-label" >Found In Build:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="buildid" placeholder="buildid must exists.">
+                    </div>
+                    
+                    <label class="col-sm-2 control-label">Close In Build:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="buildid_close" placeholder="buildid must exists.">
+                    </div>
+
+                    <label class="col-sm-2 control-label">Open Time:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="opentime" readonly="true" style="background-color: #d1d1d1" placeholder="will be atuo generate!">
+                    </div>
+                    <label class="col-sm-2 control-label">Test Hierarchy:</label>
+                    <div class="col-sm-4">
+                        <select name="select" id="test_hierarchy" class="form-control"></select>
+                        <!-- <input type="text" class="form-control" id="test_hierarchy"> -->
+                    </div>
+                    <label class="col-sm-2 control-label">Close Time:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="closetime" readonly="true" style="background-color: #d1d1d1" placeholder="will be atuo generate!">
+                    </div>
+                    <label class="col-sm-2 control-label">Catagory:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="catagory" placeholder="###_Blocker">
+                    </div>  
+                    
+                    
+                    <!-- <label class="col-sm-2 control-label">Transfer times:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="transfer_times">
+                        <p class="help-block"></p>
+                    </div> -->
+
+                    <input id="submitter" type="hidden">
+                    <input id="tracker" type="hidden">
+
+                                                                                                            
+                      </div>
+                    </form>
+              </div>
+              <div class="modal-footer">
+                <button id="cancel" type="button" class="btn btn-default" style="width:85px;height:30px;">Cancel</button>
+                <button id="save" type="button" class="btn btn-default" style="width:85px;height:30px;">Save</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!--********************************************** -->
+<!-- 
+<div id="fade" class="modal fade">
+  <div class="modal-dialog-wide" >
+    <div class="modal-content" style="top:50px">
+      <div class="modal-header">
+        <h5 class="title">Issue Manager</h5>
+        <button id="cancel" class="cancel" type="button">Cancel</button>
+        <button id="save" class="save" type="button" >Save</button>
+        <button id="close" class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 20px">&times;</span></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="group-textarea">
+                <input id="_id" type="hidden">
+                <label class="col-sm-2 control-label">*Description:</label>
+                <div class="col-sm-4" >
+                    <textarea class="TextareaCrtl" type="text" id="description" style="width:100%; height:60px" required=true></textarea>
+                </div>
+
+                <label class="col-sm-2 control-label">Follow Up:</label>
+                <div class="col-sm-4">
+                    <textarea class="TextareaCrtl" type="text" id="followups" style="width:100%; height:100px"></textarea>
+                    <p class="help-block"></p>
+                </div>
+
+                <label class="col-sm-2 control-label">Central Build:</label>
+                <div class="col-sm-4">
+                    <textarea type="text" class="form-control" id="central_build" style="width:100%; height:80px"></textarea>
+                    <p class="help-block"></p>
+                </div>
+
+          </div>
+          <div class="form-group group-input">
+            <label class="col-sm-2 control-label">Proto ID:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="bugid">
+                <p class="help-block"></p>
+            </div>
+            
+            <label class="col-sm-2 control-label">Status:</label>
+            <div class="col-sm-4" >
+            <select name="select" id="status" onchange="getStatusChange(this.id)"></select>
+                <p class="help-block"></p>
+            </div>
+            
+            <label class="col-sm-2 control-label">Frequency:</label>
+            <div class="col-sm-4">
+                <select name="select" id="frequency"></select>
+                <p class="help-block"></p>
+            </div>
+            
+            <label class="col-sm-2 control-label">Issue Type:</label>
+            <div class="col-sm-4">
+                <select name="select" id="rootcause"></select> -->
+                        <!-- <form>
+                        <select name="select" id="rootcause" onkeypress="keyEvent(event, 'rootcause','Btn_rootcause')" ></select>
+                        <input id="Btn_rootcause" type="button" value="+" onclick="chgBtn(this.value, 'rootcause', 'Btn_rootcause')" />
+                        
+                        </form> -->
+                        
+                        <!-- <input type="text" class="form-control" id="rootcause"> -->
+            <!-- </div>
+
+            <label class="col-sm-2 control-label">Component:</label>
+            <div class="col-sm-4">
+            <select name="select" id="component"></select> -->
+                        <!-- <form>
+                            <select name="select" id="component" onkeypress="keyEvent(event, 'component','Btn_component')" ></select>
+                            <input id="Btn_component" type="button" value="+" onclick="chgBtn(this.value, 'component', 'Btn_component')" />
+                            
+                        </form> -->
+            <!-- </div> -->
+                    
+            <!-- <label class="col-sm-2 control-label">Severity:</label>
+            <div class="col-sm-4">
+                <select name="select" id="severity"></select>
+
+                <p class="help-block"></p>
+            </div>
+
+            <label class="col-sm-2 control-label">Found In Build:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="buildid">
+                <p class="help-block"></p>
+            </div>
+            <label class="col-sm-2 control-label">Top Importance:</label>
+            <div class="col-sm-4">
+                
+                <input type="text" class="form-control" id="top_importance">
+                <p class="help-block"></p>
+            </div>
+            
+            <label class="col-sm-2 control-label">Close In Build:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="buildid_close">
+                <p class="help-block"></p>
+            </div>
+
+            <label class="col-sm-2 control-label">Open Time:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="opentime" readonly="true" style="background-color: #d1d1d1">
+            </div>
+            <label class="col-sm-2 control-label">Test Hierarchy:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="test_hierarchy">
+                <p class="help-block"></p>
+            </div>
+            <label class="col-sm-2 control-label">Close Time:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="closetime" readonly="true" style="background-color: #d1d1d1">
+            </div>
+            <label class="col-sm-2 control-label">Catagory:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="catagory">
+                <p class="help-block"></p>
+            </div>   -->
+                    
+                    
+                    <!-- <label class="col-sm-2 control-label">Transfer times:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="transfer_times">
+                        <p class="help-block"></p>
+                    </div> -->
+
+            <!-- <input id="submitter" type="hidden">
+            <input id="tracker" type="hidden"> -->
+
+                    <!-- <label class="col-sm-2 control-label">Submitter:</label>
+                    <div class="col-sm-4">
+                    <form>
+                        <select name="select" id="submitter" onkeypress="keyEvent(event, 'submitter','Btn_submitter')" ></select>
+                        <input id="Btn_submitter" type="button" value="+" onclick="chgBtn(this.value, 'submitter', 'Btn_submitter')" />
+                        
+                    </form>
+                    </div> -->
+
+                    <!-- 
+                    <label class="col-sm-2 control-label">Submitter Team:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="submitter_team">
+                        <p class="help-block"></p>
+                    </div> -->
+                    
+          <!--</div>-->  <!-- end .form-group group-input-->
+        <!--</form> --> <!-- end .form-horizontal -->
+      <!--</div>-->  <!-- end .modal-body -->
+
+              <div class="modal-footer">
+                <button id="cancel1" type="button">Cancel</button>
+                <button id="save1" type="button">Save</button>
+              </div>
+            </div><!-- end .modal-content -->
+          </div><!--end modal-dialog-wide -->
+        </div><!-- end #fade -->
+        
+	</body>	
+	<style>
+        .legend{
+            width:100%;
+        }
+        th {
+            text-align: center;
+        }
+
+        td.left {
+        text-align: left;
+        
+
+        }
+        td.details-control {
+            background: url('/img/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+        tr.shown td.details-control {
+            background: url('/img/details_close.png') no-repeat center center;
+        }
+        td.highlight {
+        font-weight: bold;
+        color: red;
+        }
+        #radioBtn .notActive{
+            color: #3276b1;
+            background-color: #fff;
+        }
+
+        #radioBtn .active{
+            color: #FFFFFF;
+            background-color: #124191;
+        }
+
+        .TextareaCrtl {
+            position: relative;
+        }
+
+        .title {display:inline;} 
+        .cancel{display:inline;} 
+        .save{display:inline;} 
+        .close{display:inline;} 
+                  
+	</style>
+<script src="js/dynamic_menu.js"></script>
+<script src="lib/bootstrap-switch.min.js"></script>
+<script src="js/pub_dashboard.js"></script>
+<script src="js/issue_dashboard.js"></script>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>substrings</title>
+<script type="text/javaScript">
+
+    var str = "Hello world";
+    var n = str.substr(2,3);    
+    // Syntax is: string.substr(start,length)
+    //start: Required. The position where to start the extraction. First character is at index 0
+    //length: Optional. The number of characters to extract. If omitted, it extracts the rest of the string
+
+    document.writeln("This is the result of the substr method: " + n + '<br>');
+
+    var m = str.substring(2,3); 
+    // Syntax is: string.substring(start,end)
+    // end: Optional. The position (up to, but not including) where to end the extraction. If omitted, it extracts the rest of the string
+
+    document.writeln("This is the result of the substring method: " + m + '<br>');
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

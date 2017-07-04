@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>xpath_snapshot</title>
+<script type="text/javascript">
+    function loadXMLDoc(dname) {
+        if (window.XMLHttpRequest) {
+            xhttp = new XMLHttpRequest();
+        }
+        else {
+            xhttp = new ActiveXOject('Microsoft.XMLHTTP');
+        }
+
+        xhttp.open("GET", dname, false);
+        xhttp.send("");
+        return xhttp.responseXML;
+    }
+
+    xml = loadXMLDoc('files/classes.xml');
+    xpath = "//class/price";
+
+    //the result will not changes while classes.xml changed at mean time while program running.
+    var result = xml.evaluate(xpath, xml, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+
+
+    for(var i = 0; i < result.snapshotLentgh; i++) {
+        alert(result.snapshotItem(i).textContent);
+    }
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

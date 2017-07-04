@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>read and assign class Name</title>
+    <script type="text/javascript">
+        function doIt(chClass) {
+            var addClass = chClass.value;
+            var object = document.getElementById('div1');
+            object.className = addClass;
+            object.innerHTML = addClass;
+        }
+    </script>
+    <style>
+        .class1 {
+            width: 300px;
+            height: 200px;
+            color: #b6ff00;
+            background-color: #ff6a00; 
+        }
+        .class2 {
+            width: 100px;
+            height: 400px;
+            color: #b6ff00;
+            background-color: #000000; 
+        }
+        .class3 {
+            width: 500px;
+            height: 300px;
+            color: #ffd800;
+            background-image: url("img/dog.jpg"); 
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <div id="div1">&lt;div&gt; "div1"</div> -->
+    <div id="div1">div "div1"</div>
+    <input type="button" value="class1" onclick="doIt(this)" />
+    <input type="button" value="class2" onclick="doIt(this)" />
+    <input type="button" value="class3" onclick="doIt(this)" />
+
+    <span id="output"></span>
+
+</body>
+</html>

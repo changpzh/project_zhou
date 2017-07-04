@@ -1,0 +1,63 @@
+###*******************************************************###
+#主要用wget 和 curl
+#curl -u changpzh:3e08d7d5b2549074731d20e27ad3679c http://ltecbwro.inside.nsn.com:8080/view/FZM_Trunk_QT_Test/job/Trunk_Snapshot_FZM524_21/buildWithParameters -d "PACKNAME=${PACKNAME}"
+#wget --auth-no-challenge --http-user=changpzh --http-password=3e08d7d5b2549074731d20e27ad3679c --post-data  "PACKNAME=${PACKNAME}&RUN_TARGET=21_Snapshot" "http://ltecbwro.inside.nsn.com:8080/view/FZM_Trunk_QT_Test/job/Trunk_Snapshot_FZM524_21/buildWithParameters"
+###*******************************************************###
+
+#!/bin/bash -x
+
+#only trigger first passed.
+mkdir -p ./${PACKNAME}
+if [ -e ./${PACKNAME}/Snapshot_Trigger ]; then
+    echo "${PACKNAME} has tested before"
+    exit 2
+else
+    echo "Snapshot successfull" > ./${PACKNAME}/Snapshot_Trigger
+fi
+
+PACKNAME=`echo ${PACKNAME} | cut -d_ -f1,2,3,4,5`
+echo "package name is: ${PACKNAME}"
+
+HW_TYPE_HE="FWHE"
+HW_TYPE_NC="FWNC"
+
+if [ ${HW_TYPE_HE} == ${HW_TYPE} ]; then
+    if [ "QT1" == ${QT_PHASE} ]; then
+        CASELIST="caselist2PIPEFWHEqt1.txt"
+        echo "caselist=${CASELIST}"
+        wget --auth-no-challenge --http-user=changpzh --http-password=3e08d7d5b2549074731d20e27ad3679c --post-data  "PACKNAME=${PACKNAME}&RUN_TARGET=21_Snapshot" "http://ltecbwro.inside.nsn.com:8080/view/FZM_Trunk_QT_Test/job/Trunk_Snapshot_FZM524_21/buildWithParameters"
+    else
+        CASELIST="caselist2PIPEFWHEqt2.txt"
+        echo "caselist=${CASELIST}"
+        wget --auth-no-challenge --http-user=changpzh --http-password=3e08d7d5b2549074731d20e27ad3679c --post-data  "PACKNAME=${PACKNAME}&RUN_TARGET=21_Snapshot" "http://ltecbwro.inside.nsn.com:8080/view/FZM_Trunk_QT_Test/job/Trunk_Snapshot_FZM1649_169/buildWithParameters"
+
+    fi
+
+elif [ ${HW_TYPE_NC} == ${HW_TYPE} ]; then
+    if [ "QT1" == ${QT_PHASE} ]; then
+        CASELIST="caselist2PIPEFWNCqt1.txt"
+        wget --auth-no-challenge --http-user=changpzh --http-password=3e08d7d5b2549074731d20e27ad3679c --post-data  "PACKNAME=${PACKNAME}&RUN_TARGET=21_Snapshot" "http://ltecbwro.inside.nsn.com:8080/view/FZM_Trunk_QT_Test/job/Trunk_Snapshot_FZM1647_166/buildWithParameters"
+    
+    else
+        CASELIST="caselist2PIPEFWNCqt2.txt"
+        echo "caselist=${CASELIST}"
+        wget --auth-no-challenge --http-user=changpzh --http-password=3e08d7d5b2549074731d20e27ad3679c --post-data  "PACKNAME=${PACKNAME}&RUN_TARGET=21_Snapshot" "http://ltecbwro.inside.nsn.com:8080/view/FZM_Trunk_QT_Test/job/Trunk_Snapshot_FZM1648_167/buildWithParameters"
+    fi
+
+else
+    echo "Hardware type or QT phase not correct"
+    exit 1
+fi
+
+svn export --force https://beisop60.china.nsn-net.net/isource/svnroot/hzscm_ci_bts/TD_LTE/scripts/trunk/ScmUtils/qt_report/ ./
+cp -rf ./LTE_eNB_FZM_TDD_trunk/* ./
+/ltesdkroot/ltesdkroot/Tools/Tools/python/python-3.2.2/bin/python GetQt2Result.py -n ${PACKNAME} -c ${CASELIST} -d "/build/home/lteman/CPD/QTResult/" || exit 1
+
+
+#grep pass/fail number
+SUCNUM=`grep "Pass" -c testReport.html`
+FNUM=`grep "Fail" -c testReport.html`
+if [ ${SUCNUM} -eq 0 -a $FNUM -eq 0 ]; then
+    echo "---------test case none exec----------------"
+    exit 1
+fi

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0507_retrive_the_X_Y_coordinates_of_html_elem</title>
+    <script type="text/javascript">
+    	document.addEventListener("mousedown", function(event) {
+    		if (event.target.id == "") {
+    			document.getElementById('output').innerHTML = "";
+
+    		}
+    	});
+        function doIt(elem) {
+        	var elemId = event.target.id;
+        	//The Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
+			var object = elem.getBoundingClientRect();
+            /*
+            The Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
+            console.log(object);    // result as belows:
+            {
+                bottom:250,
+                left:208,
+                right:408,
+                top:50,
+                width:200,
+                height:200
+            }
+            
+            */
+			console.log(object)
+			var xValue = object.left;
+			var yValue = object.top;
+			document.getElementById("output").innerHTML = elemId + ": X:" + xValue + " Y: " + yValue;
+        }
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        #wrapper {
+        	width: 400px;
+        	height: 400px;
+        }
+        .clickBox {
+            width: 200px; 
+            height: 200px;
+            text-align: center; 
+            line-height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<p>Select a box:</p>
+
+<div id="wrapper">
+	<div id="redBox" class="clickBox" style="background-color: #f00; float: left" onclick="doIt(this)">ID = "redBox"</div>
+	<div id="blueBox" class="clickBox" style="background-color: #00f;float: right" onclick="doIt(this)">ID = "blueBox"</div>
+	<div id="greenBox" class="clickBox" style="background-color: #15902c; float: left" onclick="doIt(this)">ID = "greeneBox"</div>
+	<div id="yellowBox" class="clickBox" style="background-color: yellow; float: right" onclick="doIt(this)">ID = "yellowBox"</div>
+
+</div>
+Click an item to get its coordinates
+<br><br>
+<div id="output"></div>
+<br><br>
+<span id="text1"></span>
+You are right, this is text place... a lot of text.
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>9800_jquery_start</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+});
+
+/*
+jQuery Syntax
+The jQuery syntax is tailor-made for selecting HTML elements and performing some action on the element(s).
+
+Basic syntax is: $(selector).action()
+
+A $ sign to define/access jQuery
+A (selector) to "query (or find)" HTML elements
+A jQuery action() to be performed on the element(s)
+Examples:
+
+$(this).hide() - hides the current element.
+
+$("p").hide() - hides all <p> elements.
+
+$(".test").hide() - hides all elements with class="test".
+
+$("#test").hide() - hides the element with id="test".
+
+*/
+
+/*
+you might have noticed that all jQuery methods in our examples, are inside a document ready event:
+$(document).ready(function(){
+
+   // jQuery methods go here...
+
+});
+
+Tip: The jQuery team has also created an even shorter method for the document ready event:
+$(function(){
+
+   // jQuery methods go here...
+
+});
+
+Use the syntax you prefer. We think that the document ready event is easier to understand when reading the code.
+*/
+
+/*
+----------------------------------------------------
+Syntax			|			Description	Examples    |
+----------------------------------------------------
+$("*")						Selects all elements	Try it
+$(this)						Selects the current HTML element	Try it
+$("p.intro")				Selects all <p> elements with class="intro"	Try it
+$("p:first")				Selects the first <p> element	Try it
+$("ul li:first")			Selects the first <li> element of the first <ul>	Try it
+$("ul li:first-child")		Selects the first <li> element of every <ul>	Try it
+$("[href]")					Selects all elements with an href attribute	Try it
+$("a[target='_blank']")		Selects all <a> elements with a target attribute value equal to "_blank"	Try it
+$("a[target!='_blank']")	Selects all <a> elements with a target attribute value NOT equal to "_blank"	Try it
+$(":button")				Selects all <button> elements and <input> elements of type="button"	Try it
+$("tr:even")				Selects all even <tr> elements	Try it
+$("tr:odd")					Selects all odd <tr> elements
+*/
+
+/*
+Here are some common DOM events:
+---------------------------------------------------------------------------
+Mouse Events |	Keyboard Events	 |	Form events	| 	Document/Window Events|
+---------------------------------------------------------------------------
+click			keypress			submit			load
+dblclick		keydown				change			resize
+mouseenter		keyup				focus			scroll
+mouseleave	 	blur				unload
+*/
+
+
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+</body>
+</html>

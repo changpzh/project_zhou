@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>detect user's browser and screen dimension</title>
+        <script type="text/javascript">
+            function doIt() {
+                var screenSize = "Screen Size: " + window.screen.availWidth + " x " + window.screen.availHeight + "<br>";
+                var windowSize = "Window Size: " + window.innerWidth + " x " + window.innerHeight + "<br>";
+                var result = screenSize + windowSize;
+                document.getElementById('output').innerHTML = result;
+            }
+        </script>
+    </head>
+    <body>
+    <input type="button" onclick="doIt()" value="Do it" />
+    <br><br>
+    <span id="output"></span>
+        
+        
+    </body>
+</html>

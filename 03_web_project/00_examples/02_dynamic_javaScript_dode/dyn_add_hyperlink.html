@@ -1,0 +1,32 @@
+va<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>dynamically add a hyperlink to website</title>
+
+        <script type="text/javascript">
+            function createLink() {
+                var aContainer = document.createElement("a");
+                var aHref = "http://www." + document.getElementById('location').value;
+                aContainer.href = aHref;
+                var aText = document.getElementById("name").value;
+                var aNode = document.createTextNode(aText);
+                aContainer.appendChild(aNode);
+                var outputDiv = document.getElementById('output');
+                outputDiv.appendChild(aContainer);
+            }
+        </script>
+
+    </head>
+    <body>
+    <p>Create a hyperlink:</p>
+    Name:<input type="text" size="25" id="name" /><br><br>
+    Location:<input type="text" size="25" id="location" /><br><br>
+    <button onclick="createLink()">Try it</button>
+    <br><br>
+    <div id="output"></div>
+        
+    </body>
+</html>

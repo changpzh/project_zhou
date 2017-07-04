@@ -1,0 +1,1 @@
+2015-09-24 21:54:47,203: root - DEBUG - Namespace(buildUrl='', caseList=None, envList=None, logLevel=None, packageName=None, resultDir='/build/home/citdlte/CPD/QTResult/', template='caseResult.xsl')

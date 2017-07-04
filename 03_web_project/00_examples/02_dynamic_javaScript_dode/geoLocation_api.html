@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GeoLocation</title>
+    <script type="text/javascript">
+        function findLocation() {
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showLocation);
+            }
+            else { alert("Geolocation API won't work with this browser."); }
+        }
+
+        function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            var position = latitude + ',' + longitude;
+            // alert("Latitude:"+ latitude + " Longitude:" + longitude);
+
+            window.location.href = "http://maps.googleapis.com/maps/api/staticmap?center=" + position + "&zoom=14&size=800x600&sensor=false";
+        }
+    </script>
+
+</head>
+<body>
+    <p id="locate">Click the button to see where you are:</p>
+    <button onclick="findLocation()">Try it</button>
+</body>
+</html>

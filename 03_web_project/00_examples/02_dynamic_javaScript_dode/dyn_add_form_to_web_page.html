@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dyna Add a Form Filed to WebPage</title>
+    <script type="text/javascript">
+        var counter = 0;
+        function addField() {
+            counter++;
+            var newElem = document.getElementById('form').cloneNode(true);  //  copy exist Node!    
+            newElem.id = "";
+            var addField = newElem.childNodes;  //会获取换行符内容，如果有2个childNodes，那么换行符就等于2+1， so addFiled.length 会等于5.
+            for (var i = 0; i < addField.length; i++) {
+                var name = addField[i].name;
+                var id = addField[i].id;
+                if (name) {
+                    addField[i].name = name + counter;
+                    addField[i].id = id.replace(/\d/, counter+1);
+                }
+
+                var insert = document.getElementById('newForm');
+                insert.parentNode.insertBefore(newElem, insert);
+                console.log(insert.parentNode);
+            }
+        }
+
+        function getId(elem) {
+            document.getElementById('output').innerHTML = 'Element ' + 
+            elem.id + " Name " + elem.name;
+        }
+    </script>
+</head>
+<body>
+    <div id="form">
+        <label for="">Enter a Value</label>
+        <input type="text" id="input1" name="input" onmouseover="getId(this)" />       
+    </div>
+
+    <span id="newForm"></span>
+    <br><br>
+    <input type="button" onclick="addField()" value="ADD" />
+    <br><br>
+    <span id="output"></span>
+
+</body>
+</html>

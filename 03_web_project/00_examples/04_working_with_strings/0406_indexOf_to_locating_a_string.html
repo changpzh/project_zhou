@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0406_indexOf_to_locating_a_string</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str = document.getElementById("input1").value;
+			var search = document.getElementById("input2").value; 
+			var location = str.indexOf(search) + 1;
+			// var location = str.lastIndexOf(search) + 1;
+
+
+			if (location <= 0) {
+				alert("Not found");
+				return;
+			} 
+
+			var result = "The search found: '" + search + "' at location " + location;	
+			
+			document.getElementById("output").innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<p>Enter a search string:</p>
+<br>
+<input type="text" id="input2" size="25" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Search</button>
+<br>
+Result
+<br>
+<span id="output"></span>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+CRUZE_7_to_list:
+		haifeng.gao@nsn.com
+		+8613989875694@smsgw.nsn.com		
+		
+CRUZE_7_cc_list:
+		I_EXT_MBB_LTE_CPD_CI_HZ@internal.nsn.com
+#		+8613675882112@smsgw.nsn.com
+#		+8613968123630@smsgw.nsn.com
+		
+####
+#  Notice: 1. to_list and cc_list should be ended with an empty line.

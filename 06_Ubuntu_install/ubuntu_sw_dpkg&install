@@ -1,0 +1,185 @@
+主要用到apt-get dpkg两个命令：
+
+1. 快速使用
+
+安装软件 apt-get install softname1 softname2 softname3……
+
+卸载软件 apt-get remove softname1 softname2 softname3……
+卸载并清除配置 apt-get remove --purge softname1
+更新软件信息数据库 apt-get update
+进行系统升级 apt-get upgrade
+搜索软件包 apt-cache search softname1 softname2 softname3……
+修正（依赖关系）安装：apt-get -f install
+
+安装deb软件包 dpkg -i xxx.deb
+删除软件包 dpkg -r xxx.deb
+连同配置文件一起删除 dpkg -r --purge xxx.deb
+查看软件包信息 dpkg -info xxx.deb
+查看文件拷贝详情 dpkg -L xxx.deb
+查看系统中已安装软件包信息 dpkg -l
+重新配置软件包 dpkg-reconfigure xx
+
+sudo dpkg -p package_name卸载软件包及其配置文件，但无法解决依赖关系！
+
+sudo aptitude purge pkgname卸载软件包及其配置文件与依赖关系包！ 
+清除所有已删除包的残馀配置文件
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+如果报如下错误，证明你的系统中没有残留配置文件了，无须担心。
+
+
+
+2.用法详解：
+
+
+2.1 dpkg的介绍及命令使用：
+
+  简介 dpkg是Debian的中级软件包管理器,类似RPM.
+
+dpkg是Debian软件包管理系统的中流砥柱,负责安全卸载软件包,配置,以及维护已安装的软件包.也是Debian系统中众多软件包管理工具的后端.有关dpkg的更多介绍参阅:http://www.dpkg.org
+
+系统中所有packages的信息都在/var/lib/dpkg/目录下,其中子目录”/var/lib/dpkg/info”用于保存各个软件包的配置文件列表.
+
+.conffiles 记录了软件包的配置文件列表
+.list 保存软件包中的文件列表,用户可以从.list的信息中找到软件包中文件的具体安装位置.
+
+.md5sums 记录了软件包的md5信息,这个信息是用来进行包验证的.
+
+.prerm 脚本在Debian报解包之前运行,主要作用是停止作用于即将升级的软件包的服务,直到软件包安装或升级完成.
+
+.postinst脚本是完成Debian包解开之后的配置工作,通常用于执行所安装软件包相关命令和服务重新启动.
+
+/var/lib/dpkg/available文件的内容是软件包的描述信息,该软件包括当前系统所使用的Debian安装源中的所有软件包,其中包括当前系统中已安装的和未安装的软件包.
+
+dpkg查询当前系统所有已安装的deb包
+dpkg –l 命令用于查询当前系统所有以安装的deb包的信息.,通过less和grep可以执行更复杂的查询工作.
+
+例如查找跟vim有关的软件包,dpkg –l |grep –ivim
+
+(如发现iU 表示软件包未安装成功,ii表示安装成功)
+
+查看已安装软件包的详细情况
+dpkg –s 命令查看软件包的详细情况,包括版本,依赖之类的
+
+查询系统中所安装软件包所安装的文件
+dpkg –L 命令用于查询系统中所安装软件包的安装的文件安装到系统的位置和安装了那些.
+
+小提示: 如何可以看软件包装到哪个地方?
+用apt-get install *
+
+如何可以看软件包装到哪个地方?
+dpkg -L package-name|more
+
+查询系统中某个文件属于那个软件包
+dpkg –S 命令用于了解当前的软件属于那个软件包
+
+查询未安装的信息
+查询未安装软件包详细信息
+dpkg –I 命令用于查看未安装软件包的详细信息,以便了解该软件包是否需要安装.
+
+查询deb包文件中所包含的文件
+dpkg –c 显示未安装deb软件包所包含的文件列表,以及安装位置
+
+
+安装软件包
+安装deb软件包
+dpkg –i 手工安装deb包到系统中,不过有时会存在Dpends关系,建议使用apt-get 来安装.
+如果通过dpkg –i安装软件后由于Dpends关系没有安装成功,可通过apt-get –f install解决
+
+解决dpkg –i 安装deb包出现Dpends问题
+apt-get –f install 解决Dpends问题.
+例如:dpkg –i lftp_3.1.3-1_i386.deb
+
+Selecting previously deselected package lftp.
+(Reading database … 20654 files and directories currently installed.)
+unpacking lftp (from lftp_3.1.3-1_i386.deb)…
+dpkg:dependency problems prevent configuration of lftp:
+lftp depends on libexpat1 (<=1.95.8);however
+dpkg : error processing lftp (--install)
+dependency problems –leaving unconfigured
+Errors were encountered while processing:
+lftp
+//lftp软件包安装失败
+dpkg –l |grep lftp
+iU lftp   3.1.3-1   Sophisticated
+command-line FTP/HTTP client p
+//”dpkg -l” 查询信息表示lftp软件包未安装成功
+(iU表示未安装成功,ii表示安装成功)
+
+使用apt-get –f install解决
+
+卸载deb软件包
+dpkg –r用于卸载指定的软件包,该命令只卸载软件包安装到系统中的文件,而不去删除软件包的配置文件,因此不是完全意义上的卸载.但是软件包保存在系统中,可以提供给以后在安装软件包时使用.
+例如:dpkg –r prozilla 移除后再用dpkg –l |grep prozilla 查看
+
+会看到rc proc 1.3.6-3woody3 multi-thraded download accelerator
+
+表示软件包已经被卸载,但配置文件仍在“rc”带表配置文件仍在.
+
+卸载软件包并清除配置文件
+dpkg –P 用于卸载软件包同时也删除配置文件,dpkg –P 不能解决Dpends问题,建议卸载时使用apt-get操作
+
+重新配置软件包
+对于Debian系统中的众多软件包(尤其是系统和服务器软件包)来说,在第一次安装该软件包时候会显示对话框窗口,提示用户输入必要的配置信息.当用户需要再次对软件包配置的时候,可以使用dpkg-reconfigure来对指定的软件包进行配置.
+比如dpkg-reconfigure locales
+
+
+2.2 alien包转换工具
+
+
+如果我们有很喜欢的RPM包,而又没有deb版本.怎么办~?可以同过alien来转换或者直接安装,这个小家伙可是个很方便的东西!
+
+基本命令如下:
+首先通过apt-get install alien来安装.
+然后
+alien -i name-of-the-pakage.rpm /*用来直接安装rpm包
+alien -d , --to-deb /*Make debian packages,This is the default
+例:alien –d package.rpm
+alien –r , --to-rpm /*Make rpm packages
+
+例:alien –r package.deb
+alien –p , --to-pkg /*Make Solaris pkg packages
+alien –-to-slp /*Make slp packages
+alien –t , --to-tgz /*Make tgz packages
+alien –T 检测
+
+alien –-patch=patch 设置patch
+
+
+常用apt命令
+
+apt-cache search # ------(package 搜索包)
+apt-cache show #------(package 获取包的相关信息，如说明、大小、版本等)
+sudo apt-get install # ------(package 安装包)
+sudo apt-get install # -----(package - - reinstall 重新安装包)
+sudo apt-get -f install # -----(强制安装?#"-f = --fix-missing"当是修复安装吧...)
+sudo apt-get remove #-----(package 删除包)
+sudo apt-get remove - - purge # ------(package 删除包，包括删除配置文件等)
+sudo apt-get autoremove --purge # ----(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)
+sudo apt-get update #------更新源
+sudo apt-get upgrade #------更新已安装的包
+sudo apt-get dist-upgrade # ---------升级系统
+sudo apt-get dselect-upgrade #------使用 dselect 升级
+apt-cache depends #-------(package 了解使用依赖)
+apt-cache rdepends # ------(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧...)
+sudo apt-get build-dep # ------(package 安装相关的编译环境)
+apt-get source #------(package 下载该包的源代码)
+sudo apt-get clean && sudo apt-get autoclean # --------清理下载文件的存档 && 只清理过时的包
+sudo apt-get check #-------检查是否有损坏的依赖
+
+
+
+ 2.3 aptitude
+
+与 apt-get 一样，是 Debian 及其衍生系统中功能极其强大的包管理工具。与 apt-get 不同的是，aptitude 在处理依赖问题上更佳一些。举例来说，aptitude 在删除一个包时，会同时删除本身所依赖的包。这样，系统中不会残留无用的包，整个系统更为干净。以下是笔者总结的一些常用 aptitude 命令，仅供参考。
+
+命令 作用
+aptitude update 更新可用的包列表
+aptitude upgrade 升级可用的包
+aptitude dist-upgrade 将系统升级到新的发行版
+aptitude install pkgname 安装包
+aptitude remove pkgname 删除包
+aptitude purge pkgname 删除包及其配置文件
+aptitude search string 搜索包
+aptitude show pkgname 显示包的详细信息
+aptitude clean 删除下载的包文件
+aptitude autoclean 仅删除过期的包文件 

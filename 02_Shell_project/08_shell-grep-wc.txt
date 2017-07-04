@@ -1,0 +1,5 @@
+##查询某个目录里面包含“pass”（忽略大小写）的文件数赋值给Numpass
+NumPass=`grep "pass" ./${PACKNAME} -irl | wc -l`
+
+##查询某个目录里面包含“pass”（忽略大小写）的个数赋值给Numpass
+NumPass=`grep "pass" ./${PACKNAME} -ir | wc -l`

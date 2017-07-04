@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>9806_jquery_focus_blur_events</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+});
+
+/*
+Here are some common DOM events:
+---------------------------------------------------------------------------
+Mouse Events |	Keyboard Events	 |	Form events	| 	Document/Window Events|
+---------------------------------------------------------------------------
+click			keypress			submit			load
+dblclick		keydown				change			resize
+mouseenter		keyup				focus			scroll
+mouseleave	 	blur				unload
+*/
+
+/*
+blur()
+
+The blur() method attaches an event handler function to an HTML form field.
+The function is executed when the form field loses focus:
+*/
+
+</script>
+</head>
+<body>
+
+Name: <input type="text" name="fullname"><br>
+Email: <input type="text" name="email">
+
+</body>
+</html>

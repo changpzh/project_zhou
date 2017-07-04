@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0519_create_and_track_an_obj_on_html5_canvas</title>
+
+	<script>
+		var xLoc = 0;
+		var yLoc = 0;
+		var xOld = 0;
+		var yOld = 0;
+
+		function doIt() {	
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+
+			xLoc = document.getElementById("xLoc").value;
+			yLoc = document.getElementById("yLoc").value;
+			var myRectangle = {width:100, height: 100, borderWidth: 2};
+			document.getElementById("output").innerHTML = "xLoc: " + xLoc + " xOld: " + xOld;
+
+			// context.clearRect(xOld -5, yOld - 5, myRectangle.width + 10, myRectangle.height + 10);
+			xOld = xLoc;
+			yOld = yLoc;
+
+			drawRectangle(myRectangle, context);
+
+			function drawRectangle(myRectangle, context) {
+				context.beginPath();
+				context.rect(xLoc, yLoc, myRectangle.width, myRectangle.height);
+				context.fillStyle = "#ffff00";	// rectangle's fill style
+				context.fill();
+				context.lineWidth = myRectangle.borderWidth;
+				context.strokeStyle = "red";	// border's style
+				context.stroke();
+
+			}
+		
+		}
+		function clearCanvas() {
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="300" style="border: 1px solid #000000"></canvas>
+
+<br><br>
+X: <input type="text" id="xLoc" size="5">
+Y: <input type="text" id="yLoc" size="5">
+<br><br>
+
+<input type="button" onclick="doIt()" value="GO">
+<input type="button" onclick="clearCanvas()" value="Clear">
+<br><br>
+<span id="output"></span>
+
+
+</body>
+</html>

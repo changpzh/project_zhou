@@ -1,0 +1,389 @@
+
+###PR top Name:
+TOP_LNT5.0_QT_Blocker
+TOP_TL00_QT_Blocker 
+TOP_LBTSG_PS_Integration
+
+###Nokia MME IP
+10.69.207.10
+10.69.47.138
+10.68.151.202
+
+Sloution documentation server(svn)
+http://10.140.89.128/svnrepo/OAM/ 
+
+
+###hzling server.
+hzling21:10.159.194.10----tdlteman/72c66f5e
+hzling23:10.159.215.16----citdlte/49e1b4b2
+FZM: http://ltecbwro.inside.nsn.com:8080/----10.159.70.15
+
+10.140.90.25----btstest/btstest
+10.68.152.98----tdlte/tdlte
+10.68.160.99----share/share
+10.140.19.49----tdlte-tester/lteqt2
+
+###wrlingb08 server-build path:
+/var/fpwork/lteman/jenkins_TDD_FZM/.hudson/jobs/LTE_eNB_FZM_TDD_trunk/builds/${BUILDID}/archive
+
+#ssh to FSP12
+ssh 192.168.253.18 -l toor4nsn
+oZPS0POrRieRtu
+
+
+###Nokia Server: use Filezila SFTP
+1:Poland server
+a: wrling15.emea.nsn-net.net//ullteb41.emea.nsn-net.net
+ur user name and pwd
+b: sylen.emea.nsn-net.net
+tddfzm/tddfzm
+
+2:American server
+a: chling13.americas.nsn-net.net//chling17.americas.nsn-net.net
+ur user name and pwd
+
+3:10.58.133.105---TRS
+generic/generic
+
+4:Emil server
+a; rncts.emea.nsn-net.net
+rncts/rncts1
+
+###以后新加的env建议按如下方式命名，以前加的env不变。
+RL55_FZM_FWHD_4PIPE_QT1QT2
+
+                                                                                                     
+###swconfig.txt print level###                                                                         
+#AaSysLogInputLevel: (0 = disable 1 = debug 2 = info 3 = warning 4 = error 5 = vip 6 = disable)        
+0x1003f = 1                                                                                            
+#AaSysLogOutputLevel: (0 = disable 1 = debug 2 = info 3 = warning 4 = error 5 = vip 6 = disable)       
+0x10040 = 1                                                                                            
+###------1 = debug 级别最低，这个就是debug一个级别的print都有                                          
+###------2就是包括了info, warning, error, VIP print                                                    
+###------3是warning, error, VIP                                                                        
+                                                                                                       
+                                                                                                       
+##change mode                                                                                          
+mount -o rw,remount /ffs/fs1                                                                           
+mount -o rw,remount /ffs/fs2                                                                           
+                                                                                                       
+##unpack file                                                                                          
+cd /tmp                                                                                                
+tar -xzf codeload.tgz                                                                                  
+mv libOM_expat.so /lib                                                                                 
+                                                                                                       
+./codeload                                                                                             
+/tmp/[full package name]                                                                               
+                                                                                                       
+##sign file to P7                                                                                      
+crasign [filename]                                                                                     
+craverify [filename] [filename.p7]                                                                     
+                                                                                                       
+##PS tree                                                                                              
+pstree                                                                                                 
+                                                                                                       
+                                                                                                       
+##journal log, use to trace reset procedure                                                            
+mount -o rw,remount /ffs/fs1                                                                           
+cd /ffs/fs1                                                                                            
+cp /ffs/fs2/logs/journal.log ./                                                                        
+                                                                                                       
+journalctl -b > /rom/journal.log                                                                       
+/ffs/fs1/logs/SOAPLive/RFSW_SoapMessageTraceStartup.xml                                                
+                                                                                                       
+/opt/trs/bin/ukpt  -c "*" > /var/log/all.txt &                                                         
+/opt/trs/bin/ukpt "*" | grep MO_Load                                                                   
+                                                                                                       
+cd /ffs/run/logs                                                                                       
+journalctl >journal.log                                                                                
+                                                                                                       
+##turn of firewall on FZM                                                                              
+./opt/trs/S02iptables stop                                                                             
+                                                                                                       
+                                                                                                       
+##TCP dump                                                                                             
+tcpdump -i eth1 -w /var/log/pcktDump.pcap                                                              
+                                                                                                       
+arp -a                                                                                                 
+                                                                                                       
+##check time on FZM console                                                                            
+date                                                                                                   
+syncappmmi status                                                                                      
+                                                                                                       
+                                                                                                       
+###check PS version                                                                                    
+cat /etc/version                                                                                       
+                                                                                                       
+###change permission of slave partition                                                                
+mount -o rw,remount /ffs/fs1                                                                           
+                                                                                                       
+###change size of /tmp                                                                                 
+mount -o remount,size=1G /tmp                                                                          
+cd /tmp                                                                                                
+tar -xzf codeload.tgz                                                                                  
+mv libOM_expat.so /lib                                                                                 
+                                                                                                       
+###de-commission.                                                                                      
+rm -rf /rom/trs_data/db/*                                                                              
+rm -rf /rom/trs_data/active/*                                                                          
+rm -rf /rom/btsom/config/*                                                                             
+sync                                                                                                   
+reboot -f                                                                                              
+                                                                                                       
+###change activative partition.                                                                        
+l2u-dtb set_lap 2                                                                                      
+l2u-dtb update                                                                                         
+echo "0" > /sys/devices/virtual/cpld-usr/cpld-usr/scr1                                                 
+sync                                                                                                   
+reboot                                                                                                 
+                                                                                                       
+###Display active partition                                                                            
+l2u-dtb display                                                                                        
+                                                                                                       
+###Stop Watchdog                                                                                                  
+watchdog -t 1 -T 8 /dev/watchdog
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+##DeMing CPE:                                                                                          
+telnet  192.168.0.1     admin/admin                                                                    
+killall ltemanage                                                                                      
+serial_test                                                                                            
+at%setcfg="band","41"                                                                                  
+at%getcfg="band"                                                                                       
+                                                                                                       
+AT+CRSM=176,28539,0,0,12                                                                               
+AT+CRSM=214,28539,0,0,12,"FFFFFFFFFFFFFFFFFFFFFFFF"                                                    
+                                                                                                       
+##DeMing CPE:                                                                                          
+####use putty to Saw 9001port###                                                                       
+                                                                                                       
+##占用CPE                                                                                              
+ATBEGIN=1                                                                                              
+                                                                                                       
+##开启全功能                                                                                           
+AT+CFUN=1                                                                                              
+                                                                                                       
+##CPE attach                                                                                           
+AT+CGATT=1                                                                                             
+                                                                                                       
+                                                                                                       
+##CPE dettach                                                                                          
+AT+CGATT=0                                                                                             
+                                                                                                       
+##查询CPE attach 情况到哪个站                                                                          
+AT+CGATT?                                                                                              
+                                                                                                       
+##查询CPE attach 到哪个站,16进制Global Cell ID: 00020C01----BTSID=524                                  
+AT%PCONI                                                                                               
+                                                                                                       
+##查询CPE 被分配到的IP地址                                                                             
+AT+CGPADDR                                                                                             
+                                                                                                       
+##查询频点号，earfcn
+AT%EARFCN?
+
+##设置UE attach的频点号
+AT%EARFCN=40778
+                                                                                         
+##清除CPE黑名单                                                                                        
+AT%SETCFG="SC_INFO","0"                                                                                
+AT%SETCFG="SC_STATE","0"                                                                               
+                                                                                                       
+AT+CRSM=176,28539,0,0,12                                                                               
+AT+CRSM=214,28539,0,0,12,"FFFFFFFFFFFFFFFFFFFFFFFF"                                                    
+                                                                                                       
+                                                                                                       
+##释放CPE----------------而且这步很重要，不然web端连不上CPE                                            
+ATBEGIN=0                                                                                              
+                                                                                                       
+##重启CPE                                                                                              
+ATREBOOT                                                                                               
+###----------END DeMing CPE-------###                                                                  
+                                                                                                       
+##UDP                                                                                                  
+#UDP_UL                                                                                                
+route add 10.69.65.21 mask 255.255.255.255 192.168.0.1 metric 1                                        
+iperf.exe -s -u -P 0 -i 1 -p 5077 -w 41.0K -l 1024.0B -f k –o                                         
+iperf.exe -c 10.69.65.21 -u -P 1 -i 1 -p 5077 -w 41.0K -l 1024.0B -f k -b 25M -t 50 -T 1 -B 192.168.0.2
+#UDP_DL                                                                                                
+iperf.exe -s -u -P 0 -i 1 -p 5011 -w 41.0K -l 1024.0B -f k – o                                        
+iperf.exe -c 10.69.3.40 -u -P 1 -i 1 -p 5011 -w 41.0K -l 1024.0B -f k -b 120M -t 30 -T 1               
+                                                                                                       
+##TCP                                                                                                  
+iperf.exe -s -i 1 -p 5011 -w 512kb -t 60                                                               
+iperf.exe -c 10.69.3.40 -i 1 -p 5011 -t 60                                                             
+#TCP_UL                                                                                                
+route add 10.69.65.21 mask 255.255.255.255 192.168.0.1 metric 1                                        
+iperf.exe -s -P 0 -i 1 -p 5077 -f k –o | grep SUM                                                     
+iperf.exe -c 10.69.65.21 -P 10 -i 1 -p 5077 -f k -t 30 -d -L 58899 -T 1 -B 192.168.0.2                 
+#TCP_DL                                                                                                
+iperf.exe -s -P 0 -i 1 -p 5011 -f k -o | grep SUM                                                      
+iperf.exe -c 10.69.3.40 -P 30 -i 1 -p 5011 -f k -t 30 -d -L 58899 -T 1 -B 10.69.65.21                  
+                                                                                                       
+route delete 10.69.65.21 mask 255.255.255.255                                                          
+                                                                                                       
+                                                                                                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

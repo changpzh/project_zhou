@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0514_draw_a_circle_on_html5_canvas</title>
+
+	<script>
+		function doIt() {
+			var x = document.getElementById("x").value;
+			var y = document.getElementById("y").value;
+			var radius = document.getElementById("radius").value;
+			var start = document.getElementById("start").value;
+			var color = document.getElementById("color").value;
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			context.strokeStyle = color;
+			context.beginPath();
+			context.arc(x,y, radius, start, 2 * Math.PI);
+			context.stroke();
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="200" height="200" style="border: 1px solid #000000"></canvas>
+<br><br>
+x: <input type="text" id="x" size="5"> y: <input type="text" id="y" size="5">
+<br><br>
+radius: <input type="text" id="radius" size="5"> 
+<br><br>
+start angle: <input type="text" id="start" size="5">
+end angle: 2*Math.PI 
+<br><br>
+Color: <input type="text" id="color" size="5">
+<br><br>
+<input type="button" onclick="doIt()" value="GO">
+
+
+
+</body>
+</html>

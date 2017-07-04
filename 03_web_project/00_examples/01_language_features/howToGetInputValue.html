@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>howToGetInputValue</title>
+    <script type="text/javascript">
+        function nameTest(name, email) {
+            alert(name);
+            alert(email);
+            
+        }
+    </script>
+</head>
+<body>
+
+<form>  <!-- you must put input item in form hierarchy, otherwises you will get an error: Uncaught ReferenceError: myNum is not defined(…)  -->
+  Name: <input type="text" name="fullname"><br>
+  Email: <input type="text" name="email"><br>
+  <input type="button" value="button1" onclick="nameTest(fullname.value, email.value)" />
+</form>
+
+</body>
+</html>

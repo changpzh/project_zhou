@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0421_join_strings_using_concat</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input1").value;
+			var str2 = document.getElementById("input2").value;
+			var result = str1.concat(str2);
+			document.getElementById("output").innerHTML = result;
+
+		}
+		
+		
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<br><br>
+
+<textarea name="textarea" id="input2" cols="50" rows="10"></textarea>
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br><br>
+Result:
+<span id="output"></span>
+</body>
+</html>

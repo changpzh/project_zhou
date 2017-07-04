@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>9804_jquery_post_method</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.post("demo_test_post.asp",
+        {
+          name: "Donald Duck",
+          city: "Duckburg"
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+
+    /*
+    The first parameter of $.post() is the URL we wish to request ("demo_test_post.asp").
+
+	Then we pass in some data to send along with the request (name and city).
+
+	The ASP script in "demo_test_post.asp" reads the parameters, processes them, and returns a result.
+
+	The third parameter is a callback function. The first callback parameter holds the content of the page requested, and the second callback parameter holds the status of the request.
+    */
+
+    //demo_test_post.asp file contents
+    /*
+    <%
+	dim fname,city
+	fname=Request.Form("name")
+	city=Request.Form("city")
+	Response.Write("Dear " & fname & ". ")
+	Response.Write("Hope you live well in " & city & ".")
+	%>
+    */
+
+
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP POST request to a page and get the result back</button>
+
+</body>
+</html>

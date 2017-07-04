@@ -1,0 +1,20 @@
+TDD_RL55_to_list:
+		jc.zhou@nsn.com
+		+8618857179291@smsgwnsn.com		
+		
+TDD_RL55_cc_list:
+		I_EXT_MBB_LTE_CPD_CI_HZ@internal.nsn.com
+		+8613735589455@smsgw.nsn.com
+		+8613989875694@smsgw.nsn.com
+		+8618857199749@smsgw.nsn.com
+		+8618868794735@smsgw.nsn.com
+		+8613857118409@smsgw.nsn.com
+		+8618626875357@smsgw.nsn.com
+		+8618657130951@smsgw.nsn.com
+#		+8613675882112@smsgw.nsn.com
+		+8618658809661@smsgw.nsn.com
+		+8618605130951@smsgw.nsn.com	
+		
+		
+####
+#  Notice: 1. to_list and cc_list should be ended with an empty line.

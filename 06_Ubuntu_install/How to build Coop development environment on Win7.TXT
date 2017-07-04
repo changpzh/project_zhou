@@ -1,0 +1,119 @@
+#####A.1 How to build Coop development environment on Win7?
+
+Step 1. Download Oracle VirtualBox for Windows hosts from https://www.virtualbox.org/wiki/Downloads, and install it
+
+Step 2. Download Ubuntu 14.04.2 LTS 64-bit ISO from http://www.ubuntu.com/download/desktop, Long Term Support (LTS) version is preferred
+
+Step 3. Enable VT-x/AMD-V virtualization support in your PC BIOS (Otherwise you can't install 64-bit linux)
+
+Step 4. Start VirtualBox Manager (reference: http://www.crifan.com/crifanrecommendvirtualmachinesoft_virtualbox/)
+
+Click New - >select linux -> Ubuntu 64 bit -> Next
+Input virtual Momory size (I assign 3096)
+Create virtual disk. At least 20G. (I create 30G size disk)
+Config your Virtual computer:
+a.Add Ubuntu 14.04.2 ISO into CDROM.
+b.Enable copy/paste.
+c.Set Graph memory size.
+d.Set CPU count
+e.Enable network
+Start the virtual computer your just created and install Ubuntu. Make sure network is workable. If you're doing this in office network, select "Try Ubuntu" on install start page, set proxy in "System Settings", then click Install Ubuntu on desktop.
+Install VirtualBox Guest Additions on Virtualbox manager menu to enable cliboard/folder sharing and get better screen resolution.
+Enable root user and set password for root
+sudo passwd -u root
+sudo passwd root
+Switch to root user and add proxy settings in ~/.bashrc:
+export http_proxy=http://10.144.1.10:8080
+export https_proxy=http://10.144.1.10:8080
+Configure proxy for apt (Advanced Package Tool) with 'root@ubuntu:~# vim /etc/apt/apt.conf':
+Acquire::http::proxy "http://10.144.1.10:8080";
+Acquire::ftp::proxy "ftp://10.144.1.10:8080";
+Acquire::https::proxy "https://10.144.1.10:8080";
+Restart your Virtual computer to continue
+Step 5. Coop application install
+
+a. Install git by command : sudo apt-get install git
+b. Install Nodejs
+        1. firstly£¬install compiling tools
+        $ sudo apt-get install g++ curl libssl-dev apache2-utils
+        $ sudo apt-get install python
+        $ sudo apt-get install build-essential
+        $ sudo apt-get install gcc
+        $ sudo apt-get install g++
+        $ sudo apt-get install libkrb5-dev
+        2. download node source files and install Nodejs
+        wget https://nodejs.org/dist/v0.10.34/node-v0.10.34.tar.gz
+        $ tar -zxf node-v0.10.34.tar.gz
+        $ cd node-v0.10.34
+        $ ./configure
+        $ make
+        $ sudo make install
+* c. Clone Coop Source code by command:
+    $ git clone http://gitlab.china.nsn-net.net/cpd/falcon.git ~/falcon
+    (Need add your SSH key into Gitlab profile first: http://becrtt01.china.nsn-net.net/help/ssh/README)
+* d. Config proxy for npm, and check conifg:
+    $ npm config set proxy http://10.144.1.10:8080
+    $ npm config set https-proxy http://10.144.1.10:8080
+    $ npm config list
+* e. Switch to ./falcon/producer folder and run command `npm install`, this will install all dependencies listed in package.json
+* g. Install MongoDB 2.6 (reference url : http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
+    * Issue the following command to import the MongoDB public GPG Key:
+        * sudo -E apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+    * Create list file for MongoDB:
+        * echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+    * Issue the following command to reload the local package database:
+        * sudo apt-get update
+    * Install the latest stable version of MongoDB. Issue the following command:
+        * sudo apt-get install mongodb-org
+    * Check Mongodb service by Command:
+        * sudo service mongod status
+    * Start MongoDB by Command:
+        * sudo service mongod start
+    * Import mongoDB from dump file
+        1. Get mongoDB last dump from link: ftp://hzogrvm01.china.nsn-net.net/mongo_backup/
+        2. unzip dump file by command : tar zxvf dump_2016-03-25-003500.tar.gz
+        3. import mongoDB by command: mongorestore  --drop dump_2016-03-25-003500
+        4. Connect mongoDB by command: mongo 127.0.0.1/pipeline
+
+* h. Install Redis
+    * Get Redis by command :wget http://download.redis.io/releases/redis-3.0.1.tar.gz
+    * unzip file by command : tar xvzf redis-3.0.1.tar.gz
+    * cd redis-3.0.1
+    * make
+    * make test
+    * sudo make install
+    * cd utils and run command : sudo ./install_server.sh
+    * check Redis service by command: sudo service redis_6379 status
+    * Start Redis service by command: sudo service redis_6379 start
+
+* i. Install ArangoDB (see https://www.arangodb.com/download/)
+    * Add the repository key to apt like this:
+            wget https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/Release.key
+            sudo apt-key add - < Release.key
+        
+    * Create the /etc/apt/sources.list.d/arangodb.list list file using the following command:
+        * echo 'deb https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/ /' | sudo tee /etc/apt/sources.list.d/arangodb.list
+        * sudo apt-get install apt-transport-https
+        * sudo apt-get update
+        * sudo apt-get install arangodb=2.8.7
+    * Check ArangoDB service by Command:
+        * sudo service arangodb status
+    * Start ArangoDB by Command:
+        * sudo service arangodb start
+    * Import ArangoDB from dump file
+        * 1. Get arangoDB last dump from link: ftp://hzogrvm01.china.nsn-net.net/arango_backup/
+        * 2. unzip dump file by command : tar zxvf coop_arangodb_dump.tar.gz
+        * 3. create database falcon by command : 
+        * $ arangosh
+        * $ db._createDatabase('falcon')
+        * 4. import arangoDB by command: arangorestore --server.database=falcon --input-directory=arango_2015-06-04-135805
+    * Initiation arangoDB issue following command:
+        * cd falcon/producer/scripts
+        * node setup_graph.js
+Step 6. Start coop develop environment
+cd /falcon/producer/
+node reader.js -- Start Coop Redis service
+npm start -- Start Coop Data API service: Access http://127.0.0.1:3000/api/trunkbuilds/search/index to verify 3000 port is work able.
+npm test -- execute unit test
+cd /falcon/frontend
+python -m SimpleHTTPServer 8080 -- Start Coop web service : Access http://127.0.0.1:8080 to verify the web page.

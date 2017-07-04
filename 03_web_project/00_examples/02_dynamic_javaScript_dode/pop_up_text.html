@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>brower and Pop ups</title>
+        <script type="text/javascript">
+            function popUp(event, text, color) {
+                var popElem = document.getElementById('PopUp');
+
+                if(window.event) {  // IE hack
+                    var x = window.event.clientX + 15;
+                    var y = window.event.clientY + 15; 
+                }
+                else {  // for FF, otherwise you'll get error with 
+                        //"TypeError: window.event is undefined"
+                    var x = event.clientX + 15;
+                    var y = event.clientY + 15; 
+                }
+                
+                popElem.style.left = x + "px";
+                popElem.style.top = y + "px";
+                popElem.style.display = "block";
+                popElem.style.background = color;
+                // popElem.style.color = textCol;
+                popElem.innerHTML = text;
+                console.log(text);
+            }
+
+            function clearPop(event) {
+                var popElement = document.getElementById('PopUp');
+                popElement.style.display = 'none';
+            }
+        </script>
+        <style >
+            body, #popUp{
+                font-family: Calibri;
+                font-size: 16px;
+            }
+        </style>
+
+
+    </head>
+    <body>
+    The window.setInterval() method can be written without the window prefix.
+    The first parameter is the function to be executed.
+    The second parameter indicates the length of the time-interval between each execution.
+    You can Click <a href="javascript:void(null)" onclick="popUp(event, 'var myVar = setInterval(myTimer, 1000);<br>Zhou Changping','#ff9900')" onmouseout="clearPop(this)">here</a> to learn more.
+    This example executes a function called "myTimer" once every second (like a digital watch).
+
+    <!-- PopUp container -->
+    <div id="PopUp" style="display: none; position: absolute; border: solid black 1px; padding: 10px; font-family: Calibri; font-size: 16px;">
+        <span id="PopUpText"><!-- Text will autofill here --></span>
+    </div>
+    <!-- End PopUp container -->    
+    </body>
+</html>

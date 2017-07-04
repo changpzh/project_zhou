@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>9903_how_to_control_table_columns</title>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .myDiv {
+            width: 200px; 
+            height: 100px;
+            text-align: center; 
+            line-height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+
+<p>this example show you how to control table as columns</p>
+<table>
+    <tr>
+        <!-- Control the column input -->
+        <td>    <!-- first line -->
+            <div class="myDiv" id="default" style="background-color: #ffd800;" onmouseover="setCursor(this)">first_column1</div>
+            <div class="myDiv" id="auto" style="background-color: #cd84e6;" onmouseover="setCursor(this)">first_column2</div>
+            <div class="myDiv" id="move" style="background-color: #81b6e3;" onmouseover="setCursor(this)">first_column3</div>
+        </td>
+
+        <td>
+            <div class="myDiv" id="text" style="background-color: #dddd00;" onmouseover="setCursor(this)">second_column1</div>
+            <div class="myDiv" id="copy" style="background-color: #ffaaee;" onmouseover="setCursor(this)">second_column2</div>
+            <div class="myDiv" id="">second_column3</div>
+        </td>
+        <td>
+            <div class="myDiv" id="text" style="background-color: #dddd00;" onmouseover="setCursor(this)">third_column1</div>
+            <div class="myDiv" id="copy" style="background-color: #ffaaee;" onmouseover="setCursor(this)">third_column2</div>
+            <div class="myDiv" id=""></div>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+

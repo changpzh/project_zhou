@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0502_moving_an_html_element_with_the_mouse</title>
+	<style type="text/css">
+		#sprite1 {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			top: 100px;
+			left: 0px;
+			background-color: #ffd800;
+		}
+	</style>
+	<script type="text/javascript">
+		//the actual coordinates of the mouse
+		var mouseX = 0;
+		var mouseY = 0;
+		//the staring values of X, Y wehn object was clicked
+		var startX = 0;
+		var startY = 0;
+		//coordinates on object where it was clicked, pulled from live mouse coordinates in mousemove event.
+		var locX = 0;
+		var locY = 0;
+		document.onmousemove = function (event) {
+			locX = event.pageX;
+			locY = event.pageY;
+			document.getElementById("output1").innerHTML = "X: " + locX + " Y: " + locY;
+		}
+		function drag(event) {
+			event.ondragend = function(event) {
+				var object = this.getBoundingClientRect();
+				startX = object.left;
+				startY = object.top;
+				offsetX = locX - startX;	//used to avoid top/left = locY/locX. 
+				offsetY = locY - startY;	//something like div will jumple while release mouse during dragging
+				mouseX = event.clientX - offsetX;
+				mouseY = event.clientY - offsetY;
+				this.style.left = mouseX + "px";
+				this.style.top = mouseY + "px";
+				document.getElementById("output2").innerHTML = "X: " + mouseX + " Y: " + mouseY;
+			}
+		}
+	</script>
+	
+</head>
+<body>
+Live coordinates: <div id="output1"></div>
+Last position: <div id="output2"></div>
+
+<div id="sprite1" class="dragger" draggable="true" ondragstart="drag(this)" style=" cursor:pointer;"></div>
+
+</body>
+</html>

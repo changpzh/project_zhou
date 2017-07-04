@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0316_track_keyboard_input</title>
+    <script type="text/javascript">
+
+        
+        document.addEventListener('keydown', function(event) {
+            chkSca();
+            var type = "Event type: " + event.type;
+            var keyPressed = "Keyboard value: " + event.keyCode;
+            var char = "Keyboard character: " + String.fromCharCode(event.keyCode); //convert ASCII --> letter
+
+            var relChar = "keyborad input: " + event.key;
+            var relcode = "keyborad input relCode: " +event.key.charCodeAt(); //convert letter --> ASCII
+
+            var result = '<br>' + type + '<br>' + keyPressed + '<br>' + char + '<br>' + relChar + '<br>' + relcode;
+            var result = '<br>' + type + '<br>' + keyPressed + '<br>' + relChar + '<br>' + char;
+            document.getElementById("output2").innerHTML = result;
+        });
+
+
+        document.addEventListener('keyup', function(event) {
+            chkSca();
+            var type = "Event type: " + event.type;
+            var keyPressed = "Keyboard value: " + event.keyCode;
+            var char = "Keyboard character: " + String.fromCharCode(event.keyCode); //convert ASCII --> letter
+
+            var relChar = "keyborad input: "+ event.key;
+            var relcode = "keyborad input relCode: " +event.key.charCodeAt(); //convert letter --> ASCII
+
+            var result = '<br>' + type + '<br>' + keyPressed + '<br>' + char + '<br>' + relChar + '<br>' + relcode;
+            document.getElementById("output2").innerHTML = result;
+        });
+
+        function chkSca() {
+            if (event.shiftKey) {
+                document.getElementById("output1").innerHTML = 'SHIFT';
+            } else if (event.ctrlKey) {
+                document.getElementById("output1").innerHTML = 'CTRL';
+            } else if (event.altKey) {
+                document.getElementById("output1").innerHTML = 'ALT';
+            } else {
+                document.getElementById("output1").innerHTML = '';
+
+            }
+            
+        }
+
+    </script>
+
+</head>
+<body>
+<p>Press a key:</p><br> 
+<span id="output1"></span>
+<span id="output2"></span>
+</body>
+</html>

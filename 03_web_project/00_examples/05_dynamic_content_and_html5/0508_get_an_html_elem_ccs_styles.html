@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0508_get_an_html_elem_ccs_styles</title>
+    <script type="text/javascript">
+    	
+        function doIt() {
+        	var id = document.getElementById("input1").value;
+        	var att = document.getElementById("input2").value;
+        	var attVal = 'document.getElementById("' + id + '").style.' + att;
+        	var result = eval(attVal);
+
+			document.getElementById("output").innerHTML = id + " " + att + " is " + result;
+        }
+        
+    </script>
+
+    <style>
+    	p {
+    		font-family: Arial;
+    		font-size: 20px;
+    	}
+        body {	
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        #wrapper {
+        	width: 400px;
+        	height: 400px;
+        }
+        .element:before {
+        	content: "NEW";
+        	color: rgb(255,0,0);
+        }
+        /*#yellowBox {
+        	width: 200px; 
+			height: 200px; 
+			background-color: yellow; 
+			color: black; 
+			font-family: Calibri; 
+			font-size: 26px; 
+			text-align: center; 
+			line-height: 200px;
+        }*/
+    </style>
+
+</head>
+<body>
+<p></p>
+<!-- you must put style in here, otherwise this code cannot take effect -->
+<!-- <div id="yellowBox">ID = "yellowBox"</div> -->
+<div id="yellowBox" style="width: 200px; 
+						height: 200px; 
+						background-color: yellow; 
+						color: black; 
+						font-family: Calibri; 
+						font-size: 26px; 
+						text-align: center; 
+						line-height: 200px;">
+	ID = "yellowBox"
+</div>
+<br>
+Enter ID: <input type="text" id="input1" size="10" placeholder="Enter ID">
+<br><br>
+Enter an attribute: <input type="text" id="input2" size="10" placeholder="Enter an attribute">
+<br>
+<input type="button" onclick="doIt()" value="GO" />
+<br>
+<div id="output"></div>
+
+
+</body>
+</html>

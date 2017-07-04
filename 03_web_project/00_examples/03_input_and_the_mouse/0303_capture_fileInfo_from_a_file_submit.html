@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>0303_capture_fileInfo_from_a_file_submit</title>
+    <script type="text/javascript">
+        function checkFile() {
+            var uploadFile = document.getElementById("fileSubmit");
+            var fileValue = uploadFile.value;
+            var fileName = uploadFile.name;
+            var fileType = uploadFile.type;
+            var output = fileValue + '<br>' + fileName + '<br>' + fileType;
+            document.getElementById('outputDiv2').innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+
+
+<!--
+onsubmit="return false" on form will not return information on link, 
+otherwise you will get a added inform in link like this when you submit.
+file:///D:/mywebsite/try.html?color=%23000000&Ice+Cream=Chocolate&callMe=Yes
+-->
+<form id="input" name="myForm" enctype="multipart/form-data" onsubmit="return false">
+Select a file: <input type="file" id="fileSubmit" name="fileSubmit" size="25" />
+<br><br>
+<input type="submit" value="OK" onclick="checkFile()" />
+</form>
+<div id="outputDiv2" style="height: 75px;"></div>
+
+    </p>
+</form>
+
+</body>
+</html>
+

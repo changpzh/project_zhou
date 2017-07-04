@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classes>
+    <class name="Circuit">
+        <rating>Intermediate</rating>
+        <price>$120</price>
+        <duration />
+    </class>
+    <class name="Dancercize">
+        <rating>All</rating>
+        <price>$12</price>
+        <duration>Weekly - pay per lass</duration>
+    </class>
+    <class name="Mind and Body">
+        <rating>All</rating>
+        <price>$100</price>
+        <duration>course of six weeks</duration>
+    </class>
+    <class name="Pilates">
+        <rating>Intermediate</rating>
+        <price>$130</price>
+        <duration>course of eight weeks</duration>
+    </class>
+       
+
+</classes>

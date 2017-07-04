@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0522_get_the_attributes_of_html_elem</title>
+
+    <script type="text/javascript">
+
+        var result = "";
+        function getAtt(elem) {
+            var object = document.getElementById(elem.id).attributes;
+            for(var i = 0; i < object.length; i++) {
+                result += object[i].name + " [=] " + object[i].value + "<br>";
+            }
+            document.getElementById("output").innerHTML = result;
+        }
+
+        function doNothing() {
+            return;
+        }
+    </script>
+
+
+</head>
+<body>
+<div id="div1"
+    class="divClass"
+    style="font-family: Calibri; font-size: 20px; font-weight: bold; color: #ff00ff; width: 200px; height: 100px; text-align: center; background-color: #ffd800; line-height: 100px;"
+    onmouseover="doNothing()"
+    onmouseleave="doNothing()"
+    onclick="getAtt(this)"> &lt;div&gt; "div1" </div><br>
+
+<hr>
+<span id="output"></span>    
+
+
+</body>
+</html>

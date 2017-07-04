@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0517_draw_a_linear_gradients_on_html5_canvas</title>
+
+	<script>
+		function doIt() {
+			var x1 = document.getElementById("x1").value;
+			var y1 = document.getElementById("y1").value;
+			var x2 = document.getElementById("x2").value;
+			var y2 = document.getElementById("y2").value;
+			var x3 = document.getElementById("x3").value;
+			var y3 = document.getElementById("y3").value;
+			var x4 = document.getElementById("x4").value;
+			var y4 = document.getElementById("y4").value;
+			var colStop1 = document.getElementById("colStop1").value;
+			var colStop2 = document.getElementById("colStop2").value;
+			var pos1 = document.getElementById("pos1").value;
+			var pos2 = document.getElementById("pos2").value;
+			
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			var gradient = context.createLinearGradient(x1, y1, x2, y2);
+			gradient.addColorStop(pos1, colStop1);
+			gradient.addColorStop(pos2, colStop2);
+			context.fillStyle = gradient;
+			context.fillRect(x3, y3, x4, y4);
+			
+		}
+		function clearCanvas() {
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+
+		/*
+        The HTML <canvas> element is used to draw graphics on a web page.
+        The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+        */
+
+        /*
+        Link: http://www.w3schools.com/html/html5_canvas.asp
+        */
+		
+
+	</script>
+
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="200" style="border: 1px solid #000000"></canvas>
+<br><br>
+Color Stop1: <input type="text" id="colStop1" size="5">
+Color Stop2: <input type="text" id="colStop2" size="5">
+<br><br>
+Posotion 1: <input type="text" id="pos1" size="5">
+Posotion 2: <input type="text" id="pos2" size="5">(between 0 and 1)
+<br><br>
+x1: <input type="text" id="x1" size="5"> y1: <input type="text" id="y1" size="5">
+x2: <input type="text" id="x2" size="5"> y2: <input type="text" id="y2" size="5"><br><br>
+x3: <input type="text" id="x3" size="5"> y3: <input type="text" id="y3" size="5">
+x4: <input type="text" id="x4" size="5"> y4: <input type="text" id="y4" size="5">
+<br><br>
+
+<input type="button" onclick="doIt()" value="GO">
+<input type="button" onclick="clearCanvas()" value="Clear">
+
+
+</body>
+</html>

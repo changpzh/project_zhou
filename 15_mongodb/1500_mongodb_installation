@@ -1,0 +1,36 @@
+#you can refer the offical document in link: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+#1: Import the public key used by the package management system.
+$sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+
+#2: Create a list file for MongoDB
+Create the /etc/apt/sources.list.d/mongodb-org-3.4.list list file using the command appropriate for your version of Ubuntu
+Ubuntu 16.04
+
+$echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+#3: Reload local package database.Issue the following command to reload the local package database:
+$sudo apt-get update
+
+
+#4:Install the MongoDB packages.
+Issue the following command:
+$sudo apt-get install -y mongodb-org
+
+#5: Start the monogDB
+$sudo service mongod start
+
+#6: verify that MongoDB has started successfully
+$sudo service mongod status
+
+or
+
+[Verify that the mongod process has started successfully by checking the contents of the log file at /var/log/mongodb/mongod.log for a line reading]
+[initandlisten] waiting for connections on port <port>
+where <port> is the port configured in /etc/mongod.conf, 27017 by default.
+
+#7: Restart MongoDB.
+$ sudo service mongod restart
+
+#8: stop MongoDB.
+$ sudo service mongod stop

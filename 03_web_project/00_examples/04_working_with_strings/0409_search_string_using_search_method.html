@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0409_search_string_using_search_method</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str = document.getElementById("input1").value;
+			var search = document.getElementById("input2").value; 
+			var searchObj = eval(search);
+
+			var result = "For regular expression '" + search + "': " + str.match(searchObj);
+			document.getElementById("output").innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<p>Enter a search string:</p>
+<br>
+<input type="text" id="input2" size="25" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Search</button>
+<br>
+Result
+<br>
+<span id="output"></span>
+
+</body>
+</html>

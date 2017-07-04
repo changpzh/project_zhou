@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Xpath_html</title>
+<script type="text/javascript">
+
+    function getHTMLNodes() {
+        xpath = "//p";
+
+        var nodes = document.evaluate(xpath, document, null, XPathResult.ANY_TYPE, null);
+        var result = nodes.iterateNext();
+
+        msg = "";
+        while (result) {
+            alert(result.textContent);
+            result = nodes.iterateNext();
+        }
+    }
+
+</script>
+
+</head>
+<body>
+<p>load me1</p>
+<p>load me2</p>
+<p>load me3</p>
+
+<input type="button" name="button" value="Show the Nodes" onclick="getHTMLNodes()" />
+
+</body>
+</html>

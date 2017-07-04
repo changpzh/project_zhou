@@ -1,0 +1,26 @@
+###this file teaches you how to lunch a terminal to startup your scripts and window will keep alive after startup you PC
+#1: write each script of your each application. such as
+jason@jason-VB:~/start_coop_app$ ll
+total 24
+drwxrwxr-x  2 jason jason 4096  6月  1 14:29 ./
+drwxr-xr-x 28 jason jason 4096  6月  1 14:28 ../
+-rwxrw-r--  1 jason jason  132  6月  1 14:29 coop_env_start.sh*
+-rwxrwxr-x  1 jason jason   44  5月 12 10:54 npmStart.sh*
+-rwxrwxr-x  1 jason jason   57  6月  1 13:48 reader.sh*
+-rwxrwxr-x  1 jason jason   65  5月 12 10:54 simpleHTTPServer.sh*
+
+#2: npmStart.sh like below
+#!/bin/bash
+cd ~/falcon/producer/
+npm start
+
+#3: add one command to like "gnome-terminal -e "bash -c ~/script.sh;bash"" to start one terminal. 
+#just add more lines if you wish to start more applications. make sure end with "&" at the every line except the last line.
+gnome-terminal -e "bash -c ~/mywork/npmStart.sh;bash"&
+gnome-terminal -e "bash -c ~/mywork/simpleHTTPServer.sh;bash"
+
+#4: add the coop_env_start.sh to "startup applications". all will done after this...
+
+####another way to start services with terminal not keep alive
+1: type "crontab -e"
+2: append "@reboot /script.sh" in the file.

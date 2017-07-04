@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0403_change_font_size_in_string</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = "Changed text";
+			var size1 = str1.fontsize(1);
+			var size2 = str1.fontsize(2);
+			var size3 = str1.fontsize(5);
+			var size4 = str1.fontsize(8);
+			var original = document.getElementById("output").innerHTML;
+			var result = original + "<br>" + size1 + "<br>" + size2 + "<br>" + size3 + "<br>" + size4;
+			document.getElementById("output").innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+
+<p id="output">How to normal text</p>
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+	
+</body>
+</html>

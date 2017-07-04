@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>abtain the attribute of an object</title>
+<script type="text/javaScript">
+    function getVal() {
+        var x1 = document.getElementById('myBtnId').id;
+        var x2 = document.getElementById('myBtnId').name;
+        var x3 = document.getElementById('myBtnId').type;
+        var x4 = document.getElementById('myBtnId').value;
+        document.getElementById('value1').innerHTML = x1 +'<br>';
+        document.getElementById('value1').innerHTML += x2 +'<br>';
+        document.getElementById('value1').innerHTML += x3 +'<br>';
+        document.getElementById('value1').innerHTML += x4 +'<br>';
+    }
+
+</script>
+</head>
+<body>
+<form>
+    Get the values<br/>
+    <input type="button" name="myBtnName" id="myBtnId" value="Press me" onclick="getVal()"; /> <br>
+
+    Value equals <div id="value1"><br></div>
+</form>
+
+</body>
+</html>

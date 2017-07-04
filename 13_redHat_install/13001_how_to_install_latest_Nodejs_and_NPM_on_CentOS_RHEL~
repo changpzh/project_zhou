@@ -1,0 +1,54 @@
+Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications. Latest version node.js yum repository is maintaining by its official website. We can add this yum repository to our CentOS/RHEL 7/6/5 Systems and install node.js with few easy commands
+
+Step 1 – Add Node.js Yum Repository
+
+First we will add node.js yum repository in our system provided by nodejs official website. You also need development tools to build native addons to be installed on your system.
+
+# yum install -y gcc-c++ make
+# curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
+
+Step 2 – Install Node.js and NPM
+
+After adding yum repository in your system, lets install Nodejs package. NPM will also be installed with node.js. This command will also install many other dependent packages on your system.
+
+# yum install -y nodejs
+
+Step 3 – Check Node.js and NPM Version
+
+After installing node.js verify and check the installed version. You can find more details about current version on node.js official website.
+
+$ node -v 
+v7.3.0
+
+Also check the version of npm.
+
+$ npm -v 
+3.10.10
+
+Step 4 – Create Demo Web Server (Optional)
+
+This is an optional step. If you want to test your node.js install. Lets create a web server with “Welcome Node.js” text. Create a file demo_server.js
+
+$ vim demo_server.js
+
+and add following content
+#*****************Add start*************************
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Welcome Node.js');
+}).listen(3001, "127.0.0.1");
+console.log('Server running at http://127.0.0.1:3001/');
+*********************Add end*************************
+
+Now start the web server using below command.
+
+$ node --debug demo_server.js
+
+debugger listening on port 5858
+Server running at http://127.0.0.1:3001/
+
+Web server has been started on port 3001. Now access http://127.0.0.1:3001/ url in browser.
+
+
+

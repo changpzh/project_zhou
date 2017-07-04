@@ -1,0 +1,88 @@
+###*********************CB_PSINT_MACRO_QT_Trigger*********************#####
+###CB_PSINT_MACRO_QT_Trigger----------first trigger from other jenkins
+1:#Source Code Management->Subversion
+a:Repository URL->https://svne1.access.nsn.com/isource/svnroot/BTS_SCM_LTE/PS_INT_QT_trigger/TDD
+b:Local module directory->TDD
+c:Repository depth option->empty
+
+2:Build Triggers --->Poll SCM
+H/30 * * * *
+####HELP#######
+Examples:
+# every fifteen minutes (perhaps at :07, :22, :37, :52)
+H/15 * * * *
+# every ten minutes in the first half of every hour (three times, perhaps at :04, :14, :24)
+H(0-29)/10 * * * *
+# once every two hours every weekday (perhaps at 10:38 AM, 12:38 PM, 2:38 PM, 4:38 PM)
+H 9-16/2 * * 1-5
+# once a day on the 1st and 15th of every month except December
+H H 1,15 1-11 *
+####HELP#########
+
+3:Build->Execute Shell
+#!/bin/bash
+#svn update particular file "latest_TDD"
+svn export https://svne1.access.nsn.com/isource/svnroot/BTS_SCM_LTE/PS_INT_QT_trigger/TDD/latest_TDD
+
+#get the content of file.
+PACKNAME=`grep "Baseline" latest_TDD | cut -d "=" -f2`
+STATUS=`grep "State" latest_TDD | cut -d "=" -f2`
+
+# display package name, use to set build description
+echo package name is: ${PACKNAME}
+
+# check build state, if not RFT, not run script,
+# elseif check whether tested before, if yes, exit with ERR.
+# else write a flag to file.
+RFT="released_for_quicktest"
+if [ ${STATUS} == ${RFT} ]; then
+    mkdir -p /build/home/tdlteman/CPD/QTResult/${PACKNAME}/
+    if [ -e /build/home/tdlteman/CPD/QTResult/${PACKNAME}/CB_PSINT_MACRO_QT_Trigger ]; then
+        echo "CB_PSINT_MACRO_QT_Trigger has tested before"
+        exit 2
+    else
+        echo "successfull" > /build/home/tdlteman/CPD/QTResult/${PACKNAME}/CB_PSINT_MACRO_QT_Trigger
+        echo "PACKNAME=${PACKNAME}" > ./PACKNAME
+    fi
+else
+    echo "build is under \"${STATUS}\" status, should waiting for \"${RFT}\" status."
+    exit 1
+fi
+
+4:Post-build Actions ->Trugger parameterized build on other projects
+a:Projects to build->Marco_PSINT_Package_Post,
+b:Trigger when build is->Stable or unstable but not failed
+c:Parameters from properties file
+    i:Use properties from file->./PACKNAME
+
+###*********************Marco_PSINT_Package_Post*********************#####
+###Marco_PSINT_Package_Post-----------get package from other jenkins, then post to local pc(10.140.90.25)
+1:HTML5 Notification Configuration->This build is parameterized
+->String parameter
+a:Name->PACKNAME
+
+2:Build->Execute Shell
+#!/bin/bash -x
+
+# display package name, use to set build description
+echo package name is: ${PACKNAME}
+
+# get package and BTSSM version from other jenkins(10.159.34.78)
+rsync -avz lteman@10.159.34.78:/lteRel/data/build/TL00/${PACKNAME}_release_BTSSM_downloadable.zip ./
+curl -s https://wft.inside.nsn.com/ext/build_content/${PACKNAME} | xml_grep --text_only --cond 'baseline[@title="BTS Site Manager"]' >.config
+
+# Post package from this jenkins to local pc(10.140.90.25)
+rsync -avz ${PACKNAME}_release_BTSSM_downloadable.zip btstest@10.140.90.25:/cygdrive/c/Temp/MACRO_PSINT/${PACKNAME}/
+rsync -avz .config btstest@10.140.90.25:/cygdrive/c/Temp/MACRO_PSINT/${PACKNAME}/
+
+3:Post-build Actions
+a; Set build description
+    i: Regular expression->package name is: (.*)
+    ii:Description-><font color="green">\1</font>
+b:Trugger parameterized build on other projects
+    i:Build trigger
+    ii:Predefined parameters
+    ->PACKNAME=${PACKNAME}
+
+###*********************QT TA Job*********************#####
+###QT TA Job----------Main case

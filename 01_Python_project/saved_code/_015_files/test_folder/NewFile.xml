@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info baseline="TL16A_ENB_0000_000086_000000" id="524811">
+  <state>released_with_restrictions</state>
+  <planned_prod_date>2016-05-18 03:08:05 UTC</planned_prod_date>
+  <prod_date>2016-05-18 04:17:57 UTC</prod_date>
+  <planned_delivery_date>2016-05-18 04:08:05 UTC</planned_delivery_date>
+  <delivery_date>2016-05-18 05:50:26 UTC</delivery_date>
+  <branch>TL16A</branch>
+  <auto_release>on</auto_release>
+  <branch_for>
+  </branch_for>
+  <repository_url></repository_url>
+  <repository_branch/>
+  <repository_revision/>
+  <scm_tool>trunk@248684</scm_tool>
+  <content>
+    <baseline id="522185" sc="PS" title="PS">FB_PS_REL_2016_03_067</baseline>
+    <baseline id="524249" sc="FTM" title="FTM">FTM_FL16A_TL16A_W17_G17_2016.05.17_0037</baseline>
+    <baseline id="521277" sc="GLOBAL ENV" title="GLOBAL ENV">GLOBAL_ENV_11_123</baseline>
+    <baseline id="509463" sc="COMMON_APPL_ENV" title="COMMON_APPL_ENV">COMMON_APPL_ENV_1604_002_00</baseline>
+    <baseline id="524051" sc="CPLANE" title="CPLANE">FL16A_CPLANE_0000_036_00</baseline>
+    <baseline id="521841" sc="LOM" title="LOM">FL16A_LOM_0000_38697</baseline>
+    <baseline id="512639" sc="PHY_TX" title="PHY_TX">FL16A_PHY_TX_0000_160402_000000</baseline>
+    <baseline id="499025" sc="TOOLSET" title="TOOLSET">FL00_TOOLSET_0000_007632_000000</baseline>
+    <baseline id="472869" sc="ENV" title="ENV">FL00_ENV_9999_000576_000000</baseline>
+    <baseline id="515571" sc="LINSUP" title="LINSUP">FL00_LINSUP_0000_008633_000000</baseline>
+    <baseline id="508333" sc="DSP_COMMON" title="DSP_COMMON">FL16A_DSP_COMMON_0000_000001_000000</baseline>
+    <baseline id="509363" sc="PHY_TX_TDD" title="PHY_TX_TDD">TL16A_PHY_TX_0000_000002_000000</baseline>
+    <baseline id="523905" sc="PHY_RX" title="PHY_RX">TL16A_PHY_RX_0000_000029_000000</baseline>
+    <baseline id="522637" sc="BTS Site Manager" title="BTS Site Manager">TL16A_BTSSM_0000_000196_000000</baseline>
+    <baseline id="523581" sc="BTSOM" title="BTSOM">TL16A_OM_0000_COMMON_366400_000000</baseline>
+    <baseline id="506341" sc="CASN" title="CASN">LN0.0_CASN_0001_017_00</baseline>
+    <baseline id="522835" sc="ECL_SACK_BASE" title="ECL_SACK_BASE">FL16A_ECL_SACK_BASE_0000_000009_000000</baseline>
+    <baseline id="515621" sc="TDL" title="TDL">TDL26.05.R01</baseline>
+    <baseline id="519127" sc="ARCH" title="ARCH">FL00_ARCH_0000_439045_000000</baseline>
+    <baseline id="524239" sc="PARAM" title="PARAM">TL16A_PARAM_0000_000008_000000</baseline>
+    <baseline id="521785" sc="SCM" title="SCM">FL00_LTE_SCM_0000_440992_000000</baseline>
+    <baseline id="522957" sc="MAC_PS_TDD" title="MAC_PS_TDD">TL16A_MAC_PS_0000_000019_000000</baseline>
+    <baseline id="508321" sc="NPF_TDD" title="NPF_TDD">TL16A_NPF_0000_000001_000000</baseline>
+    <baseline id="506401" sc="ISAR_GEN" title="ISAR_GEN">LN0.0_ISAR_GEN_0001_028_58</baseline>
+    <baseline id="520689" sc="ISAR_XML" title="ISAR_XML">FL16A_ISAR_XML_0000_000008_000001</baseline>
+    <baseline id="519553" sc="PDDB_TRS" title="PDDB_TRS">FL16A_PDDB_TRS_1604_003_00</baseline>
+    <baseline id="515193" sc="PDDB_RADIO" title="PDDB_RADIO">TL16A_PDDB_RADIO_1604_004_00</baseline>
+    <baseline id="401441" sc="TDTECH" title="TDTECH">BBP530V400R010C00SPC300_20151111_X6_3172</baseline>
+    <baseline id="520261" sc="BM" title="BM">RP_BM_1603_001_26</baseline>
+    <baseline id="521625" sc="LTEL2" title="LTEL2">FL16A_LTEL2_0000_000012_000000</baseline>
+    <baseline id="522635" sc="BTS SM Validator" title="BTS SM Validator">TL00_BTSSM_Validator_0_307_0</baseline>
+    <baseline id="513343" sc="LIM" title="LIM">FL16A_LIM_0001_07_3078</baseline>
+    <baseline id="521793" sc="SCM_CONFIG" title="SCM_CONFIG">FL16A_SCM_CONFIG_0000_441017_000000</baseline>
+    <baseline id="515363" sc="TDL3" title="TDL3">TDL36.05.R02</baseline>
+    <baseline id="401953" sc="TDHWRRU" title="TDHWRRU">TL16_TDHWRRU_1511_002_00</baseline>
+    <baseline id="523903" sc="TDDCPRI" title="TDDCPRI">TL16A_TDDCPRI_0000_013437_000000</baseline>
+    <baseline id="495785" sc="TLDA" title="TLDA">FL00_TLDA_0000_007347_000000</baseline>
+    <baseline id="522981" sc="TDM" title="TDM">TDM36.05.R04</baseline>
+    <baseline id="494265" sc="TRSW_XML" title="TRSW_XML">TRSW_XML_0001_009_02</baseline>
+    <baseline id="471041" sc="RFY_RRH_FZQB" title="RFY_RRH_FZQB">WIB06.03.R01</baseline>
+    <baseline id="509827" sc="MSGIDLTE" title="MSGIDLTE">FL16A_MSGIDLTE_0000_001501_000000</baseline>
+    <baseline id="509703" sc="GPS" title="GPS">FL00_GPS_0000_000005_000000</baseline>
+    <baseline id="479407" sc="TDALURRU" title="TDALURRU">TL00_TDALURRU_0000_000021_000000</baseline>
+    <baseline id="522005" sc="LTE_PM_COUNTERS" title="LTE_PM_COUNTERS">FL16A_LTE_PM_COUNTERS_0000_001505_000000</baseline>
+    <baseline id="519605" sc="TDZ" title="TDZ">TDZ36.05.R02</baseline>
+  </content>
+  <peg_revisions>
+  </peg_revisions>
+  <diff to="TL16A_ENB_0000_000085_000000">
+    <baseline id="523581" sc="BTSOM" title="LTETDD::BTSOM">TL16A_OM_0000_COMMON_366400_000000</baseline>
+  </diff>
+  <params>
+  </params>
+  <tasks>
+    <task id="619581" title="Start Build" type="11" user="tdlteman">
+      <status>success</status>
+      <started_at>2016-05-18 02:23:10 UTC</started_at>
+      <finished_at>2016-05-18 02:23:10 UTC</finished_at>
+      <settings>
+        <setting name="result">success</setting>
+      </settings>
+      <interactions>
+        <interaction action="onerror">error</interaction>
+        <interaction action="onstart">building</interaction>
+      </interactions>
+    </task>
+    <task id="619583" title="Hudson/Jenkins Build" type="20" user="tdlteman">
+      <status>success</status>
+      <started_at>2016-05-18 02:23:39 UTC</started_at>
+      <finished_at>2016-05-18 04:13:08 UTC</finished_at>
+      <settings>
+        <setting name="project">CB_TDD_TL16A</setting>
+        <setting name="job-id">121</setting>
+        <setting name="unique-id">110837_1463538219</setting>
+        <setting name="prodtype">cbe</setting>
+        <setting name="server">3</setting>
+        <setting name="force_rebuild"/>
+        <setting name="inform_qt">1</setting>
+        <setting name="build_parallel">ysm-gmake</setting>
+        <setting name="module">FSMr3AirScale</setting>
+        <setting name="check_previous_tag"/>
+        <setting name="skip_svn_prepare"/>
+      </settings>
+      <interactions>
+        <interaction action="onerror">error</interaction>
+        <interaction action="onstart">building</interaction>
+      </interactions>
+    </task>
+    <task id="619585" title="ECL Check" type="22" user="tdlteman">
+      <status>error</status>
+      <started_at>2016-05-18 02:23:39 UTC</started_at>
+      <finished_at>2016-05-18 02:23:40 UTC</finished_at>
+      <settings>
+        <setting name="inform_on_failure">jc.zhou@nsn.com;tdlte-sw-build-team@mlist.emea.nsn-intra.net</setting>
+      </settings>
+      <interactions>
+      </interactions>
+    </task>
+    <task id="619587" title="QT trigger" type="25" user="tdlteman">
+      <status>success</status>
+      <started_at>2016-05-18 04:18:43 UTC</started_at>
+      <finished_at>2016-05-18 04:20:16 UTC</finished_at>
+      <settings>
+        <setting name="project">QT_trigger</setting>
+        <setting name="job-id">4984</setting>
+        <setting name="unique-id">64138_1463545123</setting>
+        <setting name="server">3</setting>
+      </settings>
+      <interactions>
+        <interaction action="autostart">released_for_quicktest</interaction>
+      </interactions>
+    </task>
+    <task id="619589" title="CopyResultToShare" type="25" user="tdlteman">
+      <status>success</status>
+      <started_at>2016-05-18 04:13:37 UTC</started_at>
+      <finished_at>2016-05-18 04:17:57 UTC</finished_at>
+      <settings>
+        <setting name="project">Copy_to_tdd_share_Common</setting>
+        <setting name="job-id">1873</setting>
+        <setting name="unique-id">264551_1463544817</setting>
+        <setting name="server">3</setting>
+      </settings>
+      <interactions>
+        <interaction action="onerror">error</interaction>
+        <interaction action="onsuccess">succeeded</interaction>
+      </interactions>
+    </task>
+    <task id="619591" title="zipBS10K_archiveWorkspace" type="25" user="lteman">
+      <status>running</status>
+      <started_at>2016-05-18 04:32:55 UTC</started_at>
+      <finished_at/>
+      <settings>
+        <setting name="server">3</setting>
+        <setting name="project">ZipBS10K_ArchiveWorkspace</setting>
+        <setting name="job-id">1806</setting>
+        <setting name="unique-id">789276_1463545975</setting>
+      </settings>
+      <interactions>
+        <interaction action="onstart">succeeded</interaction>
+      </interactions>
+    </task>
+    <task id="619593" title="Branch For Check" type="27" user="lteman">
+      <status>success</status>
+      <started_at>2016-05-18 02:23:39 UTC</started_at>
+      <finished_at>2016-05-18 02:23:40 UTC</finished_at>
+      <settings>
+        <setting name="inform_on_failure">jc.zhou@nsn.com;tdlte-sw-build-team@mlist.emea.nsn-intra.net</setting>
+      </settings>
+      <interactions>
+      </interactions>
+    </task>
+    <task id="619595" title="Copy Post Packages" type="25" user="tdlteman">
+      <status>success</status>
+      <started_at>2016-05-18 04:18:16 UTC</started_at>
+      <finished_at>2016-05-18 04:32:25 UTC</finished_at>
+      <settings>
+        <setting name="server">3</setting>
+        <setting name="project">TDD_TL16A_Post_Build</setting>
+        <setting name="job-id">100</setting>
+        <setting name="unique-id">267711_1463545096</setting>
+      </settings>
+      <interactions>
+      </interactions>
+    </task>
+  </tasks>
+  <storages>
+    <storage title="TDD Share" description="">
+      <file title="./" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/./">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/./</file>
+      <file title="../" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/../">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/../</file>
+      <file title=".config" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/.config">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/.config</file>
+      <file title=".property" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/.property">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/.property</file>
+      <file title="Please_find_unzip_files_here.html" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/Please_find_unzip_files_here.html">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/Please_find_unzip_files_here.html</file>
+      <file title="TL16A_ENB_0000_000086_000000_GeneratedCPlaneInternalInterfaces.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_GeneratedCPlaneInternalInterfaces.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_GeneratedCPlaneInternalInterfaces.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_linux_fsmr3.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_linux_fsmr3.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_linux_fsmr3.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_linux_fsmr4.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_linux_fsmr4.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_linux_fsmr4.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_windows_fsmr3.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_windows_fsmr3.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_windows_fsmr3.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_windows_fsmr4.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_windows_fsmr4.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_Technical_Log_Decoder_Analyzer_windows_fsmr4.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_ida.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_ida.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_ida.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable_testpackage_T1.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable_testpackage_T1.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable_testpackage_T1.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable_testpackage_T2.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable_testpackage_T2.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_BTSSM_downloadable_testpackage_T2.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_csw_fsih.tgz" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_csw_fsih.tgz">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_csw_fsih.tgz</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_csw_fsmr3.tgz" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_csw_fsmr3.tgz">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_csw_fsmr3.tgz</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_image.tar" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_image.tar">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_image.tar</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_mapAndOutFiles.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_mapAndOutFiles.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_mapAndOutFiles.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_mcuApplicationsNotStripped_AirScale.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_mcuApplicationsNotStripped_AirScale.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_mcuApplicationsNotStripped_AirScale.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_mcuApplicationsNotStripped_FSMr3.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_mcuApplicationsNotStripped_FSMr3.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_mcuApplicationsNotStripped_FSMr3.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_release_puttibatti.zip" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_puttibatti.zip">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_release_puttibatti.zip</file>
+      <file title="TL16A_ENB_0000_000086_000000_snapshot_documentation.tgz" url="http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_snapshot_documentation.tgz">http://hzlinb01.china.nsn-net.net:9093/Official_Build/TL16A_ENB_0000_000086_000000/TL16A_ENB_0000_000086_000000_snapshot_documentation.tgz</file>
+    </storage>
+    <storage title="IDA Sack (Ulm)" description="">
+    </storage>
+  </storages>
+  <artifacts>
+  </artifacts>
+  <previous_baseline>TL16A_ENB_0000_000085_000000</previous_baseline>
+  <corrected_faults>
+  </corrected_faults>
+  <patch_section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</patch_section>
+  <repositoryUrl></repositoryUrl>
+  <attachments>
+    <attachment type="rn_xml" url="https://wft.inside.nsn.com/ext/load_attachment/1057333">TL16A_ENB_0000_000086_000000.xml</attachment>
+    <attachment type="rn" url="https://wft.inside.nsn.com/ext/load_attachment/1057335">TL16A_ENB_0000_000086_000000.htm</attachment>
+    <attachment type="mail" url="https://wft.inside.nsn.com/ext/load_attachment/1057337">Email_released_for_quicktest.htm</attachment>
+    <attachment type="mail" url="https://wft.inside.nsn.com/ext/load_attachment/1057429">Email_to_iv.htm</attachment>
+  </attachments>
+  <build_attachments>
+    <baseline baseline="TL16A_ENB_0000_000086_000000" id="524811" sc="TDD eNB" title="LTE::Central:TDD">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1057333">TL16A_ENB_0000_000086_000000.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1057335">TL16A_ENB_0000_000086_000000.htm</attachment>
+      <attachment type="mail" url="https://wft.inside.nsn.com/secure_download/build_attachment/1057337">Email_released_for_quicktest.htm</attachment>
+      <attachment type="mail" url="https://wft.inside.nsn.com/secure_download/build_attachment/1057429">Email_to_iv.htm</attachment>
+    </baseline>
+    <baseline baseline="BBP530V400R010C00SPC300_20151111_X6_3172" id="401441" sc="TDTECH" title="LTETDD:TDTECH">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/815125">TDTECH_BBP530V400R010C00SPC300_20151111_X6_3172.xml</attachment>
+    </baseline>
+    <baseline baseline="COMMON_APPL_ENV_1604_002_00" id="509463" sc="COMMON_APPL_ENV" title="COMMON_APPL_ENV">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1028627">CommonApplEnvReleaseNote.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1028629">CommonApplEnvReleaseNote.htm</attachment>
+    </baseline>
+    <baseline baseline="FB_PS_REL_2016_03_067" id="522185" sc="PS" title="PS">
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052407">CI2RM.txt</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052409">ECL.txt</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052411">PSREL_partlist.txt</attachment>
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052413">FB_PS_REL_2016_03_067.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052415">FB_PS_REL_2016_03_067.htm</attachment>
+    </baseline>
+    <baseline baseline="FL00_ARCH_0000_439045_000000" id="519127" sc="ARCH" title="LTE::ARCH">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1046525">FL00_ARCH_0000_439045_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1046527">FL00_ARCH_0000_439045_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL00_ENV_9999_000576_000000" id="472869" sc="ENV" title="LTE::ENV">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/961985">LnEnvReleaseNote.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/961987">LnEnvReleaseNote.htm</attachment>
+    </baseline>
+    <baseline baseline="FL00_GPS_0000_000005_000000" id="509703" sc="GPS" title="LTEWMP::GPS">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1029069">FL00_GPS_0000_000005_000000.xml</attachment>
+    </baseline>
+    <baseline baseline="FL00_LINSUP_0000_008633_000000" id="515571" sc="LINSUP" title="LTE::LINSUP">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1039829">FL00_LINSUP_0000_008633_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1039831">FL00_LINSUP_0000_008633_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL00_LTE_SCM_0000_440992_000000" id="521785" sc="SCM" title="LTE::SCM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051527">FL00_LTE_SCM_0000_440992_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051529">FL00_LTE_SCM_0000_440992_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL00_TLDA_0000_007347_000000" id="495785" sc="TLDA" title="LTEWMP:TLDA">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1005315">FL00_TLDA_0000_007347_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1005317">FL00_TLDA_0000_007347_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL00_TOOLSET_0000_007632_000000" id="499025" sc="TOOLSET" title="LTE::TOOLSET">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1010873">FL00_TOOLSET_0000_007632_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1010875">FL00_TOOLSET_0000_007632_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL16A_CPLANE_0000_036_00" id="524051" sc="CPLANE" title="LTE::CPLANE">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055631">FL16A_CPLANE_0000_036_00.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055633">FL16A_CPLANE_0000_036_00.releasenotes.html</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055635">AbiVersions.html</attachment>
+    </baseline>
+    <baseline baseline="FL16A_DSP_COMMON_0000_000001_000000" id="508333" sc="DSP_COMMON" title="LTE::DSP_COMMON">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1026837">FL16A_DSP_COMMON_0000_000001_000000.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1026839">FL16A_DSP_COMMON_0000_000001_000000.html</attachment>
+    </baseline>
+    <baseline baseline="FL16A_ECL_SACK_BASE_0000_000009_000000" id="522835" sc="ECL_SACK_BASE" title="ECL_SACK_BASE">
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053561">FL16A_ECL_SACK_BASE_0000_000009_000000.htm</attachment>
+    </baseline>
+    <baseline baseline="FL16A_ISAR_XML_0000_000008_000001" id="520689" sc="ISAR_XML" title="ISAR_XML">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1049423">FL16A_ISAR_XML_0000_000008_000001_relnote.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1049425">FL16A_ISAR_XML_0000_000008_000001_relnote.htm</attachment>
+    </baseline>
+    <baseline baseline="FL16A_LIM_0001_07_3078" id="513343" sc="LIM" title="LTE::LIM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1035657">FL16A_LIM_0001_07_3078.xml</attachment>
+    </baseline>
+    <baseline baseline="FL16A_LOM_0000_38697" id="521841" sc="LOM" title="LTE::LOM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051637">FL16A_LOM_0000_38697.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051639">FL16A_LOM_0000_38697.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL16A_LTEL2_0000_000012_000000" id="521625" sc="LTEL2" title="LTEWMP:LTEL2">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051271">FL16A_LTEL2_0000_000012_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051273">FL16A_LTEL2_0000_000012_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FL16A_LTE_PM_COUNTERS_0000_001505_000000" id="522005" sc="LTE_PM_COUNTERS" title="LTEWMP::LTE_PM_COUNTERS">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052067">ReleaseNote.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1052069">ReleaseNote.htm</attachment>
+    </baseline>
+    <baseline baseline="FL16A_MSGIDLTE_0000_001501_000000" id="509827" sc="MSGIDLTE" title="LTEWMP::MSGIDLTE">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1029325">ReleaseNote.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1029327">ReleaseNote.htm</attachment>
+    </baseline>
+    <baseline baseline="FL16A_PHY_TX_0000_160402_000000" id="512639" sc="PHY_TX" title="LTE::PHY_TX">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1034201">FL16A_PHY_TX_0000_160402_000000.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1034203">FL16A_PHY_TX_0000_160402_000000.html</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1034205">CP_HbViewer.tar.gz</attachment>
+    </baseline>
+    <baseline baseline="FL16A_SCM_CONFIG_0000_441017_000000" id="521793" sc="SCM_CONFIG" title="LTEWMP:SCM_CONFIG">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051549">FL16A_SCM_CONFIG_0000_441017_000000.releasenotes.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1051551">FL16A_SCM_CONFIG_0000_441017_000000.releasenotes.html</attachment>
+    </baseline>
+    <baseline baseline="FTM_FL16A_TL16A_W17_G17_2016.05.17_0037" id="524249" sc="FTM" title="FTM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1056001">FTM_FL16A_TL16A_W17_G17_2016.05.17_0037_ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="GLOBAL_ENV_11_123" id="521277" sc="GLOBAL ENV" title="GLOBAL ENV">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1050627">GlobalEnvReleaseNote.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1050629">GlobalEnvReleaseNote.htm</attachment>
+    </baseline>
+    <baseline baseline="LN0.0_CASN_0001_017_00" id="506341" sc="CASN" title="CASN">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1023553">LN0.0_CASN_0001_017_00_releasenotes.xml</attachment>
+    </baseline>
+    <baseline baseline="RP_BM_1603_001_26" id="520261" sc="BM" title="BM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1048555">ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TDL26.05.R01" id="515621" sc="TDL" title="LTETDD:TDL">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1039907">TDLTE_RFMReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TDL36.05.R02" id="515363" sc="TDL3" title="LTETDD:TDL3">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1039471">FZHJ_RFMReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TDM36.05.R04" id="522981" sc="TDM" title="LTETDD::TDM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053793">FZHM_RFMReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TDZ36.05.R02" id="519605" sc="TDZ" title="TDZ">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1047233">ZYNQ_RFMReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL00_BTSSM_Validator_0_307_0" id="522635" sc="BTS SM Validator" title="LTETDD::BTS SM Validator">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053281">BTSSM_Validator_ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL00_TDALURRU_0000_000021_000000" id="479407" sc="TDALURRU" title="LTETDD:TDALURRU">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/975129">TL00_TDALURRU_0000_000021_000000_ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL16A_BTSSM_0000_000196_000000" id="522637" sc="BTS Site Manager" title="LTETDD:BTSSM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053283">BTSSMReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL16A_MAC_PS_0000_000019_000000" id="522957" sc="MAC_PS_TDD" title="LTETDD::MAC_PS">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053739">TL16A_MAC_PS_0000_000019_000000.xml</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053741">pstools.zip</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1053743">TL16A_MAC_PS_0000_000019_000000.htm</attachment>
+    </baseline>
+    <baseline baseline="TL16A_NPF_0000_000001_000000" id="508321" sc="NPF_TDD" title="LTETDD::NPF">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1026823">TL16A_NPF_0000_000001_000000.xml</attachment>
+    </baseline>
+    <baseline baseline="TL16A_OM_0000_COMMON_366400_000000" id="523581" sc="BTSOM" title="LTETDD::BTSOM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1054885">TL16A_OM_0000_COMMON_366400_000000_ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL16A_PARAM_0000_000008_000000" id="524239" sc="PARAM" title="LTETDD::PARAM">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055981">ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL16A_PHY_RX_0000_000029_000000" id="523905" sc="PHY_RX" title="LTETDD::PHY_RX">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055391">TL16A_PHY_RX_0000_000029_000000.xml</attachment>
+      <attachment type="rn" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055393">TL16A_PHY_RX_0000_000029_000000.html</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055395">UlPhySctDl8DspNy.BIN</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055397">UlPhySctL1DspNy.BIN</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055399">UlPhySctTswDspNy_8PIPE.BIN</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055401">UlPhySctTswDspNy_2PIPE.BIN</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055403">UlPhySctUl8DspNy.BIN</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055407">reports.zip</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055409">TddUlphyIQSnapshot_Tool.zip</attachment>
+    </baseline>
+    <baseline baseline="TL16A_PHY_TX_0000_000002_000000" id="509363" sc="PHY_TX_TDD" title="LTETDD::PHY_TX">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1028479">TL16A_PHY_TX_0000_000002_000000.xml</attachment>
+      <attachment type="other" url="https://wft.inside.nsn.com/secure_download/build_attachment/1028481">L-N1-DL8DSPMT_00099999.BIN</attachment>
+    </baseline>
+    <baseline baseline="TL16A_TDDCPRI_0000_013437_000000" id="523903" sc="TDDCPRI" title="LTETDD:TDDCPRI">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/1055389">TL16A_TDDCPRI_0000_013437_000000_ReleaseNote.xml</attachment>
+    </baseline>
+    <baseline baseline="TL16_TDHWRRU_1511_002_00" id="401953" sc="TDHWRRU" title="LTETDD:TDHWRRU">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/816123">TDHWRRU_TL16_TDHWRRU_1511_002_00.xml</attachment>
+    </baseline>
+    <baseline baseline="WIB06.03.R01" id="471041" sc="RFY_RRH_FZQB" title="RFY_RRH_FZQB">
+      <attachment type="rn_xml" url="https://wft.inside.nsn.com/secure_download/build_attachment/958613">FZQB_ReleaseNote.xml</attachment>
+    </baseline>
+  </build_attachments>
+  <links>
+  </links>
+  <assignments>
+    <ecls>
+      <ecl reported="2016-05-18 02:08:52 UTC">FL16A_ECL_SACK_BASE_0000_000009_000000</ecl>
+    </ecls>
+    <used_in>
+    </used_in>
+    <ecl_used_in>
+    </ecl_used_in>
+  </assignments>
+  <quicktest>
+    <result>released_with_restrictions</result>
+    <reason>
+      <![CDATA[]]>
+    </reason>
+  </quicktest>
+  <notes/>
+</info>

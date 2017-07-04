@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0309_process_checkbox_selection</title>
+    <script type="text/javascript">
+        function formProcess() {
+            var formData = 'Thank you! The information has been submitted:\n';
+            formData += '\nInterests selected:';
+            if (document.getElementById('ints_1').checked) {
+
+                formData += '\n-TV Shows';
+            }
+            if (document.getElementById('ints_2').checked) {
+                formData += '\n-News';
+            }
+            if (document.getElementById('ints_3').checked) {
+                formData += '\n-Sports';
+            }
+            if (document.getElementById('ints_4').checked) {
+                formData += '\n-Movies';
+            }
+            alert(formData);
+            
+        }
+    </script>
+</head>
+<body>
+<tr>
+    <td height="23"><p>
+        <strong>Interests: </strong>
+        <label>
+            <input type="checkbox" id="ints_1" name="ints[]" value="TV">TV
+        </label>
+        <label>
+            <input type="checkbox" id="ints_2" name="ints[]" value="News">News
+        </label>
+        <label>
+            <input type="checkbox" id="ints_3" name="ints[]" value="Sports">Sports
+        </label>
+        <label>
+            <input type="checkbox" id="ints_4" name="ints[]" value="Movies">Movies
+        </label>
+        <br>
+    </p></td>
+</tr>
+
+
+<input type="submit" value="Submit Now" onclick="formProcess()" />
+</body>
+</html>
+

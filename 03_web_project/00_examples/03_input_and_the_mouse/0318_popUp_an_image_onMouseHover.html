@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>0318_popUp_an_image_onMouseHover</title>
+    <script type="text/javascript">
+        function popUp(elem, image, color) {
+            var popElement = document.getElementById("popUp");
+            var x = window.event.clientX + 15;
+            var y = window.event.clientY + 15;
+            popElement.style.left = x + 'px';
+            popElement.style.top = y + 'px';
+            popElement.style.display = "block";
+            popElement.style.background = color;
+            popElement.innerHTML = image;
+
+        }
+
+        function clearPop() {
+            var popElement = document.getElementById('popUp');
+            popElement.style.display = "none";
+        }
+        
+    </script>
+
+    <style>
+        body {
+            font-family: Calibri;
+            font-style: 16px;
+        }
+        .popObj {
+            font-family: Calibri;
+            font-size: 16px;
+            color: #0026ff; /* text color--blue */
+        }
+    </style>
+
+</head>
+<body>
+
+<br><br>
+At <span class="popObj" onmouseover='popUp(event, "<img src=\"img/black.png\">", "#ffffff")' onmouseout="clearPop(this)">image</span>, you can see the example to how to pop up a image when mouse over!
+<!-- PopUp container -->
+<div id="popUp" style="display: none; position: absolute; border: solid black 1px; padding: 10px; font-family: Calibri; font-size: 16px;">
+<span id="popUpText"><!-- Text will autofill here --></span></div>
+<!-- End PopUp Container -->
+
+</body>
+</html>
+

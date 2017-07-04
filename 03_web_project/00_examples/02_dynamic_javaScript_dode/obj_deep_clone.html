@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>object clone_deepclone</title>
+<script type="text/javascript">
+    function Car(model, distanceMoved, timeElapsed) {
+        console.log(this);
+        this.model = model;
+        this.distanceMoved = distanceMoved;
+        this.timeElapsed = timeElapsed;
+
+        this.velocity = function() {
+            var result = this.distanceMoved / this.timeElapsed;
+            return result;
+        }
+
+        //our very own clone method! will not same as clone parent.
+        this.clone = function() {
+            var objClone = new Car();
+            for (var key in this) {
+                objClone[key] = this[key];
+
+            }
+            return objClone;
+        }
+
+    }
+    var myCar = new Car("Audi", 120, 1.2);
+    var myCar3 = myCar.clone();
+    // alert(myCar3.velocity())
+
+    // var myCar2 = myCar;
+    // alert(myCar2 == myCar3)
+    // alert(myCar3 == myCar)
+    // alert(myCar == myCar2)
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

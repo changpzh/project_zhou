@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>timers_JS</title>
+    <script type="text/javascript">
+
+    /*
+    * setTimeout(function, milliseconds)
+    * Executes a function, after waiting a specified number of milliseconds.
+    * setInterval(function, milliseconds)
+    * Same as setTimeout(), but repeats the execution of the function continuously.
+    * The setTimeout() and setInterval() are both methods of the HTML DOM Window object.
+    *
+    * How to Stop the Execution?
+    * The clearTimeout() method stops the execution of the function specified in setTimeout().
+    * window.clearTimeout(timeoutVariable)
+    * myVar = setTimeout(function, milliseconds);
+    * clearTimeout(myVar);
+    */
+
+        var timeoutID;
+
+        function delayAlert() {
+            timeoutID = window.setTimeout(slowAlert, 2000); 
+            /*
+            * window.setTimeout(function, milliseconds);
+            * The first parameter is a function to be executed.
+            * The second parameter indicates the number of milliseconds before execution.
+            */
+
+        }
+
+        function slowAlert() {
+            alert("Theat was really slow!");
+        }
+
+        function cancelAlert() {
+            /*
+            * The clearTimeout() method stops the execution of the function specified in setTimeout().
+            * window.clearTimeout(timeoutVariable)
+            * myVar = setTimeout(function, milliseconds);
+            * clearTimeout(myVar);
+            */
+            window.clearTimeout(timeoutID);
+            alert("Alert cancelled");
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="Delayed Alert" onclick="delayAlert()">
+    <input type="button" value="Stop Alert" onclick="cancelAlert()">
+    <br>
+
+    <input type="text" id="clock">
+
+    <script type="text/javascript">
+
+        /*
+        * window.setInterval(function, milliseconds);
+        * The first parameter is the function to be executed.
+        * The second parameter indicates the length of the time-interval between each execution.
+        */
+        var int = window.setInterval(function () { clock() }, 1000);
+        function clock() {
+            var myDate = new Date();
+            var myTime = myDate.toLocaleTimeString();
+            document.getElementById('clock').value = myTime;
+        }
+    </script>
+
+</body>
+</html>
+

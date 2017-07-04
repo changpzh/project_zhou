@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0413_split_a_string_into_an_array</title>
+	<script type="text/javascript">
+		function doIt() {
+			var str1 = document.getElementById("input1").value;
+			var str2 = document.getElementById("input2").value;
+			var str3 = document.getElementById("input3").value;
+			var str2Str = eval(str2); //it is very important when you type " " in string to split.
+			var result = str1.split(str2Str);
+			document.getElementById("output").innerHTML = result + 
+			"<br>Length: " + result.length + "<br>Array[" + str3 + "]: " + result[str3];
+		}
+	</script>
+</head>
+<body>
+
+<p id="prompt">Enter or paste a string</p>
+<br>
+<textarea name="textarea" id="input1" cols="50" rows="10"></textarea>
+<br><br>
+string to split:
+<input type="text" id="input2" size="5" />
+Show array:
+<input type="text" id="input3" size="5" />
+<br><br>
+<button onclick="doIt()" onsubmit="return false">Split</button>
+<br><br>
+Result:<br>
+<span id="output"></span>
+</body>
+</html>

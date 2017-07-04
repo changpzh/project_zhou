@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>9902_input_select_changes</title>
+</head>
+<body>
+    <form>
+        <select id="Slt" name="myName"  onkeypress="keyEvent(event)">
+            <option value="1">chang</option>
+            <option value="2">ping</option>
+        </select>
+    </form>
+    <input id="Button1" type="button" value="+" onclick="chgBtn(this.value)" />
+
+    <script type="text/javascript" language="javascript">
+    var option = ["zhou","chang"];
+    var ENTER_CODE = 13;
+
+    //save data when press keyBoard Enter
+    function keyEvent(evt) {
+        var value = document.getElementById('Button1').value;
+        evt = (evt) ? evt : ((window.event) ? window.event : "");   //compile FF and IE
+        var key = evt.keyCode ? evt.keyCode : evt.which;    //compile FF and IE
+        if (value == "Save") {
+            if(key == ENTER_CODE){   
+                saveData();
+                chgtoPlusBtn();
+                return true;
+            }else {
+                return false;
+            }
+         }
+    }
+
+    function chgBtn(value) {
+        if (value == 'Save') {
+            saveData();
+            chgtoPlusBtn();
+        }
+        else if (value == "+") {
+            addOption();
+            chgToSaveBtn();
+        }
+    }
+
+    function addOption() {
+        document.getElementById("Slt").options.length = 0;
+        var mySelect = document.getElementById("Slt").outerHTML = document.getElementById("Slt").outerHTML.replace(/select/g, "input");
+    }
+
+    function chgToSaveBtn() {
+        document.getElementById('Button1').value = "Save";
+    }
+
+    function chgtoPlusBtn() {
+        document.getElementById('Button1').value = "+";
+    }
+
+    function saveData() {
+        var slt = document.getElementById("Slt");
+        var newData = slt.value;
+        if (newData) {  //input data not blank.
+            option.push(newData.trim());
+        }
+        document.getElementById("Slt").outerHTML = document.getElementById("Slt").outerHTML.replace(/input/g, "select")
+        addSelectOpt(option);
+     
+    }
+
+    function addSelectOpt(obj){
+        var len = obj.length;
+        var select = document.getElementById("Slt");
+        for (var i = 0; i < len; i++) {
+            select.options.add(new Option(obj[i], obj[i]));
+            
+            // var opt = document.createElement('option');
+            // opt.value = obj[i];
+            // opt.innerHTML = obj[i];
+            // select.appendChild(opt);
+        }
+    }
+    </script>
+</body>
+</html>
+

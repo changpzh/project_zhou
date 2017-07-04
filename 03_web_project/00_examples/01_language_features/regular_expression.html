@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>regular_expression</title>
+<script type="text/javaScript">
+
+
+    //i --- case insensitive
+    var str = "This is a sample string";
+    var re = /Sample/i;
+    // var re = new RegExp("Sample", "i");
+
+    var check = re.exec(str);   //will return null if not match!
+    //The exec() method tests for a match in a string.
+    // This method returns the matched text if it finds a match, otherwise it returns null.
+
+    if (check) {
+        alert('Found a match');
+        alert(check);
+    } else {
+        alert("No match found");
+    }
+
+    var chck2 = re.test(str);
+    alert(chck2);
+    var rePatt = /Nofilelss/i;
+    var chck3 = rePatt.exec(str);
+    alert(chck3);
+    
+</script>
+</head>
+<body>
+
+</body>
+</html>

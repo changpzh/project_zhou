@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>0418_obtain_a_unicode_value_from_string</title>
+	<script type="text/javascript">
+	
+		function doIt() {
+			var chk = document.getElementById("input").value;
+			var result = chk.charCodeAt(0);
+			document.getElementById("output1").innerHTML = chk + " ";
+			document.getElementById("output2").innerHTML = result;
+
+		}
+</script>
+</head>
+<body>
+
+Type a character to get the Unicode value:<br>
+You can also use special keyboard combinations.<br><br>
+EXAMPLES:<br><br>
+ALT+0169 = &copy;<br>
+ALT+0153 = &trade;<br>
+ALT+0174 = &reg;<br>
+ALT+0162 = &cent;<br>
+ALT+0163 = &pound;<br>
+<br><br>
+<input type="text" id="input" size="2"><br><br>
+<button onclick="doIt()" onsubmit="return false">Try it</button>
+<br><br>
+The Unicode value for <span id="output1"></span> is <span id="output2"></span>
+
+</body>
+</html>
