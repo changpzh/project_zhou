@@ -22,60 +22,60 @@ wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
 	
 ##代码压缩 --grunt
 ###Installation:
-    $sudo npm install grunt -g
-    $npm install grunt-contrib-uglify --save-dev  ------代码混淆
-                grunt-contrib-qunit
-                grunt-contrib-concat              -----合并文件
-                grunt-contrib-jshint
-                grunt-contrib-watch               -----监控文件变化
+- $sudo npm install grunt -g
+- $npm install grunt-contrib-uglify --save-dev  ------代码混淆
+- $npm install grunt-contrib-qunit --save-dev
+- $npm install grunt-contrib-concat --save-dev  -----合并文件
+- $npm install grunt-contrib-jshint --save-dev
+- $npm install grunt-contrib-watch --save-dev   -----监控文件变化
 
 ###Config:
 
 ###Usage:
-    $grunt
-    $grunt watch
+- $grunt
+- $grunt watch
 	
 		
 
 ##karma & jasmine
 ###install karma
-    $ npm install karma --save-dev
-    $ npm install karma-coverage --save-dev
-    $ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
-    $ sudo npm install -g karma-cli
-    $ npm install jasmine --save-dev
+- $ npm install karma --save-dev
+- $ npm install karma-coverage --save-dev
+- $ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+- $ sudo npm install -g karma-cli
+- $ npm install jasmine --save-dev
 ###Config:
-    1:use "$karma init" to generate karma.conf.js
-    2: edit this file.
+1:use "$karma init" to generate karma.conf.js
+2: edit this file.
 ###Usage:	
-    $ karma start		--start karma test in project dir by
+$ karma start		--start karma test in project dir by
 ###reference
-    -link: http://karma-runner.github.io/1.0/intro/installation.html
+-link: http://karma-runner.github.io/1.0/intro/installation.html
 
 ##http-sever
 ### what is it? ---http-server is a simple, zero-configuration command-line http server
 ###Installation:
-    $npm install http-server -g
+$npm install http-server -g
 
 ###Usage:
-    $http-server [path] [options]
-    [path] defaults to ./public if the folder exists, and ./ otherwise.
-    Now you can visit http://localhost:8080 to view your server
+$http-server [path] [options]
+[path] defaults to ./public if the folder exists, and ./ otherwise.
+Now you can visit http://localhost:8080 to view your server
 
-    Available Options:
-    -p Port to use (defaults to 8080)
-    -a Address to use (defaults to 0.0.0.0)
+Available Options:
+-p Port to use (defaults to 8080)
+-a Address to use (defaults to 0.0.0.0)
 
 ###reference
-    -link: https://github.com/indexzero/http-server
+-link: https://github.com/indexzero/http-server
 
 
 ##bower
 ###Installation:
-    $npm install -g bower
+$npm install -g bower
 ###Usage:
-    $bower install [package]
-    -will install it to ./bower_components/    
+$bower install [package]
+-will install it to ./bower_components/    
 
 ==========================================
 ###xclip will copy content
