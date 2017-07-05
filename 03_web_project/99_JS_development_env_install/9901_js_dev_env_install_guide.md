@@ -79,3 +79,4 @@ $bower install [package]
 
 ==========================================
 ###xclip will copy content
+- xclip -sel clip < ~/.ssh/id_rsa.pub
