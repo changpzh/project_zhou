@@ -33,6 +33,7 @@ wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
 - $npm install grunt-contrib-concat --save-dev  -----合并文件
 - $npm install grunt-contrib-jshint --save-dev
 - $npm install grunt-contrib-watch --save-dev   -----监控文件变化
+- $npm install connect --save-dev
 
 ###Config:
 
