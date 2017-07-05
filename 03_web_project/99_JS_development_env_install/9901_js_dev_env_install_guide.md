@@ -19,6 +19,10 @@ wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
 - $npm --version
 - $npm init		--will create file of package.json file
 - $npm install	--will install all package in package.json file.
+- d. Config proxy for npm, and check conifg:
+    - $ npm config set proxy http://10.144.1.10:8080
+    - $ npm config set https-proxy http://10.144.1.10:8080
+    - $ npm config list
 	
 ##´úÂëÑ¹Ëõ --grunt
 ###Installation:
