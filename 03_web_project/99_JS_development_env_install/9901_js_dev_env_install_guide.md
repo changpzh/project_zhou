@@ -28,15 +28,17 @@ wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
     - $ npm config set https-proxy http://10.144.1.10:8080
     - $ npm config list
 	
-##代码压缩 --grunt
+##浠ｇ爜鍘嬬缉 --grunt
 ###Installation:
 ```
-- $sudo npm install grunt -g
-- $npm install grunt-contrib-uglify --save-dev  ------代码混淆
+- $sudo npm install grunt --save-dev	---must install it as --save-dev will add grunt as a dev-dependency to your package.json.
+- $sudo npm install -g grunt-cli
+- $npm install grunt-contrib-uglify --save-dev  ------浠ｇ爜娣锋穯
 - $npm install grunt-contrib-qunit --save-dev
-- $npm install grunt-contrib-concat --save-dev  -----合并文件
+- $npm install grunt-contrib-concat --save-dev  -----鍚堝苟鏂囦欢
 - $npm install grunt-contrib-jshint --save-dev
-- $npm install grunt-contrib-watch --save-dev   -----监控文件变化
+- $npm install grunt-contrib-watch --save-dev   -----鐩戞帶鏂囦欢鍙樺寲
+- $npm install connect --save-dev
 ```
 ###Config:
 
