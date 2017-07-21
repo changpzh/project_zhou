@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9902_simple_promise</title>
+</head>
+<body>
+<script type="text/javascript">
+	let promise = new Promise(function(resolve, reject) {
+		alert('Promise');
+		resolve();
+	});
+
+	promise.then(function() {
+		alert('Resolved.');
+	});
+
+	alert('Hi!');
+
+	// Promise
+	// Hi!
+	// Resolved
+</script>
+
+</body>
+</html>

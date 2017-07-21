@@ -1,3 +1,14 @@
+##本地有个文件夹想上传到git的某个仓库里去，可以用如下方法
+```
+$ git init
+$ git add README.md
+$ git commit -m "first commit"
+$ git remote add origin https://github.com/changpzh/10_broswer_library.git
+$ git push -u origin master
+```
+###
+
+
 ##[Create new branch](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)  
 想要新建一个分支并同时切换到那个分支上，你可以运行一个带有 -b 参数的 git checkout 命令：
 ```
