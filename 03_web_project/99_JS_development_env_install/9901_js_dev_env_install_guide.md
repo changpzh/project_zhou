@@ -1,19 +1,23 @@
 ##nodejs
 ###Installation:
 ####1st. install compiling tools
+```
 - $ sudo apt-get install g++ curl libssl-dev apache2-utils
 - $ sudo apt-get install python
 - $ sudo apt-get install build-essential
 - $ sudo apt-get install gcc
 - $ sudo apt-get install g++
 - $ sudo apt-get install libkrb5-dev
+```
 ####2nd. download node source files and install Nodejs
+```
 wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
 - $ tar -zxf node-v6.10.3.tar.gz
 - $ cd node-v6.10.3
 - $ ./configure
 - $ make
 - $ sudo make install
+```
 ###Usage:
 - $node --version
 - $npm --version
@@ -26,13 +30,14 @@ wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
 	
 ##代码压缩 --grunt
 ###Installation:
+```
 - $sudo npm install grunt -g
 - $npm install grunt-contrib-uglify --save-dev  ------代码混淆
 - $npm install grunt-contrib-qunit --save-dev
 - $npm install grunt-contrib-concat --save-dev  -----合并文件
 - $npm install grunt-contrib-jshint --save-dev
 - $npm install grunt-contrib-watch --save-dev   -----监控文件变化
-
+```
 ###Config:
 
 ###Usage:
@@ -78,9 +83,11 @@ Available Options:
 ###Installation:
 $npm install -g bower
 ###Usage:
-$bower install [package]
+$bower install [package]  
 -will install it to ./bower_components/    
 
 ==========================================
 ###xclip will copy content
-- xclip -sel clip < ~/.ssh/id_rsa.pub
+```
+$ xclip -sel clip < ~/.ssh/id_rsa.pub
+```
