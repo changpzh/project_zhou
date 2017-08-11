@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9904_promise_load_image</title>
+
+</head>
+<body>
+<script>
+	const f = () => alert('now');
+//	Promise.resolve().then(f);
+//	(async () => f())();
+	(
+			() => new Promise(
+			resolve => resolve(f())
+	)
+	)();
+	alert('next');
+	// next
+	// now
+
+</script>
+
+</body>
+</html>
