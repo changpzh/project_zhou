@@ -1,0 +1,47 @@
+
+changpzh@CNU414BB3D MINGW64 /h/01_admin_things/admin-cli-2.0.3/my-procedures
+$ ./gen-and-download.sh
+initCli.js->function initCli({settings = {}, externals = {}}) start
+initCli.js-> services start---
+serviceFactory.js -> function createServices($localStorage, $sessionStorage, $route, zipConfig)
+service = {"internalCtx":{"$localStorage":{},"$sessionStorage":{},"$route":{},"zipConfig":{},"metaService":{},"sequentialExecutorFactory":{},"fileTransferService":{},"socket":{},"decoderService":{},"protoDecoder":{},"protoEncoder":{},"snapshotDownloadingInfo":{},"updateService":{},"onlineImTree":{},"swUpdateUtils":{},"distNameFinder":{},"fileNameFactory":{},"imTracker":{},"instanceIdFinder":{},"signInHandlerService":{},"authService":{},"imAuthFactory":{},"imAuth":{},"currentSettings":{},"connectionService":{},"connectionIpService":{},"aldRestoreHwInfoService":{},"operationsService":{},"procedureIdFactory":{},"sessionService":{},"indicationDistNameService":{},"indicationExecutorBuilder":{},"singleFileTransferIndicationExecutorBuilder":{},"indicationExecutorFactory":{},"procedureExecutor":{},"bashCommandExecutor":{},"resetRequestTracker":{},"remoteResetListener":{},"otherProcedure":{},"snapshotTRAgent":{},"pmDataModel":{},"pmDataService":{},"pmFileTransfer":{},"pmFilesDownloader":{},"measurementsData":{},"btsServiceProcedure":{},"ims2Downloader":{},"techrepStateService":{},"snapshotExecutor":{},"snapshotFileSaver":{},"zipFactory":{},"unzipFactory":{},"fileDownloaderFactory":{},"snapshotStatusHandler":{},"procedureTrackerFactory":{},"filesInfoFactory":{},"snapshotHandlerFactory":{},"lteCellTracker":{},"snapshotService":{},"alarmsMonitor":{},"btsInfoService":{},"indOperationExecutor":{},"procedureExecutionCleaner":{},"softwareZipDispatcherFactory":{},"fileUploadService":{},"swDownloadFileTransferHandler":{},"swUpdateExecutorFactory":{},"cmDataDefinitions":{},"imMigrationService":{},"configurationChangesService":{},"imMapper":{},"networkPlans":{},"mocFactory":{},"btsConfigPlan":{},"commissioning":{},"pdlValidateFunction":{},"scfValidationService":{},"scfConversionService":{},"deltaCommissioningHandler":{},"parameterSetterUtils":{},"parameterSetter":{},"certificateManagementExecutor":{},"cmpServerUpdateStatusTracker":{},"scfMosToIms2FileConverter":{},"ims2writer":{},"ims2WriterWithProgress":{},"currentConfigurationMigrator":{},"tuningHistoryExecutor":{},"gnssTableInfoResponder":{},"syncDetailsResponder":{},"syncHubResponder":{},"syncSourceInfoResponder":{},"topfResponder":{},"topPhaseDataResponder":{},"onlineHistoryService":{},"historyMemoryCompressor":{},"btsSyncAnalyzer":{},"imHistoryTreeUtils":{},"imHistoryService":{},"imHistoryLoader":{},"ntpServersTracker":{},"ims2FileTransferService":{},"faultsService":{},"siteAvailabilityResponder":{},"removeObjectAvailabilityResponder":{},"apiRequestHandler":{},"validationExecutor":{},"migrationExecutor":{},"commissioningCliUtils":{},"commissioningExecutor":{},"deltaCommissioningExecutor":{},"pingReqCommissionExecutor":{},"radParametersGetter":{},"accountManager":{},"retuValidationService":{},"getSwUpdateReportExecutor":{},"getSwHistoryReportExecutor":{},"twampService":{},"twampResponderUtils":{},"twampConfigurationResponder":{},"twampRuntimeSessionResponder":{},"twampRuntimeStatisticsResponder":{},"indicationWatcherFactory":{},"proceduresWatcher":{},"ethernetPortSecurity":{},"ipTrafficCapturingExecutor":{}},"ctx":{}}
+initCli.js-> services end
+initCli.js-> bulkedProcedures start---
+bulkedProcedures = {"internalCtx":{"resetProcedure":{},"commissioningProcedure":{},"otherProcedure":{},"autoconnectionProcedure":{},"certMgmtProcedure":{},"snapshotProcedure":{}},"ctx":{}}
+initCli.js-> bulkedProcedures end
+initCli.js-> proceduresOperations start---
+lazyInstances.js --> lazyInstances.setInstance(name, constructor, force)
+lazyInstances.js --> name=generateAndDownload
+lazyInstances.js --> constructor =function () {
+            console.log("proceduresInstancesProvider.js --> proceduresInstances.setInstance('generateAndDownload', function ()");
+            return generateAndDownloadProcedure.newInstance({
+                apiRequestHandler: this.getInstance('apiRequestHandler'),
+                ipTrafficCapturingExecutor: this.getInstance('ipTrafficCapturingExecutor')
+            }).execute;
+        }
+lazyInstances.js --> force = undefined
+lazyInstances.js --> boundConstructor = function () { [native code] }
+lazyInstances.js --> this= [object Object]
+proceduresOperations = {"internalCtx":{"block":{},"imSnapshot":{},"getRawAlarmHistory":{},"generateScf":{},"snapshot":{},"remoteSnapshot":{},"softwareUpdate":{},"deleteCert":{},"installCert":{},"getCertificateFile":{},"certAutomaticManagement":{},"certCmpKeyUpdate":{},"unblock":{},"getFrequencyHistory":{},"unitReset":{},"generateFault":{},"removeHardware":{},"certUpdateRevocationList":{},"certRestoreVendor":{},"updatesListener":{},"requestsFinalizer":{},"fastTuning":{},"setDacWord":{},"setClockState":{},"switchFuse":{},"cmpInitializeCertificate":{},"swDownloadAbort":{},"swUpdateReport":{},"swHistoryReport":{},"siteReset":{},"btsReset":{},"resetToTestDedicated":{},"configurationReset":{},"downloadPlan":{},"activatePlan":{},"validateScf":{},"setParameter":{},"recommission":{},"swRollback":{},"setRadParam":{},"vswrTuningStart":{},"vswrTuningStop":{},"changeEthernetPortSecurity":{},"startUplinkTest":{},"stopTestModel":{},"startDownlinkTest":{},"getRuemLog":{},"setVswrThreshold":{},"registerAutoconnection":{},"updateTrsAutoconnectionParams":{},"autoconnClearAndRestart":{},"autoconf":{},"autoconfReport":{},"getCertList":{},"getCert":{},"certGetRevocationList":{},"cmpInstallCertificate":{},"userAccountSet":{},"modifySshUser":{},"changeLocalAccountState":{},"configureTilt":{},"setTiltAngle":{},"calibrateTilt":{},"startCapturing":{},"generateAndDownload":{}},"ctx":{}}
+initCli.js-> proceduresOperations end
+initCli.js-> procedure start---
+initCli.js-> procedure end
+lazyInstances.js --> lazyInstances.getInstance(name)
+lazyInstances.js --> name=procedureExecutionCleaner
+lazyInstances.js --> lazyInstances.getInstance(name)
+lazyInstances.js --> name=signInHandlerService
+initCli.js-> heartBeatHandlerProvider start---
+lazyInstances.js --> lazyInstances.getInstance(name)
+lazyInstances.js --> name=socket
+initCli.js-> heartBeatHandlerProvider end
+lazyInstances.js --> lazyInstances.getInstance(name)
+lazyInstances.js --> name=generateAndDownload
+proceduresInstancesProvider.js --> proceduresInstances.setInstance('generateAndDownload', function ()
+serviceFactory.js --> services.setInstance('ipTrafficCapturingExecutor', function ()
+ipTrafficCapturingExecutor.js---start
+ipTrafficCapturingExecutor.js --> indicationExecutorBuilder1 =  { newBuilder: [Function: newBuilder] }
+{"requestId":6,"requestStatus":"ongoing","requestMessage":"Waiting for response"}
+ipTrafficCapturingExecutor.js --> indicationExecutorBuilder2 =  { newBuilder: [Function: newBuilder] }
+ipTrafficCapturingExecutor.js --> function executeIndication(className = '', parameters = {})
+{"requestId":6,"requestStatus":"ongoing","requestMessage":"Waiting for response"}
+{"requestId":6,"requestStatus":"completed","requestMessage":""}

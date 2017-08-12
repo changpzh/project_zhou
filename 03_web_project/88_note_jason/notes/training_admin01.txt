@@ -1,0 +1,40 @@
+1.下载admin-cli 最新版本
+http://wrscmi.inside.nsn.com/isource/svnroot/BTS_D_SC_ADMIN_CLI/
+
+2. Admin-API run in windows:
+		\\Beeesn60.china.nsn-net.net\ee_groups_see\#hzbtsscm
+	 把W盘：hzbtsscm\Users\Phinfair\IP traffic capturing 下面的my-procedures.rar 解压放到admin-cli-2.0.0下面
+
+3.更改 admin-cli.sh， 把‘linux’改成windows。  路径是 admin-cli-2.0.0(D:\Admin-spec\Admin-CLI\admin-cli-2.0.0)
+   NODE=$DIR/node/windows/bin/node
+
+
+4. 更改项目里的shell.js文件， 把默认的pdl 改成pdlMock   （路径是grunt/config/shell.js）
+     concat-bundles': 'cat admin-core/dist/pdlMock.bundle.js
+5.grunt serve
+  - - - 或者暂时不跑这个。直接跑step6
+
+
+6. 外层admin下
+    grunt webpack:vendor
+
+	grunt webpack:pdlMock
+
+	grunt webpack:app
+
+	grunt shell:concat-bundles
+
+
+
+7.启动simulator
+
+8. 运行sh （api名字 在indoModelDispatcher.js 或者 proceduresDispatcher.js里面查找）
+./read-dac-word.sh
+
+
+
+"parameters":{"name":"softwareUpdate"} ----name 和下面里面js里面的proceduresInstances.setInstance('softwareUpdate', function () {
+一样
+D:\admin\admin-core\src\adminApi\proceduresInstancesProvider.js
+
+

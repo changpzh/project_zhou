@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="indexApp">
+<head>
+	<meta charset="UTF-8">
+	<title>loadImages</title>
+	<script src="lib/jquery-2.1.3.min.js"></script>
+	<script src="lib/angular-1.5.0.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap.css">
+	<link rel="stylesheet" href="lib/bootstrap-theme.css">
+	<script src="indexApp.js"></script>
+	<script src="controllers/indexCtroller.js"></script>
+
+	<!--<script type="text/javascript">-->
+	<!--var app = angular.module('indexApp', []);-->
+	<!--app.controller('mypanelCtrl', ['$scope', '$http', panelCtrlFn]);-->
+
+	<!--function panelCtrlFn($scope, $http) {-->
+	<!--$scope.fileName = "zhouFile Name";-->
+	<!--var data = '##simulator training:' +-->
+	<!--'###1.Download latest Link' +-->
+	<!--'###2. How to use simulator' +-->
+	<!--'./run_soamif.bat' +-->
+	<!--'' +-->
+	<!--'###3. config simSetting.xml' +-->
+	<!--'A:如果需要新增加MO的话，必须更改后压缩成~\\updates\\Meta\\NewmetaA.zip' +-->
+	<!--'B: 同时更改MO文件，注意meta.xml里面的id必须唯一' +-->
+	<!--'C: ~\\syncDualCore\\updates\\query.xml 是数据，meta.xml是密码本' +-->
+	<!--'D: 最好把要改的文件放到~\\syncDualCore\\procedures';-->
+
+	<!--$scope.display_contents = data;-->
+	<!--}-->
+	<!--</script>-->
+	<style>
+		body {
+			margin: 70px 0;
+		}
+		.time {
+			font-style: italic;
+			font-weight: bolder;
+			color: #9acfea;
+		}
+		.note-container {
+			width:90%;
+		}
+		#note-leftbar {
+			background-color: #dff0d8;
+		}
+	</style>
+
+</head>
+<body>
+<!--Notes navigation section-->
+<section id="note-navbar">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container" ng-controller="myTimeCtrl">
+			<h2 class="time">Current Time is: {{curtTime}}</h2>
+		</div>
+	</nav>
+</section>
+
+<!--Notes Contents section-->
+<section id="note-body">
+	<div class="container note-container">
+		<div class="row">
+			<div class="col-md-3">
+				<!--Notes Contents Left navBar section-->
+				<section id="note-leftbar">
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+					<a href="#note-rightbar">zhou changping note</a><br>
+
+
+				</section>
+			</div>
+			<!--Notes Contents Right Contents section-->
+			<div class="col-md-9" id="note-rightbar" ng-controller="myNotesCtrl">
+				<div ng-repeat="file in files" class="panel panel-primary">
+					<div class="panel-heading">
+						<h3>{{file.name}}</h3>
+					</div>
+					<div class="panel-body">
+						<pre>
+							<div class="btn btn-default pull-right">Edit</div>
+							{{file.content}}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!--Notes footer section-->
+<section id="note-footer"></section>
+
+
+<!--<section ng-controller="myNotesCtrl" >-->
+	<!--<div ng-repeat="file in files">-->
+		<!--<div class="panel panel-primary">-->
+			<!--<div class="panel-heading">-->
+				<!--<h5>{{file.name}}</h5>-->
+				<!--<div class="btn btn-default">Edit</div>-->
+			<!--</div>-->
+			<!--<div class="panel-body">-->
+				<!--<pre>{{file.content}}</pre>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</section>-->
+
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>
