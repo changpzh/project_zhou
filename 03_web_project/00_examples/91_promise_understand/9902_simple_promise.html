@@ -3,24 +3,41 @@
 <head>
 	<meta charset="UTF-8">
 	<title>9902_simple_promise</title>
+	<script type="text/javascript">
+		/**
+		 *Promise.resolve('foo')
+		 // 等价于
+		 new Promise(resolve => resolve('foo'))
+		 */
+		let promise = new Promise(function(resolve, reject) {
+			console.log('Promise');
+			return resolve();
+		});
+
+		promise.then(function() {
+			console.log('Resolved.');
+		});
+
+		console.log('Hi!');
+
+		let thenable = {
+			then: function(resolve, reject) {
+				resolve(42);
+			}
+		};
+
+		let p1 = Promise.resolve(thenable);
+		p1.then(function(value) {
+			console.log(value);  // 42
+		});
+
+		// Promise
+		// Hi!
+		// Resolved
+	</script>
 </head>
 <body>
-<script type="text/javascript">
-	let promise = new Promise(function(resolve, reject) {
-		alert('Promise');
-		resolve();
-	});
 
-	promise.then(function() {
-		alert('Resolved.');
-	});
-
-	alert('Hi!');
-
-	// Promise
-	// Hi!
-	// Resolved
-</script>
 
 </body>
 </html>

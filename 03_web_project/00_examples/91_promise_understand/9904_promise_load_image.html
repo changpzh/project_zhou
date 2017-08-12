@@ -3,21 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>9904_promise_load_image</title>
-
+	
 </head>
 <body>
+<img id="image">
 <script>
-	const f = () => alert('now');
-//	Promise.resolve().then(f);
-//	(async () => f())();
-	(
-			() => new Promise(
-			resolve => resolve(f())
-	)
-	)();
-	alert('next');
-	// next
-	// now
+	function loadImageAsync(url) {
+		return new Promise(function(resolve, reject) {
+			let image = new Image();
+
+			image.onload = function() {
+				resolve(image);
+			};
+
+			image.onerror = function() {
+				reject(new Error('Could not load image at ' + url));
+			};
+
+			image.src = url;
+		});
+	}
+
+	let image = loadImageAsync('./test.jpg');
 
 </script>
 
