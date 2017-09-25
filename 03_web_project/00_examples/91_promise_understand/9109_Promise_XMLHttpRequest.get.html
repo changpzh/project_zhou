@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9109_Promise_XMLHttpRequest.get</title>
+</head>
+<body>
+<script type="text/javascript">
+    function httpGet(url) {
+        return new Promise(
+            function (resolve, reject) {
+                const request = new XMLHttpRequest();
+                request.onload = function () {
+                    if (this.status === 200) {
+                        // Success
+                        resolve(this.response);
+                    } else {
+                        // Something went wrong (404 etc.)
+                        reject(new Error(this.statusText));
+                    }
+                };
+                request.onerror = function () {
+                    reject(new Error(
+                        'XMLHttpRequest Error: '+this.statusText));
+                };
+                request.open('GET', url);
+                request.send();
+            });
+    }
+
+
+    httpGet('9107_Promise.resolve.html')
+        .then(
+            function (value) {
+                console.log('Contents: ' + value);
+            },
+            function (reason) {
+                console.error('Something went wrong', reason);
+            });
+</script>
+</body>
+</html>

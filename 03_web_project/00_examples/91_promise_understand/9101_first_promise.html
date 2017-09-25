@@ -10,6 +10,18 @@
 <button onclick="testPromise()">Generate Promise Procedure</button>
 <script type="text/javascript">
 	'use strict';
+
+  /**
+   * States:
+   A Promise is always in one of three mutually exclusive states:
+    - Before the result is ready, the Promise is pending.
+    - If a result is available, the Promise is fulfilled.
+    - If an error happened, the Promise is rejected.
+   A Promise is settled if “things are done” (if it is either fulfilled or rejected).
+   A Promise is settled exactly once and then remains unchanged.
+   *
+   */
+
 	var promiseCount = 0;
 
 	function testPromise() {

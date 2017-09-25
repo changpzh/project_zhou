@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>9110_Promise_getFile.timeout</title>
+</head>
+<body>
+<script type="text/javascript">
+    function timeout(ms, promise) {
+        return new Promise(function (resolve, reject) {
+            promise.then(resolve);
+            setTimeout(function () {
+                reject(new Error('Timeout after '+ms+' ms')); // (A)
+            }, ms);
+        });
+    }
+
+    timeout(10, httpGet('9101_first_promise_debug_pic.png'))
+        .then(function (value) {
+            console.log('Contents: ' + value);
+        })
+        .catch(function (reason) {
+            console.error('Error or timeout', reason);
+        });
+
+    function httpGet(url) {
+        return new Promise(
+            function (resolve, reject) {
+                const request = new XMLHttpRequest();
+                request.onload = function () {
+                    if (this.status === 200) {
+                        // Success
+                        resolve(this.response);
+                    } else {
+                        // Something went wrong (404 etc.)
+                        reject(new Error(this.statusText));
+                    }
+                };
+                request.onerror = function () {
+                    reject(new Error(
+                        'XMLHttpRequest Error: '+this.statusText));
+                };
+                request.open('GET', url);
+                request.send();
+            });
+    }
+
+    /**
+     * Or, you can use Promise.race
+     *
+     */
+    function timouthttpGet(ms, url) {
+        Promise.race([
+            httpGet(url),
+            delay(ms).then(function () {
+                throw new Error('Timed out')
+            });
+        ])
+        .then(function (text) { ··· })
+				.catch(function (reason) { ··· });
+    }
+
+</script>
+
+</body>
+</html>

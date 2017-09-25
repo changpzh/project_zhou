@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9111_Promise.resolve(setTimeout)_order</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /**
+     * setTimeout(fn, 0)在下一轮“事件循环”开始时执行，
+     * Promise.resolve()在本轮“事件循环”结束时执行，
+     * console.log('one')则是立即执行，因此最先输出。
+     */
+    setTimeout(function () {
+        console.log('three');
+    }, 0);
+
+    Promise.resolve().then(function () {
+        console.log('two');
+    });
+
+    console.log('one');
+</script>
+
+</body>
+</html>
