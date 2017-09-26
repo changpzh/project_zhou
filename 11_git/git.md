@@ -1,3 +1,42 @@
+```
+#*********************************************************************************************************************************#
+# Git usage
+## 更改 last commit message
+git commit --amend
+git push -f origin [your_target_branch]
+
+## 新建分支
+git checkout -b mr-2959-name master
+git push origin mr-2959-name
+
+# 合并branch代码到master流程
+## 压缩 多个commits 为一个
+git rebase -i HEAD~3
+[may need to fix conflict, then git add changed files]
+## rebase master代码到你branch
+git pull --rebase origin master/xL17A
+[may need to fix conflict, then git add changed files]
+## 把此时的本地代码push到远端目标branch
+git push -f origin [your_target_branch]
+
+# 合并feature branch代码到master流程（尽可能的多做merge master代码到你的feature branch）
+## 基于你的feature branch，Git checkout一个新的branch。
+## 然后利用merge的方法合并最新的master代码到新建的branch。
+## 再提一个merge request 将新建的branch合并到你的feature branch （merge 方法进去的）。
+## 最后再提mr 将你的feature branch合到master里面去。
+
+## 查看日志
+git reflog
+
+## 回退到某个commit
+git reset --hard [number]
+
+## 删除分支
+### 删除本地分支 git branch -d/D local_branch_name
+### 删除远程分支 git push origin --delete remote_branch_name
+#*********************************************************************************************************************************#
+```
+
 
 ## 删除远程分支
 假设你已经通过远程分支做完所有的工作了 - 也就是说你和你的协作者已经完成了一个特性并且将其合并到了远程仓库的 master 分支（或任何其他稳定代码分支）。 可以运行带有 --delete 选项的 git push 命令来删除一个远程分支。 如果想要从服务器上删除 serverfix 分支，运行下面的命令：
