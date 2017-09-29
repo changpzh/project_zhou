@@ -37,7 +37,32 @@ git reset --hard [number]
 #*********************************************************************************************************************************#
 ```
 
+## Git 别名
+Git 并不会在你输入部分命令时自动推断出你想要的命令。 如果不想每次都输入完整的 Git 命令，可以通过 git config 文件来轻松地为每一个命令设置一个别名。 这里有一些例子你可以试试：
 
+```
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+
+
+```
+这意味着，当要输入 git commit 时，只需要输入 git ci。 随着你继续不断地使用 Git，可能也会经常使用其他命令，所以创建别名时不要犹豫。
+
+在创建你认为应该存在的命令时这个技术会很有用。 例如，为了解决取消暂存文件的易用性问题，可以向 Git 中添加你自己的取消暂存别名：
+```
+$ git config --global alias.unstage 'reset HEAD --'
+```
+这会使下面的两个命令等价：
+```
+$ git unstage fileA
+$ git reset HEAD -- fileA
+```
+这样看起来更清楚一些。 通常也会添加一个 last 命令，像这样：
+```
+$ git config --global alias.last 'log -1 HEAD'
+```
 ## 删除远程分支
 假设你已经通过远程分支做完所有的工作了 - 也就是说你和你的协作者已经完成了一个特性并且将其合并到了远程仓库的 master 分支（或任何其他稳定代码分支）。 可以运行带有 --delete 选项的 git push 命令来删除一个远程分支。 如果想要从服务器上删除 serverfix 分支，运行下面的命令：
 ```
@@ -68,7 +93,7 @@ M  lib/simplegit.rb
 新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。
 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区(相当于git add 了文件，但还没有git commit)。
 例如，上面的状态报告显示： README 文件在工作区被修改了但是还没有将修改后的文件放入暂存区,lib/simplegit.rb 文件被修改了并将修改后的文件放入了暂存区。
-而 Rakefile 在工作区被修改并提交到暂存区后又在工作区中被修改了，所以在暂存区和工作区都有该文件被修改了的记录。  
+而 Rakefile 在工作区被修改并提交到暂存区后又在工作区中被修改了，所以在暂存区和工作区都有该文件被修改了的记录。
 ```
 ??: new file but not git added
 A : new file and git added
@@ -200,11 +225,11 @@ $ git add README
 - 常用命令
 ```
  git reflog
- 
- git log --graph --all 
- 
+
+ git log --graph --all
+
  git log --oneline --graph --all
- 
+
  git log --oneline --decorate --graph --all
 ```
 
@@ -483,12 +508,15 @@ please contact us at email.support@github.com
 ## 远程分支
 
 ## 拉取
-当 git fetch 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。 然而，有一个命令叫作 git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个 git merge 命令。 如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 clone 或 checkout 命令为你创建的，git pull 都会查找当前分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。
+当 git fetch 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。 然而，有一个命令叫作 git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个 git merge 命令。
+如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 clone 或 checkout 命令为你创建的，git pull 都会查找当前分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。
 
 由于 git pull 的魔法经常令人困惑所以通常单独显式地使用 fetch 与 merge 命令会更好一些。
 
+git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个 git merge 命令。
+
 ## 推送
-运行 git push (remote) (remote_branch[:local_branch])
+运行 git push (remote_repository) (remote_branch[:local_branch])
 $ git push origin serverfix, 你也可以运行 git push origin serverfix:serverfix，它会做同样的事 - 相当于它说，“推送本地的 serverfix 分支，将其作为远程仓库的 serverfix 分支” 可以通过这种格式来推送本地分支到一个命名不相同的远程分支。
 如果并不想让远程仓库上的分支叫做 serverfix，可以运行 git push origin serverfix:awesomebranch 来将本地的 serverfix 分支推送到远程仓库上的 awesomebranch 分支。
 Notes: 注意origin是指远程仓库的意思。git push origin serverfix 就是指推送当前分支到远程仓库的serverfix分支
@@ -529,4 +557,24 @@ To https://github.com/schacon/simplegit
 ```
 基本上这个命令做的只是从服务器上移除这个指针。 Git 服务器通常会保留数据一段时间直到垃圾回收运行，所以如果不小心删除掉了，通常是很容易恢复的
 
+<<<<<<< HEAD
 ##
+=======
+#  [变基](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA)
+在 Git 中整合来自不同分支的修改主要有两种方法：merge 以及 rebase。
+这两种整合方法的最终结果没有任何区别，但是变基使得提交历史更加整洁。 你在查看一个经过变基的分支的历史记录时会发现，尽管实际的开发工作是并行的，但它们看上去就像是串行的一样，提交历史是一条直线没有分叉。
+
+基本用法：
+```
+git rebase [basebranch] [topicbranch]
+将特性分支（即本例中的 topicbranch）变基到目标分支（即 basebranch）上
+```
+
+更高级用法：
+```
+$ git rebase --onto master server client
+以上命令的意思是：“取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改，然后把它们在 master 分支上重放一遍”。
+```
+
+总的原则是，只对尚未推送或分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作，这样，你才能享受到两种方式带来的便利
+>>>>>>> change git.md
