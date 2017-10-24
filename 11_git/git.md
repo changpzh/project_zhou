@@ -1,9 +1,10 @@
 ```
-#*********************************************************************************************************************************#
+#*******************************************************************************#
 # Git usage
 ## 更改 last commit message
 git commit --amend
 git push -f origin [your_target_branch]
+git push origin master === git push origin master[:current_branch_name]
 
 ## 新建分支
 git checkout -b mr-2959-name master
@@ -12,6 +13,7 @@ git push origin mr-2959-name
 # 合并branch代码到master流程
 ## 压缩 多个commits 为一个
 git rebase -i HEAD~3
+可以用 git rebase -i @{u} 自动更改最近的。
 [may need to fix conflict, then git add changed files]
 ## rebase master代码到你branch
 git pull --rebase origin master/xL17A
@@ -34,10 +36,16 @@ git reset --hard [number]
 ## 删除分支
 ### 删除本地分支 git branch -d/D local_branch_name
 ### 删除远程分支 git push origin --delete remote_branch_name
-#*********************************************************************************************************************************#
+
+## 分支管理
+git pull === git fetch; git merge
+
+git push (remote_rep) (remote_branch_name[:local_branch_name])
+git push origin master === git push origin master:current_branch_name
+#**************************************************************************#
 ```
 
-## Git 别名
+## Git别名
 Git 并不会在你输入部分命令时自动推断出你想要的命令。 如果不想每次都输入完整的 Git 命令，可以通过 git config 文件来轻松地为每一个命令设置一个别名。 这里有一些例子你可以试试：
 
 ```
