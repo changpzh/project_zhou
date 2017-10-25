@@ -1,16 +1,12 @@
-Windows OS:
-How to install nodeJS
-1: download nodejs.msi in https://nodejs.org
-2: install it by regular package installation, npm will auto install while nodejs installation.
-3: check version by using node -v and npm -v.
-4: excute file though "node file.js"
-How to use npm
+## Windows OS:
+### How to install nodeJS
 
-1: use "npm init" in one project dir, to create a project, one more file "package.jason" will created.
-2: use "npm install XXX --save-dev" in that project to install third package.
-	- notes: --save-dev: used to save third package to package.jason 
+- 1: download nodejs.msi in https://nodejs.org
+- 2: install it by regular package installation, npm will auto install while nodejs - installation.
+- 3: check version by using node -v and npm -v.
+- 4: excute file though "node file.js"
 
-Linux OS:
+## Linux OS:
 	Install Nodejs
 		1. firstly，install compiling tools
 		$ sudo apt-get install g++ curl libssl-dev apache2-utils
@@ -33,6 +29,39 @@ Linux OS:
 	Delete proxy of npm
 	    $ npm config delete proxy
 	    $ npm config delete https-proxy
-###OR
-you can see information of ubuntu nodejs installation
-http://jingyan.baidu.com/article/6181c3e080f979152ef15387.html
+### OR
+you can see information of ubuntu nodejs installation from offical [link](www.nodejs.org)
+
+
+##NPM usage
+### How to use npm
+
+- 1: use "`npm init`" in one project dir, to create a project, one more file "package.jason" will created.
+- 2: use "`npm install XXX --save-dev`" in that project to install third package.
+- 3: 全局安装用 `-g` 参数， 比如：`npm install -g learnyounode`
+- 4: npm 安装指定版本可在模块后面加`@version_numer`, 比如`npm install -g mocha@2.5.3`
+
+
+**Notes**
+
+* `--save` : 表示把模块安装后同时写到package.json的dependencies里面
+* `--save-dev`: 表示把模块安装后同时写到package.json的**dev**Dependencies里面
+
+### [Fixing npm permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+Change the permission to npm's default directory
+
+- Find the path to npm's directory:
+
+	`$ npm config get prefix`  
+
+For many systems, this will be **/usr/local**
+
+**WARNING: If the displayed path is just /usr, switch to Option 2 or you will mess up your permissions.**
+
+- See what is current user:
+
+	`$ whoami`
+
+- Change the owner of npm's directories to the name of the current user (your username!):
+
+	`$ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
