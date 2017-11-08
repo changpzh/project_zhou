@@ -1,0 +1,8 @@
+
+  - test suite test-case 1
+    test suite test-case 2:   √ test suite test-case 2: 0ms
+    test suite test-case 3:   √ test suite test-case 3: 0ms
+
+  2 passing (0ms)
+  1 pending
+

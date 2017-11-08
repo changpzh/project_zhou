@@ -1,0 +1,19 @@
+{
+  "name": "13-then",
+  "version": "1.0.0",
+  "description": "mocha",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mocha"
+  ],
+  "author": "chen lijia",
+  "license": "ISC",
+  "devDependencies": {
+    "bluebird": "^3.5.1",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
