@@ -1,10 +1,9 @@
 var Promise = require("bluebird");
 
 function sayHello() {
-	console.log(new Date() + 'sayHello');
 	return new Promise(function (resolve, reject) {
 		setTimeout(function () {
-			reject('hello world');
+            return Promise.resolve('hello, world');
 		}, 1000);
 	});
 }
