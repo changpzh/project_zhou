@@ -1,10 +1,16 @@
 ```
-#*******************************************************************************#
+#*********************************************************************************************************************************#
 # Git usage
+git 里的origin表示：你现在所在仓库mapping的远端仓库的全路径，可以用git remote -v查看
+e.g. 这里的origin=https://github.com/changpzh/abbreviation_checkTool.git
+$ git remote -v
+origin  https://github.com/changpzh/abbreviation_checkTool.git (fetch)
+origin  https://github.com/changpzh/abbreviation_checkTool.git (push)
+
+
 ## 更改 last commit message
 git commit --amend
-git push -f origin [your_target_branch]
-git push origin master === git push origin master[:current_branch_name]
+git push -f origin [your_remoteRep_target_branch]
 
 ## 新建分支
 git checkout -b mr-2959-name master
@@ -13,7 +19,6 @@ git push origin mr-2959-name
 # 合并branch代码到master流程
 ## 压缩 多个commits 为一个
 git rebase -i HEAD~3
-可以用 git rebase -i @{u} 自动更改最近的。
 [may need to fix conflict, then git add changed files]
 ## rebase master代码到你branch
 git pull --rebase origin master/xL17A
@@ -37,12 +42,13 @@ git reset --hard [number]
 ### 删除本地分支 git branch -d/D local_branch_name
 ### 删除远程分支 git push origin --delete remote_branch_name
 
-## 分支管理
+## 分支
 git pull === git fetch; git merge
 
-git push (remote_rep) (remote_branch_name[:local_branch_name])
-git push origin master === git push origin master:current_branch_name
-#**************************************************************************#
+git push (remote_rep[origin master]) (remote_branch_name[:local_branch_name])
+git push origin master  === git push origin master:current_branch_name
+
+#*********************************************************************************************************************************#
 ```
 
 ## Git别名
