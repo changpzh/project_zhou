@@ -601,8 +601,13 @@ To https://github.com/schacon/simplegit
 基本用法：
 ```
 git rebase [basebranch] [topicbranch]
-将特性分支（即本例中的 topicbranch）变基到目标分支（即 basebranch）上
+将特性分支（即本例中的 topicbranch）变基到目标分支（即 basebranch）上。
+注意，当目标分支省略时，表示变基到当前你所在的分支。
 ```
+```
+git rebase 5g/poc_oam_1    === git rebase 5g/poc_oam_1
+```
+
 更高级用法：
 ```
 $ git rebase --onto master server client
