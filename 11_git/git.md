@@ -594,9 +594,6 @@ To https://github.com/schacon/simplegit
 ```
 基本上这个命令做的只是从服务器上移除这个指针。 Git 服务器通常会保留数据一段时间直到垃圾回收运行，所以如果不小心删除掉了，通常是很容易恢复的
 
-<<<<<<< HEAD
-##
-=======
 #  [变基](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA)
 在 Git 中整合来自不同分支的修改主要有两种方法：merge 以及 rebase。
 这两种整合方法的最终结果没有任何区别，但是变基使得提交历史更加整洁。 你在查看一个经过变基的分支的历史记录时会发现，尽管实际的开发工作是并行的，但它们看上去就像是串行的一样，提交历史是一条直线没有分叉。
@@ -606,7 +603,6 @@ To https://github.com/schacon/simplegit
 git rebase [basebranch] [topicbranch]
 将特性分支（即本例中的 topicbranch）变基到目标分支（即 basebranch）上
 ```
-
 更高级用法：
 ```
 $ git rebase --onto master server client
@@ -617,9 +613,9 @@ $ git rebase --onto master server client
 
 # 分支的合并
 假设你已经修正了 #53 问题，并且打算将你的工作合并入 master 分支。 为此，你需要合并 iss53 分支到 master 分支，然后运行 git merge 命令：
-
+```
 $ git checkout master
 Switched to branch 'master'
 $ git merge iss53
 Merge made by the 'recursive' strategy.
->>>>>>> change git.md
+```
