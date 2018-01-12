@@ -6,6 +6,27 @@ e.g. 这里的origin=https://github.com/changpzh/abbreviation_checkTool.git
 $ git remote -v
 origin  https://github.com/changpzh/abbreviation_checkTool.git (fetch)
 origin  https://github.com/changpzh/abbreviation_checkTool.git (push)
+新建 remote repo
+$ git remote add 5g git@baltig.nsn-net.net:5g/nodeoam.git
+加完后就是如下
+[changpzh@16:12 ~/mzhzom/nodeoam/src/fm/stateHelper]$ git remote -v
+5g	git@baltig.nsn-net.net:5g/nodeoam.git (fetch)
+5g	git@baltig.nsn-net.net:5g/nodeoam.git (push)
+origin	git@baltig.nsn-net.net:hzoam/nodeoam.git (fetch)
+origin	git@baltig.nsn-net.net:hzoam/nodeoam.git (push)
+
+然后再拉取前面两个远程仓库的代码下来用
+$ git fetch --all
+
+rebase 远程分支的【用到的仓库】的代码到你本地branch用。
+NodeOAM/siteOAM
+$ git rebase 5g/5G_Poc_OAM_1
+RacOAM
+$ git rebase 5g/master
+
+完后用下面命令提交到库上你的分支。
+git push -f origin [your_remoteRep_target_branch]
+
 
 
 ## 更改 last commit message
@@ -20,11 +41,11 @@ git push origin mr-2959-name
 ## 压缩 多个commits 为一个
 git rebase -i HEAD~3
 [may need to fix conflict, then git add changed files]
-## rebase master代码到你branch
-git pull --rebase origin master/xL17A
+## rebase 远端master分支的代码到你当前branch
+git pull --rebase origin (master[or/xL17A])
 [may need to fix conflict, then git add changed files]
 ## 把此时的本地代码push到远端目标branch
-git push -f origin [your_target_branch]
+git push -f origin [your_remote_target_branch]
 
 # 合并feature branch代码到master流程（尽可能的多做merge master代码到你的feature branch）
 ## 基于你的feature branch，Git checkout一个新的branch。
