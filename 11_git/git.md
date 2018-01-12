@@ -266,6 +266,9 @@ $ git add README
  git log --oneline --graph --all
 
  git log --oneline --decorate --graph --all
+ 
+ git log --author=changping.zhou@nokia.com //可以显示这个作者的所有提交日志。
+
 ```
 
 在提交了若干更新，又或者克隆了某个项目之后，你也许想回顾下提交历史。 完成这个任务最简单而又有效的工具是 git log 命令。
@@ -605,7 +608,7 @@ git rebase [basebranch] [topicbranch]
 注意，当目标分支省略时，表示变基到当前你所在的分支。
 ```
 ```
-git rebase 5g/poc_oam_1    === git rebase 5g/poc_oam_1
+git rebase 5g/poc_oam_1    === git rebase 5g/poc_oam_1 [your-local-branch]
 ```
 
 更高级用法：
