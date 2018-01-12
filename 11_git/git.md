@@ -406,6 +406,7 @@ Changes to be committed:
 ## 查看远程仓库
 如果想查看你已经配置的远程仓库服务器，可以运行 git remote 命令。
 你也可以指定选项 -v，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。
+origin 和 https://github.com/schacon/ticgit 都是远程仓库名，origin是别名。
 ```
 $ git remote -v
 origin	https://github.com/schacon/ticgit (fetch)
@@ -422,9 +423,10 @@ $ git fetch [remote-repository-name]
 如果你有一个分支设置为跟踪一个远程分支（阅读下一节与 Git 分支 了解更多信息），可以使用 git pull 命令来自动的抓取然后合并远程分支到当前分支。 这对你来说可能是一个更简单或更舒服的工作流程；默认情况下，git clone 命令会自动设置本地 master 分支跟踪克隆的远程仓库的 master 分支（或不管是什么名字的默认分支）。 运行 git pull 通常会从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支
 
 ## 推送到远程仓库
-当你想分享你的项目时，必须将其推送到上游。 这个命令很简单：git push [remote-repository-name] [branch-name]。 当你想要将 master 分支推送到 origin 服务器时（再次说明，克隆时通常会自动帮你设置好那两个名字），那么运行这个命令就可以将你所做的备份到服务器：
+当你想分享你的项目时，必须将其推送到上游。 这个命令很简单：git push (remote-repository-name) (remote-branch-name[:local-branch-name])。 当你想要将 master 分支推送到 origin 服务器时（再次说明，克隆时通常会自动帮你设置好那两个名字），那么运行这个命令就可以将你所做的备份到服务器：
 ```
-$ git push origin master
+$ git push (remote_repository_name) (remote_branch_name[:local_branch_name])
+$ git push origin master === git push origin master:current_branch_name
 ```
 只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。 阅读 Git 分支 了解如何推送到远程仓库服务器的详细信息。
 
