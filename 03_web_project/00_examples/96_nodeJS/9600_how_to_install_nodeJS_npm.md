@@ -32,6 +32,17 @@
 ### OR
 you can see information of ubuntu nodejs installation from offical [link](www.nodejs.org)
 
+## node version control
+`
+$ npm install -g n
+`
+### Installing Binaries
+Install a few nodes ("v" is optional), the version given becomes the active node binary once installation is complete.
+`
+$ n 0.2.6
+$ n v0.3.3
+`
+https://www.npmjs.com/package/n2
 
 ##NPM usage
 ### How to use npm
