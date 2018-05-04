@@ -61,9 +61,9 @@ $ sudo apt-get install gcc
 $ sudo apt-get install g++  
 $ sudo apt-get install libkrb5-dev  
 2. download node source files and install Nodejs  
-wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz  
-- $ tar -zxf node-v6.10.3.tar.gz  
-- $ cd node-v6.10.3  
+wget https://nodejs.org/dist/v6.12.2/node-v6.12.2.tar.gz  
+- $ tar -zxf node-v6.12.2.tar.gz  
+- $ cd node-v6.12.2  
 - $ ./configure  
 - $ make  
 - $ sudo make install  
