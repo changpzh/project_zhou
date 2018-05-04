@@ -61,11 +61,12 @@ $ sudo apt-get install gcc
 $ sudo apt-get install g++  
 $ sudo apt-get install libkrb5-dev  
 2. download node source files and install Nodejs  
-git clone git@baltig.nsn-net.net:5g/node-js.git  
-$ cd node-js  
-$ ./configure  
-$ make  
-$ sudo make install  
+wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz  
+- $ tar -zxf node-v6.10.3.tar.gz  
+- $ cd node-v6.10.3  
+- $ ./configure  
+- $ make  
+- $ sudo make install  
 
 
 c. Clone 5g Source code by command:  
