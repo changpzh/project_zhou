@@ -84,3 +84,13 @@ $ npm config list
 
 e. Switch to ./nodeoam folder and run command npm install, this will install all dependencies listed in package.json  
 g. npm start  
+
+### install webstorm
+download linux version of webstorm from offical location
+
+create a new dircetory of webstorm in /usr/share as root user  
+`# mkdir /usr/share/webstorm`  
+then umcompress it your dir previous created.  
+`# tar zxvf WebStorm-11.0.3.tar.gz -C /usr/share/webstorm`
+
+create a symbol link of webstorm.sh in your /usr/share/webstorm/.*/bin/webstorm.sh
