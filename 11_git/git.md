@@ -73,6 +73,10 @@ git push origin master  === git push origin master:current_branch_name
 
 #*********************************************************************************************************************************#
 ```
+## Git 配置
+* 配置 git 编辑器为vim`$ git config core.editor vim`
+* 添加git的用户名 `git config --global user.name "Zhou Changping"`
+* 添加gig的邮箱 `git config --global user.email "sdfsd@sdf。com`
 
 ## Git别名
 Git 并不会在你输入部分命令时自动推断出你想要的命令。 如果不想每次都输入完整的 Git 命令，可以通过 git config 文件来轻松地为每一个命令设置一个别名。 这里有一些例子你可以试试：
