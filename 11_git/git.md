@@ -1,5 +1,21 @@
 ```
 #*********************************************************************************************************************************#
+# 新feature开发，需要用到的命令,siteoam 为例
+
+1. git clone git@baltig.nsn-net.net:hzoam/siteoam.git  
+2. git remote add 5g git@baltig.nsn-net.net:5g/siteoam.git  
+3. git fetch --all  
+4. git checkout -b [your_local_branch] 5g/5G_PoC_OAM_1  
+5. git push origin [your_local_branch]
+
+然后正常更改你的代码，提交
+
+如果在MR时，有commits behind了，那么你需要进行下面三个命令
+1. git fetch --all
+2. git rebase 5g/5G_PoC_OAM_1
+3. git push -f origin [your_local_branch]
+
+
 # Git usage
 git 里的origin表示：你现在所在仓库mapping的远端仓库的全路径，可以用git remote -v查看
 e.g. 这里的origin=https://github.com/changpzh/abbreviation_checkTool.git
