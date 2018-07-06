@@ -544,6 +544,12 @@ Merge made by the 'recursive' strategy.
 $ git branch -d hotfix
 Deleted branch hotfix (3a0874c).
 ```
+## 重命名本地分支
+
+```
+Git branch -m old_local_branch_name new_local_branch_name
+```
+
 ## 遇到冲突时的分支合并
 有时候合并操作不会如此顺利。 如果你在两个不同的分支中，对同一个文件的同一个部分进行了不同的修改，Git 就没法干净的合并它们。 如果你对 #53 问题的修改和有关 hotfix 的修改都涉及到同一个文件的同一处，在合并它们的时候就会产生合并冲突：
 
