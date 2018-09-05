@@ -1,5 +1,5 @@
 ```
-#*********************************************************************************************************************************#
+#***********************************************************************************#
 # 新feature开发，需要用到的命令,siteoam 为例
 
 1. git clone git@baltig.nsn-net.net:hzoam/siteoam.git  
@@ -15,16 +15,20 @@
 2. git rebase 5g/5G_PoC_OAM_1
 3. git push -f origin [your_local_branch]
 
+# 合并多条提交记录为一条
+git rebase -i HEAD~[number]
 
 # Git usage
-git 里的origin表示：你现在所在仓库mapping的远端仓库的全路径，可以用git remote -v查看
-e.g. 这里的origin=https://github.com/changpzh/abbreviation_checkTool.git
+git 里的origin表示：你现在所在仓库mapping的远端仓库的全路径的别名，可以用git remote -v查看
+
 $ git remote -v
 origin  https://github.com/changpzh/abbreviation_checkTool.git (fetch)
 origin  https://github.com/changpzh/abbreviation_checkTool.git (push)
+e.g. 这里的origin=https://github.com/changpzh/abbreviation_checkTool.git
+
 新建 remote repo
 $ git remote add 5g git@baltig.nsn-net.net:5g/nodeoam.git
-加完后就是如下
+如果添加成功之后，查看如下：
 [changpzh@16:12 ~/mzhzom/nodeoam/src/fm/stateHelper]$ git remote -v
 5g	git@baltig.nsn-net.net:5g/nodeoam.git (fetch)
 5g	git@baltig.nsn-net.net:5g/nodeoam.git (push)
@@ -37,6 +41,7 @@ $ git fetch --all
 rebase 远程分支的【用到的仓库】的代码到你本地branch用。
 NodeOAM/siteOAM
 $ git rebase 5g/5G_Poc_OAM_1
+
 RacOAM
 $ git rebase 5g/master
 
@@ -72,7 +77,7 @@ git push -f origin [your_remote_target_branch]
 ## 查看日志
 git reflog
 git log --author=changping.zhou@nokia.com //查看这个人提交的日志。
-git show f8b244ec76cd473bc63a3b3652c2f8834a03245d
+git show f8b244ec76cd473bc63a3b3652c2f8834a03245d //查看该条提交历史记录的相关信息
 
 ## 回退到某个commit
 git reset --hard [number]
@@ -87,12 +92,12 @@ git pull === git fetch; git merge
 git push (remote_rep[origin master]) (remote_branch_name[:local_branch_name])
 git push origin master  === git push origin master:current_branch_name
 
-#*********************************************************************************************************************************#
+#***********************************************************************************#
 ```
 ## Git 配置
 * 配置 git 编辑器为vim`$ git config core.editor vim`
 * 添加git的用户名 `git config --global user.name "Zhou Changping"`
-* 添加gig的邮箱 `git config --global user.email "sdfsd@sdf。com`
+* 添加gig的邮箱 `git config --global user.email "changping.zhou@foxmail.com`
 
 ## Git别名
 Git 并不会在你输入部分命令时自动推断出你想要的命令。 如果不想每次都输入完整的 Git 命令，可以通过 git config 文件来轻松地为每一个命令设置一个别名。 这里有一些例子你可以试试：
