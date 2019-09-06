@@ -1,0 +1,7 @@
+可以通过修改/etc/gdm/custom.conf文件，实现root用户免密码自动登陆
+在[daemon]下增加
+
+AutomaticLoginEnable=True
+AutomaticLogin=root
+
+保存文件，然后重启查看效果
